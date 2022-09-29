@@ -350,10 +350,13 @@ ol {
 		list-style: none;
 		display: inline-block;
 		position: relative;
+
 		margin-right: 16px;
 	}
 
 		.header__menu ul li.active a {
+			width: 110px;
+			font-size: 16px;
 			background: #00b0f0;
 			color: #ffffff;
 		}
@@ -364,6 +367,7 @@ ol {
 
 		.header__menu ul li:hover .dropdown {
 			top: 62px;
+			width: 110px;
 			opacity: 1;
 			visibility: visible;
 		}
@@ -371,6 +375,9 @@ ol {
 			.header__menu ul li:hover .dropdown li a {
 				background: transparent;
 			}
+				.header__menu ul li:hover .dropdown li a:hover {
+					background: #00b0f0;
+				}
 
 		.header__menu ul li:last-child {
 			margin-right: 0;

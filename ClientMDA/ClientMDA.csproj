@@ -14,6 +14,7 @@
     <Folder Include="wwwroot\images\HomePage\" />
     <Folder Include="wwwroot\images\Member\" />
     <Folder Include="wwwroot\images\Comment\" />
+    <Folder Include="wwwroot\images\Public\" />
     <Folder Include="wwwroot\images\Ticketing\" />
     <Folder Include="wwwroot\images\Theater\" />
     <Folder Include="wwwroot\images\Shopping\" />
