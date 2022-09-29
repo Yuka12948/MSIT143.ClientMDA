@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nYZJXpXT9n2bU9wlIzTa+FRCQ/Lbyota6lQS8q6HqJ648olNDqeIhkQlFvyvecJ5vuTqNuPpYjA976T8Ar0Utw==",
+  "dgSpecHash": "d/ZBtBGx8sX4Evhk4SxA/gfuTj2IQwz2f/0NUGIOplEEhpstoJbngJqWzxiXWVaaqbkc1GfAiXEDlDfYsUnCwg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Student\\Desktop\\空白\\ClientMDA\\ClientMDA\\ClientMDA.csproj",
+  "projectFilePath": "C:\\Users\\Student\\Documents\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Student\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\5.0.17\\microsoft.aspnetcore.diagnostics.entityframeworkcore.5.0.17.nupkg.sha512",
