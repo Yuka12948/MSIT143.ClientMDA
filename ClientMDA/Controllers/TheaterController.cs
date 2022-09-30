@@ -12,5 +12,9 @@ namespace ClientMDA.Controllers
         {
             return View();
         }
+        public IActionResult 即將上映()
+        {
+            return View();
+        }
     }
 }
