@@ -38,6 +38,7 @@ you can use the generic selector below, but it's slower:
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
 }
+
 .arrow_up:before {
 	content: "\21";
 }
@@ -92,6 +93,7 @@ you can use the generic selector below, but it's slower:
 .arrow_carrot-up:before {
 	content: "\32";
 }
+	/*¹q¼v3=\33*/
 .arrow_carrot-down:before {
 	content: "\33";
 }
@@ -194,6 +196,7 @@ you can use the generic selector below, but it's slower:
 .icon_zoom-in_alt:before {
 	content: "\54";
 }
+	/*·j´M \55*/
 .icon_search:before {
 	content: "\55";
 }

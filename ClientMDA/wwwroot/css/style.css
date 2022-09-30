@@ -350,7 +350,6 @@ ol {
 		list-style: none;
 		display: inline-block;
 		position: relative;
-
 		margin-right: 16px;
 	}
 
@@ -375,6 +374,7 @@ ol {
 			.header__menu ul li:hover .dropdown li a {
 				background: transparent;
 			}
+
 				.header__menu ul li:hover .dropdown li a:hover {
 					background: #00b0f0;
 				}
@@ -1955,7 +1955,7 @@ ol {
 	padding-bottom: 40px;
 	position: relative;
 }
-
+/*回首頁按鈕*/
 .page-up {
 	position: absolute;
 	left: 50%;
@@ -2023,7 +2023,7 @@ ol {
 
 @media only screen and (min-width: 1200px) {
 	.container {
-		max-width: 1170px;
+		max-width: 1920px; /*1170*/
 	}
 }
 

@@ -11,10 +11,41 @@ namespace ClientMDA.Controllers
         public IActionResult Index()
         {
             return View();
-        }
-        public IActionResult 即將上映()
+        } //完工
+        public IActionResult Indexpage2()
+        {
+            return View();
+        }//完工
+        public IActionResult Indexpage3()
+        {
+            return View();
+        }//完工
+        public IActionResult Indexpage4()
+        {
+            return View();
+        }//完工
+        public IActionResult Indexpage5()
+        {
+            return View();
+        }//完工
+        public IActionResult 即將上映page1()
+        {
+            return View();
+        }//完工
+        public IActionResult 即將上映page2()
+        {
+            return View();
+        }//完工
+        public IActionResult 即將上映page3()
+        {
+            return View();
+        }//完工
+
+        public IActionResult 阮玲玉()
         {
             return View();
         }
+
+
     }
 }

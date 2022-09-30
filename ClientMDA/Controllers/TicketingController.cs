@@ -12,5 +12,29 @@ namespace ClientMDA.Controllers
         {
             return View();
         }
+
+        public IActionResult MovieInfoIndex()
+        {
+            return View();
+        }
+        public IActionResult MovieInfoIndex2()
+        {
+            return View();
+        }
+
+        public IActionResult SeatMap()
+        {
+            return View();
+        }
+
+        public IActionResult PaymentWeb()
+        {
+            return View();
+        }
+
+        public IActionResult PaymentWeb2()
+        {
+            return View();
+        }
     }
 }

@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
+
     <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="~/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="~/css/elegant-icons.css" type="text/css">
@@ -25,16 +26,17 @@
     <link rel="stylesheet" href="~/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="~/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="~/css/style.css" type="text/css">
+
 </head>
 
-<body>
+<body class="text-white">
     <header class="header">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.html">
-                            <img src="~/images/Public/logo.png" alt=""/>
+                        <a asp-controller="HomePage" asp-action="Index">
+                            <img src="~/images/Public/logo.png" alt="" />
                         </a>
                     </div>
                 </div>
@@ -43,19 +45,11 @@
                         <nav class="header__menu mobile-menu">
                             <ul>
                                 <li class="active">
-                                    <a href="./index.html">訂　票</a>
-                                    <ul class="dropdown">
-                                        <li><a href="./categories.html">本週新片</a></li>
-                                        <li><a href="./anime-details.html">上映中</a></li>
-                                        <li><a href="./anime-watching.html">即將上映</a></li>
-                                        <li><a href="./blog-details.html">歷年電影</a></li>
-                                        <li><a href="./blog-details.html">電影排行</a></li>
-                                        <li><a href="./blog-details.html">我的評論</a></li>
-                                    </ul>
+                                    <a asp-area="" asp-controller="Ticketing" asp-action="MovieInfoIndex2">快速訂票</a>
                                 </li>
 
                                 <li>
-                                    <a href="./categories.html">電影<span class="arrow_carrot-down"></span></a>
+                                    <a text-white fs-2" asp-area="" asp-controller="Theater" asp-action="Index">電影介紹<span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
                                         <li><a href="./categories.html">本週新片</a></li>
                                         <li><a href="./anime-details.html">上映中</a></li>
@@ -65,8 +59,7 @@
                                         <li><a href="./blog-details.html">我的評論</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="./anime-details.html">影評</a></li>  <!--./blog.html-->
-                                <li><a href="#">商城</a></li>
+                                <li><a href="./anime-details.html">電影評論</a></li>  <!--./blog.html-->
                             </ul>
                         </nav>
                     </div>
@@ -111,7 +104,7 @@
             @RenderBody()
         </main>
         <hr />
-        <footer class="footer">
+        <footer class="footer" style="clear:both">
             <div class="page-up">
                 <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
             </div>
@@ -143,6 +136,7 @@
                 </div>
             </div>
         </footer>
+
     </div>
     <script src="~/js/bootstrap.min.js"></script>
     <script src="~/js/jquery-3.4.1.min.js"></script>
