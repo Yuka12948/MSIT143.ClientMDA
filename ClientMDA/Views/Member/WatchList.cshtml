@@ -1,0 +1,205 @@
+﻿
+@{
+    ViewData["Title"] = "WatchList";
+}
+
+<head>
+    <style>
+        .swiper-slide {
+            width: 120px;
+            height: 180px;
+            margin-right: 8px;
+            background-position: center;
+            background-size: cover;
+            float: left;
+        }
+
+        .rating {
+        }
+
+        .card-title {
+            margin: 20px 0 0 0;
+            font-size: 2em;
+        }
+
+        swiper-slide {
+            position: relative;
+        }
+
+        .movie-card {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            font-size: 0.5em;
+            opacity: 0;
+        }
+        /*.movie-card:hover {
+                opacity:1;
+            }*/
+
+        .movie-tag.BottomArea {
+            bottom: 0;
+            left: 0;
+        }
+
+        .movie-tag span {
+            padding: 8px 8px 4px;
+        }
+
+        .swiper-slide:hover {
+            filter: grayscale(90%);
+            transition-duration: 0.3s;
+        }
+
+            .swiper-slide:hover .movie-card {
+                opacity: 1;
+                transition-duration: 0.3s;
+            }
+    </style>
+</head>
+
+<body class="text-white">
+    <h2 style="text-align:center">我的片單</h2>
+
+    <div class="card-title">
+        <p>MyWatchList-哈利波特</p>
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide"
+                 style="background-image: url('https://m.media-amazon.com/images/M/MV5BMzkyZGFlOWQtZjFlMi00N2YwLWE2OWQtYTgxY2NkNmM1NjMwXkEyXkFqcGdeQXVyNjY1NTM1MzA@@._V1_FMjpg_UX1000_.jpg')">
+                <div class="movie-list">
+                    <div class="movie-tag BottomArea">
+                        <span class="rating">4.5</span>
+                    </div>
+                </div>
+                <a href="/vod/3795">
+                    <p class="movie-card">哈利波特：神秘的魔法石</p>
+                </a>
+            </div>
+            <div class="swiper-slide"
+                 style="background-image: url('https://m.media-amazon.com/images/M/MV5BMjE0YjUzNDUtMjc5OS00MTU3LTgxMmUtODhkOThkMzdjNWI4XkEyXkFqcGdeQXVyMTA3MzQ4MTc0._V1_FMjpg_UX834_.jpg')">
+                <div class="movie-list">
+                    <div class="movie-tag BottomArea">
+                        <span class="rating">4.8</span>
+                    </div>
+                </div>
+                <a href="/vod/3795">
+                    <p class="movie-card">哈利波特：消失的密室</p>
+                </a>
+            </div>
+            <div class="swiper-slide"
+                 style="background-image: url('https://www.miranewcinemas.com/miramarimaxauro/imax/images/upload/movie/201312121120071.jpg') ">
+                <div class="movie-list">
+                    <div class="movie-tag BottomArea">
+                        <span class="rating">4.2</span>
+                    </div>
+                </div>
+                <a href="/vod/3795">
+                    <p class="movie-card">哈利波特：火盃的考驗</p>
+                </a>
+            </div>
+            <div class="swiper-slide"
+                 style="background-image: url('https://m.media-amazon.com/images/M/MV5BMTM0NTczMTUzOV5BMl5BanBnXkFtZTYwMzIxNTg3._V1_FMjpg_UX450_.jpg')">
+                <div class="movie-list">
+                    <div class="movie-tag BottomArea">
+                        <span class="rating">4.7</span>
+                    </div>
+                </div>
+                <a href="/vod/3795">
+                    <p class="movie-card">哈利波特：鳳凰會的密令</p>
+                </a>
+            </div>
+            <div class="swiper-slide"
+                 style="background-image: url('https://m.media-amazon.com/images/M/MV5BMGVmMWNiMDktYjQ0Mi00MWIxLTk0N2UtN2ZlYTdkN2IzNDNlXkEyXkFqcGdeQXVyODE5NzE3OTE@@._V1_.jpg')">
+                <div class="movie-list">
+                    <div class="movie-tag BottomArea">
+                        <span class="rating">4.5</span>
+                    </div>
+                </div>
+                <a href="/vod/3795">
+                    <p class="movie-card">哈利波特：死神的聖物2</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+
+    <div class="card-title">
+        <p>周末片單</p>
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide"
+                 style="background-image: url('https://www.sonypictures.com/sites/default/files/styles/max_560x840/public/title-key-art/bullettrain_onesheet_1400x2100_v4.jpg?itok=khOUNLFM') ">
+                <div class="movie-list">
+                    <div class="movie-tag BottomArea">
+                        <span class="rating">4.5</span>
+                    </div>
+                </div>
+                <a href="/vod/3795">
+                    <p class="movie-card">子彈列車</p>
+                </a>
+            </div>
+
+            <div class="swiper-slide"
+                 style="background-image: url('https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@@._V1_.jpg') ">
+                <div class="movie-list">
+                    <div class="movie-tag BottomArea">
+                        <span class="rating">4.5</span>
+                    </div>
+                </div>
+                <a href="/vod/3795">
+                    <p class="movie-card">捍衛戰士：獨行俠</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+
+    <div class="card-title">
+        <p>魔戒</p>
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide"
+                 style="background-image: url('https://upload.wikimedia.org/wikipedia/zh/7/74/LOTRFOTRmovie.jpg')">
+                <div class="movie-list">
+                    <div class="movie-tag BottomArea">
+                        <span class="rating">4.8</span>
+                    </div>
+                </div>
+                <a href="/vod/3795">
+                    <p class="movie-card">魔戒首部曲：魔戒現身</p>
+                </a>
+            </div>
+            <div class="swiper-slide"
+                 style="background-image: url('https://upload.wikimedia.org/wikipedia/zh/2/2a/LOTRTTTmovie.jpg')">
+                <div class="movie-list">
+                    <div class="movie-tag BottomArea">
+                        <span class="rating">4.2</span>
+                    </div>
+                </div>
+                <a href="/vod/3795">
+                    <p class="movie-card">魔戒二部曲：雙城奇謀</p>
+                </a>
+            </div>
+            <div class="swiper-slide"
+                 style="background-image: url('https://upload.wikimedia.org/wikipedia/zh/e/e3/The_Lord_of_the_Rings_-_The_Return_of_the_King_poster.jpg')">
+                <div class="movie-list">
+                    <div class="movie-tag BottomArea">
+                        <span class="rating">4.7</span>
+                    </div>
+                </div>
+                <a href="/vod/3795">
+                    <p class="movie-card">魔戒三部曲：王者再臨</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+</body>
+
