@@ -8,7 +8,16 @@ namespace ClientMDA.Controllers
 {
     public class CommentController : Controller
     {
-        public IActionResult Index()
+        public IActionResult 評論首頁()
+        {
+            return View();
+        }
+
+        public IActionResult 評論()
+        {
+            return View();
+        }
+        public IActionResult 我的()
         {
             return View();
         }

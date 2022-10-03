@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kWqoRsZ8VvA0L/VXZM1i5BvVMBcFPvG4NgYjgeD6Y5jMjlAyFOSbFEDrAWemkAgAB/GzW4wiJ4fCSbVBVUfLJw==",
+  "dgSpecHash": "SaRJ2sn+9evV2WaFRIwuXHpS+qPJLAverrS5zr86HG1ImWVe5ZzrBgPQ/pB+5/3bGycoT18qS2nKfHzeZMK62w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Student\\Desktop\\ClientMDA\\ClientMDA\\ClientMDA.csproj",
+  "projectFilePath": "C:\\shared\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Student\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
