@@ -68,12 +68,10 @@
   <ItemGroup>
     <Folder Include="images\Comment\" />
     <Folder Include="images\HomePage\" />
-    <Folder Include="images\Member\" />
     <Folder Include="images\Shopping\" />
     <Folder Include="images\Ticketing\" />
     <Folder Include="wwwroot\css\Comment\" />
     <Folder Include="wwwroot\css\HomePage\" />
-    <Folder Include="wwwroot\css\Member\" />
     <Folder Include="wwwroot\css\Shopping\" />
     <Folder Include="wwwroot\css\Ticketing\" />
     <Folder Include="wwwroot\images\HomePage\" />
