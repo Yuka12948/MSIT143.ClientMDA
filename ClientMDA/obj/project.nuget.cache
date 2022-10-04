@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EIxTCAyLCd62RNwAg3vuTUOoM2J9KjYH45l6SVac0OZ/saBkDJ9l9JiPtZVj6E/NjqxL+QA/3PAwWsxMHWYVZQ==",
+  "dgSpecHash": "osyIgGB0+Hd+AKcrAfetWXuNlGDrNQhfNf6ubkBOCc5dliTk/xMoMkUaMLMCE7ucEN3SOFn5KPzWeG/GAQ2MRw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Student\\Documents\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
+  "projectFilePath": "C:\\Users\\Student\\Desktop\\MDA專題\\MDA專題Git\\ClientMDA\\ClientMDA.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Student\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
