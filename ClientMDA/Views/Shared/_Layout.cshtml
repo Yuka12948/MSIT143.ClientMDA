@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="~/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="~/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="~/css/style.css" type="text/css">
+    <script src="~/js/jquery-3.4.1.min.js"></script>
 
 </head>
 
@@ -52,11 +53,10 @@
                                     <a text-white fs-2" asp-area="" asp-controller="Theater" asp-action="Index">電影介紹<span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
                                         <li><a href="./categories.html">本週新片</a></li>
-                                        <li><a href="./anime-details.html">上映中</a></li>
-                                        <li><a href="./anime-watching.html">即將上映</a></li>
+                                        <li><a asp-area="" asp-controller="Theater" asp-action="Index">上映中</a></li>
+                                        <li><a asp-area="" asp-controller="Theater" asp-action="即將上映page1">即將上映</a></li>
                                         <li><a href="./blog-details.html">歷年電影</a></li>
                                         <li><a href="./blog-details.html">電影排行</a></li>
-                                        <li><a href="./blog-details.html">我的評論</a></li>
                                     </ul>
                                 </li>
                                 <li><a asp-area="" asp-controller="Comment" asp-action="評論首頁">電影評論</a></li>  <!--./blog.html-->
