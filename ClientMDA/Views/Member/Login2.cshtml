@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Login2";
 }
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Anime Template">
@@ -60,17 +61,16 @@
     <!-- Normal Breadcrumb End -->
     <!-- Login Section Begin -->
     <section class="login spad">
-
         <div style="display:flex;">
             <div class="login__form" style="margin:auto;" id="temp">
                 <h3>登入</h3>
-                <form action="#">
+                <form method="post">
                     <div class="input__item">
-                        <input type="text" placeholder="0901001001" disabled>
+                        <input type="text" name="txtPhone" value="0901001001" disabled>
                         <span class="icon_mobile"></span>
                     </div>
                     <div class="input__item">
-                        <input type="password" placeholder="密碼">
+                        <input type="password" name="txtPassword" placeholder="密碼">
                         <span class="icon_lock"></span>
                     </div>
                     <button type="submit" class="site-btn">登入</button>
@@ -78,7 +78,7 @@
                 <a href="#" class="forget_pass">忘記密碼</a>
             </div>
         </div>
-
+       
     </section>
     <!-- Login Section End -->
     <!-- Js Plugins -->
@@ -95,6 +95,3 @@
 
 
 </body>
-
-
-

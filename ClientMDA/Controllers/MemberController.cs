@@ -10,7 +10,7 @@ namespace ClientMDA.Controllers
     public class MemberController : Controller
     {
         List<CMemberDemoViewModel> members = new List<CMemberDemoViewModel>();
-        CMemberDemoViewModel memberDemo2 = new CMemberDemoViewModel
+        CMemberDemoViewModel memberDemo1 = new CMemberDemoViewModel
         {
             MemberID = 2,
             Cellphone = "0902002002",
@@ -20,7 +20,7 @@ namespace ClientMDA.Controllers
             Permission = 0,
             CreatedTime = DateTime.Now,
         };
-        CMemberDemoViewModel memberDemo1 = new CMemberDemoViewModel
+        CMemberDemoViewModel memberDemo2 = new CMemberDemoViewModel
         {
             MemberID = 1,
             Cellphone = "0901001001",
@@ -37,22 +37,48 @@ namespace ClientMDA.Controllers
             Bonus = 100,
             CreatedTime = new DateTime(2022, 6, 15),
         };
-        public IActionResult Login()
-        {            
+        public IActionResult MemberMain()
+        {
+
             return View();
+        }
+        public IActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Login(CLoginViewModel vModel)
+        {
+            if (vModel.txtphone == "0901001001")
+                return RedirectToAction("Login2");
+            else
+                return RedirectToAction("SignUp");
         }
         public IActionResult Login2()
         {
             return View();
         }
-        public IActionResult SignUp()
+        [HttpPost]
+        public IActionResult Login2(CLogin2ViewModel vModel)
+        {
+            if (vModel.txtPassword == "0000")
+                return RedirectToAction("MemberMain");
+            else return View();
+        }
+        public IActionResult SignUp(CLoginViewModel vModel)
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult SignUp()
+        {
+            return RedirectToAction("MemberMain");
         }
         public IActionResult MemberEdit()
         {
             return View();
         }
+
         public IActionResult CommentList()
         {
             return View();
@@ -66,6 +92,10 @@ namespace ClientMDA.Controllers
             return View();
         }
         public IActionResult WatchList()
+        {
+            return View();
+        }
+        public IActionResult PasswordEdit()
         {
             return View();
         }
