@@ -61,12 +61,12 @@
     }
 </style>
 
-<body>
-    <section class="container">
+<div class="m-auto" style="width:66%">
+    <section>
         <div class="align-content-xl-start">
             <h2 class="text-bg-primary fa-space-awesome" style="padding-bottom:2%;color:whitesmoke">現正熱門</h2>
         </div>
-        <div class="swiper mySwiper">
+        <div class="swiper mySwiper" style="width:95%">
             <div class="swiper-wrapper">
                 <div class="swiper-slide"><img src="~/images/Ticketing/1.jpg" /></div>
                 <div class="swiper-slide"><img src="~/images/Ticketing/2.jpg" /></div>
@@ -84,7 +84,7 @@
         </div>
     </section>
 
-    <section class="container">
+    <section>
         <div class="align-content-xl-start">
             <h2 class="text-bg-primary fa-space-awesome" style="padding-bottom:2%;padding-top:3%;color:whitesmoke">所有電影</h2>
         </div>
@@ -104,6 +104,7 @@
             }
         </div>
     </section>
+
     <section>
         <div class="align-content-xl-start">
             <h2 class="text-bg-primary fa-space-awesome" style="padding-bottom:2%;padding-top:3%;color:whitesmoke">你可能喜歡</h2>
@@ -128,36 +129,36 @@
     <div id="preloader">
         <div class="line"></div>
     </div>
+</div>
 
 
 
 
-    <script src="~/assets/js/main.js"></script>
+<script src="~/assets/js/main.js"></script>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 3,
-            spaceBetween: 30,
-            slidesPerGroup: 3,
-            loop: true,
-            loopFillGroupWithBlank: true,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        });
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        slidesPerGroup: 3,
+        loop: true,
+        loopFillGroupWithBlank: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
 
-            var swipercard = new Swiper(".mySwipercard", {
-                effect: "cards",
-            grabCursor: true,
-          });
-    </script>
-</body>
+    var swipercard = new Swiper(".mySwipercard", {
+        effect: "cards",
+        grabCursor: true,
+    });
+</script>
 
 
