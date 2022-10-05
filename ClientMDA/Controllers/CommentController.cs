@@ -23,7 +23,7 @@ namespace ClientMDA.Controllers
         }
 
 
-        public IActionResult 我的()
+        public IActionResult 電影評論()
         {
             return View();
         }

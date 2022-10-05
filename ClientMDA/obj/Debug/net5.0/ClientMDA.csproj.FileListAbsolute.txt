@@ -1011,3 +1011,4 @@ E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\ClientMDA.pdb
 E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\ClientMDA.genruntimeconfig.cache
 E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\評論首頁2.cshtml.g.cs
 E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\評論2.cshtml.g.cs
+E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\電影評論.cshtml.g.cs
