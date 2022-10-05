@@ -30,87 +30,87 @@
 
 </head>
 
-<body class="text-white">
-    <header class="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="header__logo">
-                        <a asp-controller="HomePage" asp-action="Index">
-                            <img src="~/images/Public/logo.png" alt="" />
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="header__nav">
-                        <nav class="header__menu mobile-menu">
-                            <ul>
-                                <li class="active">
-                                    <a asp-area="" asp-controller="Ticketing" asp-action="MovieInfoIndex2">快速訂票</a>
-                                </li>
-
-                                <li>
-                                    <a text-white fs-2" asp-area="" asp-controller="Theater" asp-action="Index">電影介紹<span class="arrow_carrot-down"></span></a>
-                                    <ul class="dropdown">
-                                        <li><a href="./categories.html">本週新片</a></li>
-                                        <li><a asp-area="" asp-controller="Theater" asp-action="Index">上映中</a></li>
-                                        <li><a asp-area="" asp-controller="Theater" asp-action="即將上映page1">即將上映</a></li>
-                                        <li><a href="./blog-details.html">歷年電影</a></li>
-                                        <li><a href="./blog-details.html">電影排行</a></li>
-                                    </ul>
-                                </li>
-                                <li><a asp-area="" asp-controller="Comment" asp-action="評論首頁">電影評論</a></li>  <!--./blog.html-->
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="header__right">
-                        <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                        <a href="/Member/Login"><span class="icon_profile"></span></a>
-                    </div>
-                </div>
-            </div>
-            <div id="mobile-menu-wrap">
-                <div class="slicknav_menu">
-                    <a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed"><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
-                        <ul>
-                            <li><a href="./index.html" role="menuitem">Homepage</a></li>
-                            <li class="slicknav_collapsed slicknav_parent">
-                                <a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row">
-                                    <a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
-                                    <span class="slicknav_arrow">►</span>
-                                </a><ul class="dropdown slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
-                                    <li><a href="./categories.html" role="menuitem" tabindex="-1">Categories</a></li>
-                                    <li><a href="./anime-details.html" role="menuitem" tabindex="-1">Anime Details</a></li>
-                                    <li><a href="./anime-watching.html" role="menuitem" tabindex="-1">Anime Watching</a></li>
-                                    <li><a href="./blog-details.html" role="menuitem" tabindex="-1">Blog Details</a></li>
-                                    <li><a href="./signup.html" role="menuitem" tabindex="-1">Sign Up</a></li>
-                                    <li><a href="./login.html" role="menuitem" tabindex="-1">Login</a></li>
-                                </ul>
-                                <link href="~/css/site.css" rel="stylesheet" />
-                            </li>
-                            <li class="active"><a href="./blog.html" role="menuitem">Our Blog</a></li>
-                            <li><a href="#" role="menuitem">Contacts</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <div class="container body-content">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-        <hr />
-        <footer class="footer" style="clear:both">
-            <div class="page-up">
-                <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
-            </div>
+    <body class="text-white">
+        <header class="header">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
+                        <div class="header__logo">
+                            <a asp-controller="HomePage" asp-action="Index">
+                                <img src="~/images/Public/logo.png" alt="" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="header__nav">
+                            <nav class="header__menu mobile-menu">
+                                <ul>
+                                    <li class="active"><a asp-area="" asp-controller="Ticketing" asp-action="MovieInfoIndex2">快速訂票</a></li>
+
+                                    <li>
+                                        <a text-white fs-2" asp-area="" asp-controller="Theater" asp-action="Index">電影介紹<span class="arrow_carrot-down"></span></a>
+                                        <ul class="dropdown">
+                                            <li><a href="./categories.html">本週新片</a></li>
+                                            <li><a asp-area="" asp-controller="Theater" asp-action="Index">上映中</a></li>
+                                            <li><a asp-area="" asp-controller="Theater" asp-action="即將上映page1">即將上映</a></li>
+                                            <li><a href="./blog-details.html">歷年電影</a></li>
+                                            <li><a href="./blog-details.html">電影排行</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a asp-area="" asp-controller="Comment" asp-action="評論首頁">電影評論</a></li>
+                                    <!--./blog.html-->
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    @*<div class="col-lg-2">
+                        <div class="header__right">
+                            <a href="#" class="search-switch"><span class="icon_search"></span></a>
+                            <a href="/Member/Login"><span class="icon_profile"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="mobile-menu-wrap">
+                    <div class="slicknav_menu">
+                        <a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed"><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
+                            <ul>
+                                <li><a href="./index.html" role="menuitem">Homepage</a></li>
+                                <li class="slicknav_collapsed slicknav_parent">
+                                    <a href="#" role="menuitem" aria-haspopup="true" tabindex="-1" class="slicknav_item slicknav_row">
+                                        <a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
+                                        <span class="slicknav_arrow">►</span>
+                                    </a><ul class="dropdown slicknav_hidden" role="menu" aria-hidden="true" style="display: none;">
+                                        <li><a href="./categories.html" role="menuitem" tabindex="-1">Categories</a></li>
+                                        <li><a href="./anime-details.html" role="menuitem" tabindex="-1">Anime Details</a></li>
+                                        <li><a href="./anime-watching.html" role="menuitem" tabindex="-1">Anime Watching</a></li>
+                                        <li><a href="./blog-details.html" role="menuitem" tabindex="-1">Blog Details</a></li>
+                                        <li><a href="./signup.html" role="menuitem" tabindex="-1">Sign Up</a></li>
+                                        <li><a href="./login.html" role="menuitem" tabindex="-1">Login</a></li>
+                                    </ul>
+                                    <link href="~/css/site.css" rel="stylesheet" />
+                                </li>
+                                <li class="active"><a href="./blog.html" role="menuitem">Our Blog</a></li>
+                                <li><a href="#" role="menuitem">Contacts</a></li>
+                            </ul>
+                        </nav>
+                    </div>*@
+                </div>
+            </div>
+        </header>
+
+        <div class="container body-content">
+
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main><hr />
+
+            <footer class="footer" style="clear:both">
+                @*<div class="page-up">
+                <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
+            </div>*@
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3">
                         <div class="footer__logo">
                             <a href="./index.html"><img src="img/logo.png" alt=""></a>
                         </div>
@@ -125,20 +125,19 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-3">
-                        <p>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy; M.D.A. Co., Ltd.<br />All rights reserved.<br />
-                            <a href="https://colorlib.com" target="_blank">M.D.A.觀享時刻</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </p>
+                        <div class="col-lg-3">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy; M.D.A. Co., Ltd.<br />All rights reserved.<br />
+                                <a href="https://colorlib.com" target="_blank">M.D.A.觀享時刻</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </footer>
-
-    </div>
-    <script src="~/js/bootstrap.min.js"></script>
-    <script src="~/js/jquery-3.4.1.min.js"></script>
-</body>
+            </footer>
+        </div>
+        <script src="~/js/bootstrap.min.js"></script>
+        <script src="~/js/jquery-3.4.1.min.js"></script>
+    </body>
 </html>

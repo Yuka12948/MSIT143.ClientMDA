@@ -2,43 +2,11 @@
 <html>
 <head>
     <title></title>
-    <style>
-       .cmimg
-       {
-        width:300px;
-       }
-        .fvzPLg .wrapper .newsbox .photoBox {
-            width: 100%;
-            height: 180px;
-            overflow: hidden;
-        }
-        .fvzPLg .wrapper .newsbox {
-            width: 32%;
-            height: 360px;
-            float: left;
-            margin: 0px 0px 15px;
-            /*overflow: hidden;*/
-            font-weight: normal;
-            /*cursor: pointer;*/
-        }
-        .gqwHXW .wrapper {
-            width: 1080px;
-            margin: auto;
-            text-align: center;
-        }
-        @*@media (max-width: 62em)*@
-.fvzPLg .wrapper .titlebox {
-    width: 100%;
-    height: 46px;
-    border-bottom: 1px solid rgb(255, 255, 255);
-    margin-bottom: 20px;
-}
-        .newsbox {
-            display: block;
-        }
-    </style>
+    <link href="~/css/Comment/評論首頁.css" rel="stylesheet" />
+
 </head>
 <body class="text-white">
+    @*評論輪播*@
     <div class="container">
         <div class="hero__slider owl-carousel owl-loaded">
             <div class="owl-stage-outer">
@@ -158,22 +126,37 @@
             </div>
         </div>
     </div>
-    <div class="select">
-        <div class="options">
-            <div class="option">
-                <div>全部</div>
-            </div>
-            <div class="option">
-                <div>專題</div>
-            </div>
-            <div class="option checked">
-                <div>影評</div>
-            </div>
-            <div class="option">
-                <div>新聞</div>
+    @*評論輪播*@
+
+<div class="commonStyled__WrapperSample-sc-kt5vy-8 articleStyled__ArticleWrapper-sc-1cyx0ra-0 gqwHXW cQttlm">
+    @*評論Select欄*@
+    <div class="selectWrapper" style=" max-width: 1080px; width: 90%; margin: auto; position: relative;">
+        <div class="select" style=" width: 73%; float: left; position: absolute; bottom: -85px; z-index: 2;">
+            <div class="options" style=" float: right; display: flex; -webkit-box-pack: justify; justify-content: space-between; margin: 10px 3% 10px 0px;">
+                <div class="option checked" style=" background-color:rgb(43, 43, 43); color: rgb(255, 255, 255);">
+                    <div>
+                        全部
+                    </div>
+                </div>
+                <div class="option" style=" width: 63px; height: 25px; border-radius: 19.8px; background-color: rgb(64, 64, 64); color: rgb(158, 158, 158); font-size: 14px; text-align: center; font-weight: 200; line-height: 25px; margin-left: 10px; cursor: pointer;">
+                    <div>
+                        專題
+                    </div>
+                </div>
+                <div class="option" style=" width: 63px; height: 25px; border-radius: 19.8px; background-color: rgb(64, 64, 64); color: rgb(158, 158, 158); font-size: 14px; text-align: center; font-weight: 200; line-height: 25px; margin-left: 10px; cursor: pointer;">
+                    <div>
+                        影評
+                    </div>
+                </div>
+                <div class="option" style=" width: 63px; height: 25px; border-radius: 19.8px; background-color: rgb(64, 64, 64); color: rgb(158, 158, 158); font-size: 14px; text-align: center; font-weight: 200; line-height: 25px; margin-left: 10px; cursor: pointer;">
+                    <div>
+                        新聞
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    @*評論Select欄*@
     <div class="commonStyled__WrapperSample-sc-kt5vy-8 articleStyled__ArticlePagesWrapper-sc-1cyx0ra-1 gqwHXW fvzPLg">
         <div class="wrapper">
             <div class="titlebox">
@@ -298,5 +281,57 @@
             <div class="commonStyled__Clearfix-sc-kt5vy-2 dyOReL"></div>
         </div>
     </div>
+    @***@
+    <div class="ad adrwd" style="background-image:url()"></div>
+    <div class="commonStyled__WrapperSampleNoContent-sc-kt5vy-9 StyledHotNewsWrapper--i93325 exLSHN cjwkgZ flex-HotNews">
+        <div class="wrapper">
+            <div class="title_box">
+                <div class="title">
+                    熱門文章
+                </div>
+            </div>
+            <div class="news_box">
+                <div class="photo" style="background-image:"></div>
+                <div class="title" title=""></div>
+                <div class="name_pic" style="background-image:"></div>
+                <div class="name"></div>
+                <div class="name">
+                    Invalid Date
+                </div>
+            </div>
+            <div class="news_box">
+                <div class="photo" style="background-image:"></div>
+                <div class="title" title=""></div>
+                <div class="name_pic" style="background-image:"></div>
+                <div class="name"></div>
+                <div class="name">
+                    Invalid Date
+                </div>
+            </div>
+            <div class="news_box">
+                <div class="photo" style="background-image:"></div>
+                <div class="title" title=""></div>
+                <div class="name_pic" style="background-image:"></div>
+                <div class="name"></div>
+                <div class="name">
+                    Invalid Date
+                </div>
+            </div>
+            <div class="news_box">
+                <div class="photo" style="background-image:"></div>
+                <div class="title" title=""></div>
+                <div class="name_pic" style="background-image:"></div>
+                <div class="name"></div>
+                <div class="name">
+                    Invalid Date
+                </div>
+            </div>
+        </div>
+    </div>
+    @***@
+</div>
+    <script id="__NEXT_DATA__" type="application/json">
+        {"props":{"pageProps":{}},"page":"/article","query":{},"buildId":"l3O4iVShOIIwgL3q_sgT4","nextExport":true,"autoExport":true,"isFallback":false,"scriptLoader":[]}
+    </script>
 </body>
 </html>
