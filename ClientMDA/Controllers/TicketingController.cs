@@ -27,6 +27,21 @@ namespace ClientMDA.Controllers
             return View();
         }
 
+        public IActionResult SelectMovie()
+        {
+            return View();
+        }
+
+        public IActionResult SelectPartialView()
+        {
+            return PartialView("~/Views/Ticketing/SelectPartialView.cshtml");
+        }
+
+        public IActionResult MoviePartialView()
+        {
+            return PartialView("~/Views/Ticketing/MoviePartialView.cshtml");
+        }
+
         public IActionResult SeatMap()
         {
             return View();
@@ -38,6 +53,11 @@ namespace ClientMDA.Controllers
         }
 
         public IActionResult PaymentWeb2()
+        {
+            return View();
+        }
+
+        public IActionResult PaymentWeb3()
         {
             return View();
         }

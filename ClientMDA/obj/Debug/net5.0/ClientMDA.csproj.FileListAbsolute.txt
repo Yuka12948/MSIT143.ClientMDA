@@ -1009,3 +1009,6 @@ C:\Users\Student\Desktop\MDA專題\MDA專題Git\ClientMDA\obj\Debug\net5.0\ref\C
 C:\Users\Student\Desktop\MDA專題\MDA專題Git\ClientMDA\obj\Debug\net5.0\ClientMDA.pdb
 C:\Users\Student\Desktop\MDA專題\MDA專題Git\ClientMDA\obj\Debug\net5.0\ClientMDA.genruntimeconfig.cache
 C:\Users\Student\Desktop\MDA專題\MDA專題Git\ClientMDA\obj\Debug\net5.0\ClientMDA.csproj.AssemblyReference.cache
+C:\Users\Student\Desktop\MDA專題\MDA專題Git\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\SelectMovie.cshtml.g.cs
+C:\Users\Student\Desktop\MDA專題\MDA專題Git\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\SelectPartialView.cshtml.g.cs
+C:\Users\Student\Desktop\MDA專題\MDA專題Git\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\MoviePartialView.cshtml.g.cs
