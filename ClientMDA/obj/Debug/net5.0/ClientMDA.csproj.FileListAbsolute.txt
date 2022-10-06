@@ -416,7 +416,6 @@ C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\Index
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\Indexpage3.cshtml.g.cs
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\Indexpage4.cshtml.g.cs
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\Indexpage5.cshtml.g.cs
-C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\即將上映.cshtml.g.cs
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\即將上映page1.cshtml.g.cs
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\即將上映page2.cshtml.g.cs
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\即將上映page3.cshtml.g.cs
@@ -1012,3 +1011,16 @@ E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\ClientMDA.genruntimeconfig.ca
 E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\評論首頁2.cshtml.g.cs
 E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\評論2.cshtml.g.cs
 E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\電影評論.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\評論2.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\評論首頁2.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\電影評論.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\CommentList.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\Login.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\Login2.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\MemberEdit.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\MemberMain.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\PasswordEdit.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\SignUp.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\WatchList.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\MovieInfoIndex3.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\PaymentWeb3.cshtml.g.cs
