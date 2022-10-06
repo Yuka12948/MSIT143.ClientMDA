@@ -27,6 +27,7 @@ namespace ClientMDA.Controllers
             return View();
         }
 
+<<<<<<< HEAD
         public IActionResult SelectMovie()
         {
             return View();
@@ -42,6 +43,8 @@ namespace ClientMDA.Controllers
             return PartialView("~/Views/Ticketing/MoviePartialView.cshtml");
         }
 
+=======
+>>>>>>> origin/develop
         public IActionResult SeatMap()
         {
             return View();

@@ -1,0 +1,281 @@
+﻿html,
+body {
+    position: relative;
+    height: 100%;
+}
+
+body {    
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+.swiper {
+    margin-bottom: 10%;
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;   
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    
+}
+
+
+.swiper-slide img{
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+
+
+.list, .listb{
+    list-style-type: none;
+    color:white;
+}
+
+    .list li {
+        margin-top: 20%;
+    }
+
+    .listb li {        
+        text-align: left;
+        font-size:1.5rem;
+    }
+
+.img-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+#img-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+    .img-wrapper > img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+#content {
+    z-index: 0;
+    /*height: 20%;*/
+    height: 100%;
+    width: 100% ;
+    
+}
+
+
+#img-wrapper > img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+#img-wrapper > .hangposter {
+    position: absolute;
+    inset: 60% 0 0 1%;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .img-wrapper > .content {
+        position: absolute;
+        inset: 0;
+        font-size: 2rem;
+        padding: 1rem;
+        background: rgba(255,255,255,.4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+#imgbanner {
+    color: white;
+    font-weight:bold;
+    font-size:2rem;
+}
+.ipc-icon ipc-icon--play-circle-outline-large-inline sc-8f5243a8-5 jdPzoP slide-caption-play-icon {
+    color: rgba(255,255,255);
+}
+
+content-banner :hover
+ {
+    color: rgba(245,197,24);
+}
+
+.hangposter {
+    background-color: transparent;
+    height: 330px;
+    width: 231px;
+    z-index: 1;
+}
+
+#icon {
+    background-color: transparent;
+}
+#img-wrapper > #content {
+    position: absolute;
+    /*inset: 80% 0 0 0;*/
+    padding: 1rem;
+    /*background: rgba(0,0,0,.8);*/
+    /*background: linear-gradient(to top, #000000,transparent );*/
+    background-image: linear-gradient(transparent, black);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+    .img-wrapper > img,
+    .img-wrapper > .content {
+        transition: 200ms ease-in-out;
+    }
+
+    .img-wrapper:hover > .content.fade {
+        opacity: 1;
+    }
+
+    .img-wrapper > .content.fade {
+        opacity: 0;
+    }
+
+    .img-wrapper:hover > img.blur {
+        filter: blur(5px);
+    }
+#swiper-paginationR {   
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    transition: .3s opacity;
+    transform: translate3d(0,0,0);
+    z-index: 10;
+}
+
+
+
+
+.box {
+    background-color: rgba(20,20,78);
+}
+
+.info_box {
+    padding-top: 22px;
+    box-sizing: border-box;
+}
+
+.info {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    padding-left: 16px;
+    vertical-align: baseline;
+}
+
+    .info h5 {
+        color: whitesmoke;
+        text-align: left;
+    }
+
+#fafastarchecked {
+    color: rgba(245,197,24);
+}
+
+.star {
+    position: absolute;
+    left: 15px;
+}
+
+.starRate {
+    color: whitesmoke;
+    padding-right: 40px;
+}
+
+#ToR {
+    font-size: 22px;
+    color: rgba(87,153,239);
+}
+
+    #ToR:hover {
+        font-size: 22px;
+        color: snow;
+    }
+
+.AddList {
+    justify-content: center;
+}
+
+.AddListBtn {    
+    border: 0;
+    border-radius: 10px;
+    background-color: rgba(44,44,44,0.6);
+    color: whitesmoke;
+    width: 180px;
+    height: 50px;
+}
+
+#plus {
+    font-size: 16px;
+    color: #FFF;
+    padding-right: 10px;
+}
+
+.AddListBtn:hover {
+    background-color: rgba(60,60,60,0.6);
+}
+
+.AddList {
+    padding-bottom: 48px;
+}
+
+.ToRate {
+    background-color: transparent;
+    border-radius: 10px;
+    border: 0;
+    width: 60px;
+    height: 35px;
+}
+
+    .ToRate:hover {
+        background-color: rgba(60,60,60,0.6);
+    }
+
+#play {
+    font-size: 80px;
+    color: rgba(255,255,255);
+    margin: 5%;
+    margin-left: 25%;    
+}
+
+#img-wrapper:hover #play {
+    color: rgba(245,197,24);
+}
+
+#box-banner {
+    margin-bottom: 2%;
+    margin-right: 5%;
+}
+

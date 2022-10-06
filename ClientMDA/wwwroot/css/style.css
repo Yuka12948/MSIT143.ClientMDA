@@ -2023,7 +2023,11 @@ ol {
 
 @media only screen and (min-width: 1200px) {
 	.container {
+<<<<<<< HEAD
 		max-width: 1170px; /*1170*/
+=======
+		max-width: 1170px; /*1920*/
+>>>>>>> origin/develop
 	}
 }
 

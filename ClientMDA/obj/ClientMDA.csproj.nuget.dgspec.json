@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\Student\\Desktop\\MDA專題\\MDA專題Git\\ClientMDA\\ClientMDA.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "C:\\Users\\Student\\Desktop\\MDA專題\\MDA專題Git\\ClientMDA\\ClientMDA.csproj",
         "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Student\\Desktop\\MDA專題\\MDA專題Git\\ClientMDA\\obj\\",
+=======
+    "C:\\Users\\Student\\Desktop\\婷薇\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Student\\Desktop\\婷薇\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Student\\Desktop\\婷薇\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
+        "projectName": "ClientMDA",
+        "projectPath": "C:\\Users\\Student\\Desktop\\婷薇\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
+        "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Student\\Desktop\\婷薇\\MSIT143.ClientMDA\\ClientMDA\\obj\\",
+>>>>>>> origin/develop
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
