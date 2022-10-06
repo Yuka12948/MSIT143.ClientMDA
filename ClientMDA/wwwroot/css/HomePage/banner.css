@@ -200,7 +200,7 @@ content-banner :hover
         text-align: left;
     }
 
-.checked {
+#fafastarchecked {
     color: rgba(245,197,24);
 }
 
