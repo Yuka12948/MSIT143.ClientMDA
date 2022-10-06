@@ -332,7 +332,6 @@ ol {
 
 .header {
 	background: #070720;
-	/*border:dotted 1pt red;*/
 }
 
 .header__logo {
@@ -1955,9 +1954,6 @@ ol {
 	padding-top: 60px;
 	padding-bottom: 40px;
 	position: relative;
-	/*border: dashed 1px red;*/
-	/*width: 1170px;*/
-	/*margin:-200px;*/
 }
 /*回首頁按鈕*/
 .page-up {
@@ -2027,11 +2023,7 @@ ol {
 
 @media only screen and (min-width: 1200px) {
 	.container {
-<<<<<<< HEAD
 		max-width: 1170px; /*1920*/
-=======
-		max-width:  1170px;/*1920*/
->>>>>>> feature/#Yuka_評論版型調整
 	}
 }
 

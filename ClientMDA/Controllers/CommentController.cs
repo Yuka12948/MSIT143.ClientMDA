@@ -16,13 +16,11 @@ namespace ClientMDA.Controllers
         {
             return View();
         }
-        public IActionResult 評論2()
+        public IActionResult 電影評論()
         {
             return View();
         }
-
-
-        public IActionResult 電影評論()
+        public IActionResult 我的()
         {
             return View();
         }

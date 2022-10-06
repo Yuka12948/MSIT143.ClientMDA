@@ -197,7 +197,14 @@ div {
             cursor: pointer;
             transition: all 0.2s ease 0s;
         }
-.cjKQBC .wrapper {
+            .gYTkop .wrapper-content .movie-intro-title-wrapper .movie-intro-title a {
+                color: rgb(158, 158, 158);
+            }
+            .gYTkop .wrapper-content .movie-intro-title-wrapper .movie-intro-title a:hover {
+                color: rgb(158, 158, 158);
+            }
+
+            .cjKQBC .wrapper {
     width: 100%;
     max-width: 1080px;
     margin: auto;

@@ -74,95 +74,100 @@
     margin: auto;
     text-align: center;
 }
+
 .fvzPLg {
     width: 70%;
     float: left;
     background-color: rgb(64, 64, 64);
     margin-top: 40px;
 }
-.fvzPLg .wrapper {
-    width: 100%;
-    display: flex;
-    place-content: flex-start space-between;
-    -webkit-box-pack: justify;
-    flex-wrap: wrap;
-}
 
-    .fvzPLg .wrapper .newsbox {
-        width: 32%;
-        height: 360px;
-        float: left;
-        margin: 0px 0px 15px;
-        overflow: hidden;
-        font-weight: normal;
-        cursor: pointer;
-    }
-
-        .fvzPLg .wrapper .newsbox .photoBox {
-            width: 100%;
-            height: 180px;
-            overflow: hidden;
-        }
-        .fvzPLg .wrapper .newsbox .name_pic {
-            width: 35px;
-            height: 35px;
-            background: 50% 50% / cover no-repeat rgb(48, 48, 48);
-            float: left;
-            margin-right: 5px;
-            border-radius: 50%;
-        }
-        .fvzPLg .wrapper .newsbox .name {
-            width: 40%;
-            height: 35px;
-            float: left;
-        }
-        .fvzPLg .wrapper .newsbox .text {
-            font-size: 16px;
-            color: rgb(158, 158, 158);
-            width: 100%;
-            float: left;
-            text-align: left;
-            line-height: 1.5;
-            margin-top: 8px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-        }
-
-
-        .fvzPLg .wrapper .newsbox .title {
-            width: 100%;
-            color: rgb(255, 255, 255);
-            text-align: left;
-            margin: 5px 0px;
-            height: 50px;
-            font-size: 18px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
-
-    .fvzPLg .wrapper .titlebox {
+    .fvzPLg .wrapper {
         width: 100%;
-        height: 46px;
-        border-bottom: 1px solid rgb(255, 255, 255);
-        margin-bottom: 20px;
+        display: flex;
+        place-content: flex-start space-between;
+        -webkit-box-pack: justify;
+        flex-wrap: wrap;
     }
 
-        .fvzPLg .wrapper .titlebox .title {
-            width: 100px;
-            height: 45px;
-            line-height: 40px;
-            color: rgb(255, 255, 255);
-            text-align: left;
-            font-size: 16px;
-            border-bottom: 4px solid rgb(231, 0, 140);
+        .fvzPLg .wrapper .newsbox {
+            width: 32%;
+            height: 360px;
             float: left;
+            margin: 0px 0px 15px;
+            overflow: hidden;
+            font-weight: normal;
+            cursor: pointer;
         }
+
+            .fvzPLg .wrapper .newsbox .photoBox {
+                width: 100%;
+                height: 180px;
+                overflow: hidden;
+            }
+
+            .fvzPLg .wrapper .newsbox .name_pic {
+                width: 35px;
+                height: 35px;
+                background: 50% 50% / cover no-repeat rgb(48, 48, 48);
+                float: left;
+                margin-right: 5px;
+                border-radius: 50%;
+            }
+
+            .fvzPLg .wrapper .newsbox .name {
+                width: 40%;
+                height: 35px;
+                float: left;
+            }
+
+            .fvzPLg .wrapper .newsbox .text {
+                font-size: 16px;
+                color: rgb(158, 158, 158);
+                width: 100%;
+                float: left;
+                text-align: left;
+                line-height: 1.5;
+                margin-top: 8px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+            }
+
+
+            .fvzPLg .wrapper .newsbox .title {
+                width: 100%;
+                color: rgb(255, 255, 255);
+                text-align: left;
+                margin: 5px 0px;
+                height: 50px;
+                font-size: 18px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+            }
+
+        .fvzPLg .wrapper .titlebox {
+            width: 100%;
+            height: 46px;
+            border-bottom: 1px solid rgb(255, 255, 255);
+            margin-bottom: 20px;
+        }
+
+            .fvzPLg .wrapper .titlebox .title {
+                width: 100px;
+                height: 45px;
+                line-height: 40px;
+                color: rgb(255, 255, 255);
+                text-align: left;
+                font-size: 16px;
+                border-bottom: 4px solid rgb(231, 0, 140);
+                float: left;
+            }
 
 
 /*-------------------------熱門文章----------------------------*/
@@ -195,6 +200,7 @@ ipOnKR {
 .exLSHN {
     width: 100%;
 }
+
     .exLSHN .wrapper {
         margin: auto;
         text-align: center;
@@ -222,6 +228,7 @@ ipOnKR {
         opacity: 0;
         cursor: default;
     }
+
     .ffVUQI .circle {
         width: 34px;
         height: 34px;
@@ -234,6 +241,7 @@ ipOnKR {
         cursor: pointer;
         border: 1px solid transparent;
     }
+
     .ffVUQI .add {
         background-color: rgb(231, 0, 140);
         border-radius: 50%;
@@ -260,13 +268,3 @@ ipOnKR {
     height: 46px;
     margin-bottom: 20px;
 }
-
-
-
-
-
-
-
-
-
-
