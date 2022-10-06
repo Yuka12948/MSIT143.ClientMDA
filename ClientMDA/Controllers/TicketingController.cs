@@ -22,6 +22,11 @@ namespace ClientMDA.Controllers
             return View();
         }
 
+        public IActionResult MovieInfoIndex3()
+        {
+            return View();
+        }
+
         public IActionResult SeatMap()
         {
             return View();

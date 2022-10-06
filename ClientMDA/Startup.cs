@@ -50,9 +50,9 @@ namespace ClientMDA
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Theater}/{action=Index}/{id?}");
-                    //pattern: "{controller=Theater}/{action=Index}/{id?}");
-        });
+                    pattern: "{controller=HomePage}/{action=Index}/{id?}");
+                //pattern: "{controller=Theater}/{action=Index}/{id?}");
+            });
         }
     }
 }
