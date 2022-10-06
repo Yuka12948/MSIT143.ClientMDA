@@ -12,7 +12,6 @@ namespace ClientMDA.Controllers
         {
             return View();
         }
-
         public IActionResult 評論()
         {
             return View();
