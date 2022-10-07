@@ -114,10 +114,18 @@ body {
         
     }
 
+#right {
+    background-color: red;
+    /* padding-right: 0;
+    margin-right: 0;
+    border: 0;*/
+    position: absolute;
+    /*inset: 0 0 0 0;*/
+}
 #imgbanner {
     color: white;
-    font-weight:bold;
-    font-size:2rem;
+    font-weight: bold;
+    font-size: 2rem;
 }
 .ipc-icon ipc-icon--play-circle-outline-large-inline sc-8f5243a8-5 jdPzoP slide-caption-play-icon {
     color: rgba(255,255,255);
