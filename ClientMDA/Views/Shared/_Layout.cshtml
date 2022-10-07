@@ -17,7 +17,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-
     <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="~/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="~/css/elegant-icons.css" type="text/css">
@@ -28,9 +27,12 @@
     <link rel="stylesheet" href="~/css/style.css" type="text/css">
     <script src="~/js/jquery-3.4.1.min.js"></script>
 
+    @await RenderSectionAsync("Styles", required: false)
 </head>
 
 <body class="text-white">
+
+    <!-- header Start -->
     <header class="header">
         <div class="container">
             <div class="row">
@@ -50,14 +52,14 @@
                                 </li>
 
                                 <li>
-                                    <a text-white fs-2" asp-area="" asp-controller="Theater" asp-action="Index">電影介紹<span class="arrow_carrot-down"></span></a>
-                                    <ul class="dropdown">
+                                    <a text-white fs-2" asp-area="" asp-controller="Theater" asp-action="Index">電影排行@*<span class="arrow_carrot-down"></span>*@</a>
+                                    @*<ul class="dropdown">
                                         <li><a href="./categories.html">本週新片</a></li>
                                         <li><a asp-area="" asp-controller="Theater" asp-action="Index">上映中</a></li>
                                         <li><a asp-area="" asp-controller="Theater" asp-action="即將上映page1">即將上映</a></li>
                                         <li><a href="./blog-details.html">歷年電影</a></li>
                                         <li><a href="./blog-details.html">電影排行</a></li>
-                                    </ul>
+                                    </ul>*@
                                 </li>
                                 <li><a asp-area="" asp-controller="Comment" asp-action="評論首頁">電影評論</a></li>  <!--./blog.html-->
                             </ul>
@@ -98,47 +100,53 @@
             </div>
         </div>
     </header>
-
+    <!-- header End -->
+    <!-- Body Start -->
     <div class="container body-content">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
         <hr />
-        <footer class="footer" style="clear:both">
-            <div class="page-up">
-                <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="footer__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="footer__nav">
-                            <ul>
-                                <li class="active"><a href="./index.html">Homepage</a></li>
-                                <li><a href="./categories.html">Categories</a></li>
-                                <li><a href="./blog.html">Our Blog</a></li>
-                                <li><a href="#">Contacts</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <p>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy; M.D.A. Co., Ltd.<br />All rights reserved.<br />
-                            <a href="https://colorlib.com" target="_blank">M.D.A.觀享時刻</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </p>
+    </div>
+    <!-- Body End -->
+    <!-- footer Start -->
+    <footer class="footer" style="clear:both">
+        <div class="page-up">
+            <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="footer__logo">
+                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
                     </div>
                 </div>
+                <div class="col-lg-6">
+                    <div class="footer__nav">
+                        <ul>
+                            <li class="active"><a href="./index.html">Homepage</a></li>
+                            <li><a href="./categories.html">Categories</a></li>
+                            <li><a href="./blog.html">Our Blog</a></li>
+                            <li><a href="#">Contacts</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy; M.D.A. Co., Ltd.<br />All rights reserved.<br />
+                        <a href="https://colorlib.com" target="_blank">M.D.A.觀享時刻</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
             </div>
-        </footer>
-
-    </div>
+        </div>
+    </footer>
+    <!-- footer End -->
     <script src="~/js/bootstrap.min.js"></script>
     <script src="~/js/jquery-3.4.1.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
 </body>
+
 </html>
