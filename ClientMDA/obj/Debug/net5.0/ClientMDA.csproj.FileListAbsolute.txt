@@ -1468,3 +1468,5 @@ C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\SignUp
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\WatchList.cshtml.g.cs
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\MovieInfoIndex3.cshtml.g.cs
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\PaymentWeb3.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\LettheBulletsFly.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\捍衛戰士2.cshtml.g.cs

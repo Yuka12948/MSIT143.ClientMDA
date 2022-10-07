@@ -48,10 +48,13 @@ namespace ClientMDA.Controllers
             return View();
         }  //完工
 
-        public IActionResult 讓子彈飛()
+        public IActionResult LettheBulletsFly()
         {
             return View();
         } //完工
-
+        public IActionResult 捍衛戰士2()
+        {
+            return View();
+        } //完工
     }
 }

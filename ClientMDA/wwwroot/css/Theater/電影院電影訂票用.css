@@ -197,7 +197,15 @@ div {
             cursor: pointer;
             transition: all 0.2s ease 0s;
         }
-.cjKQBC .wrapper {
+
+.movie-intro-title a{
+    color:#9e9e9e;
+}
+.movie-intro-title a:hover{
+    color: #9e9e9e;
+}
+
+    .cjKQBC .wrapper {
     width: 100%;
     max-width: 1080px;
     margin: auto;

@@ -54,12 +54,12 @@
                                 <li>
                                     <a text-white fs-2" asp-area="" asp-controller="Theater" asp-action="Index">電影排行@*<span class="arrow_carrot-down"></span>*@</a>
                                     @*<ul class="dropdown">
-                                        <li><a href="./categories.html">本週新片</a></li>
-                                        <li><a asp-area="" asp-controller="Theater" asp-action="Index">上映中</a></li>
-                                        <li><a asp-area="" asp-controller="Theater" asp-action="即將上映page1">即將上映</a></li>
-                                        <li><a href="./blog-details.html">歷年電影</a></li>
-                                        <li><a href="./blog-details.html">電影排行</a></li>
-                                    </ul>*@
+                                            <li><a href="./categories.html">本週新片</a></li>
+                                            <li><a asp-area="" asp-controller="Theater" asp-action="Index">上映中</a></li>
+                                            <li><a asp-area="" asp-controller="Theater" asp-action="即將上映page1">即將上映</a></li>
+                                            <li><a href="./blog-details.html">歷年電影</a></li>
+                                            <li><a href="./blog-details.html">電影排行</a></li>
+                                        </ul>*@
                                 </li>
                                 <li><a asp-area="" asp-controller="Comment" asp-action="評論首頁">電影評論</a></li>  <!--./blog.html-->
                             </ul>
@@ -110,7 +110,7 @@
     </div>
     <!-- Body End -->
     <!-- footer Start -->
-    <footer class="footer" style="clear:both">
+    <!--<footer class="footer" style="clear:both">
         <div class="page-up">
             <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
         </div>
@@ -132,15 +132,59 @@
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy; M.D.A. Co., Ltd.<br />All rights reserved.<br />
-                        <a href="https://colorlib.com" target="_blank">M.D.A.觀享時刻</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </p>
+                    <p>-->
+    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+    <!--Copyright &copy; M.D.A. Co., Ltd.<br />All rights reserved.<br />
+    <a href="https://colorlib.com" target="_blank">M.D.A.觀享時刻</a>-->
+    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+    <!--</p>
                 </div>
             </div>
         </div>
+    </footer>-->
+    <footer class="text-center text-white" style="background-color: #070720">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://i.imgur.com/GOWpr54.png" role="button">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <!-- Twitter -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://i.imgur.com/Wj9ytuc.png" role="button">
+                    <i class="fab fa-twitter"></i>
+                </a>
+
+                <!-- Google -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-google"></i>
+                </a>
+
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://i.imgur.com/fTphyFV.png" role="button">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+
+                <!-- Github -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/Yuka12948/MSIT143.ClientMDA" role="button">
+                    <i class="fab fa-github"></i>
+                </a>
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+        <!-- Copyright -->
+        <div class="text-center p-3" @*style="background-color: rgba(0, 0, 0, 0.2)*@;">
+            Copyright &copy; <a class="text-white" href="https://mdbootstrap.com/">M.D.A.觀享時刻</a>
+        </div>
+        <!-- Copyright -->
     </footer>
     <!-- footer End -->
     <script src="~/js/bootstrap.min.js"></script>
