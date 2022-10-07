@@ -16,6 +16,8 @@ namespace ClientMDA.Controllers
         {
             return View();
         }//完工
+
+
         public IActionResult Indexpage3()
         {
             return View();
@@ -44,8 +46,12 @@ namespace ClientMDA.Controllers
         public IActionResult 阮玲玉()
         {
             return View();
-        }
+        }  //完工
 
+        public IActionResult 讓子彈飛()
+        {
+            return View();
+        } //完工
 
     }
 }

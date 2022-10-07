@@ -28,7 +28,7 @@
                         <path d="m31.6 10.7l-9.3 9.3 9.3 9.3-2.3 2.3-9.3-9.3-9.3 9.3-2.3-2.3 9.3-9.3-9.3-9.3 2.3-2.3 9.3 9.3 9.3-9.3z"></path>
                     </g>
                 </svg>
-                <div class="wrapper " style="height:90vh">
+                <div class="wrapper " style="height:50vh ;width:95vh">
                     <iframe class="" allowfullscreen frameborder="0" style="height:100%;width:100%" src="https://www.youtube.com/embed/ZSLke5a1K98" ></iframe>
                 </div>
             </div>
@@ -87,18 +87,35 @@
                             電影時刻
                         </div>
                         <div class="movie-intro-title">
-                                <a asp-area="" asp-controller="Comment" asp-action="電影評論" class="watch-btn">電影介紹</a>
-                            </div>
+                            電影介紹
+                        </div>
                     </div>
                     <div class="MovieTimeWrapper--77br0i cjKQBC">
                         <div class="wrapper">
                             <div class="location">
-                                北區<svg class="icon" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
+                                <span id="地區名稱" style="color:black">北區</span><svg class="icon" id="地區" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
                                     <g>
                                         <path d="m31.4 15.7q0 0.6-0.5 1l-10 10q-0.4 0.4-1 0.4t-1-0.4l-10-10q-0.4-0.4-0.4-1t0.4-1 1-0.4h20q0.6 0 1 0.4t0.5 1z"></path>
                                     </g>
                                 </svg>
                             </div>
+
+                            <div class="locationList" style="display:none" id="地區選擇">
+                                <div class="list" id="no01">
+                                    北區
+                                </div>
+                                <div class="list" id="no02">
+                                    桃竹苗
+                                </div>
+                                <div class="list" id="no03">
+                                    中區
+                                </div>
+                                <div class="list" id="no04">
+                                    南區及離島
+                                </div>
+                            </div>
+
+
                             <div class="datePart">
                                 <div class="dateHidden">
                                     @for (int x = 0; x < 7; x++)
@@ -222,28 +239,26 @@
 
                             </div>
                             <div>
-                                <div class="MovieTimeCinemasWrapper--h6wg7n cqralC" style="background-color:white">
+
+                                <div class="MovieTimeCinemasWrapper--h6wg7n cqralC" style="background-color:white" id="北部">
                                     <div class="timeWrapper">
-                                        <div class="gotoTop">
-                                            <svg class="topIcon" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
-                                                <g>
-                                                    <path d="m31.4 27.1q0 0.6-0.5 1t-1 0.5h-20q-0.6 0-1-0.5t-0.4-1 0.4-1l10-10q0.4-0.4 1-0.4t1 0.4l10 10q0.5 0.5 0.5 1z"></path>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <div class="cinemabox">
+                                        <div class="cinemabox" id="ts22">
+                                            @*---------------------------------------------------------------------------------*@
+
+
+
                                             <div class="cinemaName">
-                                                花蓮新天堂樂園威秀影城<svg class="cinemaIcon down iconActive" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
+                                                花蓮新天堂樂園威秀影城<svg class="cinemaIcon down iconActive" id="test2" height="1em" preserveAspectRatio="xMidYMid meet" style="display:none;vertical-align: middle;" viewBox="0 0 40 40" width="1em">
                                                     <g>
                                                         <path d="m31.4 15.7q0 0.6-0.5 1l-10 10q-0.4 0.4-1 0.4t-1-0.4l-10-10q-0.4-0.4-0.4-1t0.4-1 1-0.4h20q0.6 0 1 0.4t0.5 1z"></path>
                                                     </g>
-                                                </svg><svg class="cinemaIcon up" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
+                                                </svg><svg id="test" class="cinemaIcon up sssss" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
                                                     <g>
                                                         <path d="m31.4 27.1q0 0.6-0.5 1t-1 0.5h-20q-0.6 0-1-0.5t-0.4-1 0.4-1l10-10q0.4-0.4 1-0.4t1 0.4l10 10q0.5 0.5 0.5 1z"></path>
                                                     </g>
                                                 </svg>
                                             </div>
-                                            <div class="toggleBox">
+                                            <div class="toggleBox  sts" id="time">
                                                 <div class="sessionBox">
                                                     <div class="version">
                                                         數位
@@ -256,6 +271,17 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @*-------------------------------------------------------------------------*@
+
+
+
+
+
+
+
+
+
+
                                         <div class="cinemabox">
                                             <div class="cinemaName">
                                                 中和環球威秀影城<svg class="cinemaIcon down iconActive" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
@@ -411,6 +437,150 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div id="桃竹苗" class="MovieTimeCinemasWrapper--h6wg7n cqralC" style="display:none">
+                                    <div class="timeWrapper">
+                                        <div class="cinemabox">
+                                            <div class="cinemaName">
+                                                桃園統領威秀影城<svg class="cinemaIcon down iconActive" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
+                                                    <g>
+                                                        <path d="m31.4 15.7q0 0.6-0.5 1l-10 10q-0.4 0.4-1 0.4t-1-0.4l-10-10q-0.4-0.4-0.4-1t0.4-1 1-0.4h20q0.6 0 1 0.4t0.5 1z"></path>
+                                                    </g>
+                                                </svg><svg class="cinemaIcon up" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
+                                                    <g>
+                                                        <path d="m31.4 27.1q0 0.6-0.5 1t-1 0.5h-20q-0.6 0-1-0.5t-0.4-1 0.4-1l10-10q0.4-0.4 1-0.4t1 0.4l10 10q0.5 0.5 0.5 1z"></path>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                            <div class="toggleBox">
+                                                <div class="sessionBox">
+                                                    <div class="version">
+                                                        數位
+                                                    </div>
+                                                    <div class="session">
+                                                        <div class="time">
+                                                            <span class="seats"></span>20:50
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="cinemabox">
+                                            <div class="cinemaName">
+                                                新竹大遠百威秀影城<svg class="cinemaIcon down iconActive" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
+                                                    <g>
+                                                        <path d="m31.4 15.7q0 0.6-0.5 1l-10 10q-0.4 0.4-1 0.4t-1-0.4l-10-10q-0.4-0.4-0.4-1t0.4-1 1-0.4h20q0.6 0 1 0.4t0.5 1z"></path>
+                                                    </g>
+                                                </svg><svg class="cinemaIcon up" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
+                                                    <g>
+                                                        <path d="m31.4 27.1q0 0.6-0.5 1t-1 0.5h-20q-0.6 0-1-0.5t-0.4-1 0.4-1l10-10q0.4-0.4 1-0.4t1 0.4l10 10q0.5 0.5 0.5 1z"></path>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                            <div class="toggleBox">
+                                                <div class="sessionBox">
+                                                    <div class="version">
+                                                        數位
+                                                    </div>
+                                                    <div class="session">
+                                                        <div class="time">
+                                                            <span class="seats"></span>21:50
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="中部" class="MovieTimeCinemasWrapper--h6wg7n cqralC" style="display:none">
+                                    <div class="timeWrapper">
+                                        <div class="cinemabox">
+                                            <div class="cinemaName">
+                                                台中大遠百威秀影城<svg class="cinemaIcon down" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
+                                                    <g>
+                                                        <path d="m31.4 15.7q0 0.6-0.5 1l-10 10q-0.4 0.4-1 0.4t-1-0.4l-10-10q-0.4-0.4-0.4-1t0.4-1 1-0.4h20q0.6 0 1 0.4t0.5 1z"></path>
+                                                    </g>
+                                                </svg><svg class="cinemaIcon up iconActive" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
+                                                    <g>
+                                                        <path d="m31.4 27.1q0 0.6-0.5 1t-1 0.5h-20q-0.6 0-1-0.5t-0.4-1 0.4-1l10-10q0.4-0.4 1-0.4t1 0.4l10 10q0.5 0.5 0.5 1z"></path>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                            <div class="toggleBox active">
+                                                <div class="sessionBox">
+                                                    <div class="version">
+                                                        數位
+                                                    </div>
+                                                    <div class="session">
+                                                        <div class="time">
+                                                            <span class="seats"></span>16:55
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="南部" class="MovieTimeCinemasWrapper--h6wg7n cqralC" style="display:none">
+                                    <div class="timeWrapper">
+                                        <div class="cinemabox">
+                                            <div class="cinemaName">
+                                                高雄大遠百威秀影城<svg class="cinemaIcon down" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
+                                                    <g>
+                                                        <path d="m31.4 15.7q0 0.6-0.5 1l-10 10q-0.4 0.4-1 0.4t-1-0.4l-10-10q-0.4-0.4-0.4-1t0.4-1 1-0.4h20q0.6 0 1 0.4t0.5 1z"></path>
+                                                    </g>
+                                                </svg><svg class="cinemaIcon up iconActive" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
+                                                    <g>
+                                                        <path d="m31.4 27.1q0 0.6-0.5 1t-1 0.5h-20q-0.6 0-1-0.5t-0.4-1 0.4-1l10-10q0.4-0.4 1-0.4t1 0.4l10 10q0.5 0.5 0.5 1z"></path>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                            <div class="toggleBox active">
+                                                <div class="sessionBox">
+                                                    <div class="version">
+                                                        數位
+                                                    </div>
+                                                    <div class="session">
+                                                        <div class="time">
+                                                            <span class="seats"></span>12:00
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="cinemabox">
+                                            <div class="cinemaName">
+                                                台南大遠百威秀影城<svg class="cinemaIcon down" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
+                                                    <g>
+                                                        <path d="m31.4 15.7q0 0.6-0.5 1l-10 10q-0.4 0.4-1 0.4t-1-0.4l-10-10q-0.4-0.4-0.4-1t0.4-1 1-0.4h20q0.6 0 1 0.4t0.5 1z"></path>
+                                                    </g>
+                                                </svg><svg class="cinemaIcon up iconActive" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
+                                                    <g>
+                                                        <path d="m31.4 27.1q0 0.6-0.5 1t-1 0.5h-20q-0.6 0-1-0.5t-0.4-1 0.4-1l10-10q0.4-0.4 1-0.4t1 0.4l10 10q0.5 0.5 0.5 1z"></path>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                            <div class="toggleBox active">
+                                                <div class="sessionBox">
+                                                    <div class="version">
+                                                        數位
+                                                    </div>
+                                                    <div class="session">
+                                                        <div class="time">
+                                                            <span class="seats"></span>11:35
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
                             </div>
                         </div>
                     </div>
@@ -418,32 +588,9 @@
             </div>
         </div>
     }
-    @*<script src="~/js/jquery-3.3.1.min.js"></script>*@
 
+<script src="~/js/Theater.js"></script>
 
-    <script>
-        let flag = false;
-        $(".dateHidden .datebox").click(function () {
-            $(this).removeClass("checked").siblings().removeClass("checked").end().addClass("checked");
-        });
-
-        //$(".cinemabox .time").click(function () {
-        //    $(this).removeClass("over").siblings().removeClass("over").end().addClass("over");
-        //});
-        const play = document.querySelector("#videostart")
-        const 影片 = document.querySelector("#video")
-        const 關閉 = document.querySelector("#close")
-
-        play.addEventListener("click", () => {
-            console.log("ok")
-            影片.style.display="inline"
-            
-        })
-        關閉.addEventListener("click", () => {
-            影片.style.display="none"
-        })
-
-    </script>
 </body>
 
 

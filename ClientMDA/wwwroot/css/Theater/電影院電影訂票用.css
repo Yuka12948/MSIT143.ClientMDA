@@ -197,14 +197,7 @@ div {
             cursor: pointer;
             transition: all 0.2s ease 0s;
         }
-            .gYTkop .wrapper-content .movie-intro-title-wrapper .movie-intro-title a {
-                color: rgb(158, 158, 158);
-            }
-            .gYTkop .wrapper-content .movie-intro-title-wrapper .movie-intro-title a:hover {
-                color: rgb(158, 158, 158);
-            }
-
-            .cjKQBC .wrapper {
+.cjKQBC .wrapper {
     width: 100%;
     max-width: 1080px;
     margin: auto;
@@ -420,3 +413,25 @@ div {
         background-color: black;
         border-radius: 50%;
     }
+.cjKQBC .wrapper .locationList {
+    width: 150px;
+    border: 1px solid rgb(220, 220, 220);
+    border-radius: 0px 0px 2px 2px;
+    box-sizing: border-box;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    z-index: 5;
+}
+.cjKQBC .wrapper .locationList .list {
+    height: 49px;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 49px;
+    font-weight: 300;
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+.gYTkop .wrapper-content .movie-intro-title-wrapper .choice {
+    color: rgb(0, 0, 0);
+    border-bottom: 3px solid rgb(231, 0, 140);
+} 
