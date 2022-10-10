@@ -1788,3 +1788,9 @@ C:\Users\yikis\source\repos\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\ClientM
 C:\Users\yikis\source\repos\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\ref\ClientMDA.dll
 C:\Users\yikis\source\repos\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\ClientMDA.pdb
 C:\Users\yikis\source\repos\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\ClientMDA.genruntimeconfig.cache
+E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\HomePage\test.cshtml.g.cs
+E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\Logout.cshtml.g.cs
+E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\MemberBonusList.cshtml.g.cs
+E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\MemberDiscount.cshtml.g.cs
+E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\OrderList.cshtml.g.cs
+E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\電影排行.cshtml.g.cs
