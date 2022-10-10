@@ -95,7 +95,24 @@ namespace ClientMDA.Controllers
         {
             return View();
         }
+
         public IActionResult PasswordEdit()
+        {
+            return View();
+        }
+        public IActionResult Logout()
+        {
+            return View();
+        }
+        public IActionResult MemberBonusList()
+        {
+            return View();
+        }
+        public IActionResult MemberDiscount()
+        {
+            return View();
+        }
+        public IActionResult OrderList()
         {
             return View();
         }
