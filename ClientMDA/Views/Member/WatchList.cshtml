@@ -7,6 +7,8 @@
     <link href="~/css/Member/WatchList.css" rel="stylesheet" />
     <link href="~/css/Member/MemberMain.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="~/css/Member/modal.css" rel="stylesheet" />
     <style>
         .content {
             width: 80%;
@@ -52,7 +54,7 @@
                 <!--content-->
                 <h2>
                     我的片單
-                    <button id="buttonAdd" class="btn btn-link" data-toggle="modal" data-target="#addModal">
+                    <button id="buttonAdd" class="btn btn-link add" data-modal-target="#modal">
                         <i class="fas fa-plus-square"></i>
                     </button>
                 </h2>
@@ -60,7 +62,7 @@
                     <div class="card-title">
                         <p>
                             MyWatchList-哈利波特
-                            <button id="buttonAdd" class="btn btn-link btn-sm" data-toggle="modal" data-target="#editModal">
+                            <button id="buttonEdit" class="btn btn-link btn-sm edit" data-modal-target="#editModal">
                                 <i class="fa fa-pencil-square-o"></i>
                             </button>
                         </p>
@@ -130,7 +132,7 @@
                     <div class="card-title">
                         <p>
                             周末片單
-                            <button id="buttonAdd" class="btn btn-link btn-sm" data-toggle="modal" data-target="#editModal">
+                            <button id="buttonEdit" class="btn btn-link btn-sm edit" data-modal-target="#editModal">
                                 <i class="fa fa-pencil-square-o"></i>
                             </button>
                         </p>
@@ -168,7 +170,8 @@
 
                     <div class="card-title">
                         <p>
-                            魔戒 <button id="buttonAdd" class="btn btn-link btn-sm" data-toggle="modal" data-target="#editModal">
+                            魔戒
+                            <button id="buttonEdit" class="btn btn-link btn-sm edit" data-modal-target="#editModal">
                                 <i class="fa fa-pencil-square-o"></i>
                             </button>
                         </p>
@@ -217,123 +220,201 @@
             </div>
         </div>
     </div>
-    <!-- Modal add-->
-    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel" style="color:black">新增我的片單 <span></span></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+
+
+    <script>
+        const add = document.querySelector("#buttonAdd")
+        function showModal1(titleHtml, contentHtml, buttons) {
+            const modal = document.createElement("div");
+
+            modal.classList.add("modal");
+            modal.innerHTML = `
+            <div class="modal__inner">
+                <div class="modal__top">
+                    <div class="modal__title">${titleHtml}</div>
+                    <button class="modal__close" type="button">
+                        <span class="material-icons"><i class="fa fa-times" aria-hidden="true"></i></span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form id="editForm">
-                        <input type="hidden" name="WatchListID" id="WatchListID">
-                        <div class="form-group">
-                            <label for="WatchListName" style="color:black">我的所有片單</label>
-                        </div>
-                        <table id="WatchList" class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>序</th>
-                                    <th>片單</th>
-                                    <th>移除</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>
-                                        <input type="text" class="form-control" id="WatchListName" name="WatchListName" value="MyWatchList-哈利波特">
-                                    </td>
-                                    <td><button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>
-                                        <input type="text" class="form-control" id="WatchListName" name="WatchListName" value="周末片單">
-                                    </td>
-                                    <td><button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>
-                                        <input type="text" class="form-control" id="WatchListName" name="WatchListName" value="魔戒">
-                                    </td>
-                                    <td><button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <input type="text" class="form-control" id="WatchListName" name="WatchListName"
-                               placeholder="我的片單">
-                        <button type="button" id="buttonAdd" class="site-btn btn-sm mt-3">
-                            <i class="fa fa-plus">新增</i>
-                        </button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="site-btn btn-cancel" data-dismiss="modal">取消</button>
-                    <button type="button" class="site-btn m-1" id="buttonSend">確認</button>
-                </div>
+                <div class="modal__content">${contentHtml}</div>
+                <div class="modal__bottom"></div>
             </div>
-        </div>
-    </div>
-    <!-- Modal edit -->
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel" style="color:black">編輯片單 <span></span></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+        `;
+
+            for (const button of buttons) {
+                const element = document.createElement("button");
+                element.setAttribute("type", "button");
+                element.classList.add("modal__button");
+                if (button.triggerClose) {
+                    element.classList.add("btn-secondary");
+                }
+                else { element.classList.add("site-btn"); }
+                element.textContent = button.label;
+                element.addEventListener("click", () => {
+                    if (button.triggerClose) {
+                        document.body.removeChild(modal);
+                    }
+                });
+                modal.querySelector(".modal__bottom").appendChild(element);
+            }
+
+            modal.querySelector(".modal__close").addEventListener("click", () => {
+                document.body.removeChild(modal);
+            });
+
+            document.body.appendChild(modal);
+        }
+
+        const cont1 = `
+                <input type="hidden" name="WatchListID" id="WatchListID">
+                            <div class="form-group">
+                                <label for="WatchListName" style="color:black">我的所有片單</label>
+                            </div>
+                            <table id="WatchList" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>序</th>
+                                        <th>片單</th>
+                                        <th>移除</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <input type="text" class="form-control" id="WatchListName" name="WatchListName" value="MyWatchList-哈利波特">
+                                        </td>
+                                        <td><button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>
+                                            <input type="text" class="form-control" id="WatchListName" name="WatchListName" value="周末片單">
+                                        </td>
+                                        <td><button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>
+                                            <input type="text" class="form-control" id="WatchListName" name="WatchListName" value="魔戒">
+                                        </td>
+                                        <td><button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <input type="text" class="form-control" id="WatchListName" name="WatchListName"
+                                   placeholder="我的片單">
+                            <button type="button" id="buttonAdd" class="site-btn btn-sm mt-3">
+                                <i class="fa fa-plus">新增</i>
+                            </button>
+            `
+
+        add.addEventListener('click', () => {
+            showModal1("修改我的片單", cont1, [
+                {
+                    label: "取消",
+                    triggerClose: true
+                },
+                {
+                    label: "確認修改",
+                    triggerClose: false
+                }
+            ])
+        })
+    </script>
+
+    <script>
+        const edits = document.querySelectorAll(".edit")
+        function showModal2(titleHtml, contentHtml, buttons) {
+            const modal = document.createElement("div");
+            modal.classList.add("modal");
+            modal.classList.add("editModal");
+            modal.innerHTML = `
+            <div class="modal__inner">
+                <div class="modal__top">
+                    <div class="modal__title">${titleHtml}</div>
+                    <button class="modal__close" type="button">
+                        <span class="material-icons"><i class="fa fa-times" aria-hidden="true"></i></span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form id="editForm">
-                        <input type="hidden" name="WatchListID" id="WatchListID">
+                <div class="modal__content">${contentHtml}</div>
+                <div class="modal__bottom"></div>
+            </div>
+        `;
+
+            for (const button of buttons) {
+                const element = document.createElement("button");
+                element.setAttribute("type", "button");
+
+                if (button.triggerClose) {
+                    element.classList.add("btn-secondary");
+                }
+                else { element.classList.add("site-btn"); }
+                element.classList.add("modal__button");
+                element.textContent = button.label;
+                element.addEventListener("click", () => {
+                    if (button.triggerClose) {
+                        document.body.removeChild(modal);
+                    }
+                });
+                modal.querySelector(".modal__bottom").appendChild(element);
+            }
+            modal.querySelector(".modal__close").addEventListener("click", () => {
+                document.body.removeChild(modal);
+            });
+            document.body.appendChild(modal);
+        }
+
+        const cont2 = `
+                <form id = "editForm">
+                    <input type="hidden" name="WatchListID" id="WatchListID">
                         <div class="form-group">
                             <label for="WatchListName" style="color:black">片單名稱</label>
                             <input type="text" class="form-control" id="WatchListName" name="WatchListName"
-                                   value="周末片單">
-                        </div>
-                        <table id="WatchList" class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>序</th>
-                                    <th>片名</th>
-                                    <th>移除</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>子彈列車</td>
-                                    <td><button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>捍衛戰士：獨行俠</td>
-                                    <td><button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <input type="text" class="form-control" id="WatchListName" name="WatchListName"
-                               placeholder="搜尋">
-                        <button type="button" id="buttonAdd" class="site-btn btn-sm mt-3">
-                            <i class="fa fa-plus">新增</i>
-                        </button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="site-btn btn-cancel" data-dismiss="modal">取消</button>
-                    <button type="button" class="site-btn m-1" id="buttonSend">確認</button>
-                </div>
-            </div>
-        </div>
-    </div>
+                                value="周末片單">
+                            </div>
+                            <table id="WatchList" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>序</th>
+                                        <th>片名</th>
+                                        <th>移除</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>子彈列車</td>
+                                        <td><button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>捍衛戰士：獨行俠</td>
+                                        <td><button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <input type="text" class="form-control" id="WatchListName" name="WatchListName"
+                                placeholder="搜尋">
+                                <button type="button" id="buttonAdd" class="site-btn btn-sm mt-3">
+                                    <i class="fa fa-plus">新增</i>
+                                </button>
+                        </form>
+            `
+
+        edits.forEach(btn => btn.addEventListener('click', () => {
+            showModal2("修改我的片單", cont2, [
+                {
+                    label: "取消",
+                    triggerClose: true
+                },
+                {
+                    label: "確定修改",
+                    triggerClose: false
+                }
+            ])
+        }))
+    </script>
 </body>
 
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>

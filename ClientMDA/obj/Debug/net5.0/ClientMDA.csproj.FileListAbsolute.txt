@@ -1794,3 +1794,5 @@ E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\MemberBonu
 E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\MemberDiscount.cshtml.g.cs
 E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\OrderList.cshtml.g.cs
 E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\電影排行.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\HomePage\test.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\電影排行.cshtml.g.cs
