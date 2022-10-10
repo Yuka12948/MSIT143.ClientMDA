@@ -472,6 +472,7 @@ ol {
 		/*color: #00b0f0;*/
 		color: #ffffff;
 		/*	background: #ffffff;*/
+		background: rgba(11, 12, 40,0.5); /*半透明*/
 		background: Transparent;
 		padding: 5px 14px 3px;
 		display: inline-block;
@@ -1172,6 +1173,7 @@ ol {
 	}
 
 .anime__details__form form textarea {
+	border:dashed 1pt red ;
 	width: 100%;
 	font-size: 15px;
 	color: #b7b7b7;
@@ -1653,6 +1655,12 @@ ol {
 		.blog__details__comment__item__text a:hover {
 			background: #00b0f0;
 		}
+
+/*自己新增*/
+.report:hover {
+	background-color: #e53637 !important
+}
+
 
 .blog__details__form {
 	padding-top: 50px;

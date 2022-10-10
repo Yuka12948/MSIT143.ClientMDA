@@ -12,7 +12,7 @@ namespace ClientMDA.Controllers
         {
             return View();
         }
-        public IActionResult 評論()
+        public IActionResult 會員評論()
         {
             return View();
         }
@@ -20,7 +20,7 @@ namespace ClientMDA.Controllers
         {
             return View();
         }
-        public IActionResult 我的()
+        public IActionResult 我的評論()
         {
             return View();
         }

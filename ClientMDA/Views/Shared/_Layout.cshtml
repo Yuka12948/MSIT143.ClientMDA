@@ -39,7 +39,7 @@
                 <div class="col-lg-2">
                     <div class="header__logo">
                         <a asp-controller="HomePage" asp-action="Index">
-                            <img src="~/images/Public/logo.png" alt="" />
+                            <img src="~/images/MDA_LOGO.png" alt="" height="40" />
                         </a>
                     </div>
                 </div>
@@ -54,12 +54,12 @@
                                 <li>
                                     <a text-white fs-2" asp-area="" asp-controller="Theater" asp-action="Index">電影排行@*<span class="arrow_carrot-down"></span>*@</a>
                                     @*<ul class="dropdown">
-                                            <li><a href="./categories.html">本週新片</a></li>
-                                            <li><a asp-area="" asp-controller="Theater" asp-action="Index">上映中</a></li>
-                                            <li><a asp-area="" asp-controller="Theater" asp-action="即將上映page1">即將上映</a></li>
-                                            <li><a href="./blog-details.html">歷年電影</a></li>
-                                            <li><a href="./blog-details.html">電影排行</a></li>
-                                        </ul>*@
+                                    <li><a href="./categories.html">本週新片</a></li>
+                                    <li><a asp-area="" asp-controller="Theater" asp-action="Index">上映中</a></li>
+                                    <li><a asp-area="" asp-controller="Theater" asp-action="即將上映page1">即將上映</a></li>
+                                    <li><a href="./blog-details.html">歷年電影</a></li>
+                                    <li><a href="./blog-details.html">電影排行</a></li>
+                                </ul>*@
                                 </li>
                                 <li><a asp-area="" asp-controller="Comment" asp-action="評論首頁">電影評論</a></li>  <!--./blog.html-->
                             </ul>
@@ -73,6 +73,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- menu Start -->
             <div id="mobile-menu-wrap">
                 <div class="slicknav_menu">
                     <a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed"><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
@@ -98,6 +100,7 @@
                     </nav>
                 </div>
             </div>
+            <!-- menu End -->
         </div>
     </header>
     <!-- header End -->
@@ -132,7 +135,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <p>-->
+     <p>-->
     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
     <!--Copyright &copy; M.D.A. Co., Ltd.<br />All rights reserved.<br />
     <a href="https://colorlib.com" target="_blank">M.D.A.觀享時刻</a>-->
@@ -142,6 +145,7 @@
             </div>
         </div>
     </footer>-->
+
     <footer class="footer text-center text-white" style="background-color: #070720">
         <div class="page-up">
             <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
@@ -154,27 +158,22 @@
                 <a class="btn btn-outline-light btn-floating m-1" href="https://i.imgur.com/GOWpr54.png" role="button">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-
                 <!-- Twitter -->
                 <a class="btn btn-outline-light btn-floating m-1" href="https://i.imgur.com/Wj9ytuc.png" role="button">
                     <i class="fab fa-twitter"></i>
                 </a>
-
                 <!-- Google -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                @*<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
                     <i class="fab fa-google"></i>
-                </a>
-
+                </a>*@
                 <!-- Instagram -->
                 <a class="btn btn-outline-light btn-floating m-1" href="https://i.imgur.com/fTphyFV.png" role="button">
                     <i class="fab fa-instagram"></i>
                 </a>
-
                 <!-- Linkedin -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                @*<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
                     <i class="fab fa-linkedin-in"></i>
-                </a>
-
+                </a>*@
                 <!-- Github -->
                 <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/Yuka12948/MSIT143.ClientMDA" role="button">
                     <i class="fab fa-github"></i>
@@ -190,8 +189,8 @@
         <!-- Copyright -->
     </footer>
     <!-- footer End -->
-    <script src="~/js/bootstrap.min.js"></script>
-    <script src="~/js/jquery-3.4.1.min.js"></script>
+    @*<script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery-3.4.1.min.js"></script>*@
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>
