@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ClientMDA",
+    "\\ClientMDA\\Views",
+    "\\ClientMDA\\Views\\Home",
+    "\\ClientMDA\\Views\\HomePage",
+    "\\ClientMDA\\wwwroot",
+    "\\ClientMDA\\wwwroot\\css",
+    "\\ClientMDA\\wwwroot\\css\\HomePage",
+    "\\ClientMDA\\wwwroot\\js",
+    "\\ClientMDA\\wwwroot\\js\\HomePage"
+  ],
+  "SelectedNode": "\\ClientMDA.sln",
+  "PreviewInSolutionExplorer": false
+}
