@@ -677,7 +677,6 @@ C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\scopedcs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\ClientMDA.TagHelpers.input.cache
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\ClientMDA.TagHelpers.output.cache
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\ClientMDA.RazorCoreGenerate.cache
-C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\評論.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\評論首頁.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\HomePage\Error.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\HomePage\Index.cshtml.g.cs
@@ -697,7 +696,6 @@ C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Vi
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\Indexpage3.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\Indexpage4.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\Indexpage5.cshtml.g.cs
-C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\即將上映.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\即將上映page1.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\即將上映page2.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\即將上映page3.cshtml.g.cs
@@ -1621,3 +1619,16 @@ E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\ClientMDA.pdb
 E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\ClientMDA.genruntimeconfig.cache
 E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\會員評論.cshtml.g.cs
 E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\我的評論.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\我的評論.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\會員評論.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\評論2.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\評論首頁2.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\電影評論.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\Logout.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\MemberBonusList.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\MemberDiscount.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\OrderList.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\LettheBulletsFly.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\捍衛戰士2.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\MovieInfoIndex3.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\PaymentWeb3.cshtml.g.cs
