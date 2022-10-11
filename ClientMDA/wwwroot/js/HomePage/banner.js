@@ -34,9 +34,9 @@ var swiper = new Swiper(".mySwiperRATE", {
 });
 
 
-$(document).ready(function () {
-    $('#rateMe2').mdbRate();
-});
+//$(document).ready(function () {
+//    $('#rateMe2').mdbRate();
+//});
 
 //rate
 
