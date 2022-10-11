@@ -223,6 +223,7 @@ content-banner :hover {
 
 .info {
     padding-top: 48px;
+    /*padding-top: 80px;*/
     padding-bottom: 48px;
     padding-left: 16px;
     vertical-align: baseline;
@@ -237,6 +238,9 @@ content-banner :hover {
     color: rgba(245,197,24);
 }
 
+#fafastarcheckedE {
+    
+}
 .star {
     position: absolute;
     left: 15px;
@@ -249,7 +253,7 @@ content-banner :hover {
 
 #ToR {
     font-size: 22px;
-    color: rgba(87,153,239);
+    color: rgba(245,197,24);
 }
 
     #ToR:hover {
@@ -353,24 +357,26 @@ content-banner :hover {
 
 
 
-#modal {
+.modalst {
     /*display: none;*/
     position: fixed;
     z-index: 10;
-    top: 80%;
+    top: 50%;
     left: 50%;
     width: 680px;
     max-width: 80%;
     border: none;
     background-color: transparent;
-    transform: translate(-50%,-50%) ;
-    align-items: center;
+    transform: translate(-50%,-50%) scale(0);
+    
+    /*align-items: center;
     justify-content: center;
-    vertical-align: middle;
+    vertical-align: middle;*/
 }
 
-.modal.active {
+.modalst.active {
     transform: translate(-50%,-50%) scale(1);
+    
 }
 #fafastarrate {
     position: absolute;
@@ -382,8 +388,19 @@ content-banner :hover {
     z-index: 7;
 }
 
-.modal > #fafastarrate {
+#addlistbtn {
+    writing-mode: vertical-lr;
+    overflow: no-display;
+    align-items: center;
+}
+
+.modalst > #fafastarrate {
     padding-left: 34%
+}
+
+.star > showRateE {
+    position: absolute;
+    inset: 0 0 0 0;
 }
 
 #rate-nuber {
@@ -503,16 +520,23 @@ content-banner :hover {
     }*/
 
 #mylist {
-    display:flex;
+   
+    display: flex;
     width: 1140px;
     height: 480px;
-    background-color: rgba(0,0,0,.4);    
-    align-items:center;
-    justify-items:center;
-    justify-content:center;
-    align-content:center;
+    background-color: rgba(0,0,0,.4);
+    align-items: center;
+    /*justify-items:center;*/
+    justify-content: center;
+    /*align-content:center;*/
+   
 }
 
 #addmylist{
     font-size:2.5rem;
+}
+
+#pluslist {
+    
+   
 }
