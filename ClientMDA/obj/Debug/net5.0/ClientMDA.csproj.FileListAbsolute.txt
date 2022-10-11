@@ -401,7 +401,6 @@ C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\scopedcss\bundle\ClientMD
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\ClientMDA.TagHelpers.input.cache
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\ClientMDA.TagHelpers.output.cache
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\ClientMDA.RazorCoreGenerate.cache
-C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\評論.cshtml.g.cs
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\評論首頁.cshtml.g.cs
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\HomePage\Error.cshtml.g.cs
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\HomePage\Index.cshtml.g.cs
@@ -1955,3 +1954,14 @@ C:\Users\Student\Documents\123\ClientMDA\obj\Debug\net5.0\ClientMDA.genruntimeco
 C:\Users\Student\Documents\123\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\MoviePartialView.cshtml.g.cs
 C:\Users\Student\Documents\123\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\SelectMovie.cshtml.g.cs
 C:\Users\Student\Documents\123\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\SelectPartialView.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\我的評論.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\會員評論.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\HomePage\test.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\Logout.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\MemberBonusList.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\MemberDiscount.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\OrderList.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\電影排行.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\MoviePartialView.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\SelectMovie.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\SelectPartialView.cshtml.g.cs
