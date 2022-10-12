@@ -53,21 +53,20 @@
                                 <li>
                                     <a text-white fs-2" asp-area="" asp-controller="Theater" asp-action="Index">電影時刻@*<span class="arrow_carrot-down"></span>*@</a>
                                     @*<ul class="dropdown">
-                <li><a href="./categories.html">本週新片</a></li>
-                <li><a asp-area="" asp-controller="Theater" asp-action="Index">上映中</a></li>
-                <li><a asp-area="" asp-controller="Theater" asp-action="即將上映page1">即將上映</a></li>
-                <li><a href="./blog-details.html">歷年電影</a></li>
-                <li><a href="./blog-details.html">電影排行</a></li>
-                </ul>*@
+                                        <li><a asp-area="" asp-controller="Theater" asp-action="Index">上映中</a></li>
+                                        <li><a asp-area="" asp-controller="Theater" asp-action="即將上映page1">即將上映</a></li>
+                                        <li><a href="./blog-details.html">歷年電影</a></li>
+                                        <li><a href="./blog-details.html">電影排行</a></li>
+                                    </ul>*@
                                 </li>
-                                @*<li class="active">
-                                    <a asp-area="" asp-controller="Ticketing" asp-action="MovieInfoIndex2">電影排行</a>
-                                </li>*@
+                                <li>
+                                    <a asp-area="" asp-controller="Movie" asp-action="電影排行">電影排行</a>
+                                </li>
                             <li>
-                                <a asp-area="" asp-controller="Comment" asp-action="評論首頁">電影評論<span class="arrow_carrot-down"></span></a>
-                                <ul class="dropdown">
+                                <a asp-area="" asp-controller="Comment" asp-action="評論首頁">電影評論@*<span class="arrow_carrot-down"></span>*@</a>
+                                @*<ul class="dropdown">
                                     <li><a asp-area="" asp-controller="Comment" asp-action="我的評論">我的評論</a></li>
-                                </ul>
+                                </ul>*@
                             </li>  <!--./blog.html-->
                             </ul>
                         </nav>
