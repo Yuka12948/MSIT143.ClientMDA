@@ -4,15 +4,50 @@
 }
 @section Styles{
     <style>
+
+        /*.text-white {
+            height: 100%;
+        }
+
+        .header {
+            height: 274px;
+            position: absolute;
+            top: 0;
+            z-index: 900;
+        }
+
+        .footer {
+            height: 274px;*/ /*新增footer高度*/
+            /*top: -500px;
+        }*/
+
+        ol {
+            list-style-type: none;
+        }
+
+        .leaderboard{
+
+            margin-bottom:300px;
+        }
+
+        /*.container body-content {*/
+            /*            position:absolute;*/
+            /*min-height: 100%;*/ /*外層高度100%*/
+            /*margin-bottom: -274px;*/
+/*            padding-top: 50px;
+            padding-bottom: 50px;*/
+        /*}
+        .pb3{*/
+            
+
+        }
     </style>
 }
+<link href="~/css/Comment/排行1.css" rel="stylesheet" /> @*這是排行的CSS*@
 
 <h1> 電影排行</h1>
 
-<html>
-<head>
-    <title></title>
-</head>
+
 <body>
     <div class="leaderboard">
         <h1>
@@ -28,10 +63,19 @@
             <li><mark>Andrew Fox</mark><small>203</small></li>
         </ol>
     </div>
+
+
 </body>
-</html>
-<script src="http://cdn.bootstrapmb.com/console-ban.min.js"></script>
-<link rel="stylesheet" href="reset.min.css">
-<link rel="stylesheet" href="./style.css">
+
+@*<script src="http://cdn.bootstrapmb.com/console-ban.min.js"></script>
+    <link rel="stylesheet" href="reset.min.css">
+    <link rel="stylesheet" href="./style.css">*@
+
+
+
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> @*footer樣式*@
+
+
+
 
 

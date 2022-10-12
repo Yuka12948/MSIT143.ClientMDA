@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj": {}
+    "C:\\shared\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj": {}
   },
   "projects": {
-    "C:\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj": {
+    "C:\\shared\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
+        "projectUniqueName": "C:\\shared\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
         "projectName": "ClientMDA",
-        "projectPath": "C:\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
+        "projectPath": "C:\\shared\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
         "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
-        "outputPath": "C:\\MSIT143.ClientMDA\\ClientMDA\\obj\\",
+        "outputPath": "C:\\shared\\MSIT143.ClientMDA\\ClientMDA\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -44,6 +44,16 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[5.0.2, )"
