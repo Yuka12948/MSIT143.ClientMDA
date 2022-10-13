@@ -12,5 +12,10 @@ namespace ClientMDA.Controllers
         {
             return View();
         }
+
+        public IActionResult 電影排行2()
+        {
+            return View();
+        }
     }
 }
