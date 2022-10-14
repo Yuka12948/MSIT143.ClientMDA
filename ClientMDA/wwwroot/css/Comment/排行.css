@@ -28,8 +28,8 @@ article,
 aside,
 figcaption,
 figure,
-footer,
-header,
+/*footer,
+header,*/
 hgroup,
 main,
 nav,
@@ -345,7 +345,7 @@ template {
 [hidden] {
     display: none !important;
 }
-
+/*
 .container {
     width: 100%;
     padding-right: 10px;
@@ -395,7 +395,7 @@ template {
     .container-lg {
         max-width: 1000px;
     }
-}
+}*/
 
 .row {
     display: -webkit-box;
@@ -2081,7 +2081,7 @@ template {
         display: inline-flex !important;
     }
 }
-
+/*
 .container {
     padding: 0;
 }
@@ -2096,4 +2096,4 @@ template {
         padding-right: 5px;
         padding-left: 5px;
     }
-}
+}*/

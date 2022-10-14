@@ -8,12 +8,12 @@ namespace ClientMDA.Controllers
 {
     public class MovieController : Controller
     {
-        public IActionResult 電影排行()
+        public IActionResult 電影排行TOP5()
         {
             return View();
         }
 
-        public IActionResult 電影排行2()
+        public IActionResult 電影排行()
         {
             return View();
         }

@@ -8,7 +8,7 @@
         list-style-type: none;
     }
 
-    .header-nav {
+/*    .header-nav {
         will-change: transform;
     }
 
@@ -36,7 +36,7 @@
             right: 0;
             height: 100vh;
             z-index: 120;
-        }
+        }*/
 
     .logo {
         padding-top: 12px;
@@ -44,7 +44,7 @@
         width: 83px;
     }
 
-    .header-nav {
+/*    .header-nav {
         background-color: #262626;
         position: absolute;
         top: 0;
@@ -63,7 +63,7 @@
         transition-property: transform, -webkit-transform;
         -webkit-transition-duration: 0.4s;
         transition-duration: 0.4s;
-    }
+    }*/
 
         .header-nav > li {
             position: relative;
@@ -173,7 +173,7 @@
         list-style-type: none;
     }
 
-    header {
+/*    header {
         height: 80px;
         position: fixed;
         top: 0;
@@ -198,7 +198,7 @@
         header nav {
             float: right;
         }
-}
+}*/
 
 @media (min-width: 760px) and (min-width: 760px) and (max-width: 1019px) {
     header .container {
@@ -214,7 +214,7 @@
         float: left;
     }
 
-    .header-nav {
+ /*   .header-nav {
         display: -webkit-box;
         display: -ms-flexbox;
         display: -webkit-flex;
@@ -231,7 +231,7 @@
         align-items: center;
         -ms-flex-line-pack: center;
         align-content: center;
-    }
+    }*/
 
         .header-nav > li {
             -webkit-box-flex: 1;
@@ -1591,6 +1591,7 @@ img {
     font-size: 18px;
     font-family: 'Kanit', sans-serif;
     font-weight: bold;
+    padding-left:20px;
 }
 
 @media (min-width: 0) and (max-width: 1019px) {
@@ -1632,6 +1633,7 @@ img {
         line-height: 1.29;
         letter-spacing: 0.4px;
         color: #fff;
+        padding: 15px;
     }
 
         .charts-list-row--header .charts-list-rank:lang(tc),
@@ -1891,3 +1893,218 @@ img {
 body {
     padding-top: 100px;
 }
+
+
+/*------------------------關注-----------*/
+.wlb_ribbon.new div.wl-ribbon.standalone {
+    cursor: pointer;
+    height: 24px;
+    width: 24px
+}
+
+    .wlb_ribbon.new div.wl-ribbon.standalone.spinner {
+        background-image: none;
+        height: 13px;
+        padding: 5px;
+        text-align: center;
+        width: 13px
+    }
+
+    .wlb_ribbon.new div.wl-ribbon.standalone.inWL {
+        background: url(/images/S/sash/ygol-UqjaasgCaR.png) no-repeat center center;
+        background-size: cover
+    }
+
+    .wlb_ribbon.new div.wl-ribbon.standalone.not-inWL {
+        background: url(/images/S/sash/QbXbpqdR4ZUWxq$.png) no-repeat center center;
+        background-size: cover
+    }
+
+        .wlb_ribbon.new div.wl-ribbon.standalone.not-inWL:hover {
+            background: url(/images/S/sash/cgq3$ss$-ZQ2bqt.png) no-repeat center center;
+            background-size: cover
+        }
+
+.wl-ribbon {
+    background-repeat: no-repeat;
+    cursor: pointer
+}
+
+    .wl-ribbon.poster {
+        position: absolute
+    }
+
+    .wl-ribbon.spinner {
+        text-align: center
+    }
+
+    .wl-ribbon > span.spinner {
+        background: url(/images/S/sash/VPO7nZEEVf68gfL.gif) no-repeat center center;
+        height: 13px;
+        padding: 5px;
+        width: 13px
+    }
+
+    .wl-ribbon.poster, .wl-ribbon.poster.retina {
+        background-image: url(/images/S/sash/732C-8zJzQ9xx1C.png);
+        height: 38px;
+        left: 2px;
+        top: 0;
+        width: 38px
+    }
+
+        .wl-ribbon.poster.inWL, .wl-ribbon.poster.retina.inWL {
+            background-position: -2px 0
+        }
+
+            .wl-ribbon.poster.inWL:hover, .wl-ribbon.poster.retina.inWL:hover {
+                background-position: -2px -42px
+            }
+
+        .wl-ribbon.poster.not-inWL, .wl-ribbon.poster.retina.not-inWL {
+            background-position: -44px 0
+        }
+
+            .wl-ribbon.poster.not-inWL:hover, .wl-ribbon.poster.retina.not-inWL:hover {
+                background-position: -44px -42px
+            }
+
+        .wl-ribbon.poster.spinner, .wl-ribbon.poster.retina.spinner {
+            background-position: -86px 0;
+            padding-top: 5px
+        }
+
+        .wl-ribbon.poster.touch {
+            background-image: url(https://m.media-amazon.com/images/S/sash/INbcM2-CU0AKIbe.png);
+            height: 30px;
+            left: 10px;
+            top: 0;
+            width: 39px
+        }
+
+            .wl-ribbon.poster.touch.inWL {
+                background-position: -4px -31px
+            }
+
+                .wl-ribbon.poster.touch.inWL:hover {
+                    background-position: -4px -1px
+                }
+
+            .wl-ribbon.poster.touch.not-inWL {
+                background-position: -34px -1px
+            }
+
+                .wl-ribbon.poster.touch.not-inWL:hover {
+                    background-position: -34px -31px
+                }
+
+            .wl-ribbon.poster.touch.spinner {
+                background-position: -64px -1px;
+                padding-right: 9px;
+                padding-top: 0
+            }
+
+            .wl-ribbon.poster.touch.retina {
+                background-image: url(/images/S/sash/EURxm$TDabJwIr$.png);
+                background-size: 100px 70px;
+                height: 34px;
+                left: 0;
+                top: -1px;
+                width: 34px
+            }
+
+                .wl-ribbon.poster.touch.retina.inWL {
+                    background-position: 2px 0
+                }
+
+                    .wl-ribbon.poster.touch.retina.inWL:hover {
+                        background-position: 2px 0
+                    }
+
+                .wl-ribbon.poster.touch.retina.not-inWL {
+                    background-position: -31px 0
+                }
+
+                    .wl-ribbon.poster.touch.retina.not-inWL:hover {
+                        background-position: -31px 0
+                    }
+
+                .wl-ribbon.poster.touch.retina.spinner {
+                    background-position: -64px 0;
+                    padding-right: 0;
+                    padding-top: 0
+                }
+
+    .wl-ribbon.standalone, .wl-ribbon.standalone.retina {
+        background-image: url(https://m.media-amazon.com/images/S/sash/INbcM2-CU0AKIbe.png);
+        height: 30px;
+        width: 30px;
+    }
+
+        .wl-ribbon.standalone.inWL, .wl-ribbon.standalone.retina.inWL {
+            background-position: 0 0
+        }
+
+            .wl-ribbon.standalone.inWL:hover, .wl-ribbon.standalone.retina.inWL:hover {
+                background-position: 0 -30px
+            }
+
+        .wl-ribbon.standalone.not-inWL, .wl-ribbon.standalone.retina.not-inWL {
+            background-position: -30px 0;
+        }
+
+            .wl-ribbon.standalone.not-inWL:hover, .wl-ribbon.standalone.retina.not-inWL:hover {
+                background-position: -30px -30px
+            }
+
+        .wl-ribbon.standalone.spinner, .wl-ribbon.standalone.retina.spinner {
+            background-position: -60px 0;
+            padding-top: 3px
+        }
+
+        .wl-ribbon.standalone.touch, .wl-ribbon.standalone.touch.retina {
+            height: 39px;
+            width: 38px
+        }
+
+            .wl-ribbon.standalone.touch.not-inWL, .wl-ribbon.standalone.touch.retina.not-inWL {
+                background-position: -44px 0
+            }
+
+                .wl-ribbon.standalone.touch.not-inWL:hover, .wl-ribbon.standalone.touch.retina.not-inWL:hover {
+                    background-position: -44px -42px
+                }
+
+        .wl-ribbon.standalone.touch {
+            background-image: url(/images/S/sash/732C-8zJzQ9xx1C.png)
+        }
+
+            .wl-ribbon.standalone.touch.inWL {
+                background-position: -3px 0
+            }
+
+                .wl-ribbon.standalone.touch.inWL:hover {
+                    background-position: -3px -42px
+                }
+
+            .wl-ribbon.standalone.touch.spinner {
+                background-position: -87px 0;
+                padding-top: 3px
+            }
+
+            .wl-ribbon.standalone.touch.retina {
+                background-image: url(/images/S/sash/EURxm$TDabJwIr$.png);
+                background-size: 126px 84px
+            }
+
+                .wl-ribbon.standalone.touch.retina.inWL {
+                    background-position: -2px 0
+                }
+
+                    .wl-ribbon.standalone.touch.retina.inWL:hover {
+                        background-position: -2px -42px
+                    }
+
+                .wl-ribbon.standalone.touch.retina.spinner {
+                    background-position: -86px 0;
+                    padding-top: 7px
