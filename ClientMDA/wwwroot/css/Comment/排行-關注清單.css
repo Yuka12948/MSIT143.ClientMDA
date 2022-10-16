@@ -173,7 +173,7 @@
         list-style-type: none;
     }
 
-/*    header {
+    header {
         height: 80px;
         position: fixed;
         top: 0;
@@ -186,19 +186,19 @@
         transition-property: background-color;
         -webkit-transition-duration: 0.4s;
         transition-duration: 0.4s;
-        z-index: 100;
+        /*z-index: 100;*/
     }
 
-        header::after {
+/*        header::after {
             display: block;
             clear: both;
             content: "";
-        }
+        }*/
 
-        header nav {
+/*        header nav {
             float: right;
-        }
-}*/
+        }*/
+}
 
 @media (min-width: 760px) and (min-width: 760px) and (max-width: 1019px) {
     header .container {
