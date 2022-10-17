@@ -1452,8 +1452,6 @@ C:\Users\Student\Desktop\MDA專題\AAAA\ClientMDA\obj\Debug\net5.0\ClientMDA.dll
 C:\Users\Student\Desktop\MDA專題\AAAA\ClientMDA\obj\Debug\net5.0\ref\ClientMDA.dll
 C:\Users\Student\Desktop\MDA專題\AAAA\ClientMDA\obj\Debug\net5.0\ClientMDA.pdb
 C:\Users\Student\Desktop\MDA專題\AAAA\ClientMDA\obj\Debug\net5.0\ClientMDA.genruntimeconfig.cache
-C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\評論2.cshtml.g.cs
-C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\評論首頁2.cshtml.g.cs
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\電影評論.cshtml.g.cs
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\CommentList.cshtml.g.cs
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\Login.cshtml.g.cs
@@ -2029,3 +2027,4 @@ E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\SelectP
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\電影排行TOP5.cshtml.g.cs
 E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\電影排行TOP5.cshtml.g.cs
 E:\C#\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\評論Demo2.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\評論Demo2.cshtml.g.cs

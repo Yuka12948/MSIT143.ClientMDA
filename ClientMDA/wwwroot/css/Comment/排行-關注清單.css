@@ -1577,8 +1577,9 @@ img {
 @media (min-width: 760px) {
     .charts-list-rank {
         font-size: 36px;
-        width: 83px;
-        padding-left: 8px;
+        width: 70px; /*排行欄位*/
+        text-align:center;
+        /*padding-left: 8px;*/
     }
 }
 
@@ -1620,6 +1621,7 @@ img {
     -ms-flex-align: center;
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    text-align:center;
 }
 
     .charts-list-row--header .charts-list-rank,
@@ -1643,12 +1645,22 @@ img {
         }
 
     .charts-list-row--header .charts-list-rank {
-        width: 60px;
-        padding: 0 10px 0 0;
+        width: 70px; /*排行欄位標題*/
+        /*padding: 0 20px 0 0;*/
     }
 
     .charts-list-row--header .charts-list-prev-rank {
         width: 60px;
+    }
+
+    .charts-list-row--header .charts-list-content {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+    }
+
+    .charts-list-row--header .charts-list-poster {
+        width: 100px; /*電影海報欄位標題*/
     }
 
     .charts-list-row--header .charts-list-content {
