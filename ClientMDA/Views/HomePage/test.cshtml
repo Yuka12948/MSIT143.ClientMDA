@@ -65,7 +65,7 @@
     </style>
 </head>
 
-<body>
+
     <button data-modal-target="#modal1">open Modal</button>
     <div class="modal1" id="modal1">
         <div class="modal-headers">
@@ -81,7 +81,54 @@
 
     </div>
     <div id="overlays">0000</div>
-</body>
+    <div>
+        <div>jk;qljyq32</div>
+        <div>jk;qljyq32</div>
+    </div>
+
+
+    <div class="info_box">
+        <div class="star">
+            <div class="showRate">
+                <span class="fa fa-star checked" id="fafastarchecked"></span>
+                <span class="starRate">4.3</span>
+                <button class="ToRate" id="openbtn">
+                    <i class='far fa-star' id="ToR"></i>
+                </button>
+            </div>
+
+            <div class="showRateE">
+                <span class="fa fa-star checked" id="fafastarcheckedE"></span>
+                <span class="starRate">4.3</span>
+                <button class="ToRateE" id="openbtn">
+                    <i class='far fa-star' id="ToR"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="swiper mySwiperList" id="mylist">
+        <div>
+            <p id="addmylist">快來新增你的專屬片單吧!</p>
+        </div>
+        <div class="" id="pluslist">
+            <button class="AddListBtn" id="addlistbtn" scr="/Member/Login">
+                新增片單
+
+            </button>
+        </div>
+    </div>
+
+    <div class="swiper mySwipermyList" id="mylist">
+
+        <div> <span id="addmylist">快來新增你的專屬片單吧!</span></div>
+        <div class="" id="pluslist">
+            @*<span id="addmylist">快來新增你的專屬片單吧!</span>*@
+            <button class="AddListBtn" id="addlistbtn" onclick="window.location.href='/Member/Login'">
+                新增片單
+            </button>
+        </div>
+    </div>
 
 @section Scripts{ 
 <script>
