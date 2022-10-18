@@ -17,17 +17,377 @@
         td {
             border: solid 1px red;
         }
+
+        .far .fas {
+            padding-right: 5px;
+            color: #ffc107 !important;
+        }
+
     </style>
 }
 <link href="~/css/Comment/排行.css" rel="stylesheet" />
 <link href="~/css/Comment/排行-關注清單.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Kanit:700" rel="stylesheet"> @*排行字型*@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> @*星星字型*@
 
-@*<h3>M.D.A. 電影排行</h3>*@
+<br />
+<h3>電影排行榜</h3>
+<h4>TOP 50 Movies</h4>
 
 <br />
 <body>
     <div class="container">
         <div class="row">
+            <div class="col-12 col-md-9">
+                @*<div class="u-datepicker-box">
+                <input type="text" class="datepicker" id="datepicker">
+                <a href="#" class="btn-add-all" data-playlist_id="-s2Q_jVkTtxgUY4HlL" data-action="add-all" data-label="daily chart" title="加入歌單"></a>
+                <a href="#" class="btn-preview-all" data-playlist_id="-s2Q_jVkTtxgUY4HlL" data-action="preview-all" data-label="daily chart" title="全部試聽">
+                    <i class="fa fa-play"></i>
+                    <span class="d-none d-md-inline-block">
+                        全部試聽
+                    </span>
+                </a>
+            </div>*@
+
+                <ul class="charts-list">
+                    <li class="charts-list-row--header d-none d-md-flex">
+                        <span class="charts-list-rank">排行</span>
+                        <span class="charts-list-poster">電影海報</span>
+                        <span class="charts-list-movietitle">電影資訊</span>
+                        <span class="charts-list-content"></span>
+                        <span class="charts-list-MDArate"> MDA評分 </span>
+                        <span class="charts-list-MemRate"> 會員評分 </span>
+                        <span class="charts-list-movieDate"> 上映日期 </span>
+                        <span class="charts-list-addList"> 加入片單 </span>
+                    </li>
+
+                    <li class="charts-list-row">
+                        <a href="#">
+                            <span class="charts-list-rank">1</span>
+                            <div class="flipper">
+                                <div class="flipper-item layer1">
+                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/189005032,8v1/fit/160x160.jpg" alt="" title="天空沒有極限">
+                                    <span class="charts-list-desc">
+                                        <span class="charts-list-song" title="天空沒有極限">天空沒有極限</span>
+                                        <span class="charts-list-artist" title="鄧紫棋">鄧紫棋</span>
+                                    </span>
+                                    <span class="charts-list-content"></span>
+                                    <span class="charts-list-span"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i> 5.0</span>
+                                    <span class="charts-list-span"><i class="far fa-star" style="padding-right:5px;color:#ffc107"></i> 0.0</span>
+                                    <span class="charts-list-date">2022-09-10</span>
+                                    <span class="charts-list-prev-rank">
+                                        <div class="wlb_ribbon" data-tconst="tt0111161" data-recordmetrics="true" style="position: relative;">
+                                            <div class="wl-ribbon standalone not-inWL" title="點擊添加到關注列表"></div>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="charts-list-row">
+                        <a href="#">
+                            <span class="charts-list-rank">2</span>
+                            <div class="flipper">
+                                <div class="flipper-item layer1">
+                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/189005032,8v1/fit/160x160.jpg" alt="" title="天空沒有極限">
+                                    <span class="charts-list-desc">
+                                        <span class="charts-list-song" title="天空沒有極限">天空沒有極限</span>
+                                        <span class="charts-list-artist" title="鄧紫棋">鄧紫棋</span>
+                                    </span>
+                                    <span class="charts-list-content"></span>
+                                    <span class="charts-list-span"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i> 5.0</span>
+                                    <span class="charts-list-span"><i class="far fa-star" style="padding-right:5px;color:#ffc107"></i> 0.0</span>
+                                    <span class="charts-list-date">2022-09-10</span>
+                                    <span class="charts-list-prev-rank">
+                                        <div class="wlb_ribbon" data-tconst="tt0111161" data-recordmetrics="true" style="position: relative;">
+                                            <div class="wl-ribbon standalone not-inWL" title="點擊添加到關注列表"></div>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="charts-list-row">
+                        <a href="#">
+                            <span class="charts-list-rank">3</span>
+                            <div class="flipper">
+                                <div class="flipper-item layer1">
+                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/189005032,8v1/fit/160x160.jpg" alt="" title="天空沒有極限">
+                                    <span class="charts-list-desc">
+                                        <span class="charts-list-song" title="天空沒有極限">天空沒有極限</span>
+                                        <span class="charts-list-artist" title="鄧紫棋">鄧紫棋</span>
+                                    </span>
+                                    <span class="charts-list-content"></span>
+                                    <span class="charts-list-span"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i> 5.0</span>
+                                    <span class="charts-list-span"><i class="far fa-star" style="padding-right:5px;color:#ffc107"></i> 0.0</span>
+                                    <span class="charts-list-date">2022-09-10</span>
+                                    <span class="charts-list-prev-rank">
+                                        <div class="wlb_ribbon" data-tconst="tt0111161" data-recordmetrics="true" style="position: relative;">
+                                            <div class="wl-ribbon standalone not-inWL" title="點擊添加到關注列表"></div>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="charts-list-row">
+                        <a href="#">
+                            <span class="charts-list-rank">4</span>
+                            <div class="flipper">
+                                <div class="flipper-item layer1">
+                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/189005032,8v1/fit/160x160.jpg" alt="" title="天空沒有極限">
+                                    <span class="charts-list-desc">
+                                        <span class="charts-list-song" title="天空沒有極限">天空沒有極限</span>
+                                        <span class="charts-list-artist" title="鄧紫棋">鄧紫棋</span>
+                                    </span>
+                                    <span class="charts-list-content"></span>
+                                    <span class="charts-list-span"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i> 5.0</span>
+                                    <span class="charts-list-span"><i class="far fa-star" style="padding-right:5px;color:#ffc107"></i> 0.0</span>
+                                    <span class="charts-list-date">2022-09-10</span>
+                                    <span class="charts-list-prev-rank">
+                                        <div class="wlb_ribbon" data-tconst="tt0111161" data-recordmetrics="true" style="position: relative;">
+                                            <div class="wl-ribbon standalone not-inWL" title="點擊添加到關注列表"></div>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="charts-list-row">
+                        <a href="#">
+                            <span class="charts-list-rank">5</span>
+                            <div class="flipper">
+                                <div class="flipper-item layer1">
+                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/189005032,8v1/fit/160x160.jpg" alt="" title="天空沒有極限">
+                                    <span class="charts-list-desc">
+                                        <span class="charts-list-song" title="天空沒有極限">天空沒有極限</span>
+                                        <span class="charts-list-artist" title="鄧紫棋">鄧紫棋</span>
+                                    </span>
+                                    <span class="charts-list-content"></span>
+                                    <span class="charts-list-span"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i> 5.0</span>
+                                    <span class="charts-list-span"><i class="far fa-star" style="padding-right:5px;color:#ffc107"></i> 0.0</span>
+                                    <span class="charts-list-date">2022-09-10</span>
+                                    <span class="charts-list-prev-rank">
+                                        <div class="wlb_ribbon" data-tconst="tt0111161" data-recordmetrics="true" style="position: relative;">
+                                            <div class="wl-ribbon standalone not-inWL" title="點擊添加到關注列表"></div>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    @*<li class="charts-list-row">
+                    <a href="#">
+                        <span class="charts-list-rank">2</span>
+                        <span class="charts-list-prev-rank">3</span>
+                        <div class="flipper">
+                            <div class="flipper-item layer1">
+                                <img class="charts-list-cover" src="https://i.kfs.io/album/global/192736378,1v1/fit/160x160.jpg" alt="" title="尋一個你">
+                                <span class="charts-list-desc">
+                                    <span class="charts-list-song" title="尋一個你">尋一個你</span>
+                                    <span class="charts-list-artist" title="摩登兄弟劉宇寧">摩登兄弟劉宇寧</span>
+                                </span>
+                                <i class="btn-playmusic"></i>
+                                <span class="charts-list-date">2022-09</span>
+
+                                <span class="charts-list-unauth">未授權</span>
+                                <div class="tooltip tooltip-top">
+                                    <div class="arrow"></div>
+                                    <div class="tooltip-inner">
+                                        <h6 class="tooltip-title">唉呀！這首歌目前是未授權/授權到期狀態</h6>
+                                        <ol>
+                                            <li class="tooltip-line1">我們正在全力追歌中，追到了將盡快上架，</li>
+                                            <li class="tooltip-line2">謝謝你的等待 🙏</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flipper-item layer2">
+                                <img class="charts-list-cover" src="https://i.kfs.io/album/global/noimg/fit/160x160.jpg" alt="">
+                                <span class="charts-list-desc">
+                                    <span class="charts-list-song"></span>
+                                    <span class="charts-list-artist"></span>
+                                </span>
+                                <i class="btn-playmusic"></i>
+                                <span class="charts-list-date"></span>
+
+                                <span class="charts-list-unauth">未授權</span>
+                                <div class="tooltip tooltip-top">
+                                    <div class="arrow"></div>
+                                    <div class="tooltip-inner">
+                                        <h6 class="tooltip-title"></h6>
+                                        <ol>
+                                            <li class="tooltip-line1"></li>
+                                            <li class="tooltip-line2"></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+                <li class="charts-list-row">
+                    <a href="#">
+                        <span class="charts-list-rank">3</span>
+                        <span class="charts-list-prev-rank">2</span>
+                        <div class="flipper">
+                            <div class="flipper-item layer1">
+                                <img class="charts-list-cover" src="https://i.kfs.io/album/global/146636293,0v1/fit/160x160.jpg" alt="" title="孤勇者">
+                                <span class="charts-list-desc">
+                                    <span class="charts-list-song" title="孤勇者">孤勇者</span>
+                                    <span class="charts-list-artist" title="陳奕迅">陳奕迅</span>
+                                </span>
+                                <i class="btn-playmusic"></i>
+                                <span class="charts-list-date">2021-12</span>
+
+                                <span class="charts-list-unauth">未授權</span>
+                                <div class="tooltip tooltip-top">
+                                    <div class="arrow"></div>
+                                    <div class="tooltip-inner">
+                                        <h6 class="tooltip-title">唉呀！這首歌目前是未授權/授權到期狀態</h6>
+                                        <ol>
+                                            <li class="tooltip-line1">我們正在全力追歌中，追到了將盡快上架，</li>
+                                            <li class="tooltip-line2">謝謝你的等待 🙏</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flipper-item layer2">
+                                <img class="charts-list-cover" src="https://i.kfs.io/album/global/noimg/fit/160x160.jpg" alt="">
+                                <span class="charts-list-desc">
+                                    <span class="charts-list-song"></span>
+                                    <span class="charts-list-artist"></span>
+                                </span>
+                                <i class="btn-playmusic"></i>
+                                <span class="charts-list-date"></span>
+
+                                <span class="charts-list-unauth">未授權</span>
+                                <div class="tooltip tooltip-top">
+                                    <div class="arrow"></div>
+                                    <div class="tooltip-inner">
+                                        <h6 class="tooltip-title"></h6>
+                                        <ol>
+                                            <li class="tooltip-line1"></li>
+                                            <li class="tooltip-line2"></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+                <li class="charts-list-row">
+                    <a href="#">
+                        <span class="charts-list-rank">4</span>
+                        <span class="charts-list-prev-rank">4</span>
+                        <div class="flipper">
+                            <div class="flipper-item layer1">
+                                <img class="charts-list-cover" src="https://i.kfs.io/album/global/150947691,1v1/fit/160x160.jpg" alt="" title="從前說">
+                                <span class="charts-list-desc">
+                                    <span class="charts-list-song" title="從前說">從前說</span>
+                                    <span class="charts-list-artist" title="小阿七">小阿七</span>
+                                </span>
+                                <i class="btn-playmusic"></i>
+                                <span class="charts-list-date">2021-12</span>
+
+                                <span class="charts-list-unauth">未授權</span>
+                                <div class="tooltip tooltip-top">
+                                    <div class="arrow"></div>
+                                    <div class="tooltip-inner">
+                                        <h6 class="tooltip-title">唉呀！這首歌目前是未授權/授權到期狀態</h6>
+                                        <ol>
+                                            <li class="tooltip-line1">我們正在全力追歌中，追到了將盡快上架，</li>
+                                            <li class="tooltip-line2">謝謝你的等待 🙏</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flipper-item layer2">
+                                <img class="charts-list-cover" src="https://i.kfs.io/album/global/noimg/fit/160x160.jpg" alt="">
+                                <span class="charts-list-desc">
+                                    <span class="charts-list-song"></span>
+                                    <span class="charts-list-artist"></span>
+                                </span>
+                                <i class="btn-playmusic"></i>
+                                <span class="charts-list-date"></span>
+
+                                <span class="charts-list-unauth">未授權</span>
+                                <div class="tooltip tooltip-top">
+                                    <div class="arrow"></div>
+                                    <div class="tooltip-inner">
+                                        <h6 class="tooltip-title"></h6>
+                                        <ol>
+                                            <li class="tooltip-line1"></li>
+                                            <li class="tooltip-line2"></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+                <li class="charts-list-row">
+                    <a href="#">
+                        <span class="charts-list-rank">5</span>
+                        <span class="charts-list-prev-rank">6</span>
+                        <div class="flipper">
+                            <div class="flipper-item layer1">
+                                <img class="charts-list-cover" src="https://i.kfs.io/album/global/186990142,0v1/fit/160x160.jpg" alt="" title="訣愛 (劇集《蒼蘭訣》片頭曲) (Love of Cang Lan (Theme Song from &quot;Love Between Fairy and Devil&quot;))">
+                                <span class="charts-list-desc">
+                                    <span class="charts-list-song" title="訣愛">訣愛</span>
+                                    <span class="charts-list-artist" title="詹雯婷 (Faye)">詹雯婷 (Faye)</span>
+                                </span>
+                                <i class="btn-playmusic"></i>
+                                <span class="charts-list-date">2022-08</span>
+
+                                <span class="charts-list-unauth">未授權</span>
+                                <div class="tooltip tooltip-top">
+                                    <div class="arrow"></div>
+                                    <div class="tooltip-inner">
+                                        <h6 class="tooltip-title">唉呀！這首歌目前是未授權/授權到期狀態</h6>
+                                        <ol>
+                                            <li class="tooltip-line1">我們正在全力追歌中，追到了將盡快上架，</li>
+                                            <li class="tooltip-line2">謝謝你的等待 🙏</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flipper-item layer2">
+                                <img class="charts-list-cover" src="https://i.kfs.io/album/global/noimg/fit/160x160.jpg" alt="">
+                                <span class="charts-list-desc">
+                                    <span class="charts-list-song"></span>
+                                    <span class="charts-list-artist"></span>
+                                </span>
+                                <i class="btn-playmusic"></i>
+                                <span class="charts-list-date"></span>
+
+                                <span class="charts-list-unauth">未授權</span>
+                                <div class="tooltip tooltip-top">
+                                    <div class="arrow"></div>
+                                    <div class="tooltip-inner">
+                                        <h6 class="tooltip-title"></h6>
+                                        <ol>
+                                            <li class="tooltip-line1"></li>
+                                            <li class="tooltip-line2"></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </li>*@
+
+
+                </ul>
+            </div>
             <div class="col-12 col-md-3">
                 <div class="u-sidebar-fixer" style="left: 450px;">
                     <div class="category-picker d-none d-md-block">
@@ -47,35 +407,82 @@
                             </dd>
                         </dl>
 
-                        <dl data-group="chart-type">
-                            <dt class="category-title">類型</dt>
-                            <dd class="category" data-chart-type="newrelease">
-                                <a href="#">新片</a>
+                        <dl data-group="categories">
+                            <dt class="category-title">排序</dt>
+                            <dd class="category active" data-category-id="297">
+                                <a href="#">依評分</a>
                             </dd>
+                            <dd class="category" data-category-id="390">
+                                <a href="#">依票房</a>
+                            </dd>
+                            <dd class="category" data-category-id="308">
+                                <a href="#">依評分總數</a>
+                            </dd>
+                        </dl>
+
+                        <dl data-group="chart-type">
+                            <dt class="category-title">年份</dt>
                             <dd class="category active" data-chart-type="song">
                                 <a href="#">全部</a>
+                            </dd>
+                            <dd class="category" data-chart-type="newrelease">
+                                <a href="#">新片</a>
                             </dd>
                         </dl>
 
                         <dl data-group="categories">
-                            <dt class="category-title">地區/片種</dt>
+                            <dt class="category-title">地區</dt>
                             <dd class="category active" data-category-id="297">
-                                <a href="#">華語</a>
+                                <a href="#">全部</a>
                             </dd>
                             <dd class="category" data-category-id="390">
-                                <a href="#">西洋</a>
+                                <a href="#">台灣</a>
                             </dd>
                             <dd class="category" data-category-id="308">
-                                <a href="#">日語</a>
+                                <a href="#">香港</a>
                             </dd>
                             <dd class="category" data-category-id="314">
-                                <a href="#">韓語</a>
+                                <a href="#">中國</a>
                             </dd>
                             <dd class="category" data-category-id="304">
-                                <a href="#">台語</a>
+                                <a href="#">美國</a>
+                            </dd>
+                            <dd class="category" data-category-id="304">
+                                <a href="#">英國</a>
                             </dd>
                             <dd class="category" data-category-id="320">
-                                <a href="#">粵語</a>
+                                <a href="#">日本</a>
+                            </dd>
+                            <dd class="category" data-category-id="320">
+                                <a href="#">韓國</a>
+                            </dd>
+                            <dd class="category" data-category-id="320">
+                                <a href="#">其他</a>
+                            </dd>
+                        </dl>
+
+                        <dl data-group="categories">
+                            <dt class="category-title">片種</dt>
+                            <dd class="category active" data-category-id="297">
+                                <a href="#">全部</a>
+                            </dd>
+                            <dd class="category" data-category-id="390">
+                                <a href="#">動作</a>
+                            </dd>
+                            <dd class="category" data-category-id="308">
+                                <a href="#">冒險</a>
+                            </dd>
+                            <dd class="category" data-category-id="314">
+                                <a href="#">恐怖</a>
+                            </dd>
+                            <dd class="category" data-category-id="304">
+                                <a href="#">浪漫</a>
+                            </dd>
+                            <dd class="category" data-category-id="320">
+                                <a href="#">驚悚</a>
+                            </dd>
+                            <dd class="category" data-category-id="320">
+                                <a href="#">科幻</a>
                             </dd>
                         </dl>
                     </div>
@@ -86,551 +493,7 @@
                     </p>
                 </div>
             </div>
-            <div class="col-12 col-md-9">
-                @*<div class="u-datepicker-box">
-            <input type="text" class="datepicker" id="datepicker">
-            <a href="#" class="btn-add-all" data-playlist_id="-s2Q_jVkTtxgUY4HlL" data-action="add-all" data-label="daily chart" title="加入歌單"></a>
-            <a href="#" class="btn-preview-all" data-playlist_id="-s2Q_jVkTtxgUY4HlL" data-action="preview-all" data-label="daily chart" title="全部試聽">
-                <i class="fa fa-play"></i>
-                <span class="d-none d-md-inline-block">
-                    全部試聽
-                </span>
-            </a>
-        </div>*@
 
-
-
-
-                <ul class="charts-list">
-                    <li class="charts-list-row--header d-none d-md-flex">
-                        <span class="charts-list-rank">排行</span>
-                        <span class="charts-list-poster">電影海報</span>
-                        <span class="charts-list-content">電影資訊</span>
-                        <span class="charts-list-release"> MDA評分 </span>
-                        <span class="charts-list-release"> 會員評分 </span>
-                        <span class="charts-list-release"> 上映日期 </span>
-                        <span class="charts-list-release"> 加入片單 </span>
-                    </li>
-                    <li class="charts-list-row">
-                        <a href="#">
-
-                            <span class="charts-list-rank">1</span>
-                            <div class="flipper">
-                                <div class="flipper-item layer1">
-                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/189005032,8v1/fit/160x160.jpg" alt="" title="天空沒有極限">
-                                    <span class="charts-list-desc">
-                                        <span class="charts-list-song" title="天空沒有極限">天空沒有極限</span>
-                                        <span class="charts-list-artist" title="鄧紫棋">鄧紫棋</span>
-                                    </span>
-                                    <i class="btn-playmusic"></i>
-                                    <span><i class="fa fa-star"></i>5.0</span>
-                                    <span><i class="fa fa-star-o"></i>0.0</span>
-                                    <i class="btn-playmusic"></i>
-                                    <span class="charts-list-date">2022-09</span>
-                                    <span class="charts-list-prev-rank">
-                                        <div class="wlb_ribbon" data-tconst="tt0111161" data-recordmetrics="true" style="position: relative;">
-                                            <div class="wl-ribbon standalone not-inWL" title="點擊添加到關注列表"></div>
-                                        </div>
-                                    </span>
-
-                                    <span class="charts-list-unauth">未授權</span>
-                                    <div class="tooltip tooltip-top">
-                                        <div class="arrow"></div>
-                                        <div class="tooltip-inner">
-                                            <h6 class="tooltip-title">唉呀！這首歌目前是未授權/授權到期狀態</h6>
-                                            <ol>
-                                                <li class="tooltip-line1">我們正在全力追歌中，追到了將盡快上架，</li>
-                                                <li class="tooltip-line2">謝謝你的等待 🙏</li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flipper-item layer2">
-                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/noimg/fit/160x160.jpg" alt="">
-                                    <span class="charts-list-desc">
-                                        <span class="charts-list-song"></span>
-                                        <span class="charts-list-artist"></span>
-                                    </span>
-                                    <i class="btn-playmusic"></i>
-                                    <span class="charts-list-date"></span>
-
-                                    <span class="charts-list-unauth">未授權</span>
-                                    <div class="tooltip tooltip-top">
-                                        <div class="arrow"></div>
-                                        <div class="tooltip-inner">
-                                            <h6 class="tooltip-title"></h6>
-                                            <ol>
-                                                <li class="tooltip-line1"></li>
-                                                <li class="tooltip-line2"></li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="charts-list-row">
-                        <a href="#">
-                            <span class="charts-list-rank">2</span>
-                            <span class="charts-list-prev-rank">3</span>
-                            <div class="flipper">
-                                <div class="flipper-item layer1">
-                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/192736378,1v1/fit/160x160.jpg" alt="" title="尋一個你">
-                                    <span class="charts-list-desc">
-                                        <span class="charts-list-song" title="尋一個你">尋一個你</span>
-                                        <span class="charts-list-artist" title="摩登兄弟劉宇寧">摩登兄弟劉宇寧</span>
-                                    </span>
-                                    <i class="btn-playmusic"></i>
-                                    <span class="charts-list-date">2022-09</span>
-
-                                    <span class="charts-list-unauth">未授權</span>
-                                    <div class="tooltip tooltip-top">
-                                        <div class="arrow"></div>
-                                        <div class="tooltip-inner">
-                                            <h6 class="tooltip-title">唉呀！這首歌目前是未授權/授權到期狀態</h6>
-                                            <ol>
-                                                <li class="tooltip-line1">我們正在全力追歌中，追到了將盡快上架，</li>
-                                                <li class="tooltip-line2">謝謝你的等待 🙏</li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flipper-item layer2">
-                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/noimg/fit/160x160.jpg" alt="">
-                                    <span class="charts-list-desc">
-                                        <span class="charts-list-song"></span>
-                                        <span class="charts-list-artist"></span>
-                                    </span>
-                                    <i class="btn-playmusic"></i>
-                                    <span class="charts-list-date"></span>
-
-                                    <span class="charts-list-unauth">未授權</span>
-                                    <div class="tooltip tooltip-top">
-                                        <div class="arrow"></div>
-                                        <div class="tooltip-inner">
-                                            <h6 class="tooltip-title"></h6>
-                                            <ol>
-                                                <li class="tooltip-line1"></li>
-                                                <li class="tooltip-line2"></li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="charts-list-row">
-                        <a href="#">
-                            <span class="charts-list-rank">3</span>
-                            <span class="charts-list-prev-rank">2</span>
-                            <div class="flipper">
-                                <div class="flipper-item layer1">
-                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/146636293,0v1/fit/160x160.jpg" alt="" title="孤勇者">
-                                    <span class="charts-list-desc">
-                                        <span class="charts-list-song" title="孤勇者">孤勇者</span>
-                                        <span class="charts-list-artist" title="陳奕迅">陳奕迅</span>
-                                    </span>
-                                    <i class="btn-playmusic"></i>
-                                    <span class="charts-list-date">2021-12</span>
-
-                                    <span class="charts-list-unauth">未授權</span>
-                                    <div class="tooltip tooltip-top">
-                                        <div class="arrow"></div>
-                                        <div class="tooltip-inner">
-                                            <h6 class="tooltip-title">唉呀！這首歌目前是未授權/授權到期狀態</h6>
-                                            <ol>
-                                                <li class="tooltip-line1">我們正在全力追歌中，追到了將盡快上架，</li>
-                                                <li class="tooltip-line2">謝謝你的等待 🙏</li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flipper-item layer2">
-                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/noimg/fit/160x160.jpg" alt="">
-                                    <span class="charts-list-desc">
-                                        <span class="charts-list-song"></span>
-                                        <span class="charts-list-artist"></span>
-                                    </span>
-                                    <i class="btn-playmusic"></i>
-                                    <span class="charts-list-date"></span>
-
-                                    <span class="charts-list-unauth">未授權</span>
-                                    <div class="tooltip tooltip-top">
-                                        <div class="arrow"></div>
-                                        <div class="tooltip-inner">
-                                            <h6 class="tooltip-title"></h6>
-                                            <ol>
-                                                <li class="tooltip-line1"></li>
-                                                <li class="tooltip-line2"></li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="charts-list-row">
-                        <a href="#">
-                            <span class="charts-list-rank">4</span>
-                            <span class="charts-list-prev-rank">4</span>
-                            <div class="flipper">
-                                <div class="flipper-item layer1">
-                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/150947691,1v1/fit/160x160.jpg" alt="" title="從前說">
-                                    <span class="charts-list-desc">
-                                        <span class="charts-list-song" title="從前說">從前說</span>
-                                        <span class="charts-list-artist" title="小阿七">小阿七</span>
-                                    </span>
-                                    <i class="btn-playmusic"></i>
-                                    <span class="charts-list-date">2021-12</span>
-
-                                    <span class="charts-list-unauth">未授權</span>
-                                    <div class="tooltip tooltip-top">
-                                        <div class="arrow"></div>
-                                        <div class="tooltip-inner">
-                                            <h6 class="tooltip-title">唉呀！這首歌目前是未授權/授權到期狀態</h6>
-                                            <ol>
-                                                <li class="tooltip-line1">我們正在全力追歌中，追到了將盡快上架，</li>
-                                                <li class="tooltip-line2">謝謝你的等待 🙏</li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flipper-item layer2">
-                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/noimg/fit/160x160.jpg" alt="">
-                                    <span class="charts-list-desc">
-                                        <span class="charts-list-song"></span>
-                                        <span class="charts-list-artist"></span>
-                                    </span>
-                                    <i class="btn-playmusic"></i>
-                                    <span class="charts-list-date"></span>
-
-                                    <span class="charts-list-unauth">未授權</span>
-                                    <div class="tooltip tooltip-top">
-                                        <div class="arrow"></div>
-                                        <div class="tooltip-inner">
-                                            <h6 class="tooltip-title"></h6>
-                                            <ol>
-                                                <li class="tooltip-line1"></li>
-                                                <li class="tooltip-line2"></li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="charts-list-row">
-                        <a href="#">
-                            <span class="charts-list-rank">5</span>
-                            <span class="charts-list-prev-rank">6</span>
-                            <div class="flipper">
-                                <div class="flipper-item layer1">
-                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/186990142,0v1/fit/160x160.jpg" alt="" title="訣愛 (劇集《蒼蘭訣》片頭曲) (Love of Cang Lan (Theme Song from &quot;Love Between Fairy and Devil&quot;))">
-                                    <span class="charts-list-desc">
-                                        <span class="charts-list-song" title="訣愛">訣愛</span>
-                                        <span class="charts-list-artist" title="詹雯婷 (Faye)">詹雯婷 (Faye)</span>
-                                    </span>
-                                    <i class="btn-playmusic"></i>
-                                    <span class="charts-list-date">2022-08</span>
-
-                                    <span class="charts-list-unauth">未授權</span>
-                                    <div class="tooltip tooltip-top">
-                                        <div class="arrow"></div>
-                                        <div class="tooltip-inner">
-                                            <h6 class="tooltip-title">唉呀！這首歌目前是未授權/授權到期狀態</h6>
-                                            <ol>
-                                                <li class="tooltip-line1">我們正在全力追歌中，追到了將盡快上架，</li>
-                                                <li class="tooltip-line2">謝謝你的等待 🙏</li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flipper-item layer2">
-                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/noimg/fit/160x160.jpg" alt="">
-                                    <span class="charts-list-desc">
-                                        <span class="charts-list-song"></span>
-                                        <span class="charts-list-artist"></span>
-                                    </span>
-                                    <i class="btn-playmusic"></i>
-                                    <span class="charts-list-date"></span>
-
-                                    <span class="charts-list-unauth">未授權</span>
-                                    <div class="tooltip tooltip-top">
-                                        <div class="arrow"></div>
-                                        <div class="tooltip-inner">
-                                            <h6 class="tooltip-title"></h6>
-                                            <ol>
-                                                <li class="tooltip-line1"></li>
-                                                <li class="tooltip-line2"></li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="charts-list-row">
-                        <a href="#">
-                            <span class="charts-list-rank">6</span>
-                            <span class="charts-list-prev-rank">5</span>
-                            <div class="flipper">
-                                <div class="flipper-item layer1">
-                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/142042170,2v1/fit/160x160.jpg" alt="" title="如果可以 (Red Scarf) - 電影&quot;月老&quot;主題曲">
-                                    <span class="charts-list-desc">
-                                        <span class="charts-list-song" title="如果可以">如果可以</span>
-                                        <span class="charts-list-artist" title="韋禮安">韋禮安</span>
-                                    </span>
-                                    <i class="btn-playmusic"></i>
-                                    <span class="charts-list-date">2021-11</span>
-
-                                    <span class="charts-list-unauth">未授權</span>
-                                    <div class="tooltip tooltip-top">
-                                        <div class="arrow"></div>
-                                        <div class="tooltip-inner">
-                                            <h6 class="tooltip-title">唉呀！這首歌目前是未授權/授權到期狀態</h6>
-                                            <ol>
-                                                <li class="tooltip-line1">我們正在全力追歌中，追到了將盡快上架，</li>
-                                                <li class="tooltip-line2">謝謝你的等待 🙏</li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flipper-item layer2">
-                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/noimg/fit/160x160.jpg" alt="">
-                                    <span class="charts-list-desc">
-                                        <span class="charts-list-song"></span>
-                                        <span class="charts-list-artist"></span>
-                                    </span>
-                                    <i class="btn-playmusic"></i>
-                                    <span class="charts-list-date"></span>
-
-                                    <span class="charts-list-unauth">未授權</span>
-                                    <div class="tooltip tooltip-top">
-                                        <div class="arrow"></div>
-                                        <div class="tooltip-inner">
-                                            <h6 class="tooltip-title"></h6>
-                                            <ol>
-                                                <li class="tooltip-line1"></li>
-                                                <li class="tooltip-line2"></li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="charts-list-row">
-                        <a href="#">
-                            <span class="charts-list-rank">7</span>
-                            <span class="charts-list-prev-rank">8</span>
-                            <div class="flipper">
-                                <div class="flipper-item layer1">
-                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/192547067,1v1/fit/160x160.jpg" alt="" title="女字旁 - 《台北女子圖鑑》戲劇片尾曲">
-                                    <span class="charts-list-desc">
-                                        <span class="charts-list-song" title="女字旁">女字旁</span>
-                                        <span class="charts-list-artist" title="丁噹">丁噹</span>
-                                    </span>
-                                    <i class="btn-playmusic"></i>
-                                    <span class="charts-list-date">2022-09</span>
-
-                                    <span class="charts-list-unauth">未授權</span>
-                                    <div class="tooltip tooltip-top">
-                                        <div class="arrow"></div>
-                                        <div class="tooltip-inner">
-                                            <h6 class="tooltip-title">唉呀！這首歌目前是未授權/授權到期狀態</h6>
-                                            <ol>
-                                                <li class="tooltip-line1">我們正在全力追歌中，追到了將盡快上架，</li>
-                                                <li class="tooltip-line2">謝謝你的等待 🙏</li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flipper-item layer2">
-                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/noimg/fit/160x160.jpg" alt="">
-                                    <span class="charts-list-desc">
-                                        <span class="charts-list-song"></span>
-                                        <span class="charts-list-artist"></span>
-                                    </span>
-                                    <i class="btn-playmusic"></i>
-                                    <span class="charts-list-date"></span>
-
-                                    <span class="charts-list-unauth">未授權</span>
-                                    <div class="tooltip tooltip-top">
-                                        <div class="arrow"></div>
-                                        <div class="tooltip-inner">
-                                            <h6 class="tooltip-title"></h6>
-                                            <ol>
-                                                <li class="tooltip-line1"></li>
-                                                <li class="tooltip-line2"></li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="charts-list-row">
-                        <a href="#">
-                            <span class="charts-list-rank">8</span>
-                            <span class="charts-list-prev-rank">7</span>
-                            <div class="flipper">
-                                <div class="flipper-item layer1">
-                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/183086083,3v1/fit/160x160.jpg" alt="" title="最後一堂課 (Graduation) - 《媽，別鬧了！》影集片尾曲">
-                                    <span class="charts-list-desc">
-                                        <span class="charts-list-song" title="最後一堂課">最後一堂課</span>
-                                        <span class="charts-list-artist" title="Eric 周興哲">Eric 周興哲</span>
-                                    </span>
-                                    <i class="btn-playmusic"></i>
-                                    <span class="charts-list-date">2022-07</span>
-
-                                    <span class="charts-list-unauth">未授權</span>
-                                    <div class="tooltip tooltip-top">
-                                        <div class="arrow"></div>
-                                        <div class="tooltip-inner">
-                                            <h6 class="tooltip-title">唉呀！這首歌目前是未授權/授權到期狀態</h6>
-                                            <ol>
-                                                <li class="tooltip-line1">我們正在全力追歌中，追到了將盡快上架，</li>
-                                                <li class="tooltip-line2">謝謝你的等待 🙏</li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flipper-item layer2">
-                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/noimg/fit/160x160.jpg" alt="">
-                                    <span class="charts-list-desc">
-                                        <span class="charts-list-song"></span>
-                                        <span class="charts-list-artist"></span>
-                                    </span>
-                                    <i class="btn-playmusic"></i>
-                                    <span class="charts-list-date"></span>
-
-                                    <span class="charts-list-unauth">未授權</span>
-                                    <div class="tooltip tooltip-top">
-                                        <div class="arrow"></div>
-                                        <div class="tooltip-inner">
-                                            <h6 class="tooltip-title"></h6>
-                                            <ol>
-                                                <li class="tooltip-line1"></li>
-                                                <li class="tooltip-line2"></li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="charts-list-row">
-                        <a href="#">
-                            <span class="charts-list-rank">9</span>
-                            <span class="charts-list-prev-rank">12</span>
-                            <div class="flipper">
-                                <div class="flipper-item layer1">
-                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/189005032,8v1/fit/160x160.jpg" alt="" title="你不是第一個離開的人">
-                                    <span class="charts-list-desc">
-                                        <span class="charts-list-song" title="你不是第一個離開的人">你不是第一個離開的人</span>
-                                        <span class="charts-list-artist" title="鄧紫棋">鄧紫棋</span>
-                                    </span>
-                                    <i class="btn-playmusic"></i>
-                                    <span class="charts-list-date">2022-09</span>
-
-                                    <span class="charts-list-unauth">未授權</span>
-                                    <div class="tooltip tooltip-top">
-                                        <div class="arrow"></div>
-                                        <div class="tooltip-inner">
-                                            <h6 class="tooltip-title">唉呀！這首歌目前是未授權/授權到期狀態</h6>
-                                            <ol>
-                                                <li class="tooltip-line1">我們正在全力追歌中，追到了將盡快上架，</li>
-                                                <li class="tooltip-line2">謝謝你的等待 🙏</li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flipper-item layer2">
-                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/noimg/fit/160x160.jpg" alt="">
-                                    <span class="charts-list-desc">
-                                        <span class="charts-list-song"></span>
-                                        <span class="charts-list-artist"></span>
-                                    </span>
-                                    <i class="btn-playmusic"></i>
-                                    <span class="charts-list-date"></span>
-
-                                    <span class="charts-list-unauth">未授權</span>
-                                    <div class="tooltip tooltip-top">
-                                        <div class="arrow"></div>
-                                        <div class="tooltip-inner">
-                                            <h6 class="tooltip-title"></h6>
-                                            <ol>
-                                                <li class="tooltip-line1"></li>
-                                                <li class="tooltip-line2"></li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="charts-list-row">
-                        <a href="#">
-                            <span class="charts-list-rank">10</span>
-                            <span class="charts-list-prev-rank">9</span>
-                            <div class="flipper">
-                                <div class="flipper-item layer1">
-                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/146808762,0v1/fit/160x160.jpg" alt="" title="閣愛妳一擺 (Love You One More Time)">
-                                    <span class="charts-list-desc">
-                                        <span class="charts-list-song" title="閣愛妳一擺">閣愛妳一擺</span>
-                                        <span class="charts-list-artist" title="茄子蛋">茄子蛋</span>
-                                    </span>
-                                    <i class="btn-playmusic"></i>
-                                    <span class="charts-list-date">2021-12</span>
-
-                                    <span class="charts-list-unauth">未授權</span>
-                                    <div class="tooltip tooltip-top">
-                                        <div class="arrow"></div>
-                                        <div class="tooltip-inner">
-                                            <h6 class="tooltip-title">唉呀！這首歌目前是未授權/授權到期狀態</h6>
-                                            <ol>
-                                                <li class="tooltip-line1">我們正在全力追歌中，追到了將盡快上架，</li>
-                                                <li class="tooltip-line2">謝謝你的等待 🙏</li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flipper-item layer2">
-                                    <img class="charts-list-cover" src="https://i.kfs.io/album/global/noimg/fit/160x160.jpg" alt="">
-                                    <span class="charts-list-desc">
-                                        <span class="charts-list-song"></span>
-                                        <span class="charts-list-artist"></span>
-                                    </span>
-                                    <i class="btn-playmusic"></i>
-                                    <span class="charts-list-date"></span>
-
-                                    <span class="charts-list-unauth">未授權</span>
-                                    <div class="tooltip tooltip-top">
-                                        <div class="arrow"></div>
-                                        <div class="tooltip-inner">
-                                            <h6 class="tooltip-title"></h6>
-                                            <ol>
-                                                <li class="tooltip-line1"></li>
-                                                <li class="tooltip-line2"></li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-
-                </ul>
-            </div>
         </div>
     </div>
 </body>
