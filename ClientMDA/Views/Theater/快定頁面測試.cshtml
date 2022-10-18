@@ -1,0 +1,22 @@
+﻿@model ClientMDA.ViewModels.CTheater
+@{
+    ViewData["Title"] = "快定頁面測試";
+}
+<head>
+    <link href="~/css/Theater/電影院電影訂票用.css" rel="stylesheet" />
+    <style>
+
+        .ytp-cued-thumbnail-overlay-image {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<div>
+
+    @await Component.InvokeAsync("快速訂票", new { datas = Model })
+
+</div>
+
+<script src="~/js/Theater.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> @*footer樣式*@

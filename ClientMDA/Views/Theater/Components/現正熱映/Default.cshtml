@@ -1,0 +1,54 @@
+﻿@*@model ClientMDA.Models.電影movie*@
+@model List<ClientMDA.ViewModels.CTheater>
+
+
+
+@{
+    ViewData["Title"] = "Default";
+
+}
+
+@{
+
+
+    for (var i = 0; i < 12; i++)
+    {
+        <a href="@Url.Action("快定頁面測試", "Theater",new {id=Model[i].電影編號movieId })">
+            <div class="post-box">
+                <div class="post" style="background-image: url(https://upload.wikimedia.org/wikipedia/zh/c/c6/Let_the_Bullets_Fly_Poster.jpg), url('../../images/Theater/common/poster.png');"></div>
+                <div class="star">
+                    <div class="commonStyled__MovieStars-sc-kt5vy-3 ijuViJ ">
+                        <div class="star" style="background-image: url('../../images/Theater/star/color_star.svg');"></div>
+                        <div class="star" style="background-image: url('../../images/Theater/star/color_star.svg');"></div>
+                        <div class="star" style="background-image: url('../../images/Theater/star/color_star.svg');"></div>
+                        <div class="star" style="background-image: url('../../images/Theater/star/color_star.svg');"></div>
+                        <div class="star FaStarHalf" style="background-image: url('../../images/Theater/star/color_star.svg');"></div>
+                    </div>
+                </div>
+
+                <div class="title" title="讓子彈飛">
+                    <input type="hidden" value="@Model[i].電影編號movieId" />
+                    @Model[i].中文標題titleCht
+                </div>
+                <div class="en" title="Let the Bullets Fly">
+                    @Model[i].英文標題titleEng
+
+                </div>
+                <div class="grade">
+                    @Model[i].分級級數ratingLevel
+                </div>
+            </div>
+        </a>
+
+    }
+
+
+}
+
+<script>
+    $(".a").click(function () {
+        console.log(document.querySelector(".mov").innerHTML)
+
+    })
+</script>
+
