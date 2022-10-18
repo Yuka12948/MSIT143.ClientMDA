@@ -28,9 +28,11 @@ namespace ClientMDA.Models
         public int? 紅利點數bonus { get; set; }
         public bool 正式會員formal { get; set; }
         public int 會員權限permission { get; set; }
-        public byte[] 會員照片image { get; set; }
+        public string 會員照片image { get; set; }
         public DateTime 建立時間createdTime { get; set; }
 
+        public virtual 性別gender 性別genderNavigation { get; set; }
+        public virtual 會員權限permission 會員權限permissionNavigation { get; set; }
         public virtual ICollection<優惠明細couponList> 優惠明細couponLists { get; set; }
         public virtual ICollection<我的片單myMovieList> 我的片單myMovieLists { get; set; }
         public virtual ICollection<我的追蹤清單myFollowList> 我的追蹤清單myFollowLists { get; set; }
