@@ -11,13 +11,26 @@ namespace ClientMDA.ViewModels
     {
 
         private  電影movie _movie;
-        //private 電影分級movieRating _rating;
-        //public virtual DbSet<電影movie> 電影movies { get; set; }
-        public int FQ { get; set; }
+        private  影廳cinema _Cinema;
+        private 電影院theater _theater;
+
         public CTheater()
         {
             _movie = new 電影movie();
+            _Cinema = new 影廳cinema();
+            _theater = new 電影院theater();
         }
+        public 電影院theater theater
+        {
+            get { return _theater; }
+            set { _theater = value; }
+        }
+        public 影廳cinema Cinema
+        {
+            get { return _Cinema; }
+            set { _Cinema = value; }
+        }
+
 
         public 電影movie movie
         {
@@ -88,5 +101,35 @@ namespace ClientMDA.ViewModels
         public string 分級級數ratingLevel
         {get; set;  }
 
+        public string 影廳名稱cinemaName
+        { get; set; }
+        public int 電影院編號theaterId
+        {
+            get { return _theater.電影院編號theaterId; }
+            set { _theater.電影院編號theaterId = value; }
+        }
+        public string 廳種名稱cinemaClsName
+        {
+            get { return _Cinema.廳種名稱cinemaClsName; }
+            set { _Cinema.廳種名稱cinemaClsName = value; }
+        }
+        public string 座位資訊seatInfo
+        {
+            get { return _Cinema.座位資訊seatInfo; }
+            set { _Cinema.座位資訊seatInfo = value; }
+        }
+
+        public string 電影院名稱theaterName
+        {
+            get { return _theater.電影院名稱theaterName; }
+            set { _theater.電影院名稱theaterName = value; }
+        }
+        public string 地址address
+        {
+            get { return _theater.地址address; }
+            set { _theater.地址address = value; }
+        }
+
+        public List<string> cinemas影廳種類 { get; set; }
     }
 }

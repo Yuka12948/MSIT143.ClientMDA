@@ -1,0 +1,32 @@
+﻿@model List<ClientMDA.ViewModels.CTheater>
+@{
+    ViewData["Title"] = "Default";
+}
+@foreach (var item in Model)
+{
+<div class="cinemabox" id="ts22">
+    <div class="cinemaName">
+        @item.電影院名稱theaterName
+    </div>
+    <div class="toggleBox  sts" id="time">
+        @{
+            foreach (string q in item.cinemas影廳種類)
+            {
+                <div class="sessionBox" id="tt">
+                    <div class="version">
+                        @q
+                    </div>
+                    <div class="session">
+                        <div class="time">
+                            <span class="seats"></span>時間
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+}
+<script>
+
+</script>

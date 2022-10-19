@@ -83,6 +83,7 @@ namespace ClientMDA.Controllers
                 {
                  movie = p,
                  分級級數ratingLevel = p.電影分級編號rating.分級級數ratingLevel,
+                 
                  }).FirstOrDefault();
             return View(datas);
            
@@ -145,5 +146,75 @@ namespace ClientMDA.Controllers
 
             return ViewComponent("頁數");
         } //完工
+        public IActionResult area(string keyword)
+        {
+            List<CTheater> datas = null;
+            if (String.IsNullOrEmpty(keyword))
+            {return View();}
+            if (keyword == "北區")
+            {
+                datas = _MDA.電影院theaters.Where(p => p.地址address.Contains("基隆") ||
+                p.地址address.Contains("北市") || p.地址address.Contains("台東") ||
+                p.地址address.Contains("花蓮")
+                ).Select
+                    (i => new CTheater
+                    {
+                        theater = i,
+                        cinemas影廳種類 = this._MDA.影廳cinemas.Where(c => c.電影院編號theaterId == i.電影院編號theaterId).Select(t => t.廳種名稱cinemaClsName).ToList()
+
+                    }).ToList();
+            }
+            else if (keyword == "桃竹苗") {
+                datas = _MDA.電影院theaters.Where(p => p.地址address.Contains("桃") ||
+                p.地址address.Contains("苗") || p.地址address.Contains("竹") 
+                ).Select
+                (i => new CTheater
+                {
+                    theater = i,
+                    cinemas影廳種類 = this._MDA.影廳cinemas.Where(c => c.電影院編號theaterId == i.電影院編號theaterId).Select(t => t.廳種名稱cinemaClsName).ToList()
+
+
+                }).ToList();
+            }
+            else if (keyword == "中區")
+            {
+                datas = _MDA.電影院theaters.Where(p => p.地址address.Contains("台中") ||
+                p.地址address.Contains("雲林") 
+                ).Select
+                (i => new CTheater
+                {
+                    theater = i,
+                    cinemas影廳種類 = this._MDA.影廳cinemas.Where(c => c.電影院編號theaterId == i.電影院編號theaterId).Select(t => t.廳種名稱cinemaClsName).ToList()
+
+                }).ToList();
+            }
+            else {
+                datas = _MDA.電影院theaters.Where(p => p.地址address.Contains("高雄") ||
+                p.地址address.Contains("嘉義") || p.地址address.Contains("台南")
+                ).Select
+                (i => new CTheater
+                {
+                    theater = i,
+                    cinemas影廳種類 = this._MDA.影廳cinemas.Where(c => c.電影院編號theaterId == i.電影院編號theaterId).Select(t => t.廳種名稱cinemaClsName).ToList()
+
+                }).ToList();
+            }
+            return ViewComponent("時間",datas);
+        } //完工
+
+
+        public IActionResult TheaterID(int ID)
+        {
+           
+            List<CTheater> datas = null;
+            datas = _MDA.影廳cinemas.Where(p => p.電影院編號theaterId == ID).Select
+                (i => new CTheater
+                {
+                    Cinema = i,
+                    廳種名稱cinemaClsName=i.廳種名稱cinemaClsName
+
+                }).ToList(); 
+            return ViewComponent("廳種", datas);
+        }
     }
 }

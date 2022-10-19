@@ -11,12 +11,228 @@
         }
     </style>
 </head>
+@{
 
-<div>
+    int d = System.DateTime.Now.Day;
+    int m = System.DateTime.Now.Month;
+    <div>
+        <div class="MovieInfoWrapper--167fgjt gYTkop" style="background-color:white" id="videoID">
+            <div>
+                @await Component.InvokeAsync("快速訂票", new { datas = Model })
+            </div>
+            <div class="wrapper-title">
+                <div class="wrapper-content">
+                    <div class="movie-intro-title-wrapper">
+                        <div class="movie-intro-title choice">
+                            電影時刻
+                        </div>
+                        <div class="movie-intro-title">
+                            電影介紹
+                        </div>
+                    </div>
 
-    @await Component.InvokeAsync("快速訂票", new { datas = Model })
+                    <div class="MovieTimeWrapper--77br0i cjKQBC">
+                        <div class="wrapper">
+                            <div class="location">
+                                <span id="地區名稱" style="color:black">請選擇地區</span><svg class="icon" id="地區" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
+                                    <g>
+                                        <path d="m31.4 15.7q0 0.6-0.5 1l-10 10q-0.4 0.4-1 0.4t-1-0.4l-10-10q-0.4-0.4-0.4-1t0.4-1 1-0.4h20q0.6 0 1 0.4t0.5 1z"></path>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="locationList" style="display:none" id="地區選擇">
+                                <div class="list" id="no01">
+                                    北區
+                                </div>
+                                <div class="list" id="no02">
+                                    桃竹苗
+                                </div>
+                                <div class="list" id="no03">
+                                    中區
+                                </div>
+                                <div class="list" id="no04">
+                                    南區及離島
+                                </div>
+                            </div>
+                            <div class="datePart">
+                                <div class="dateHidden">
+                                    @for (int x = 0; x < 7; x++)
+                                    {
+                                        DateTime dateValue = DateTime.Now.Date;
+                                        Console.WriteLine((int)dateValue.DayOfWeek);
+                                        <div class="datebox">
+                                            <div class="week">
+                                                @dateValue.AddDays(x).ToString("dddd")
+                                            </div>
+                                            <div class="date">
+                                                @(d+x)
+                                            </div>
+                                            <div class="month">
+                                                @(m+"月")
+                                            </div>
+                                        </div>
+                                    }
 
-</div>
+                                </div>
+                                <div class="dateHiddenRWD">
+                                    <div class="slick-initialized slick-slider">
+                                        <div class="slick-list">
+                                            <div class="slick-track" style="opacity: 1; transform: translate3d(0px, 0px, 0px);">
+                                                <div class="slick-slide slick-active dateboxRWD" data-index="0" style="outline: none; width: 0px;" tabindex="-1">
+                                                    <div class="week">
+                                                        星期日
+                                                    </div>
+                                                    <div class="date">
+                                                        2
+                                                    </div>
+                                                    <div class="month">
+                                                        10月
+                                                    </div>
+                                                </div>
+                                                <div class="slick-slide dateboxRWD" data-index="1" style="outline: none; width: 0px;" tabindex="-1">
+                                                    <div class="week">
+                                                        星期一
+                                                    </div>
+                                                    <div class="date">
+                                                        3
+                                                    </div>
+                                                    <div class="month">
+                                                        10月
+                                                    </div>
+                                                </div>
+                                                <div class="slick-slide dateboxRWD" data-index="2" style="outline: none; width: 0px;" tabindex="-1">
+                                                    <div class="week">
+                                                        星期二
+                                                    </div>
+                                                    <div class="date">
+                                                        4
+                                                    </div>
+                                                    <div class="month">
+                                                        10月
+                                                    </div>
+                                                </div>
+                                                <div class="slick-slide dateboxRWD" data-index="3" style="outline: none; width: 0px;" tabindex="-1">
+                                                    <div class="week">
+                                                        星期四
+                                                    </div>
+                                                    <div class="date">
+                                                        6
+                                                    </div>
+                                                    <div class="month">
+                                                        10月
+                                                    </div>
+                                                </div>
+                                                <div class="slick-slide dateboxRWD" data-index="4" style="outline: none; width: 0px;" tabindex="-1">
+                                                    <div class="week">
+                                                        星期五
+                                                    </div>
+                                                    <div class="date">
+                                                        30
+                                                    </div>
+                                                    <div class="month">
+                                                        9月
+                                                    </div>
+                                                </div>
+                                                <div class="slick-slide dateboxRWD" data-index="5" style="outline: none; width: 0px;" tabindex="-1">
+                                                    <div class="week">
+                                                        星期六
+                                                    </div>
+                                                    <div class="date">
+                                                        1
+                                                    </div>
+                                                    <div class="month">
+                                                        10月
+                                                    </div>
+                                                </div>
+                                                <div class="slick-slide dateboxRWD" data-index="6" style="outline: none; width: 0px;" tabindex="-1">
+                                                    <div class="week">
+                                                        星期三
+                                                    </div>
+                                                    <div class="date">
+                                                        5
+                                                    </div>
+                                                    <div class="month">
+                                                        10月
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tipsbox">
+                                <div class="text status">
+                                    座位狀態
+                                </div>
+                                <div style="color:white">5.</div>
+                                <div class="text">
+                                    <span></span>充足
+                                </div>
+                                <div style="color:white">5.</div>
+                                <div class="text">
+                                    <span class="seat40"></span>緊張(低於40%)
+                                </div>
+                                <div style="color:white"> 5.</div>
+                                <div class="text">
+                                    <span class="seat5"></span>告急(低於5%)
+                                </div>
+                                <img src="~/images/Theater/common/nonono.svg" class="text icon" />
 
-<script src="~/js/Theater.js"></script>
-<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> @*footer樣式*@
+                            </div>
+
+                            <div class="look">
+                                <div class="MovieTimeCinemasWrapper--h6wg7n cqralC" style="background-color:white" id="北部">
+                                    <div class="timeWrapper" id="時刻表">           
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+
+}
+<script src="~/js/Theater 改.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+@*footer樣式*@
+<script>
+    $("#地區").click(function () {
+        if (areaCH.style.display == "inline") { areaCH.style.display = "none" }
+        else
+            areaCH.style.display = "inline"
+    })
+            $("#no01").click(function () {
+             areaCH.style.display = "none"
+                document.querySelector("#地區名稱").innerHTML = "北區"
+                    var 地區 = document.querySelector("#地區名稱").innerHTML
+                    var url = "@Url.Content("~/Theater/area")"
+                    var params = `?keyword=${地區}`
+                $("#時刻表").load(url + params)
+            })
+                $("#no02").click(function () {
+                    areaCH.style.display = "none"
+                    document.querySelector("#地區名稱").innerHTML = "桃竹苗"
+                    var 地區 = document.querySelector("#地區名稱").innerHTML
+                    var url = "@Url.Content("~/Theater/area")"
+                    var params = `?keyword=${地區}`
+                    $("#時刻表").load(url + params)
+                })
+                $("#no03").click(function () {
+                     areaCH.style.display = "none"
+                     document.querySelector("#地區名稱").innerHTML = "中區"
+                     var 地區 = document.querySelector("#地區名稱").innerHTML
+                    var url = "@Url.Content("~/Theater/area")"
+                    var params = `?keyword=${地區}`
+                    $("#時刻表").load(url + params)
+                })
+                $("#no04").click(function () {
+             areaCH.style.display = "none"
+                    document.querySelector("#地區名稱").innerHTML = "南區及離島"
+                    var 地區 = document.querySelector("#地區名稱").innerHTML
+                    var url = "@Url.Content("~/Theater/area")"
+                    var params = `?keyword=${地區}`
+                    $("#時刻表").load(url + params)
+})
+</script>

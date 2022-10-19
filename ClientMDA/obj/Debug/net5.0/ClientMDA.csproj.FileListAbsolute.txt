@@ -2077,3 +2077,4 @@ C:\Users\Student\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Vi
 C:\Users\Student\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\Components\頁數\Default.cshtml.g.cs
 C:\Users\Student\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\快定頁面測試.cshtml.g.cs
 C:\Users\Student\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\測試業面.cshtml.g.cs
+C:\Users\Student\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\Components\時間\Default.cshtml.g.cs
