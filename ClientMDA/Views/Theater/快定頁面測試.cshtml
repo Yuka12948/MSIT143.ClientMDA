@@ -376,7 +376,9 @@
     })
     $(".submit").click(function () {
         if (ff) {
-            @Url.Action("")
+            var 場次 = $(".場次").val()
+            console.log(場次)
+            @*@Url.Action("~/Tciketing/SeatMap")*@
         }
         else {
             alert("請點選人數")
