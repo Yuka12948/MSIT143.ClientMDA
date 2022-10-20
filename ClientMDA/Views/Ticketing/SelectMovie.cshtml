@@ -1,13 +1,18 @@
 ﻿@{
 
 }
-
+<link rel="stylesheet" href="~/cyborg/css/fontawesome.css">
+<link href="~/assets/css/main.css" rel="stylesheet">
 <style>
     .col-md-4:hover {
         color: #6C6C6C;
-        font-size:105%;
+        font-size: 105%;
     }
 </style>
+
+<div id="preloader">
+    <div class="line"></div>
+</div>
 
 <section class="container m-auto pb-1" style="padding-top:5%">
     <div class="row mb-3 justify-content-center">
@@ -18,36 +23,35 @@
     <div class="container-sm m-auto pt-0" id="partialView">
 
     </div>
-
-
 </section>
 
-<div id="preloader">
-    <div class="line"></div>
-</div>
-<script src="~/js/bootstrap.js"></script>
-<script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="~/assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="~/assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="~/assets/vendor/aos/aos.js"></script>
-<script src="~/assets/vendor/php-email-form/validate.js"></script>
-<script src="~/assets/js/main.js"></script>
+
 <script>
-    const selectMovie = document.querySelector("#SelectMovie")
-    const selectTheater = document.querySelector("#SelectTheater")
-    const View = document.querySelector("#partialView")
+    const preloader = document.querySelector('#preloader');
+    (function ($) {
+        $(window).on('load', async function () {
+            setTimeout(() => {
+                preloader.classList.add('loaded');
+            }, 1000);
+            setTimeout(() => {
+                preloader.remove();
+            }, 2000);
+
+        });
+    })(jQuery);
 
     $('#partialView').load('@Url.Action("MoviePartialView")')
-
+    const selectMovie = document.querySelector("#SelectMovie")
+    const selectTheater = document.querySelector("#SelectTheater")
     selectTheater.addEventListener("click", () => {
-        $('#partialView').load('@Url.Action("SelectPartialView")')
-        console.log("click")
-        View.load('@Url.Action("SelectPartialView")')
+        $('#partialView').load('@Url.Action("TheaterPartialView")')
     })
 
     selectMovie.addEventListener("click", () => {
         $('#partialView').load('@Url.Action("MoviePartialView")')
-        console.log("click")
     })
 </script>
+
+<script src="~/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="~/assets/js/main.js"></script>
 

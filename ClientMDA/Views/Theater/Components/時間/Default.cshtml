@@ -39,7 +39,7 @@
                     @for (int i = 0; i < q.場次ID.Count(); i++)
                         {
                             string a =q.放映時間[i];
-                            <input type="hidden" value="@q.場次ID[i]">
+                            <input type="hidden" class="場次" value="@q.場次ID[i]">
                         <div class="time" id="playtime"  >
                             <span class="seats"></span> @a
                         </div>
