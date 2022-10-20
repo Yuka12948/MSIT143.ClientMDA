@@ -50,6 +50,11 @@ namespace ClientMDA.Controllers
             {
                 movie = p,
                 分級級數ratingLevel = p.電影分級編號rating.分級級數ratingLevel,
+                //cinemas影廳種類=this._MDA.電影圖片movieIimagesLists.Where(i=>i.電影編號movieId==p.電影編號movieId).Select(a=>new CcinemaViewMode {
+                
+                //photo=_MDA.電影圖片總表movieImages.Where(z=>z.圖片編號imageId==a.圖片編號imageId).Select(h=>h.圖片image).ToList()
+                
+                //}).ToList()
             }).ToList();
             return ViewComponent("現正熱映", datas);
         }
@@ -160,8 +165,13 @@ namespace ClientMDA.Controllers
                     (i => new CTheater
                     {
                         theater = i,
-                        cinemas影廳種類 = this._MDA.影廳cinemas.Where(c => c.電影院編號theaterId == i.電影院編號theaterId).Select(t => t.廳種名稱cinemaClsName).ToList()
-
+                        cinemas影廳種類 = _MDA.影廳cinemas.Where(c => c.電影院編號theaterId == i.電影院編號theaterId).Select(c => new CcinemaViewMode
+                        {
+                            CinemaID = c.影廳編號cinemaId,
+                            CinemaName = c.廳種名稱cinemaClsName,
+                            放映時間 = c.場次screenings.Select(s => s.放映開始時間playTime).ToList(),
+                            場次ID = c.場次screenings.Select(s => s.場次編號screeningId).ToList(),
+                        }).ToList()
                     }).ToList();
             }
             else if (keyword == "桃竹苗") {
@@ -171,8 +181,12 @@ namespace ClientMDA.Controllers
                 (i => new CTheater
                 {
                     theater = i,
-                    cinemas影廳種類 = this._MDA.影廳cinemas.Where(c => c.電影院編號theaterId == i.電影院編號theaterId).Select(t => t.廳種名稱cinemaClsName).ToList()
-
+                    cinemas影廳種類 = _MDA.影廳cinemas.Where(c => c.電影院編號theaterId == i.電影院編號theaterId).Select(c => new CcinemaViewMode
+                    {
+                        CinemaID = c.影廳編號cinemaId,
+                        CinemaName = c.廳種名稱cinemaClsName,
+                        放映時間 = c.場次screenings.Select(s => s.放映開始時間playTime).ToList(),
+                    }).ToList()
 
                 }).ToList();
             }
@@ -184,8 +198,12 @@ namespace ClientMDA.Controllers
                 (i => new CTheater
                 {
                     theater = i,
-                    cinemas影廳種類 = this._MDA.影廳cinemas.Where(c => c.電影院編號theaterId == i.電影院編號theaterId).Select(t => t.廳種名稱cinemaClsName).ToList()
-
+                    cinemas影廳種類 = _MDA.影廳cinemas.Where(c => c.電影院編號theaterId == i.電影院編號theaterId).Select(c => new CcinemaViewMode
+                    {
+                        CinemaID = c.影廳編號cinemaId,
+                        CinemaName = c.廳種名稱cinemaClsName,
+                        放映時間 = c.場次screenings.Select(s => s.放映開始時間playTime).ToList(),
+                    }).ToList()
                 }).ToList();
             }
             else {
@@ -195,26 +213,32 @@ namespace ClientMDA.Controllers
                 (i => new CTheater
                 {
                     theater = i,
-                    cinemas影廳種類 = this._MDA.影廳cinemas.Where(c => c.電影院編號theaterId == i.電影院編號theaterId).Select(t => t.廳種名稱cinemaClsName).ToList()
-
+                    cinemas影廳種類 = _MDA.影廳cinemas.Where(c => c.電影院編號theaterId == i.電影院編號theaterId).Select(c => new CcinemaViewMode
+                    {
+                        CinemaID = c.影廳編號cinemaId,
+                        CinemaName = c.廳種名稱cinemaClsName,
+                        放映時間 = c.場次screenings.Select(s => s.放映開始時間playTime).ToList(),
+                    }).ToList()
                 }).ToList();
             }
             return ViewComponent("時間",datas);
         } //完工
 
 
-        public IActionResult TheaterID(int ID)
-        {
-           
-            List<CTheater> datas = null;
-            datas = _MDA.影廳cinemas.Where(p => p.電影院編號theaterId == ID).Select
-                (i => new CTheater
-                {
-                    Cinema = i,
-                    廳種名稱cinemaClsName=i.廳種名稱cinemaClsName
 
-                }).ToList(); 
-            return ViewComponent("廳種", datas);
-        }
+
+        //public IActionResult TheaterID(int ID)
+        //{
+
+        //    List<CTheater> datas = null;
+        //    datas = _MDA.影廳cinemas.Where(p => p.電影院編號theaterId == ID).Select
+        //        (i => new CTheater
+        //        {
+        //            Cinema = i,
+        //            廳種名稱cinemaClsName=i.廳種名稱cinemaClsName
+
+        //        }).ToList(); 
+        //    return ViewComponent("廳種", datas);
+        //}
     }
 }

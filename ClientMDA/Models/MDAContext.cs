@@ -989,9 +989,7 @@ namespace ClientMDA.Models
 
                 entity.Property(e => e.上映年份releaseYear).HasColumnName("上映年份Release_Year");
 
-                entity.Property(e => e.上映日期releaseDate)
-                    .HasColumnType("date")
-                    .HasColumnName("上映日期Release_Date");
+                entity.Property(e => e.上映日期releaseDate).HasColumnName("上映日期Release_Date");
 
                 entity.Property(e => e.中文標題titleCht)
                     .HasMaxLength(50)
@@ -1020,6 +1018,8 @@ namespace ClientMDA.Models
                     .HasColumnName("評分Rate");
 
                 entity.Property(e => e.電影分級編號ratingId).HasColumnName("電影分級編號Rating_ID");
+
+                entity.Property(e => e.預告片trailer).HasColumnName("預告片Trailer");
 
                 entity.HasOne(d => d.系列編號series)
                     .WithMany(p => p.電影movies)

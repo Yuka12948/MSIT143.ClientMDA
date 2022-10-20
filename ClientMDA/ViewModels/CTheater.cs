@@ -1,4 +1,5 @@
 ﻿using ClientMDA.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,18 +14,29 @@ namespace ClientMDA.ViewModels
         private  電影movie _movie;
         private  影廳cinema _Cinema;
         private 電影院theater _theater;
-
+        private 電影圖片總表movieImage _movieImage;
         public CTheater()
         {
             _movie = new 電影movie();
             _Cinema = new 影廳cinema();
             _theater = new 電影院theater();
+            _movieImage = new 電影圖片總表movieImage();
+        }
+        public 電影圖片總表movieImage movieImage
+        {
+            get { return _movieImage; }
+            set { _movieImage = value; }
         }
         public 電影院theater theater
         {
             get { return _theater; }
             set { _theater = value; }
         }
+
+        public string 放映時間playTime { get; set; }
+
+        //public List<string> 放映開始時間playTime2 { get; set; }
+
         public 影廳cinema Cinema
         {
             get { return _Cinema; }
@@ -63,12 +75,12 @@ namespace ClientMDA.ViewModels
             get { return _movie.上映年份releaseYear; }
             set { _movie.上映年份releaseYear = value; }
         }
-        public DateTime? 上映日期releaseDate
+        public string 上映日期releaseDate
         {
             get { return _movie.上映日期releaseDate; }
             set { _movie.上映日期releaseDate = value; }
         }
-        public int 片長runtime
+        public int? 片長runtime
         {
             get { return _movie.片長runtime; }
             set { _movie.片長runtime = value; }
@@ -118,7 +130,6 @@ namespace ClientMDA.ViewModels
             get { return _Cinema.座位資訊seatInfo; }
             set { _Cinema.座位資訊seatInfo = value; }
         }
-
         public string 電影院名稱theaterName
         {
             get { return _theater.電影院名稱theaterName; }
@@ -130,6 +141,26 @@ namespace ClientMDA.ViewModels
             set { _theater.地址address = value; }
         }
 
-        public List<string> cinemas影廳種類 { get; set; }
+        public List<CcinemaViewMode> cinemas影廳種類 { get; set; }
+
+        //-------------------------------------
+        public int 圖片編號imageId
+        {
+            get { return _movieImage.圖片編號imageId; }
+            set { _movieImage.圖片編號imageId = value; }
+        }
+        public string 圖片image
+        {
+            get { return _movieImage.圖片image; }
+            set { _movieImage.圖片image = value; }
+        }
+        public int 屏蔽invisible
+        {
+            get { return _movieImage.屏蔽invisible; }
+            set { _movieImage.屏蔽invisible = value; }
+        }
+        //-------------------------------------
+        public IFormFile photo { get; set; }
+
     }
 }

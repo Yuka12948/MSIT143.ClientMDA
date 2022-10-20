@@ -9,6 +9,10 @@
         .ytp-cued-thumbnail-overlay-image {
             width: 100%;
         }
+        .iooi {
+            background-color: rgb(229, 10, 132);
+            box-shadow: rgb(0 0 0 / 50%) 0px 2px 4px 0px;
+        }
     </style>
 </head>
 @{
@@ -56,22 +60,39 @@
                             </div>
                             <div class="datePart">
                                 <div class="dateHidden">
-                                    @for (int x = 0; x < 7; x++)
+                                   @{ 
+                                       DateTime dateValue = DateTime.Now.Date;
+                                       Console.WriteLine((int)dateValue.DayOfWeek);
+                                    <div class="datebox checked">
+                                        <div class="week">
+                                            @dateValue.AddDays(0).ToString("dddd")
+                                        </div>
+                                        <div class="date">
+                                            @(d+"日")
+                                        </div>
+                                        <div class="month">
+                                            @(m + "月")
+                                        </div>
+                                    </div>
+                                       }
+                                    @for (int x = 1; x < 7; x++)
                                     {
-                                        DateTime dateValue = DateTime.Now.Date;
-                                        Console.WriteLine((int)dateValue.DayOfWeek);
+                                        DateTime date = DateTime.Now.Date;
+                                        Console.WriteLine((int)date.DayOfWeek);
                                         <div class="datebox">
                                             <div class="week">
-                                                @dateValue.AddDays(x).ToString("dddd")
+                                                @date.AddDays(x).ToString("dddd")
                                             </div>
                                             <div class="date">
-                                                @(d+x)
+                                                @(d+x+"日")
                                             </div>
                                             <div class="month">
                                                 @(m+"月")
                                             </div>
                                         </div>
                                     }
+
+
 
                                 </div>
                                 <div class="dateHiddenRWD">
@@ -181,8 +202,101 @@
                             </div>
 
                             <div class="look">
+                                <div style="display:none" class="MovieTimeChoicePeopleWrapper--80gyip cVKeVY" id="新視窗">
+                                    <div class="box">
+                                        <svg class="closeIcon" id="關閉" height="1em" preserveAspectRatio="xMidYMid meet" style="fill:white;vertical-align: middle;" viewBox="0 0 40 40" width="1em">
+                                            <g >
+                                                <path style="color: white" d="m31.2 8.5c6.4 6.3 6.4 16.7 0 23s-16.6 6.3-22.9 0-6.4-16.7 0-23 16.6-6.3 22.9 0z m-0.9 22c5.8-5.7 5.8-15.3 0-21s-15.3-5.8-21.1 0-5.8 15.3 0 21 15.3 5.8 21.1 0z m-4-18l1 0.9-6.6 6.6 6.6 6.6-1 0.9-6.5-6.6-6.6 6.6-1-0.9 6.6-6.6-6.5-6.6 0.9-0.9 6.6 6.6z"></path>
+                                            </g>
+                                        </svg>
+                                        <div class="informationbox">
+                                            <div class="info name">
+                                                <div class="infoTitle">
+                                                    片名
+                                                </div>
+                                                <div class="infoText" id="片名">
+                                                    @Model.中文標題titleCht
+                                                </div>
+                                            </div>
+                                            <div class="info cinema">
+                                                <div class="infoTitle">
+                                                    影城
+                                                </div>
+                                                <div class="infoText" id="影城">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="info">
+                                                <div class="infoTitle">
+                                                    日期
+                                                </div>
+                                                <div class="infoText time" id="日期">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="info version">
+                                                <div class="infoTitle">
+                                                    版本
+                                                </div>
+                                                <div class="infoText" id="版本">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="info last">
+                                                <div class="infoTitle">
+                                                    時間
+                                                </div>
+                                                <div class="infoText time" id="時間">
+                                                    15:35
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="people">
+                                            人數
+                                        </div>
+                                        <div class="peoplebox">
+                                            <div class="numbox">
+                                                <div class="num">
+                                                    1
+                                                </div>
+                                                <div class="num">
+                                                    2
+                                                </div>
+                                                <div class="num">
+                                                    3
+                                                </div>
+                                                <div class="num">
+                                                    4
+                                                </div>
+                                                <div class="num">
+                                                    5
+                                                </div>
+                                                <div class="num">
+                                                    6
+                                                </div>
+                                            </div>
+                                            <div class="submit">
+                                                確定
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="backClickWrapper"></div>
+                                </div>
+
+
+
                                 <div class="MovieTimeCinemasWrapper--h6wg7n cqralC" style="background-color:white" id="北部">
-                                    <div class="timeWrapper" id="時刻表">           
+                                    
+                                    
+                                    
+                                    <div class="timeWrapper" id="時刻表">
+
+
+
+
+
+
+
                                     </div>
                                 </div>
                             </div>
@@ -210,6 +324,8 @@
                     var url = "@Url.Content("~/Theater/area")"
                     var params = `?keyword=${地區}`
                 $("#時刻表").load(url + params)
+                $(".time span").attr("style", "background-color:rgb(0, 179, 65)")
+
             })
                 $("#no02").click(function () {
                     areaCH.style.display = "none"
@@ -218,6 +334,8 @@
                     var url = "@Url.Content("~/Theater/area")"
                     var params = `?keyword=${地區}`
                     $("#時刻表").load(url + params)
+                    $(".time span").attr("style", "background-color:rgb(0, 179, 65)")
+
                 })
                 $("#no03").click(function () {
                      areaCH.style.display = "none"
@@ -226,6 +344,8 @@
                     var url = "@Url.Content("~/Theater/area")"
                     var params = `?keyword=${地區}`
                     $("#時刻表").load(url + params)
+                    $(".time span").attr("style", "background-color:rgb(0, 179, 65)")
+
                 })
                 $("#no04").click(function () {
              areaCH.style.display = "none"
@@ -234,5 +354,35 @@
                     var url = "@Url.Content("~/Theater/area")"
                     var params = `?keyword=${地區}`
                     $("#時刻表").load(url + params)
-})
+                    $(".time span").attr("style", "background-color:rgb(0, 179, 65)")
+
+                })
+   let ff=false
+    $(".numbox  .num").hover(function () {
+        
+        $(this).removeClass("numChecked").siblings().removeClass("numChecked").end().addClass("numChecked");
+        },
+        function () {
+          
+            $(this).prevAll().removeClass("numChecked").end().removeClass("numChecked");
+    });
+    $(".numbox .num").click(function () {
+        $(this).removeClass("iooi").siblings().removeClass("iooi").end().addClass("iooi");
+        $(".submit").addClass("iooi")
+        ff=true
+    })
+    document.querySelector("#關閉").addEventListener("click", () => {
+        document.querySelector("#新視窗").style.display = "none"
+    })
+    $(".submit").click(function () {
+        if (ff) {
+            @Url.Action("")
+        }
+        else {
+            alert("請點選人數")
+
+        }
+    })
+
+
 </script>

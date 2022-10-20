@@ -442,4 +442,153 @@ div {
 .gYTkop .wrapper-content .movie-intro-title-wrapper .choice {
     color: rgb(0, 0, 0);
     border-bottom: 3px solid rgb(231, 0, 140);
-} 
+}
+.cVKeVY {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+}
+    .cVKeVY .box {
+        z-index: 500;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 1080px;
+        width: 90%;
+        height: 480px;
+        background-color: rgb(43, 43, 43);
+        border-radius: 2px;
+        box-shadow: rgb(0 0 0 / 50%) 0px 2px 4px 0px;
+    }
+    .cVKeVY .backClickWrapper {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .cVKeVY .box .closeIcon {
+        position: absolute;
+        right: 30px;
+        top: 30px;
+        width: 30px;
+        height: 30px;
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+        z-index: 1000;
+    }
+    .cVKeVY .box .informationbox {
+        width: 70%;
+        height: 200px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        box-sizing: border-box;
+        align-items: flex-end;
+        display: inline-flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+    }
+        .cVKeVY .box .informationbox .info {
+            max-width: 200px;
+            height: 75px;
+            border-right: 1px solid rgb(85, 85, 85);
+            box-sizing: border-box;
+            padding: 10px 25px 0px;
+        }
+            .cVKeVY .box .informationbox .info .infoTitle {
+                font-size: 12px;
+                color: rgb(173, 173, 173);
+                text-align: center;
+                height: 20px;
+                line-height: 20px;
+            }
+            .cVKeVY .box .informationbox .info .infoText {
+                font-size: 16px;
+                color: rgb(255, 255, 255);
+                text-align: center;
+                height: 36px;
+                font-weight: 300;
+                letter-spacing: 1.5px;
+            }
+            .cVKeVY .box .informationbox .info .time {
+                font-weight: 500;
+                font-size: 20px;
+            }
+            .cVKeVY .box .informationbox .info .infoText {
+                font-size: 16px;
+                color: rgb(255, 255, 255);
+                text-align: center;
+                height: 36px;
+                font-weight: 300;
+                letter-spacing: 1.5px;
+            }
+        .cVKeVY .box .informationbox .version {
+            width: 130px;
+        }
+        .cVKeVY .box .informationbox .last {
+            border: none;
+        }
+    .cVKeVY .box .people {
+        width: 100%;
+        text-align: center;
+        color: rgb(255, 255, 255);
+        position: relative;
+        top: 47%;
+        font-size: 18px;
+        font-weight: 300;
+    }
+    .cVKeVY .box .peoplebox {
+        width: 100%;
+        text-align: center;
+        position: relative;
+        top: 50%;
+        height: 115px;
+    }
+        .cVKeVY .box .peoplebox .numbox {
+            width: 390px;
+            height: 40px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: inline-flex;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+        }
+        .cVKeVY .box .peoplebox .submit {
+            cursor: pointer;
+            width: 130px;
+            height: 45px;
+            border-radius: 2px;
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgb(255, 255, 255);
+            line-height: 45px;
+            letter-spacing: 1.5px;
+            font-weight: 300;
+            border: 1px solid rgb(229, 10, 132);
+            transition: all 0.3s ease 0s;
+        }
+        .cVKeVY .box .peoplebox .numbox .num {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 20px;
+            color: rgb(255, 255, 255);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease 0s;
+        }
+
+                .cVKeVY .box .peoplebox .numbox .numChecked {
+                    background-color: rgb(229, 10, 132);
+                    box-shadow: rgb(0 0 0 / 50%) 0px 2px 4px 0px;
+                }
