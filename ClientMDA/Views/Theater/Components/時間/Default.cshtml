@@ -39,8 +39,11 @@
                     @for (int i = 0; i < q.場次ID.Count(); i++)
                         {
                             string a =q.放映時間[i];
-                            <input type="hidden" value="@q.場次ID[i]">
-                        <div class="time" id="playtime"  >
+                            
+                        <div class="time" id="playtime">
+                            <input type="hidden" class="場次" value="@q.場次ID[i]">
+                            <input type="hidden" class="電影" value="@q.場次ID[i]">
+
                             <span class="seats"></span> @a
                         </div>
 
@@ -61,7 +64,9 @@
         var i = $(".oo .cinemaName").html()
         var a = $(".kk .version").html()
         var t = $(".roddy").html()
-        console.log(t)
+        var 場次 = $(".time.roddy input").val()
+        console.log(場次)
+        //console.log(t)
         document.querySelector("#新視窗").style.display = "inline"
         document.querySelector("#影城").innerHTML=i
         document.querySelector("#日期").innerHTML = x
@@ -76,7 +81,13 @@
         function () {
 
             $(this).prevAll().removeClass("roddy").end().removeClass("roddy");
+
         });
+    $(".session .time").click(function () {
+        $(this).removeClass("iooi").siblings().removeClass("iooi").end().addClass("iooi");
+        $(".submit").addClass("iooi")
+
+    })
     $(".cinemabox").hover(function () {
 
             $(this).removeClass("oo").siblings().removeClass("oo").end().addClass("oo");

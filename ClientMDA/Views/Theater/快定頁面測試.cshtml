@@ -1,6 +1,7 @@
 ﻿@model ClientMDA.ViewModels.CTheater
 @{
     ViewData["Title"] = "快定頁面測試";
+    string urlstr = "123";
 }
 <head>
     <link href="~/css/Theater/電影院電影訂票用.css" rel="stylesheet" />
@@ -307,6 +308,11 @@
         </div>    
     </div>
 
+    <form method="post" action="~/Ticketing/SeatMap" id="submitform">
+        <input type="hidden" name="ScreenID" id="ScreenID" value="" />
+        <input type="hidden" name="Count" id="Count" value="" />
+    </form>
+
 }
 <script src="~/js/Theater 改.js"></script>
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
@@ -320,9 +326,11 @@
             $("#no01").click(function () {
              areaCH.style.display = "none"
                 document.querySelector("#地區名稱").innerHTML = "北區"
-                    var 地區 = document.querySelector("#地區名稱").innerHTML
-                    var url = "@Url.Content("~/Theater/area")"
-                    var params = `?keyword=${地區}`
+                var 地區 = document.querySelector("#地區名稱").innerHTML
+                var 電影id = $("#movidID").val() 
+                console.log(電影id)
+                var url = "@Url.Content("~/Theater/area")"
+                var params = `?keyword=${地區}&id=${parseInt(電影id)}`
                 $("#時刻表").load(url + params)
                 $(".time span").attr("style", "background-color:rgb(0, 179, 65)")
 
@@ -376,7 +384,24 @@
     })
     $(".submit").click(function () {
         if (ff) {
-            @Url.Action("")
+            var 場次 = $(".iooi input").val()
+            var 人數 = $("div .iooi").html()
+
+            screeniD.setAttribute('value', parseInt(場次))
+            Count.setAttribute('value', parseInt(人數))
+
+            let test =@urlstr;
+            console.log('para is')
+            console.log(screeniD.getAttribute('value'));
+            console.log(Count.getAttribute('value'));
+
+            form.submit();
+            console.log(場次)
+            let ToseatMapUrl = "~/Tciketing/SeatMap";
+            let ToseatParament = `?${場次}&${parseInt(人數)}`;
+            let Actionstr = ToseatMapUrl + ToseatParament;
+
+       
         }
         else {
             alert("請點選人數")
@@ -384,5 +409,8 @@
         }
     })
 
+    const form = document.getElementById('submitform');
+    const screeniD = document.getElementById('ScreenID');
+    const Count = document.getElementById('Count');
 
 </script>

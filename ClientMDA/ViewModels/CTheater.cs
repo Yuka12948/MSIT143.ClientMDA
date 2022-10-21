@@ -15,13 +15,30 @@ namespace ClientMDA.ViewModels
         private  影廳cinema _Cinema;
         private 電影院theater _theater;
         private 電影圖片總表movieImage _movieImage;
+        private 電影代碼movieCode _movieCode;
+        private 電影圖片movieIimagesList _movieIimagesList;
+        public 電影圖片movieIimagesList movieIimagesList
+        {
+            get { return _movieIimagesList; }
+            set { _movieIimagesList = value; }
+        }
+
+
         public CTheater()
         {
-            _movie = new 電影movie();
+            _movieIimagesList = new 電影圖片movieIimagesList();
+            _movieCode = new 電影代碼movieCode();
+               _movie = new 電影movie();
             _Cinema = new 影廳cinema();
             _theater = new 電影院theater();
             _movieImage = new 電影圖片總表movieImage();
         }
+        public 電影代碼movieCode movieCode
+        {
+            get { return _movieCode; }
+            set { _movieCode = value; }
+        }
+      
         public 電影圖片總表movieImage movieImage
         {
             get { return _movieImage; }
@@ -49,7 +66,12 @@ namespace ClientMDA.ViewModels
             get { return _movie; }
             set { _movie = value; }
         }
-
+        public int 電影代碼編號movieCodeId
+        {
+            get { return _movieCode.電影代碼編號movieCodeId; }
+            set { _movieCode.電影代碼編號movieCodeId = value; }
+        }
+  
         public int 電影編號movieId
         {
             get { return _movie.電影編號movieId; }
@@ -80,7 +102,7 @@ namespace ClientMDA.ViewModels
             get { return _movie.上映日期releaseDate; }
             set { _movie.上映日期releaseDate = value; }
         }
-        public int? 片長runtime
+        public int 片長runtime
         {
             get { return _movie.片長runtime; }
             set { _movie.片長runtime = value; }
@@ -109,6 +131,12 @@ namespace ClientMDA.ViewModels
         {
             get { return _movie.劇情大綱plot; }
             set { _movie.劇情大綱plot = value; }
+        }
+
+        public string 預告片trailer
+        {
+            get { return _movie.預告片trailer; }
+            set { _movie.預告片trailer = value; }
         }
         public string 分級級數ratingLevel
         {get; set;  }
@@ -149,18 +177,21 @@ namespace ClientMDA.ViewModels
             get { return _movieImage.圖片編號imageId; }
             set { _movieImage.圖片編號imageId = value; }
         }
+     
         public string 圖片image
         {
             get { return _movieImage.圖片image; }
             set { _movieImage.圖片image = value; }
         }
-        public int 屏蔽invisible
+        public int? 屏蔽invisible
         {
             get { return _movieImage.屏蔽invisible; }
             set { _movieImage.屏蔽invisible = value; }
         }
         //-------------------------------------
-        public IFormFile photo { get; set; }
 
+
+        public IFormFile photo { get; set; }
+        public List<string> MPimg{get ; set;}
     }
 }
