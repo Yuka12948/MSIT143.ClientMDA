@@ -74,12 +74,12 @@ namespace ClientMDA.Controllers
             return View();
         }
 
-        public IActionResult SeatMap(int id, int count) //==>id為場次ID count為人數
+        public IActionResult SeatMap(CScreenIDAndCountViewModel view) //==>id為場次ID count為人數
         {
-            出售座位狀態seatStatus seatStaus = this._dbContext.出售座位狀態seatStatuses.Where(ss => ss.場次編號screeningId == id).FirstOrDefault();
-            場次screening screening = this._dbContext.場次screenings.Where(s => s.場次編號screeningId == id).FirstOrDefault();
+            出售座位狀態seatStatus seatStaus = this._dbContext.出售座位狀態seatStatuses.Where(ss => ss.場次編號screeningId == view.ScreenID).FirstOrDefault();
+            場次screening screening = this._dbContext.場次screenings.Where(s => s.場次編號screeningId == view.ScreenID).FirstOrDefault();
             CSeatMaoViewModels seatview = new CSeatMaoViewModels(seatStaus);
-            seatview.seatCount選擇座位數量 = count;
+            seatview.seatCount選擇座位數量 = view.Count;
             seatview.MovieName電影名稱 = screening.電影代碼movieCodeNavigation.電影編號movie.中文標題titleCht;
             seatview.MovieID電影編號 = screening.電影代碼movieCodeNavigation.電影編號movieId;
             seatview.MovieCode電影代碼 = screening.電影代碼movieCode;

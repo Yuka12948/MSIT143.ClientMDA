@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7MF3hshaHBB25KK6aMPkBExgm8gAtiXXmVd9CkIdUK/PKS+Pj+k3ACpnX0WnFGijZ2rLlE3h3IbPR9VsAkcQ3g==",
+  "dgSpecHash": "l8AB25/995pbz7an01wAsXGwY7EfFEvo7BvjYXZYfRUKm2A3UyJlITT3nC0ww80gWIvqwA42fUbt0EZLQIwoZA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Student\\Documents\\MSIT143.ClientMDA1020\\ClientMDA\\ClientMDA.csproj",
+  "projectFilePath": "C:\\Users\\Student\\Documents\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Student\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\mailkit\\3.4.1\\mailkit.3.4.1.nupkg.sha512",

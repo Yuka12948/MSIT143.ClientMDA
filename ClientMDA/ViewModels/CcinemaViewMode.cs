@@ -14,6 +14,8 @@ namespace ClientMDA.ViewModels
         public List<int> 場次ID { get; set; }
 
         public List<string> photo { get; set; }
+        public List<string> moviename { get; set; }
+        public string 電影圖片 { get; set; }
 
     }
 }

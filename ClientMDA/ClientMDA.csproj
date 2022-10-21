@@ -11,6 +11,7 @@
     <None Remove="images\Theater\common\changepage-icon1.svg" />
     <None Remove="images\Theater\common\loading.gif" />
     <None Remove="images\Theater\common\poster.png" />
+    <None Remove="images\Theater\movieimg\44362883.jpg" />
     <None Remove="images\Theater\star\02_star.svg" />
     <None Remove="images\Theater\star\07_star.svg" />
     <None Remove="images\Theater\star\black_star.svg" />
@@ -40,6 +41,10 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="images\Theater\common\poster.png">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="images\Theater\movieimg\44362883.jpg">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
