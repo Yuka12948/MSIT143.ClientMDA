@@ -331,7 +331,7 @@ ol {
 -----------------------*/
 
 .header {
-	background: #070720;
+	background: #070720 !important;
 }
 
 .header__logo {
@@ -343,7 +343,7 @@ ol {
 	}
 
 .header__menu {
-	text-align: center;
+	text-align: center !important;
 }
 
 	.header__menu ul li {
@@ -429,7 +429,7 @@ ol {
 			}
 
 .header__right {
-	text-align: right;
+	text-align: right !important;
 	padding: 20px 0 15px;
 }
 
@@ -437,7 +437,7 @@ ol {
 		display: inline-block;
 		font-size: 18px;
 		color: #ffffff;
-		margin-right: 30px;
+		margin-right: 30px !important;
 	}
 
 		.header__right a:last-child {

@@ -8,11 +8,11 @@
         list-style-type: none;
     }
 
-    .header-nav {
+        .header-nav {
         will-change: transform;
     }
 
-    header {
+    /*header {
         height: 52px;
         position: fixed;
         top: 0;
@@ -27,7 +27,7 @@
         -webkit-transition-duration: 0.4s;
         transition-duration: 0.4s;
         z-index: 100;
-    }
+    }*/
 
         header nav {
             background-color: rgba(38, 38, 38, 0.7);
@@ -44,7 +44,7 @@
         width: 83px;
     }
 
-    .header-nav {
+        .header-nav {
         background-color: #262626;
         position: absolute;
         top: 0;
@@ -65,56 +65,56 @@
         transition-duration: 0.4s;
     }
 
-        .header-nav > li {
+    .header-nav > li {
+        position: relative;
+    }
+
+        .header-nav > li > a,
+        .header-nav > li > a:active,
+        .header-nav > li > a:visited {
+            padding: 10px 35px;
+            color: #fff;
+            display: block;
+        }
+
+        .header-nav > li span {
+            display: inline-block;
             position: relative;
         }
 
-            .header-nav > li > a,
-            .header-nav > li > a:active,
-            .header-nav > li > a:visited {
-                padding: 10px 35px;
-                color: #fff;
-                display: block;
-            }
-
-            .header-nav > li span {
-                display: inline-block;
-                position: relative;
-            }
-
-            .header-nav > li .fa-angle-down {
-                font-size: 20px;
-                margin: 0 3px;
-            }
-
-            .header-nav > li:hover > a,
-            .header-nav > li:hover .fa-angle-down {
-                color: #f2cf41;
-                text-decoration: none;
-            }
-
-            .header-nav > li:hover .header-subnav {
-                display: block;
-            }
-
-            .header-nav > li.active span::before {
-                display: block;
-                content: "";
-                background-color: #f2cf41;
-                width: 2px;
-                height: 18px;
-                position: absolute;
-                top: 50%;
-                -webkit-transform: translateY(-50%);
-                transform: translateY(-50%);
-                left: -8px;
-            }
-
-        .header-nav .header-terrnav {
-            position: absolute;
-            top: 80%;
-            left: 35px;
+        .header-nav > li .fa-angle-down {
+            font-size: 20px;
+            margin: 0 3px;
         }
+
+        .header-nav > li:hover > a,
+        .header-nav > li:hover .fa-angle-down {
+            color: #f2cf41;
+            text-decoration: none;
+        }
+
+        .header-nav > li:hover .header-subnav {
+            display: block;
+        }
+
+        .header-nav > li.active span::before {
+            display: block;
+            content: "";
+            background-color: #f2cf41;
+            width: 2px;
+            height: 18px;
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            left: -8px;
+        }
+
+    .header-nav .header-terrnav {
+        position: absolute;
+        top: 80%;
+        left: 35px;
+    }
 
     .header-subnav {
         display: none;
@@ -174,9 +174,9 @@
     }
 
     header {
-        height: 80px;
-        position: fixed;
-        top: 0;
+        /*height: 80px;*/
+        /*position: fixed;*/
+/*        top: 0;
         left: 0;
         width: 100%;
         background-color: rgba(3, 3, 3, 0.8);
@@ -185,19 +185,19 @@
         -webkit-transition-property: background-color;
         transition-property: background-color;
         -webkit-transition-duration: 0.4s;
-        transition-duration: 0.4s;
-        z-index: 100;
+        transition-duration: 0.4s;*/
+        /*z-index: 100;*/
     }
 
-        header::after {
+/*            header::after {
             display: block;
             clear: both;
             content: "";
-        }
+        }*/
 
-        header nav {
+/*            header nav {
             float: right;
-        }
+        }*/
 }
 
 @media (min-width: 760px) and (min-width: 760px) and (max-width: 1019px) {
@@ -214,7 +214,7 @@
         float: left;
     }
 
-    .header-nav {
+       .header-nav {
         display: -webkit-box;
         display: -ms-flexbox;
         display: -webkit-flex;
@@ -233,21 +233,21 @@
         align-content: center;
     }
 
-        .header-nav > li {
-            -webkit-box-flex: 1;
-            -ms-flex: 1 0 auto;
-            flex: 1 0 auto;
-            position: relative;
-        }
+    .header-nav > li {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
+        position: relative;
+    }
 
-            .header-nav > li > a,
-            .header-nav > li > a:active,
-            .header-nav > li > a:visited {
-                white-space: nowrap;
-                padding: 28px 20px;
-                color: #fff;
-                display: block;
-            }
+        .header-nav > li > a,
+        .header-nav > li > a:active,
+        .header-nav > li > a:visited {
+            white-space: nowrap;
+            padding: 28px 20px;
+            color: #fff;
+            display: block;
+        }
 }
 
 @media (min-width: 760px) and (min-width: 760px) and (max-width: 1019px) {
@@ -441,7 +441,7 @@ footer .copyright {
 @media (min-width: 0) and (max-width: 759px) {
     .footer-nav {
         display: inline-block;
-        margin-bottom: 20px;
+/*        margin-bottom: 20px;*/
     }
 }
 
@@ -454,6 +454,7 @@ footer .copyright {
 .charts-list-desc,
 .charts-list-song,
 .charts-list-artist {
+    /*width: 290px;*/
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -671,7 +672,7 @@ html[lang='zh'] .tooltip li {
 html,
 body {
     font-family: "Lucida Grande", "Lucida Sans Unicode", "Helvetica Neue", Helvetica, Arial, "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
-    background-color: #000;
+    background-color: #0b0c2a;
     width: 100vw;
     overflow-x: hidden;
 }
@@ -688,6 +689,7 @@ ul {
 
 img {
     max-width: 100%;
+    /*max-height:100%;*/
 }
 
 .page-title {
@@ -1064,6 +1066,7 @@ img {
     background: transparent url("/charts/assets/images/slash_gray.png");
     padding: 13px 20px;
     position: relative;
+    margin-bottom:10px;
 }
 
 @media (min-width: 0) and (max-width: 759px) {
@@ -1080,19 +1083,20 @@ img {
 
 #datepicker {
     line-height: 1;
-    border-radius: 20px;
+    border-radius: 4px;
     border: 0;
     color: #787878;
     font-size: 14px;
     font-weight: normal;
-    font-family: Arial;
+    /*font-family: Arial;*/
     position: relative;
     width: 235px;
-    height: 30px;
-    padding-left: 40px;
-    background: #fff url("/charts/assets/images/icon_calendar.svg") no-repeat 10px center;
-    background-size: 24px auto;
+    height: 36px;
+    padding-left: 10px;
+    /*background: #fff url("/charts/assets/images/icon_calendar.svg") no-repeat 10px center;
+    background-size: 24px auto;*/
     outline: none;
+    margin-right:3px;
 }
 
 #toggle-chart-note-mobile {
@@ -1107,7 +1111,7 @@ img {
 #close-chart-note:visited {
     float: right;
     color: #fff;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
     margin-right: 10px;
 }
 
@@ -1325,55 +1329,111 @@ img {
         font-family: "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
     }
 
-    .category-picker dl {
+/*    .category-picker dl {
         margin-bottom: 30px;
-    }
+    }*/
 
     .category-title {
-        font-size: 14px;
+        font-size: 18px;
         font-weight: 600;
         color: #999999;
-        margin: 0 0 10px;
+/*        margin: 0 0 10px;*/
     }
 
     .category {
         display: inline-block;
+        width: 100px;
+        text-align: center;
+        vertical-align: middle;
+        /*margin: 0 0 10px 0;
+        padding: 0 20px 0 20px;*/
     }
 
-        .category a,
-        .category a:link,
-        .category a:visited,
-        .category a:active {
-            display: block;
-            font-size: 12px;
-            line-height: 1.5;
-            letter-spacing: 0.3px;
-            border-radius: 2px;
-            color: #fff;
-            background-color: #2a2a2a;
-            border: 1px solid #2a2a2a;
-            padding: 6px 15px;
-            margin-right: 10px;
-            white-space: nowrap;
+    /*----------------------------篩選器--------------------------*/
+
+    .a_rank1 .a_rank2{
+
+    }
+
+        .category a {
+            padding: 4px 0 4px 0 !important;
         }
 
-            .category a:hover {
-                text-decoration: none;
+            .category a,
+            .category a:link,
+            .category a:visited,
+            .category a:active {
+                display: block;
+                font-size: 14px;
+                line-height: 1.5;
+                letter-spacing: 0.3px;
+                border-radius: 2px;
                 color: #fff;
-                background-color: #ffd200;
+                background-color: #2a2a2a;
+                border: 1px solid #2a2a2a;
+                padding: 6px 15px;
+                margin-right: 10px;
+                white-space: nowrap;
+                height: 30px;
+
             }
+
+        .category a:hover {
+            text-decoration: none;
+            color: black;
+            background-color: #ffd200;
+        }
+
+        .category .a_rank1:focus {
+            color: #ffd200;
+            background-color: transparent;
+            border: 1px solid #ffd200;
+        }
+
+        .category .a_rank2:focus {
+            color: #ffd200;
+            background-color: transparent;
+            border: 1px solid #ffd200;
+        }
+
+
+        .category .a_rank3:focus {
+            color: #ffd200;
+            background-color: transparent;
+            border: 1px solid #ffd200;
+        }
+
+        .category .a_rank4:focus {
+            color: #ffd200;
+            background-color: transparent;
+            border: 1px solid #ffd200;
+        }
+
+        .category .a_rank5:focus {
+            color: #ffd200;
+            background-color: transparent;
+            border: 1px solid #ffd200;
+        }
 
         .category.active a {
             color: #ffd200;
             background-color: transparent;
             border: 1px solid #ffd200;
         }
+
+    /*----------------------------篩選器結束--------------------------*/
 }
 
 .clearfix::after {
     display: block;
     clear: both;
     content: "";
+}
+
+.charts-list span { /*排名樣式*/
+/*    font-family: 'Kanit', sans-serif !important;
+*/    font-size: 16px;
+    padding: 0 15px 0 15px;
 }
 
 .charts-list-desc,
@@ -1452,7 +1512,7 @@ img {
     align-items: center;
 }
 
-    .charts-list-row > a {
+    .charts-list-row > .divRow {
         display: -webkit-box;
         display: -ms-flexbox;
         display: -webkit-flex;
@@ -1466,37 +1526,52 @@ img {
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
-        height: 110px;
+        height: 500px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     }
 
-        .charts-list-row > a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            -webkit-box-shadow: 0 1px 0 0 #ffd200;
-            box-shadow: 0 1px 0 0 #ffd200;
+    .charts-list-row > .divRow:hover {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        -webkit-box-shadow: 0 1px 0 0 #ffd200;
+        box-shadow: 0 1px 0 0 #ffd200;
+    }
+
+
+        .charts-list-row > .divRow .charts-list-song a { /*排名整列 電影中文標題*/
+            color: #fff;
+        }
+        /*.charts-list-row > .divRow:hover .charts-list-song {
+            color: #ffd200;
+        }*/
+            .charts-list-row > .divRow:hover .charts-list-song a { /*排名滑入整列 電影中文標題*/
+                color: #ffd200;
+            }
+
+        .charts-list-row > .divRow .charts-list-artist a { /*排名整列 電影英文標題*/
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .charts-list-row > .divRow:hover .charts-list-artist {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none !important;
         }
 
-            .charts-list-row > a:hover .charts-list-song {
-                color: #fff;
-            }
-
-            .charts-list-row > a:hover .charts-list-artist {
-                color: rgba(255, 255, 255, 0.7);
-            }
-
-            .charts-list-row > a:hover .unauth .tooltip {
-                display: block;
-            }
+        .charts-list-row > .divRow:hover .charts-list-artist a { /*排名滑入整列 電影英文標題*/
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none !important;
+        }
+        .charts-list-row > .divRow:hover .unauth .tooltip {
+            display: block;
+        }
 
 @media (min-width: 0) and (max-width: 759px) {
-    .charts-list-row > a {
-        height: 70px;
+    .charts-list-row > .divRow {
+        height: 90px;
     }
 }
 
 @media (min-width: 760px) {
-    .charts-list-row > a {
-        height: 110px;
+    .charts-list-row > .divRow {
+        height: 160px;
     }
 }
 
@@ -1563,8 +1638,12 @@ img {
     -webkit-box-flex: 0;
     -ms-flex: 0 1 auto;
     flex: 0 1 auto;
-    color: #ffd200;
+    color: #ffd200 !important;
     font-family: "Kanit";
+}
+
+a .charts-list-rank {
+    font-size: 30px !important;
 }
 
 @media (min-width: 0) and (max-width: 759px) {
@@ -1576,14 +1655,22 @@ img {
 
 @media (min-width: 760px) {
     .charts-list-rank {
-        font-size: 36px;
-        width: 83px;
-        padding-left: 8px;
+        font-size: 36px ;
+        width: 75px; /*排行欄位*/
+        text-align: center;
+        /*padding-left: 8px;*/
     }
+
+    .divRow .charts-list-rank{
+        font-size: 36px !important;
+    }
+
+
+
 }
 
 .charts-list-prev-rank {
-    -webkit-box-flex: 0;
+    /*    -webkit-box-flex: 0;
     -ms-flex: 0 1 auto;
     flex: 0 1 auto;
     width: 60px;
@@ -1591,7 +1678,7 @@ img {
     font-size: 18px;
     font-family: 'Kanit', sans-serif;
     font-weight: bold;
-    padding-right:20px;
+    padding-left: 30px;*/
 }
 
 @media (min-width: 0) and (max-width: 1019px) {
@@ -1620,6 +1707,7 @@ img {
     -ms-flex-align: center;
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
 }
 
     .charts-list-row--header .charts-list-rank,
@@ -1633,23 +1721,35 @@ img {
         line-height: 1.29;
         letter-spacing: 0.4px;
         color: #fff;
-        margin:15px;
+        padding: 15px;
     }
 
         .charts-list-row--header .charts-list-rank:lang(tc),
         .charts-list-row--header .charts-list-prev-rank:lang(tc),
         .charts-list-row--header .charts-list-release:lang(tc) {
             font-family: "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
-            padding: 15px;
         }
 
     .charts-list-row--header .charts-list-rank {
-        width: 60px;
-        padding: 0 10px 0 0;
+        width: 75px; /*排行欄位標頭*/
+        font-size: 18px;
+        font-weight:900;
+        /*padding: 0 20px 0 0;*/
     }
 
     .charts-list-row--header .charts-list-prev-rank {
-        width: 60px;
+        width: 75px;
+    }
+
+
+    .charts-list-row--header .charts-list-poster {
+        width: 100px; /*電影海報欄位標頭*/
+        font-size: 16px;
+    }
+
+    .charts-list-row--header .charts-list-movietitle {
+        width: 120px; /*電影標題欄位標頭*/
+        font-size: 16px;
     }
 
     .charts-list-row--header .charts-list-content {
@@ -1658,7 +1758,24 @@ img {
         flex: 1 1 auto;
     }
 
-.charts-list-cover {
+.charts-list-MDArate {
+    width: 100px;
+}
+.charts-list-MemRate {
+    width: 100px;
+}
+.charts-list-movieDate {
+    width: 150px;
+}
+.charts-list-addList {
+    width: 100px;
+}
+
+/*    span charts-list-MDArate .charts-list-MemRate .charts-list-movieDate .charts-list-addList{
+        width:90px !important;
+        margin:0 2px 0 2px;
+    }*/
+.charts-list-cover { /*電影海報欄位*/
     -webkit-box-flex: 0;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
@@ -1669,14 +1786,14 @@ img {
 @media (min-width: 0) and (max-width: 759px) {
     .charts-list-cover {
         width: 50px;
-        height: 50px;
+        /*height: 50px;*/
     }
 }
 
 @media (min-width: 760px) {
     .charts-list-cover {
-        width: 90px;
-        height: 90px;
+        width: 100px;
+        /*height: 90px;*/
     }
 }
 
@@ -1685,12 +1802,12 @@ img {
     filter: brightness(1.2);
 }
 
-.charts-list-desc {
+.charts-list-desc { /*電影海報+資訊欄位*/
     min-width: 0;
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    padding-left: 15px;
+    flex: 1 1 /*auto*/; /*調整中*/
+    padding-left: 30px;
 }
 
     .charts-list-desc:lang(tc) {
@@ -1702,6 +1819,7 @@ img {
     font-weight: 600;
     line-height: 1.2;
     color: #fff;
+
 }
 
 @media (min-width: 0) and (max-width: 759px) {
@@ -1713,13 +1831,13 @@ img {
 
 @media (min-width: 760px) {
     .charts-list-song {
-        font-size: 18px;
+        font-size: 18px !important;
         margin: 0 0 3px 0;
     }
 }
 
 .charts-list-song:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .charts-list-artist {
@@ -1727,7 +1845,7 @@ img {
     font-weight: 600;
     line-height: 1.5;
     letter-spacing: 0.3px;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.7) !important;
 }
 
 @media (min-width: 0) and (max-width: 759px) {
@@ -1738,7 +1856,7 @@ img {
 
 @media (min-width: 760px) {
     .charts-list-artist {
-        font-size: 14px;
+        font-size: 14px !important;
     }
 }
 
@@ -1746,14 +1864,16 @@ img {
     text-decoration: underline;
 }
 
-.charts-list-date {
+.charts-list-date { /*上映日期*/
+    width: 150px;
     -webkit-box-flex: 0;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
     font-size: 12px;
-    color: #a1a1a1;
-    padding-left: 12px;
+    color: #a1a1a1 !important;
     white-space: nowrap;
+    padding: 0 !important;
+    text-align: center !important;
 }
 
     .charts-list-date:lang(tc) {
@@ -1792,7 +1912,7 @@ img {
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
-        width: 100%;
+        /*width: 100%;*/
         height: 100%;
     }
 
@@ -1820,6 +1940,20 @@ img {
         /* for IE 9 */
     }
 
+    .flipper .charts-list-span {
+        width: 100px;
+        text-align: center;
+    }
+
+
+.charts-list-prev-rank { /*加入片單*/
+    width: 100px;
+}
+
+    .charts-list-prev-rank .wlb_ribbon {
+        margin: 0 auto 0 auto;
+    }
+
 .clearfix::after {
     display: block;
     clear: both;
@@ -1829,6 +1963,7 @@ img {
 .charts-list-desc,
 .charts-list-song,
 .charts-list-artist {
+    width: 470px; /*排行-電影資訊間距*/
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1891,6 +2026,233 @@ img {
         top: 80px !important;
     }
 
-body {
-    padding-top: 0;
+/*body {
+    padding-top: 100px;
+}*/
+
+.u-sidebar-fixer { /*篩選器位置*/
+    margin: 30px 0 0 -15px;
 }
+
+.charts-list { /*排行榜位置*/
+    margin-left:-15px;
+}
+/*評分*/
+/*.flipper span i .far fa-star .fas fa-star-o {
+    padding-right:5px;
+}*/
+
+/*------------------------關注-----------*/
+.wlb_ribbon.new div.wl-ribbon.standalone {
+    cursor: pointer;
+    height: 24px;
+    width: 24px
+}
+
+.wlb_ribbon.new div.wl-ribbon.standalone.spinner {
+    background-image: none;
+    height: 13px;
+    padding: 5px;
+    text-align: center;
+    width: 13px
+}
+
+.wlb_ribbon.new div.wl-ribbon.standalone.inWL {
+    background: url(/images/S/sash/ygol-UqjaasgCaR.png) no-repeat center center;
+    background-size: cover
+}
+
+.wlb_ribbon.new div.wl-ribbon.standalone.not-inWL {
+    background: url(/images/S/sash/QbXbpqdR4ZUWxq$.png) no-repeat center center;
+    background-size: cover
+}
+
+    .wlb_ribbon.new div.wl-ribbon.standalone.not-inWL:hover {
+        background: url(/images/S/sash/cgq3$ss$-ZQ2bqt.png) no-repeat center center;
+        background-size: cover
+    }
+
+.wl-ribbon {
+    background-repeat: no-repeat;
+    cursor: pointer
+}
+
+    .wl-ribbon.poster {
+        position: absolute
+    }
+
+    .wl-ribbon.spinner {
+        text-align: center
+    }
+
+    .wl-ribbon > span.spinner {
+        background: url(/images/S/sash/VPO7nZEEVf68gfL.gif) no-repeat center center;
+        height: 13px;
+        padding: 5px;
+        width: 13px
+    }
+
+    .wl-ribbon.poster, .wl-ribbon.poster.retina {
+        background-image: url(/images/S/sash/732C-8zJzQ9xx1C.png);
+        height: 38px;
+        left: 2px;
+        top: 0;
+        width: 38px
+    }
+
+        .wl-ribbon.poster.inWL, .wl-ribbon.poster.retina.inWL {
+            background-position: -2px 0
+        }
+
+            .wl-ribbon.poster.inWL:hover, .wl-ribbon.poster.retina.inWL:hover {
+                background-position: -2px -42px
+            }
+
+        .wl-ribbon.poster.not-inWL, .wl-ribbon.poster.retina.not-inWL {
+            background-position: -44px 0
+        }
+
+            .wl-ribbon.poster.not-inWL:hover, .wl-ribbon.poster.retina.not-inWL:hover {
+                background-position: -44px -42px
+            }
+
+        .wl-ribbon.poster.spinner, .wl-ribbon.poster.retina.spinner {
+            background-position: -86px 0;
+            padding-top: 5px
+        }
+
+        .wl-ribbon.poster.touch {
+            background-image: url(https://m.media-amazon.com/images/S/sash/INbcM2-CU0AKIbe.png);
+            height: 30px;
+            left: 10px;
+            top: 0;
+            width: 39px
+        }
+
+            .wl-ribbon.poster.touch.inWL {
+                background-position: -4px -31px
+            }
+
+                .wl-ribbon.poster.touch.inWL:hover {
+                    background-position: -4px -1px
+                }
+
+            .wl-ribbon.poster.touch.not-inWL {
+                background-position: -34px -1px
+            }
+
+                .wl-ribbon.poster.touch.not-inWL:hover {
+                    background-position: -34px -31px
+                }
+
+            .wl-ribbon.poster.touch.spinner {
+                background-position: -64px -1px;
+                padding-right: 9px;
+                padding-top: 0
+            }
+
+            .wl-ribbon.poster.touch.retina {
+                background-image: url(/images/S/sash/EURxm$TDabJwIr$.png);
+                background-size: 100px 70px;
+                height: 34px;
+                left: 0;
+                top: -1px;
+                width: 34px
+            }
+
+                .wl-ribbon.poster.touch.retina.inWL {
+                    background-position: 2px 0
+                }
+
+                    .wl-ribbon.poster.touch.retina.inWL:hover {
+                        background-position: 2px 0
+                    }
+
+                .wl-ribbon.poster.touch.retina.not-inWL {
+                    background-position: -31px 0
+                }
+
+                    .wl-ribbon.poster.touch.retina.not-inWL:hover {
+                        background-position: -31px 0
+                    }
+
+                .wl-ribbon.poster.touch.retina.spinner {
+                    background-position: -64px 0;
+                    padding-right: 0;
+                    padding-top: 0
+                }
+
+    .wl-ribbon.standalone, .wl-ribbon.standalone.retina {
+        background-image: url(https://m.media-amazon.com/images/S/sash/INbcM2-CU0AKIbe.png);
+        height: 30px;
+        width: 30px;
+    }
+
+        .wl-ribbon.standalone.inWL, .wl-ribbon.standalone.retina.inWL {
+            background-position: 0 0
+        }
+
+            .wl-ribbon.standalone.inWL:hover, .wl-ribbon.standalone.retina.inWL:hover {
+                background-position: 0 -30px
+            }
+
+        .wl-ribbon.standalone.not-inWL, .wl-ribbon.standalone.retina.not-inWL {
+            background-position: -30px 0;
+        }
+
+            .wl-ribbon.standalone.not-inWL:hover, .wl-ribbon.standalone.retina.not-inWL:hover {
+                background-position: -30px -30px
+            }
+
+        .wl-ribbon.standalone.spinner, .wl-ribbon.standalone.retina.spinner {
+            background-position: -60px 0;
+            padding-top: 3px
+        }
+
+        .wl-ribbon.standalone.touch, .wl-ribbon.standalone.touch.retina {
+            height: 39px;
+            width: 38px
+        }
+
+            .wl-ribbon.standalone.touch.not-inWL, .wl-ribbon.standalone.touch.retina.not-inWL {
+                background-position: -44px 0
+            }
+
+                .wl-ribbon.standalone.touch.not-inWL:hover, .wl-ribbon.standalone.touch.retina.not-inWL:hover {
+                    background-position: -44px -42px
+                }
+
+        .wl-ribbon.standalone.touch {
+            background-image: url(/images/S/sash/732C-8zJzQ9xx1C.png)
+        }
+
+            .wl-ribbon.standalone.touch.inWL {
+                background-position: -3px 0
+            }
+
+                .wl-ribbon.standalone.touch.inWL:hover {
+                    background-position: -3px -42px
+                }
+
+            .wl-ribbon.standalone.touch.spinner {
+                background-position: -87px 0;
+                padding-top: 3px
+            }
+
+            .wl-ribbon.standalone.touch.retina {
+                background-image: url(/images/S/sash/EURxm$TDabJwIr$.png);
+                background-size: 126px 84px
+            }
+
+                .wl-ribbon.standalone.touch.retina.inWL {
+                    background-position: -2px 0
+                }
+
+                    .wl-ribbon.standalone.touch.retina.inWL:hover {
+                        background-position: -2px -42px
+                    }
+
+                .wl-ribbon.standalone.touch.retina.spinner {
+                    background-position: -86px 0;
+                    padding-top: 7px;
+                }

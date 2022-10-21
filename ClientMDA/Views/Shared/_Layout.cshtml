@@ -19,12 +19,12 @@
     <!-- Css Styles -->
     <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="~/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="~/css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="~/css/plyr.css" type="text/css">
     <link rel="stylesheet" href="~/css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="~/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="~/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="~/css/style.css" type="text/css">
+    <link rel="stylesheet" href="~/css/elegant-icons.css" type="text/css"> @*Header+body icon樣式*@
     <script src="~/js/jquery-3.4.1.min.js"></script>
 
     @await RenderSectionAsync("Styles", required: false)
@@ -39,7 +39,7 @@
                 <div class="col-lg-2">
                     <div class="header__logo">
                         <a asp-controller="HomePage" asp-action="Index">
-                            <img src="~/images/MDA_LOGO.png" alt="" height="40" />
+                            <img src="~/images/MDA_LOGO.png" alt="" height="40">
                         </a>
                     </div>
                 </div>
@@ -47,27 +47,30 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
+                                <li>
+                                    <a asp-area="" asp-controller="HomePage" asp-action="Index">電影首頁</a>
+                                </li>
                                 <li class="active">
                                     <a asp-area="" asp-controller="Ticketing" asp-action="SelectMovie">快速訂票</a>
                                 </li>
                                 <li>
                                     <a text-white fs-2" asp-area="" asp-controller="Theater" asp-action="測試業面">電影時刻@*<span class="arrow_carrot-down"></span>*@</a>
                                     @*<ul class="dropdown">
-                                        <li><a asp-area="" asp-controller="Theater" asp-action="Index">上映中</a></li>
-                                        <li><a asp-area="" asp-controller="Theater" asp-action="即將上映page1">即將上映</a></li>
-                                        <li><a href="./blog-details.html">歷年電影</a></li>
-                                        <li><a href="./blog-details.html">電影排行</a></li>
-                                    </ul>*@
+                <li><a asp-area="" asp-controller="Theater" asp-action="Index">上映中</a></li>
+                <li><a asp-area="" asp-controller="Theater" asp-action="即將上映page1">即將上映</a></li>
+                <li><a href="./blog-details.html">歷年電影</a></li>
+                <li><a href="./blog-details.html">電影排行</a></li>
+            </ul>*@
                                 </li>
                                 <li>
                                     <a asp-area="" asp-controller="Movie" asp-action="電影排行">電影排行</a>
                                 </li>
-                            <li>
-                                <a asp-area="" asp-controller="Comment" asp-action="評論首頁">電影評論@*<span class="arrow_carrot-down"></span>*@</a>
-                                @*<ul class="dropdown">
-                                    <li><a asp-area="" asp-controller="Comment" asp-action="我的評論">我的評論</a></li>
-                                </ul>*@
-                            </li>  <!--./blog.html-->
+                                <li>
+                                    <a asp-area="" asp-controller="Comment" asp-action="評論首頁">電影評論@*<span class="arrow_carrot-down"></span>*@</a>
+                                    @*<ul class="dropdown">
+                <li><a asp-area="" asp-controller="Comment" asp-action="我的評論">我的評論</a></li>
+            </ul>*@
+                                </li>  <!--./blog.html-->
                             </ul>
                         </nav>
                     </div>
@@ -170,16 +173,16 @@
                 </a>
                 <!-- Google -->
                 @*<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-                    <i class="fab fa-google"></i>
-                </a>*@
+                        <i class="fab fa-google"></i>
+                    </a>*@
                 <!-- Instagram -->
                 <a class="btn btn-outline-light btn-floating m-1" href="https://i.imgur.com/fTphyFV.png" role="button">
                     <i class="fab fa-instagram"></i>
                 </a>
                 <!-- Linkedin -->
                 @*<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>*@
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>*@
                 <!-- Github -->
                 <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/Yuka12948/MSIT143.ClientMDA" role="button">
                     <i class="fab fa-github"></i>
@@ -189,7 +192,7 @@
         </div>
         <!-- Grid container -->
         <!-- Copyright -->
-        <div class="text-center p-3" @*style="background-color: rgba(0, 0, 0, 0.2)*@;">
+        <div class="text-center p-3" @*style="background-color: rgba(0, 0, 0, 0.2)*@>
             Copyright &copy; <a class="text-white" href="https://mdbootstrap.com/">M.D.A.觀享時刻</a>
         </div>
         <!-- Copyright -->
@@ -197,6 +200,7 @@
     <!-- footer End -->
     <script src="~/js/bootstrap.min.js"></script>
     <script src="~/js/jquery-3.4.1.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> @*footer樣式*@
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>
