@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rdsjtayjlVZlEOnOMH1oQTwsWLkz1xdMZBuiGqseLLvFpA8m8b4tN1VEVkG+Mnbn7ya7+V6/AsLTlQ4DXc+Ntw==",
+  "dgSpecHash": "gl9VL3aq8gAqbDrkrERtJJsLOdEcC/UPXKKyIcWN4oTrN5W6+J8Ecv45pvKFGuC21iuQBPMyxjMVoEgeOUfSMw==",
   "success": true,
-  "projectFilePath": "E:\\C#\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
+  "projectFilePath": "E:\\C#\\03_iSpan資策會\\MSIT_143_智慧應用微軟C#工程師就業養成班\\06.專題_GitHub\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\boboc\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\boboc\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

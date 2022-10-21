@@ -8,7 +8,7 @@
         list-style-type: none;
     }
 
-    .header-nav {
+        .header-nav {
         will-change: transform;
     }
 
@@ -29,14 +29,14 @@
         z-index: 100;
     }*/
 
-    header nav {
-        background-color: rgba(38, 38, 38, 0.7);
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: 100vh;
-        z-index: 120;
-    }
+        header nav {
+            background-color: rgba(38, 38, 38, 0.7);
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            z-index: 120;
+        }
 
     .logo {
         padding-top: 12px;
@@ -44,7 +44,7 @@
         width: 83px;
     }
 
-    .header-nav {
+        .header-nav {
         background-color: #262626;
         position: absolute;
         top: 0;
@@ -65,57 +65,56 @@
         transition-duration: 0.4s;
     }
 
-        .header-nav > li {
+    .header-nav > li {
+        position: relative;
+    }
+
+        .header-nav > li > a,
+        .header-nav > li > a:active,
+        .header-nav > li > a:visited {
+            padding: 10px 35px;
+            color: #fff;
+            display: block;
+        }
+
+        .header-nav > li span {
+            display: inline-block;
             position: relative;
         }
 
-            .header-nav > li > a,
-            .header-nav > li > a:active,
-            .header-nav > li > a:visited {
-                padding: 10px 35px;
-                color: #fff;
-                display: block;
-            }
-
-            .header-nav > li span {
-                display: inline-block;
-                position: relative;
-            }
-
-            .header-nav > li .fa-angle-down {
-                font-size: 20px;
-                margin: 0 3px;
-                /**/
-            }
-
-            .header-nav > li:hover > a,
-            .header-nav > li:hover .fa-angle-down {
-                color: #f2cf41;
-                text-decoration: none;
-            }
-
-            .header-nav > li:hover .header-subnav {
-                display: block;
-            }
-
-            .header-nav > li.active span::before {
-                display: block;
-                content: "";
-                background-color: #f2cf41;
-                width: 2px;
-                height: 18px;
-                position: absolute;
-                top: 50%;
-                -webkit-transform: translateY(-50%);
-                transform: translateY(-50%);
-                left: -8px;
-            }
-
-        .header-nav .header-terrnav {
-            position: absolute;
-            top: 80%;
-            left: 35px;
+        .header-nav > li .fa-angle-down {
+            font-size: 20px;
+            margin: 0 3px;
         }
+
+        .header-nav > li:hover > a,
+        .header-nav > li:hover .fa-angle-down {
+            color: #f2cf41;
+            text-decoration: none;
+        }
+
+        .header-nav > li:hover .header-subnav {
+            display: block;
+        }
+
+        .header-nav > li.active span::before {
+            display: block;
+            content: "";
+            background-color: #f2cf41;
+            width: 2px;
+            height: 18px;
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            left: -8px;
+        }
+
+    .header-nav .header-terrnav {
+        position: absolute;
+        top: 80%;
+        left: 35px;
+    }
 
     .header-subnav {
         display: none;
@@ -177,7 +176,7 @@
     header {
         /*height: 80px;*/
         /*position: fixed;*/
-        /*        top: 0;
+/*        top: 0;
         left: 0;
         width: 100%;
         background-color: rgba(3, 3, 3, 0.8);
@@ -190,13 +189,13 @@
         /*z-index: 100;*/
     }
 
-    /*            header::after {
+/*            header::after {
             display: block;
             clear: both;
             content: "";
         }*/
 
-    /*            header nav {
+/*            header nav {
             float: right;
         }*/
 }
@@ -215,7 +214,7 @@
         float: left;
     }
 
-    .header-nav {
+       .header-nav {
         display: -webkit-box;
         display: -ms-flexbox;
         display: -webkit-flex;
@@ -234,21 +233,21 @@
         align-content: center;
     }
 
-        .header-nav > li {
-            -webkit-box-flex: 1;
-            -ms-flex: 1 0 auto;
-            flex: 1 0 auto;
-            position: relative;
-        }
+    .header-nav > li {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
+        position: relative;
+    }
 
-            .header-nav > li > a,
-            .header-nav > li > a:active,
-            .header-nav > li > a:visited {
-                white-space: nowrap;
-                padding: 28px 20px;
-                color: #fff;
-                display: block;
-            }
+        .header-nav > li > a,
+        .header-nav > li > a:active,
+        .header-nav > li > a:visited {
+            white-space: nowrap;
+            padding: 28px 20px;
+            color: #fff;
+            display: block;
+        }
 }
 
 @media (min-width: 760px) and (min-width: 760px) and (max-width: 1019px) {
@@ -442,7 +441,7 @@ footer .copyright {
 @media (min-width: 0) and (max-width: 759px) {
     .footer-nav {
         display: inline-block;
-        margin-bottom: 20px;
+/*        margin-bottom: 20px;*/
     }
 }
 
@@ -690,6 +689,7 @@ ul {
 
 img {
     max-width: 100%;
+    /*max-height:100%;*/
 }
 
 .page-title {
@@ -1066,6 +1066,7 @@ img {
     background: transparent url("/charts/assets/images/slash_gray.png");
     padding: 13px 20px;
     position: relative;
+    margin-bottom:10px;
 }
 
 @media (min-width: 0) and (max-width: 759px) {
@@ -1082,19 +1083,20 @@ img {
 
 #datepicker {
     line-height: 1;
-    border-radius: 20px;
+    border-radius: 4px;
     border: 0;
     color: #787878;
     font-size: 14px;
     font-weight: normal;
-    font-family: Arial;
+    /*font-family: Arial;*/
     position: relative;
     width: 235px;
-    height: 30px;
-    padding-left: 40px;
-    background: #fff url("/charts/assets/images/icon_calendar.svg") no-repeat 10px center;
-    background-size: 24px auto;
+    height: 36px;
+    padding-left: 10px;
+    /*background: #fff url("/charts/assets/images/icon_calendar.svg") no-repeat 10px center;
+    background-size: 24px auto;*/
     outline: none;
+    margin-right:3px;
 }
 
 #toggle-chart-note-mobile {
@@ -1109,7 +1111,7 @@ img {
 #close-chart-note:visited {
     float: right;
     color: #fff;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
     margin-right: 10px;
 }
 
@@ -1327,26 +1329,34 @@ img {
         font-family: "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
     }
 
-    .category-picker dl {
+/*    .category-picker dl {
         margin-bottom: 30px;
-    }
+    }*/
 
     .category-title {
-        font-size: 14px;
+        font-size: 18px;
         font-weight: 600;
         color: #999999;
-        margin: 0 0 10px;
+/*        margin: 0 0 10px;*/
     }
 
     .category {
         display: inline-block;
-        width: 127px;
+        width: 100px;
         text-align: center;
-        margin: 0 0 10px 0;
-        /*        padding: 0 20px 0 20px;*/
+        vertical-align: middle;
+        /*margin: 0 0 10px 0;
+        padding: 0 20px 0 20px;*/
+    }
+
+    /*----------------------------篩選器--------------------------*/
+
+    .a_rank1 .a_rank2{
+
     }
 
         .category a {
+            padding: 4px 0 4px 0 !important;
         }
 
             .category a,
@@ -1354,7 +1364,7 @@ img {
             .category a:visited,
             .category a:active {
                 display: block;
-                font-size: 12px;
+                font-size: 14px;
                 line-height: 1.5;
                 letter-spacing: 0.3px;
                 border-radius: 2px;
@@ -1364,19 +1374,54 @@ img {
                 padding: 6px 15px;
                 margin-right: 10px;
                 white-space: nowrap;
+                height: 30px;
+
             }
 
-                .category a:hover {
-                    text-decoration: none;
-                    color: #fff;
-                    background-color: #ffd200;
-                }
+        .category a:hover {
+            text-decoration: none;
+            color: black;
+            background-color: #ffd200;
+        }
+
+        .category .a_rank1:focus {
+            color: #ffd200;
+            background-color: transparent;
+            border: 1px solid #ffd200;
+        }
+
+        .category .a_rank2:focus {
+            color: #ffd200;
+            background-color: transparent;
+            border: 1px solid #ffd200;
+        }
+
+
+        .category .a_rank3:focus {
+            color: #ffd200;
+            background-color: transparent;
+            border: 1px solid #ffd200;
+        }
+
+        .category .a_rank4:focus {
+            color: #ffd200;
+            background-color: transparent;
+            border: 1px solid #ffd200;
+        }
+
+        .category .a_rank5:focus {
+            color: #ffd200;
+            background-color: transparent;
+            border: 1px solid #ffd200;
+        }
 
         .category.active a {
             color: #ffd200;
             background-color: transparent;
             border: 1px solid #ffd200;
         }
+
+    /*----------------------------篩選器結束--------------------------*/
 }
 
 .clearfix::after {
@@ -1386,8 +1431,8 @@ img {
 }
 
 .charts-list span { /*排名樣式*/
-    font-family: 'Kanit', sans-serif !important;
-    font-size: 14px;
+/*    font-family: 'Kanit', sans-serif !important;
+*/    font-size: 16px;
     padding: 0 15px 0 15px;
 }
 
@@ -1467,7 +1512,7 @@ img {
     align-items: center;
 }
 
-    .charts-list-row > a {
+    .charts-list-row > .divRow {
         display: -webkit-box;
         display: -ms-flexbox;
         display: -webkit-flex;
@@ -1481,37 +1526,52 @@ img {
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
-        height: 110px;
+        height: 500px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     }
 
-        .charts-list-row > a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            -webkit-box-shadow: 0 1px 0 0 #ffd200;
-            box-shadow: 0 1px 0 0 #ffd200;
+    .charts-list-row > .divRow:hover {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        -webkit-box-shadow: 0 1px 0 0 #ffd200;
+        box-shadow: 0 1px 0 0 #ffd200;
+    }
+
+
+        .charts-list-row > .divRow .charts-list-song a { /*排名整列 電影中文標題*/
+            color: #fff;
+        }
+        /*.charts-list-row > .divRow:hover .charts-list-song {
+            color: #ffd200;
+        }*/
+            .charts-list-row > .divRow:hover .charts-list-song a { /*排名滑入整列 電影中文標題*/
+                color: #ffd200;
+            }
+
+        .charts-list-row > .divRow .charts-list-artist a { /*排名整列 電影英文標題*/
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .charts-list-row > .divRow:hover .charts-list-artist {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none !important;
         }
 
-            .charts-list-row > a:hover .charts-list-song {
-                color: #fff;
-            }
-
-            .charts-list-row > a:hover .charts-list-artist {
-                color: rgba(255, 255, 255, 0.7);
-            }
-
-            .charts-list-row > a:hover .unauth .tooltip {
-                display: block;
-            }
+        .charts-list-row > .divRow:hover .charts-list-artist a { /*排名滑入整列 電影英文標題*/
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none !important;
+        }
+        .charts-list-row > .divRow:hover .unauth .tooltip {
+            display: block;
+        }
 
 @media (min-width: 0) and (max-width: 759px) {
-    .charts-list-row > a {
-        height: 70px;
+    .charts-list-row > .divRow {
+        height: 90px;
     }
 }
 
 @media (min-width: 760px) {
-    .charts-list-row > a {
-        height: 110px;
+    .charts-list-row > .divRow {
+        height: 160px;
     }
 }
 
@@ -1595,11 +1655,18 @@ a .charts-list-rank {
 
 @media (min-width: 760px) {
     .charts-list-rank {
-        font-size: 36px;
-        width: 70px; /*排行欄位*/
+        font-size: 36px ;
+        width: 75px; /*排行欄位*/
         text-align: center;
         /*padding-left: 8px;*/
     }
+
+    .divRow .charts-list-rank{
+        font-size: 36px !important;
+    }
+
+
+
 }
 
 .charts-list-prev-rank {
@@ -1664,24 +1731,25 @@ a .charts-list-rank {
         }
 
     .charts-list-row--header .charts-list-rank {
-        width: 70px; /*排行欄位標頭*/
-        font-size: 14px;
+        width: 75px; /*排行欄位標頭*/
+        font-size: 18px;
+        font-weight:900;
         /*padding: 0 20px 0 0;*/
     }
 
     .charts-list-row--header .charts-list-prev-rank {
-        width: 70px;
+        width: 75px;
     }
 
 
     .charts-list-row--header .charts-list-poster {
         width: 100px; /*電影海報欄位標頭*/
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .charts-list-row--header .charts-list-movietitle {
-        width: 150px; /*電影標題欄位標頭*/
-        font-size: 14px;
+        width: 120px; /*電影標題欄位標頭*/
+        font-size: 16px;
     }
 
     .charts-list-row--header .charts-list-content {
@@ -1690,12 +1758,23 @@ a .charts-list-rank {
         flex: 1 1 auto;
     }
 
+.charts-list-MDArate {
+    width: 100px;
+}
+.charts-list-MemRate {
+    width: 100px;
+}
+.charts-list-movieDate {
+    width: 150px;
+}
+.charts-list-addList {
+    width: 100px;
+}
+
 /*    span charts-list-MDArate .charts-list-MemRate .charts-list-movieDate .charts-list-addList{
         width:90px !important;
         margin:0 2px 0 2px;
     }*/
-
-
 .charts-list-cover { /*電影海報欄位*/
     -webkit-box-flex: 0;
     -ms-flex: 0 0 auto;
@@ -1740,6 +1819,7 @@ a .charts-list-rank {
     font-weight: 600;
     line-height: 1.2;
     color: #fff;
+
 }
 
 @media (min-width: 0) and (max-width: 759px) {
@@ -1751,13 +1831,13 @@ a .charts-list-rank {
 
 @media (min-width: 760px) {
     .charts-list-song {
-        font-size: 18px;
+        font-size: 18px !important;
         margin: 0 0 3px 0;
     }
 }
 
 .charts-list-song:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .charts-list-artist {
@@ -1776,7 +1856,7 @@ a .charts-list-rank {
 
 @media (min-width: 760px) {
     .charts-list-artist {
-        font-size: 14px;
+        font-size: 14px !important;
     }
 }
 
@@ -1784,15 +1864,16 @@ a .charts-list-rank {
     text-decoration: underline;
 }
 
-.charts-list-date {
-    width: 90px;
+.charts-list-date { /*上映日期*/
+    width: 150px;
     -webkit-box-flex: 0;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
     font-size: 12px;
     color: #a1a1a1 !important;
-    /*padding-left: 12px;*/
     white-space: nowrap;
+    padding: 0 !important;
+    text-align: center !important;
 }
 
     .charts-list-date:lang(tc) {
@@ -1860,18 +1941,13 @@ a .charts-list-rank {
     }
 
     .flipper .charts-list-span {
-        width: 86px;
+        width: 100px;
         text-align: center;
     }
 
-.charts-list-date { /*上映日期*/
-    width: 85px !important;
-    padding: 0 !important;
-    text-align: center !important;
-}
 
-.charts-list-prev-rank {
-    width: 86px;
+.charts-list-prev-rank { /*加入片單*/
+    width: 100px;
 }
 
     .charts-list-prev-rank .wlb_ribbon {
@@ -1887,7 +1963,7 @@ a .charts-list-rank {
 .charts-list-desc,
 .charts-list-song,
 .charts-list-artist {
-    width: 285px;
+    width: 470px; /*排行-電影資訊間距*/
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1954,21 +2030,18 @@ a .charts-list-rank {
     padding-top: 100px;
 }*/
 
-.u-sidebar-fixer {
-    margin: 60px 0 0 25px;
+.u-sidebar-fixer { /*篩選器位置*/
+    margin: 30px 0 0 -15px;
 }
 
-.charts-list {
-    margin-top: 50px;
+.charts-list { /*排行榜位置*/
+    margin-left:-15px;
 }
 /*評分*/
 /*.flipper span i .far fa-star .fas fa-star-o {
     padding-right:5px;
 }*/
 
-
-
-*/
 /*------------------------關注-----------*/
 .wlb_ribbon.new div.wl-ribbon.standalone {
     cursor: pointer;

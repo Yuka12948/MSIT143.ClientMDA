@@ -7153,11 +7153,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\C#\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
+      "projectUniqueName": "E:\\C#\\03_iSpan資策會\\MSIT_143_智慧應用微軟C#工程師就業養成班\\06.專題_GitHub\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
       "projectName": "ClientMDA",
-      "projectPath": "E:\\C#\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
+      "projectPath": "E:\\C#\\03_iSpan資策會\\MSIT_143_智慧應用微軟C#工程師就業養成班\\06.專題_GitHub\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
       "packagesPath": "C:\\Users\\boboc\\.nuget\\packages\\",
-      "outputPath": "E:\\C#\\MSIT143.ClientMDA\\ClientMDA\\obj\\",
+      "outputPath": "E:\\C#\\03_iSpan資策會\\MSIT_143_智慧應用微軟C#工程師就業養成班\\06.專題_GitHub\\MSIT143.ClientMDA\\ClientMDA\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\boboc\\AppData\\Roaming\\NuGet\\NuGet.Config",
