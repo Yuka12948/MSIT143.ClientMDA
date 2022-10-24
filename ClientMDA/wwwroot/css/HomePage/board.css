@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+.blur{
+    width:424px;
+    height:628px;
+}
 .info {
     padding-top: 90px;
     /*padding-top: 80px;*/
@@ -29,6 +33,24 @@
     opacity: 0;
 }
 
+
+
+.content {
+    height: 30%;
+    vertical-align:bottom;
+}
+
+.img-wrapper:hover > .content.slide-down {
+    transform: translateY(230%);
+}
+
+.img-wrapper > .content.slide-down {
+    transform: translateY(700%);
+}
+
+.list li {
+    font-size: 1.5rem;
+}
 .img-wrapper:hover > img.c {
     filter: blur(5px);
 }
@@ -68,6 +90,7 @@
 
 .AddList {
     justify-content: center;
+    align-items:center;
 }
 
 .AddListBtn {
@@ -82,7 +105,7 @@
 #plus {
     font-size: 16px;
     color: #FFF;
-    padding-right: 10px;
+   
 }
 
 .AddListBtn:hover {
@@ -120,3 +143,18 @@
     transform: translate3d(0,0,0);
     z-index: 10;
 }
+
+.buyBtn {
+    border: 0;
+    border-radius: 10px;
+    background-color: rgba(44,44,44,0.6);
+    color: whitesmoke;
+    width: 100px;
+    height: 50px;
+    vertical-align:middle;
+    align-items:center;
+    text-align:center;
+}
+    .buyBtn:hover {
+        background-color: rgba(60,60,60,0.6);
+    }

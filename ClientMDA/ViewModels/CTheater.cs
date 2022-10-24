@@ -97,7 +97,7 @@ namespace ClientMDA.ViewModels
             get { return _movie.上映年份releaseYear; }
             set { _movie.上映年份releaseYear = value; }
         }
-        public string 上映日期releaseDate
+        public DateTime? 上映日期releaseDate
         {
             get { return _movie.上映日期releaseDate; }
             set { _movie.上映日期releaseDate = value; }
@@ -107,7 +107,7 @@ namespace ClientMDA.ViewModels
             get { return _movie.片長runtime; }
             set { _movie.片長runtime = value; }
         }
-        public int 電影分級編號ratingId
+        public int? 電影分級編號ratingId
         {
             get { return _movie.電影分級編號ratingId; }
             set { _movie.電影分級編號ratingId = value; }

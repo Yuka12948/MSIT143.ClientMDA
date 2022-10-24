@@ -4,23 +4,22 @@
 
 .list, .listb {
     list-style-type: none;
-    color: white;
+    color: white;   
 }
-
-.hangposter {
+.listb {
+    vertical-align: bottom;
+}
+    .hangposter {
     background-color: transparent;
-    height: 330px;
-    width: 231px;
+    height: 286px;
+    width: 200px;
     z-index: 1;
 }
 
 #content {
     z-index: 0;
     height: 100%;
-    width: 100%;
-    
-    /*justify-content: center;
-    align-items: center;*/
+    width: 100%;   
 }
 
 #img-wrapper {
@@ -48,7 +47,7 @@
 
 #img-wrapper > .hangposter {
     position: absolute;
-    inset: 49% 0 0 3%;
+    inset: 56% 0 0 3.5%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,17 +90,14 @@
     margin-left: 25%;*/
 }
 
-#box-banner {
-    
-}
 
 #content > #play {
     position:absolute;
-    inset: 80% 0 0 -40%;
+    inset: 80% 0 0 -42%;
 }
 #content > #box-banner {
     position: absolute;
-    inset: 75% 0 0 40%;
+    inset: 82% 0 0 36%;
 }
 /*#img-wrapper > #playbox {
     position: absolute;
@@ -115,9 +111,10 @@
     color: rgba(245,197,24);
 }
 
-#box-banner {
+#box-banner {    
     margin-bottom: 2%;
     margin-right: 5%;
+    vertical-align: bottom;
 }
 
 #banner-active {
