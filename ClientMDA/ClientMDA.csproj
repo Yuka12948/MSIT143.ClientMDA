@@ -90,6 +90,61 @@
     <None Include="Views\WenShoppingCart\AddToCard.cshtml" />
     <None Include="Views\WenShoppingCart\Index.cshtml" />
     <None Include="Views\WenShoppingCart\SearchKeyword.cshtml" />
+    <None Include="wwwroot\js\Member\tinymce\icons\default\icons.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\jquery.tinymce.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\langs\README.md" />
+    <None Include="wwwroot\js\Member\tinymce\langs\zh_TW.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\advlist\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\anchor\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\autolink\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\autoresize\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\autosave\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\bbcode\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\charmap\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\codesample\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\code\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\colorpicker\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\contextmenu\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\directionality\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\emoticons\js\emojiimages.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\emoticons\js\emojiimages.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\emoticons\js\emojis.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\emoticons\js\emojis.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\emoticons\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\fullpage\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\fullscreen\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\help\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\hr\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\imagetools\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\image\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\importcss\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\link\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\lists\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\media\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\noneditable\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\pagebreak\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\paste\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\preview\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\print\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\quickbars\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\save\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\searchreplace\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\spellchecker\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\tabfocus\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\table\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\template\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\textcolor\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\textpattern\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\toc\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\visualblocks\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\visualchars\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\plugins\wordcount\plugin.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\themes\mobile\theme.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\themes\silver\theme.min.js" />
+    <None Include="wwwroot\js\Member\tinymce\tinymce.min.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -100,8 +155,16 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.8.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     <PackageReference Include="MimeKit" Version="3.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\js\Member\tinymce\tinymce.d.ts" />
   </ItemGroup>
 
 </Project>

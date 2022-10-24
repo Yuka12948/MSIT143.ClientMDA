@@ -30,7 +30,9 @@ namespace ClientMDA
                 options.UseSqlServer(Configuration.GetConnectionString("MDAConnection"));
             });
             services.AddControllersWithViews();
-        services.AddControllersWithViews();
+
+            services.AddSession();
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +52,7 @@ namespace ClientMDA
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 

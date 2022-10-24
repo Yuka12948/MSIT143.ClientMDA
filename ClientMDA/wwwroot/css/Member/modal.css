@@ -62,17 +62,16 @@
 .modal__bottom {
     text-align: right;
     padding: 0 var(--gap) var(--gap) var(--gap);
-    
 }
 
 .modal__button {
     display: inline-block;
     padding: 6px 12px;
- /*   background: #009578;*/
+    /*   background: #009578;*/
     border: none;
     outline: none;
     border-radius: 3px;
-   /* color: #ffffff;*/
+    /* color: #ffffff;*/
     cursor: pointer;
     font-size: 18px;
 }
@@ -81,6 +80,6 @@
         margin-right: var(--gap);
     }
 
-    /*.modal__button:hover {
+/*.modal__button:hover {
         background: #008066;
     }*/

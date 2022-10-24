@@ -1,10 +1,21 @@
-﻿@model ClientMDA.ViewModels.CMemberDemoViewModel
+﻿@model ClientMDA.Models.會員member
 
+@using Microsoft.AspNetCore.Http
+@using System.Text.Json;
+@inject IHttpContextAccessor Accessor
+@{
+    會員member mem = null;
+    if (Accessor.HttpContext.Session.Keys.Contains(ClientMDA.Models.CDictionary.SK_LOGINED_USER))
+    {
+        var a = Accessor.HttpContext.Session.GetString(ClientMDA.Models.CDictionary.SK_LOGINED_USER);
+        mem = JsonSerializer.Deserialize<會員member>(a);
+    }
+
+}
 @{
     ViewData["Title"] = "MemberEdit";
 }
-
-<head>
+@section Styles{
     <link href="~/css/Member/MemberMain.css" rel="stylesheet" />
     <style>
         .control-label {
@@ -19,106 +30,236 @@
         .content {
             margin: 0 auto;
         }
+
+        .containerA {
+            width: 90%;
+            margin: 0 auto;
+        }
     </style>
-</head>
-<body>
-    <div class="member_id">
-        <span class="member_hello">HELLO!</span>
-        <span class="member_id_name"></span>
+}
+<div class="member_id">
+    <span class="member_hello">HELLO!</span>
+    @{
+        if (mem.暱稱nickName != null)
+        {
+            <span class="member_id_name">@mem.暱稱nickName</span>
+        }
+    }
+</div>
+
+<div class="row">
+    <div class="member_menu">
+        @{
+            if (mem.正式會員formal == true)
+            {
+                <a id="watchlist" href="../Member/WatchList" title="我的片單" class="member_link">我的片單</a>
+                <a id="commentList" href="../Member/CommentList" title="我的評論" class="member_link">我的評論</a>
+                <a id="wishlist" href="../Member/wishlist" title="收藏清單" class="member_link">收藏清單</a>
+            }
+            else
+            {
+                <a id="watchlist" href="../Member/NotFormal" title="我的片單" class="member_link">我的片單</a>
+                <a id="commentList" href="../Member/NotFormal" title="我的評論" class="member_link">我的評論</a>
+                <a id="wishlist" href="../Member/NotFormal" title="收藏清單" class="member_link">收藏清單</a>
+            }
+        }
+
+        <a id="orderlist" href="../Member/orderlist" title="訂單查詢" class="member_link">訂單查詢</a>
+        <a id="memberbonuslist" href="../Member/memberbonuslist" title="我的紅利金" class="member_link">我的紅利金</a>
+        <a id="memberdiscount" href="../Member/memberdiscount" title="我的抵用券" class="member_link">我的抵用券</a>
+
+        <a id="memberpassword" href="../Member/PasswordEdit" title="密碼修改" class="member_link">密碼修改</a>
+        <a id="MemberEdit" href="../Member/MemberEdit" title="資料修改" class="member_link ">資料修改</a>
+        <a href="../Member/logout" class="member_link" title="登出">登出</a>
     </div>
+    <div class="member_main">
+        <div class="member_area">
+            <!--content-->
+            <h2 class="white">會員資訊</h2>
 
-    <div class="row">
-        <div class="member_menu">
-            <a id="watchlist" href="../Member/WatchList" title="我的片單" class="member_link">我的片單</a>
-            <a id="commentList" href="../Member/CommentList" title="我的評論" class="member_link">我的評論</a>
-            @*<a id="wishlist" href="../Member/wishlist" title="收藏清單" class="member_link">收藏清單</a>*@
+            <h4 class="white">基本資訊修改</h4>
+            <hr />
+            <form asp-action="MemberEdit" class="containerA" enctype="multipart/form-data">
 
-            <a id="orderlist" href="../Member/orderlist" title="訂單查詢" class="member_link">訂單查詢</a>
-            <a id="memberbonuslist" href="../Member/memberbonuslist" title="我的紅利金" class="member_link">我的紅利金</a>
-            <a id="memberdiscount" href="../Member/memberdiscount" title="我的抵用券" class="member_link">我的抵用券</a>
+                <div class="form-row ">
+                    <div class="col-3 mr-1 ml-5">
+                        <div class="form-row">
+                            <div class="card text-white bg-dark mb-3">
+                                <div class="card-body">
+                                    <label asp-for="暱稱nickName" class="control-label">暱稱</label>
+                                    <input type="text" name="暱稱nickName" class="form-control" value="Yuka" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="card text-white bg-dark mb-3">
+                                <div class="card-body">
+                                    <label asp-for="姓氏lName" class="control-label">姓</label>
+                                    <input type="text" name="姓氏lName" class="form-control" value="Wang" />
+                                </div>
+                            </div>
 
-            <a id="memberpassword" href="../Member/PasswordEdit" title="密碼修改" class="member_link">密碼修改</a>
-            <a id="MemberEdit" href="../Member/MemberEdit" title="資料修改" class="member_link ">資料修改</a>
-            <a href="../Member/logout" class="member_link" title="登出">登出</a>
-        </div>
-        <div class="member_main">
-            <div class="member_area">
-                <!--content-->
-                <h2 class="white">會員資訊</h2>
+                        </div>
+                    </div>
+                    <div class="col-3 mr-1">
+                        <div class="form-row">
+                            <div class="card text-white bg-dark mb-3 ">
+                                <div class="card-body">
+                                    <label asp-for="會員電話cellphone" class="control-label">手機</label>
+                                    <input type="text" name="會員電話cellphone" class="form-control" value="0901001001" readonly />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row ">
+                            <div class="card text-white bg-dark mb-3">
+                                <div class="card-body">
+                                    <label asp-for="名字fName" class="control-label">名</label>
+                                    <input type="text" name="名字fName" class="form-control" value="Wei" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 mr-1">
+                        <div class="card text-white bg-dark mb-3">
+                            <div class="card-body">
+                                <img src='~/images/Member/0901.jpg' />
+                                <input type="file" name="會員照片Image" />
+                            </div>
+                        </div>
+                    </div>
 
-                <h4 class="white">基本資訊修改</h4>
-                <hr />
-                <div class="col-md-4 content">
-                    <form asp-action="MemberEdit">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-group">
-                            <label asp-for="NickName" class="control-label">暱稱</label>
-                            <input asp-for="NickName" class="form-control" placeholder="Yuka" />
+                </div>
+                <div class="form-row">
+                    <div class="card text-white bg-dark mb-3 mr-1 col-3  ml-5">
+                        <div class="card-body">
+                            <label asp-for="電子信箱email" class="control-label">電子郵件</label>
+                            <input name="電子信箱email" type="email" class="form-control" value="001@gmail.com" />
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Cellphone" class="control-label">手機</label>
-                            <input asp-for="Cellphone" class="form-control" placeholder="0901001001" disabled />
+                    </div>
+                    <div class="card text-white bg-dark mb-3 mr-1 col-3">
+                        <div class="card-body">
+                            <label asp-for="生日birthDate" class="control-label">生日</label>
+                            <input type="date" name="生日birthDate" class="form-control" value="1990-01-01" readonly />
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Email" class="control-label">電子郵件</label>
-                            <input asp-for="Email" class="form-control" placeholder="001@gmail.com" />
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="L_Name" class="control-label">姓</label>
-                            <input asp-for="L_Name" class="form-control" placeholder="Wang" />
-                            <label asp-for="F_Name" class="control-label">名</label>
-                            <input asp-for="F_Name" class="form-control" placeholder="Wei" />
-                        </div>
-
-
-                        <div class="form-group">
-                            <label asp-for="Address" class="control-label">地址</label>
-                            <input asp-for="Address" class="form-control" placeholder="台北市" />
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="BirthDate" class="control-label">生日</label>
-                            <input type="date" class="form-control" value="1990-01-01" disabled />
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Gender" class="control-label">性別</label>
-                            <select>
+                    </div>
+                    <div class="card text-white bg-dark mb-3 mr-1 col-3">
+                        <div class="card-body">
+                            <label asp-for="性別gender" class="control-label">性別</label>
+                            <select class="form-control">
                                 <option value="0">男</option>
                                 <option value="1" selected>女</option>
                                 <option value="2">多元性別</option>
                                 <option value="3">不公開</option>
                             </select>
+                            <input type="hidden" name="性別gender" value="" />
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Bonus" class="control-label">紅利</label>
-                            <input asp-for="Bonus" class="form-control" placeholder="100" disabled />
+                    </div>
+                </div>
+
+                <div class="form-row ">
+                    <div class="card text-white bg-dark mb-3 mr-1 col-3  ml-5">
+                        <div class="card-body">
+                            <label asp-for="地址address" class="control-label">地址-<i>縣市</i></label>
+                            <select id="select1" class="form-control"></select>
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Formal" class="control-label">會員狀態</label>
+                    </div>
+                    <div class="card text-white bg-dark mb-3 mr-1 col-3">
+                        <div class="card-body">
+                            <label asp-for="地址address" class="control-label"><i>鄉鎮市區</i></label>
+                            <select id="select2" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="card text-white bg-dark mb-3 mr-1 col-3">
+                        <div class="card-body">
+                            <label asp-for="地址address" class="control-label"><i>道路</i></label>
+                            <select id="select3" class="form-control"></select>
+                            <input type="hidden" name="地址address" value="" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="card text-white bg-dark mb-3 mr-1 col-3  ml-5">
+                        <div class="card-body">
+                            <label asp-for="紅利點數bonus" class="control-label">紅利</label>
+                            <input type="text" name="紅利點數bonus" class="form-control" value="100" disabled />
+                        </div>
+                    </div>
+                    <div class="card text-white bg-dark mb-3 mr-1 col-3">
+                        <div class="card-body">
+                            <label asp-for="正式會員formal" class="control-label">會員狀態</label>
                             <div>
-                                <input type="checkbox" class="" name="formal" value="true" checked disabled />
+                                <input type="checkbox" class="" name="正式會員formal" value="true" checked disabled />
                                 <label style="color:lightgray">正式會員</label>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Permission" class="control-label">會員權限</label>
-                            <input asp-for="Permission" class="form-control" placeholder="正常使用" disabled />
-                            <span asp-validation-for="Permission" class="text-danger"></span>
+                    </div>
+                    <div class="card text-white bg-dark mb-3 mr-1 col-3">
+                        <div class="card-body">
+                            <label asp-for="會員權限permission" class="control-label">會員權限</label>
+                            <input type="text" name="會員權限permission" class="form-control" value="正常使用" disabled />
                         </div>
-
-                        <div class="form-group">
-                            <input type="submit" value="儲存變更" class="site-btn" />
-                            <input type="submit" value="取消" class="site-btn" style="background-color:#6c757d" />
-                        </div>
-                        <div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-                <!--end content-->
-            </div>
+                <div class="form-row justify-content-center">
+                    <input type="submit" value="儲存變更" class="site-btn mr-1" />
+                    <input type="submit" value="取消" class="site-btn mr-1" style="background-color:#6c757d" />
+                </div>
+
+
+
+
+            </form>
+            <!--end content-->
         </div>
     </div>
+</div>
 
-</body>
+@section Scripts{
+    <script>
+    const selCity = document.querySelector("#select1")
+        const selSite = document.querySelector("#select2")
+        const selRoad = document.querySelector("#select3")
 
-<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        async function LoadCities() {
+            let response = await fetch("@Url.Content("~/Member/city")")
+            let datas = await response.json()
+            datas.forEach(city => {
+                const opt = new Option(city, city)
+                selCity.options.add(opt)
+            })
+            //console.log(selCity.options.selectedIndex)
+        }
+        LoadCities()
 
+        selCity.addEventListener("change", async () => {
+            //console.log(selCity.options[selCity.selectedIndex].value)
+            const url = "@Url.Content("~/Member/site")"
+            const params = `?city=${selCity.options[selCity.selectedIndex].value}`
+            let response = await fetch(url + params)
+            let datas = await response.json()
+            //console.log(datas)
+            selSite.options.length = 0
+            datas.forEach(site => {
+                const opt = new Option(site, site)
+                selSite.options.add(opt)
+            })
+        })
+        selSite.addEventListener("change", async () => {
+            const url = "@Url.Content("~/Member/road")"
+            const params = `?site=${selSite.options[selSite.selectedIndex].value}`
+            let response = await fetch(url + params)
+            let datas = await response.json()
+            selRoad.options.length = 0
+            datas.forEach(road => {
+                const opt = new Option(road, road)
+                selRoad.options.add(opt)
+            })
+        })
+    </script>
+
+
+
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+}

@@ -1,4 +1,16 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@using System.Text.Json;
+@inject IHttpContextAccessor Accessor
+@{
+    會員member mem = null;
+    if (Accessor.HttpContext.Session.Keys.Contains(ClientMDA.Models.CDictionary.SK_LOGINED_USER))
+    {
+        var a = Accessor.HttpContext.Session.GetString(ClientMDA.Models.CDictionary.SK_LOGINED_USER);
+        mem = JsonSerializer.Deserialize<會員member>(a);
+    }
+
+}
+<!DOCTYPE html>
 
 <html lang="zh-hant-TW">
 
@@ -57,11 +69,11 @@
                                 <li>
                                     <a class="aBorder" text-white fs-2" asp-area="" asp-controller="Theater" asp-action="測試業面">電影時刻@*<span class="arrow_carrot-down"></span>*@</a>
                                     @*<ul class="dropdown">
-                <li><a asp-area="" asp-controller="Theater" asp-action="Index">上映中</a></li>
-                <li><a asp-area="" asp-controller="Theater" asp-action="即將上映page1">即將上映</a></li>
-                <li><a href="./blog-details.html">歷年電影</a></li>
-                <li><a href="./blog-details.html">電影排行</a></li>
-            </ul>*@
+                                            <li><a asp-area="" asp-controller="Theater" asp-action="Index">上映中</a></li>
+                                            <li><a asp-area="" asp-controller="Theater" asp-action="即將上映page1">即將上映</a></li>
+                                            <li><a href="./blog-details.html">歷年電影</a></li>
+                                            <li><a href="./blog-details.html">電影排行</a></li>
+                                        </ul>*@
                                 </li>
                                 <li>
                                     <a class="aBorder" asp-area="" asp-controller="Movie" asp-action="電影排行">電影排行</a>
@@ -69,8 +81,8 @@
                                 <li>
                                     <a class="aBorder" asp-area="" asp-controller="Comment" asp-action="評論首頁">電影評論@*<span class="arrow_carrot-down"></span>*@</a>
                                     @*<ul class="dropdown">
-                <li><a asp-area="" asp-controller="Comment" asp-action="我的評論">我的評論</a></li>
-            </ul>*@
+                                            <li><a asp-area="" asp-controller="Comment" asp-action="我的評論">我的評論</a></li>
+                                        </ul>*@
                                 </li>  <!--./blog.html-->
                                 <li>
                                     <a class="aBorder" asp-area="" asp-controller="WenShoppingCart" asp-action="Index">商城</a>
@@ -82,7 +94,16 @@
                 <div class="col-lg-2">
                     <div class="header__right">
                         <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                        <a href="/Member/Login"><span class="icon_profile"></span></a>
+                        @{
+                            if (mem == null)
+                            {
+                                <a href="/Member/Login"><span class="icon_profile"></span></a>
+                            }
+                            else
+                            {
+                                <a href="/Member/MemberMain"><span class="icon_profile"></span></a>
+                            }
+                        }
                     </div>
                 </div>
             </div>

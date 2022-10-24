@@ -8,5 +8,9 @@ namespace ClientMDA.Models
     public class CDictionary
     {
         public static readonly string SK_購票驗證碼 = "SK_購票驗證碼";
+
+        public static readonly string SK_LOGINED_USER = "SK_LOGINED_USER";
+
+        public static readonly string SK_USER_PHONE = "SK_USER_PHONE";
     }
 }
