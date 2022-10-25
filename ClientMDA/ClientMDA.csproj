@@ -86,6 +86,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Ticketing\Components\MovieInfo\Default.cshtml" />
+    <None Include="Views\Ticketing\Components\SelectDate\Default.cshtml" />
+    <None Include="Views\Ticketing\Components\SelectMovie\Default.cshtml" />
+    <None Include="Views\Ticketing\Components\SelectScreen\Default.cshtml" />
+    <None Include="Views\Ticketing\Components\SelectSeat\Default.cshtml" />
+    <None Include="Views\Ticketing\Components\SelectTime\Default.cshtml" />
     <None Include="Views\WenShoppingCart\AddToCard.cshtml" />
     <None Include="Views\WenShoppingCart\Index.cshtml" />
     <None Include="Views\WenShoppingCart\SearchKeyword.cshtml" />

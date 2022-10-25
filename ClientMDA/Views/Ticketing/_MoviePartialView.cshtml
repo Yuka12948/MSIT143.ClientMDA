@@ -1,8 +1,8 @@
 ﻿@using ClientMDA.Models
-@model List<電影movie>
+@model List<電影代碼movieCode>
 
 @{
-
+        
 }
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 <style>
@@ -92,14 +92,14 @@
     <div class="row gy-4 gx-lg-5">
 
         @{
-            List<電影movie> datas = Model.Skip(9).ToList();
-            foreach (電影movie item in datas)
+            List<電影代碼movieCode> datas = Model.ToList();
+            foreach (var item in datas)
             {
-                string name = item.中文標題titleCht;
-                int id = item.電影編號movieId;
+                string name = $"{item.電影編號movie.中文標題titleCht}({item.語言編號language.語言名稱languageName}版)";
+                int id = item.電影代碼編號movieCodeId;
                 <div class="col-lg-4">
                     <div class="pricing-item d-flex justify-content-between">
-                        <h4><a asp-route-id=@id asp-controller="Ticketing" asp-action="MovieInfoIndex2">@name</a></h4>
+                        <h5><a asp-route-id=@id asp-controller="Ticketing" asp-action="MovieInfoIndex2">@name</a></h5>
                     </div>
                 </div>
             }

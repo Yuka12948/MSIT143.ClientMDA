@@ -11,7 +11,7 @@
 </style>
 
 <div id="preloader">
-    <div class="line"></div>
+    <div class="loader"></div>
 </div>
 
 <section class="container m-auto pb-1" style="padding-top:5%">
@@ -27,6 +27,13 @@
 
 
 <script>
+    (function ($) {
+        $(window).on('load', function () {
+            $(".loader").fadeOut();
+            $("#preloder").delay(20).fadeOut("slow");
+        });
+    })(jQuery);
+
     const preloader = document.querySelector('#preloader');
     (function ($) {
         $(window).on('load', async function () {
@@ -41,8 +48,8 @@
     })(jQuery);
 
     $('#partialView').load('@Url.Action("MoviePartialView")')
-    const selectMovie = document.querySelector("#SelectMovie")
-    const selectTheater = document.querySelector("#SelectTheater")
+    let selectMovie = document.querySelector("#SelectMovie")
+    let selectTheater = document.querySelector("#SelectTheater")
     selectTheater.addEventListener("click", () => {
         $('#partialView').load('@Url.Action("TheaterPartialView")')
     })

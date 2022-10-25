@@ -419,7 +419,7 @@
         let response = await fetch(`${url}`)
         let data = await response.json();
         if (data == 1) {
-            view.style.display = "none";;
+            view.style.display = "none";
             preloader.style.display = "block";
             form.submit();
 

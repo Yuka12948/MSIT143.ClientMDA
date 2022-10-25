@@ -10,11 +10,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
+//using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace ClientMDA.Controllers
 {
     public class TicketingController : Controller
     {
+        #region 建構子
         private MDAContext _dbContext;
         private readonly IWebHostEnvironment _host;
 
@@ -22,7 +26,6 @@ namespace ClientMDA.Controllers
         {
             _dbContext = dbContext;
             _host = host;
-
             _dbContext.場次screenings.ToList();
             _dbContext.電影movies.ToList();
             _dbContext.電影代碼movieCodes.ToList();
@@ -32,8 +35,21 @@ namespace ClientMDA.Controllers
             _dbContext.影城mainTheaters.ToList();
             _dbContext.票價資訊ticketPrices.ToList();
             _dbContext.票種ticketTypes.ToList();
+            _dbContext.電影分級movieRatings.ToList();
+            _dbContext.訂單總表orders.ToList();
+            _dbContext.電影語言movieLanguages.ToList();
+            _dbContext.電影主演casts.ToList();
+            _dbContext.導演總表directors.ToList();
+            _dbContext.電影導演movieDirectors.ToList();
+            _dbContext.演員總表actors.ToList();
+
+            _dbContext.商品資料products.ToList();
+            _dbContext.購買商品明細receipts.ToList();
         }
 
+        #endregion
+
+        #region 普通Action
         public IActionResult MovieInfoIndex()
         {
             return View();
@@ -52,34 +68,57 @@ namespace ClientMDA.Controllers
 
         public IActionResult MoviePartialView()
         {
-            List<電影movie> movies = this._dbContext.電影movies.ToList();
+            List<電影代碼movieCode> movies = this._dbContext.電影代碼movieCodes.ToList();
             return PartialView($"~/Views/Ticketing/_MoviePartialView.cshtml", movies);
         }
 
         public IActionResult MovieInfoIndex2(int id)
         {
-            List<電影院theater> theater = this._dbContext.場次screenings.Where(s => s.電影代碼movieCodeNavigation.電影編號movieId == id).Select(s => s.影廳編號cinema.電影院編號theater).Distinct().ToList();
+            HttpContext.Session.SetInt32(CDictionary.SK_選擇的電影Code, id);
+            List<電影院theater> theater = this._dbContext.場次screenings.Where(s => s.電影代碼movieCode == id).Select(s => s.影廳編號cinema.電影院編號theater).Distinct().ToList();
             return View(theater);
         }
 
-        public IActionResult SelectByMovie(int MovieID)
+        public IActionResult SelectByMovie(int theaterID)
         {
-
-            return View();
+            HttpContext.Session.SetInt32(CDictionary.SK_選擇的電影院ID, theaterID);
+            int MovieID = (int)HttpContext.Session.GetInt32(CDictionary.SK_選擇的電影Code);
+            CSelectByMovieViewModel view = new CSelectByMovieViewModel()
+            {
+                movie = this._dbContext.電影代碼movieCodes.FirstOrDefault(c => c.電影代碼編號movieCodeId == MovieID),
+                theater = this._dbContext.電影院theaters.FirstOrDefault(t => t.影城編號mainTheaterId == theaterID),
+                Delectors = this._dbContext.電影代碼movieCodes.FirstOrDefault(c => c.電影代碼編號movieCodeId == MovieID).電影編號movie.電影導演movieDirectors.Select(d => d.導演編號director.中文名字nameCht).ToList(),
+                Actors = this._dbContext.電影代碼movieCodes.FirstOrDefault(c => c.電影代碼編號movieCodeId == MovieID).電影編號movie.電影主演casts.Select(a => a.演員編號actor.中文名字nameCht).ToList(),
+            };
+            return View(view);
         }
 
         public IActionResult SelectByTheater(int theaterID)
         {
+            HttpContext.Session.SetInt32(CDictionary.SK_選擇的電影院ID, theaterID);
 
-            return View();
+            電影院theater theater = this._dbContext.電影院theaters.FirstOrDefault(t => t.電影院編號theaterId == theaterID);
+            List<場次screening> AllScreening = this._dbContext.場次screenings
+                                                   .Where(s => s.影廳編號cinema.電影院編號theaterId == theaterID)
+                                                   .ToList();
+
+            CSelectByTheaterViewModel view = new CSelectByTheaterViewModel()
+            {
+                theaterName = theater.電影院名稱theaterName,
+                address = theater.地址address,
+                phone = theater.電話phone,
+                theaterId = theaterID,
+                Allscreen = AllScreening
+            };
+            return View(view);
         }
 
-        public IActionResult SeatMap(CScreenIDAndCountViewModel view) //==>id為場次ID count為人數
+        public IActionResult SeatMap(CScreenIDAndCountViewModel info)
         {
-            出售座位狀態seatStatus seatStaus = this._dbContext.出售座位狀態seatStatuses.Where(ss => ss.場次編號screeningId == view.ScreenID).FirstOrDefault();
-            場次screening screening = this._dbContext.場次screenings.Where(s => s.場次編號screeningId == view.ScreenID).FirstOrDefault();
+            出售座位狀態seatStatus seatStaus = this._dbContext.出售座位狀態seatStatuses.Where(ss => ss.場次編號screeningId == info.ScreenID).FirstOrDefault();
+            場次screening screening = this._dbContext.場次screenings.Where(s => s.場次編號screeningId == info.ScreenID).FirstOrDefault();
             CSeatMaoViewModels seatview = new CSeatMaoViewModels(seatStaus);
-            seatview.seatCount選擇座位數量 = view.Count;
+            seatview.seatCount選擇座位數量 = info.Count;
             seatview.MovieName電影名稱 = screening.電影代碼movieCodeNavigation.電影編號movie.中文標題titleCht;
             seatview.MovieID電影編號 = screening.電影代碼movieCodeNavigation.電影編號movieId;
             seatview.MovieCode電影代碼 = screening.電影代碼movieCode;
@@ -145,6 +184,50 @@ namespace ClientMDA.Controllers
             return View();
         }
 
+        #endregion
+
+        #region ViewComponent區
+
+        public IActionResult ComponentSelectMovie(string data)
+        {
+            HttpContext.Session.SetString(CDictionary.SK_選擇的放映日期, data);
+            DateTime CurrentDate = fn_字串轉日期格式(data);
+            return ViewComponent("SelectMovie", CurrentDate);
+        }
+
+        public IActionResult ComponentSelectScreen(int Code)
+        {
+            HttpContext.Session.SetInt32(CDictionary.SK_選擇的電影Code, Code);
+            string data = HttpContext.Session.GetString(CDictionary.SK_選擇的放映日期);
+            DateTime CurrentDate = fn_字串轉日期格式(data);
+            return ViewComponent("SelectScreen", CurrentDate);
+        }
+
+        public IActionResult ComponentSelectScreen2(string data)
+        {
+            HttpContext.Session.SetString(CDictionary.SK_選擇的放映日期, data);
+            DateTime CurrentDate = fn_字串轉日期格式(data);
+            return ViewComponent("SelectScreen", CurrentDate);
+        }
+
+        public IActionResult ComponentMovieInfo(int Code)
+        {
+            int id = this._dbContext.電影代碼movieCodes
+                         .Where(m => m.電影代碼編號movieCodeId == Code)
+                         .FirstOrDefault().電影編號movieId;
+            return ViewComponent("MovieInfo", id);
+        }
+
+
+        #endregion
+
+        #region Ajax區
+
+
+
+
+        #endregion
+
         #region 驗證信
 
         public IActionResult sendmail(string email)
@@ -190,6 +273,9 @@ namespace ClientMDA.Controllers
         }
 
         #endregion
+
+        #region 內建方法區
+
         [NonAction]
         public List<CTicketItemViewModel> fn_票種字串轉換List(string ticketString) //==>將  (回傳字串 id:count#id:count#  id=票價明細 count=數量) 轉成 一個 List<CTicketItemViewModel>
         {
@@ -320,5 +406,29 @@ namespace ClientMDA.Controllers
             }
 
         }
+
+        [NonAction]
+        public int fn_計算座位數(string seatInfo)
+        {
+            string[] seatArr = seatInfo.Split('@');
+            int count = 0;
+            foreach (string item in seatArr)
+            {
+                if (!(item.Contains("NA")) && !(item.Contains("saled")) && !(string.IsNullOrWhiteSpace(item)))
+                    count++;
+            }
+            return count;
+        }
+
+        [NonAction]
+        public DateTime fn_字串轉日期格式(string DateString)
+        {
+            string[] dateArr = DateString.Split('/');
+            string[] dayArr = dateArr[2].Split(' ');
+            DateTime Date = new DateTime(Convert.ToInt32(dateArr[0]), Convert.ToInt32(dateArr[1]), Convert.ToInt32(dayArr[0]));
+            return Date;
+
+        }
+        #endregion
     }
 }
