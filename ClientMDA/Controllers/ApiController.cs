@@ -19,6 +19,9 @@ namespace ClientMDA.Controllers
         {
             _logger = logger;
             _MDA = MDA;
+            _MDA.電影圖片movieIimagesLists.ToList();
+            _MDA.電影圖片總表movieImages.ToList();
+            _MDA.電影movies.ToList();
         }
         public IActionResult Index()
         {
@@ -69,10 +72,10 @@ namespace ClientMDA.Controllers
         {
             List<string> list = new List<string>(0);
             List<int> listNumbers = new List<int>();
-            var q = _MDA.電影圖片movieIimagesLists.Where(m => m.電影編號movie.上映日期releaseDate < DateTime.Now.AddDays(-30)).OrderBy(d => d.電影編號movie).Select(u => u.圖片編號image.圖片雲端imageImdb);
+            //var q = _MDA.電影圖片movieIimagesLists.Where(m => m.電影編號movie.上映日期releaseDate < DateTime.Now.AddDays(-30)).OrderBy(d => d.電影編號movie).Select(u => u.圖片編號image.圖片雲端imageImdb);
 
-            var q1 = _MDA.電影圖片movieIimagesLists.Where(p => p.電影編號movie.上映日期releaseDate < DateTime.Now.AddDays(-30)).OrderBy(d => d.電影編號movieId).Select(o => o.電影編號movieId).First();
-            var q2 = _MDA.電影圖片movieIimagesLists.Where(p => p.電影編號movie.上映日期releaseDate < DateTime.Now.AddDays(-30)).OrderBy(d => d.電影編號movieId).Select(o => o.電影編號movieId).Last();
+            //var q1 = _MDA.電影圖片movieIimagesLists.Where(p => p.電影編號movie.上映日期releaseDate < DateTime.Now.AddDays(-30)).OrderBy(d => d.電影編號movieId).Select(o => o.電影編號movieId).First();
+            //var q2 = _MDA.電影圖片movieIimagesLists.Where(p => p.電影編號movie.上映日期releaseDate < DateTime.Now.AddDays(-30)).OrderBy(d => d.電影編號movieId).Select(o => o.電影編號movieId).Last();
 
             int number;
             for (int i = 0; i < 20; i++)
