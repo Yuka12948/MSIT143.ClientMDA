@@ -1,9 +1,11 @@
 ﻿using ClientMDA.Models;
 using ClientMDA.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -13,39 +15,13 @@ namespace ClientMDA.Controllers
     public class MemberController : Controller
     {
         private readonly MDAContext _MDAcontext;
-
-        public MemberController(MDAContext MDAcontext)  //相依性注入
+        private IWebHostEnvironment _enviro;
+        public MemberController(MDAContext MDAcontext, IWebHostEnvironment p)  //相依性注入
         {
             _MDAcontext = MDAcontext;
+            _enviro = p;
         }
-        List<CMemberDemoViewModel> members = new List<CMemberDemoViewModel>();
-        CMemberDemoViewModel memberDemo1 = new CMemberDemoViewModel
-        {
-            MemberID = 2,
-            Cellphone = "0902002002",
-            Email = "002@gmail.com",
-            Password = "0000",
-            Formal = false,
-            Permission = 0,
-            CreatedTime = DateTime.Now,
-        };
-        CMemberDemoViewModel memberDemo2 = new CMemberDemoViewModel
-        {
-            MemberID = 1,
-            Cellphone = "0901001001",
-            Email = "001@gmail.com",
-            Password = "0000",
-            Formal = true,
-            Permission = 0,
-            Address = "台北市",
-            BirthDate = new DateTime(1990, 1, 1),
-            F_Name = "Wei",
-            L_Name = "Wang",
-            NickName = "Yuka",
-            Gender = 1,
-            Bonus = 100,
-            CreatedTime = new DateTime(2022, 6, 15),
-        };
+        
         public IActionResult MemberMain()
         {
             if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)
@@ -90,9 +66,19 @@ namespace ClientMDA.Controllers
             會員member mem = _MDAcontext.會員members.FirstOrDefault(t => t.會員電話cellphone.Equals(vModel.txtPhone));
             if (mem != null && mem.密碼password.Equals(vModel.txtPassword))
             {
+                //登入成功存入session
                 string jsonUser = JsonSerializer.Serialize(mem);
                 HttpContext.Session.SetString(CDictionary.SK_LOGINED_USER, jsonUser);
-                return RedirectToAction("MemberMain");
+
+                //轉跳原頁面
+                string page = HttpContext.Session.GetString(CDictionary.SK登後要前往的頁面);
+                if (!string.IsNullOrEmpty(page))
+                {
+                    HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, "");
+                    return Redirect(page);
+                }
+                else
+                    return RedirectToAction("MemberMain");
             }
 
             else
@@ -137,7 +123,43 @@ namespace ClientMDA.Controllers
                 return RedirectToAction("Login");
             return View();
         }
+        [HttpPost]
+        public IActionResult MemberEdit(CMemberDemoViewModel inputMember)
+        {
+            會員member mem = _MDAcontext.會員members.FirstOrDefault(m => m.會員編號memberId == inputMember.會員編號memberId);
+            if (mem != null)
+            {
+                if (inputMember.memberPhoto != null)
+                {
+                    string photoName = "member" + mem.會員編號memberId + ".jpg";
+                    mem.會員照片image = photoName;
+                    string path = _enviro.WebRootPath + "/images/Member/" + photoName;
+                    inputMember.memberPhoto.CopyTo(new FileStream(path, FileMode.Create));
+                }
+                if (!string.IsNullOrEmpty(inputMember.birthDate))
+                {
+                    DateTime bd = DateTime.ParseExact(inputMember.birthDate, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                    mem.生日birthDate = bd;
+                }
+                mem.暱稱nickName = inputMember.暱稱nickName;
+                mem.名字fName = inputMember.名字fName;
+                mem.姓氏lName = inputMember.姓氏lName;
+                mem.性別gender = inputMember.性別gender;
+                mem.地址address = inputMember.地址address;
+                if (mem.正式會員formal == false && inputMember.地址address != null && inputMember.暱稱nickName != null
+                    && inputMember.性別gender != null && inputMember.birthDate != null && inputMember.名字fName != null
+                    && inputMember.姓氏lName != null)
+                {
+                    mem.正式會員formal = true;
+                }
 
+                _MDAcontext.SaveChanges();
+
+                string jsonUser = JsonSerializer.Serialize(mem);
+                HttpContext.Session.SetString(CDictionary.SK_LOGINED_USER, jsonUser);
+            }
+            return RedirectToAction("MemberEdit");
+        }
         public IActionResult CommentList(CKeywordViewModel model)
         {
             if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)

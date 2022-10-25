@@ -12,6 +12,7 @@ namespace ClientMDA.Models
         public static readonly string SK_選擇的電影Code = "SK_選擇的電影Code";
         public static readonly string SK_選擇的放映日期 = "SK_選擇的放映日期";
         public static readonly string SK_跑過該死的線 = "SK_跑過該死的線";
+        public static readonly string SK登後要前往的頁面 = "SK登後要前往的頁面";
         public static readonly string SK_LOGINED_USER = "SK_LOGINED_USER";
         public static readonly string SK_USER_PHONE = "SK_USER_PHONE";
     }
