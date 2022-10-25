@@ -2964,9 +2964,6 @@ C:\Users\duckl\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\View
 C:\Users\duckl\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\SelectTicket.cshtml.g.cs
 C:\Users\duckl\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\_MoviePartialView.cshtml.g.cs
 C:\Users\duckl\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\_TheaterPartialView.cshtml.g.cs
-C:\Users\duckl\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\AddToCard.cshtml.g.cs
-C:\Users\duckl\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\Index.cshtml.g.cs
-C:\Users\duckl\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\SearchKeyword.cshtml.g.cs
 C:\Users\duckl\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\duckl\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Users\duckl\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\ClientMDA.RazorTargetAssemblyInfo.cache
@@ -3057,3 +3054,6 @@ C:\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\AddT
 C:\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\Index.cshtml.g.cs
 C:\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\SearchKeyword.cshtml.g.cs
 C:\Users\duckl\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Shared\_WenLayout.cshtml.g.cs
+C:\Users\duckl\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\AddToCard.cshtml.g.cs
+C:\Users\duckl\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\Index.cshtml.g.cs
+C:\Users\duckl\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\SearchKeyword.cshtml.g.cs
