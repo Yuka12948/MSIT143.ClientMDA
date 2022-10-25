@@ -1024,9 +1024,7 @@ namespace ClientMDA.Models
 
                 entity.Property(e => e.片長runtime).HasColumnName("片長Runtime");
 
-                entity.Property(e => e.票房boxOffice)
-                    .HasMaxLength(50)
-                    .HasColumnName("票房BoxOffice");
+                entity.Property(e => e.票房boxOffice).HasColumnName("票房BoxOffice");
 
                 entity.Property(e => e.系列編號seriesId).HasColumnName("系列編號Series_ID");
 
@@ -1218,8 +1216,7 @@ namespace ClientMDA.Models
 
             modelBuilder.Entity<電影排行movieRank>(entity =>
             {
-                entity.HasKey(e => e.排行編號rankId)
-                    .HasName("PK_電影排行MovieRank_1");
+                entity.HasKey(e => e.排行編號rankId);
 
                 entity.ToTable("電影排行MovieRank");
 
@@ -1229,9 +1226,9 @@ namespace ClientMDA.Models
                     .HasMaxLength(100)
                     .HasColumnName("電影Movie");
 
-                entity.Property(e => e.電影排行movieRank1)
+                entity.Property(e => e.電影排名movieRank)
                     .HasMaxLength(5)
-                    .HasColumnName("電影排行Movie_Rank");
+                    .HasColumnName("電影排名Movie_Rank");
 
                 entity.Property(e => e.電影英movieEn)
                     .HasMaxLength(100)

@@ -10,6 +10,6 @@ namespace ClientMDA.Models
         public int 排行編號rankId { get; set; }
         public string 電影movie { get; set; }
         public string 電影英movieEn { get; set; }
-        public string 電影排行movieRank1 { get; set; }
+        public string 電影排名movieRank { get; set; }
     }
 }

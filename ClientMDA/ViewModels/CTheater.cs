@@ -122,9 +122,9 @@ namespace ClientMDA.ViewModels
             get { return _movie.期待度anticipation; }
             set { _movie.期待度anticipation = value; }
         }
-        public string 票房boxOffice
+        public float? 票房boxOffice
         {
-            get { return _movie.票房boxOffice; }
+            get { return (float?)_movie.票房boxOffice; }
             set { _movie.票房boxOffice = value; }
         }
         public string 劇情大綱plot

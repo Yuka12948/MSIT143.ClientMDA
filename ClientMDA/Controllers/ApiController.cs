@@ -33,70 +33,64 @@ namespace ClientMDA.Controllers
 
         }
 
-       
+
         public IActionResult showrankposter()
         {
             var q = from a in _MDA.電影圖片總表movieImages
                     join b in _MDA.電影排行movieRanks on a.電影名稱movieName equals b.電影movie
-                    where a.電影名稱movieName == b.電影movie 
+                    where a.電影名稱movieName == b.電影movie
                     orderby b.排行編號rankId ascending
                     select a.圖片雲端imageImdb;
-            return Json(q);           
+            return Json(q);
         }
 
         public IActionResult showrankmovie()
         {
             var q1 = from a in _MDA.電影排行movieRanks
-                     where a.電影排行movieRank1 != null
+                     where a.電影排名movieRank != null
                      select a.電影movie;
             return Json(q1);
         }
 
         public IActionResult shownewmovie()
         {
-            var q2 = from a in _MDA.電影movies
-                         //改-7&7
-                     where a.上映日期releaseDate >= (DateTime.Now.AddDays(-7)) && a.上映日期releaseDate <= (DateTime.Now.AddDays(7))
-                     select a.中文標題titleCht;
+            var q2 = _MDA.電影圖片movieIimagesLists.Where(m => m.電影編號movie.上映日期releaseDate >= (DateTime.Now.AddDays(-7)) && m.電影編號movie.上映日期releaseDate <= (DateTime.Now.AddDays(7))).OrderBy(d => d.電影編號movie.上映日期releaseDate).Select(v => v.電影編號movie.中文標題titleCht);
             return Json(q2);
         }
 
         public IActionResult shownewposter()
         {
-            var q = _MDA.電影圖片movieIimagesLists.Where(m => m.電影編號movie.上映日期releaseDate >= (DateTime.Now.AddDays(-8)) && m.電影編號movie.上映日期releaseDate <= (DateTime.Now.AddDays(15))).Select(u => u.圖片編號image.圖片雲端imageImdb);
+            var q = _MDA.電影圖片movieIimagesLists.Where(m => m.電影編號movie.上映日期releaseDate >= (DateTime.Now.AddDays(-7)) && m.電影編號movie.上映日期releaseDate <= (DateTime.Now.AddDays(7))).OrderBy(d => d.電影編號movie.上映日期releaseDate).Select(u => u.圖片編號image.圖片雲端imageImdb);
             return Json(q);
         }
 
+
         public IActionResult showrecommendposter()
         {
-            List<int> list = new List<int>(0);
-            var q = _MDA.電影圖片movieIimagesLists.Where(m => m.電影編號movie.上映日期releaseDate < DateTime.Now.AddDays(-30)).Select(u => u.圖片編號image.圖片雲端imageImdb);
-
-            //int[] recommend = { rd.Next(1,q.Count()), rd.Next(1, q.Count()), rd.Next(1, q.Count()), rd.Next(1, q.Count()), rd.Next(1, q.Count()), rd.Next(1, q.Count()), rd.Next(1, q.Count()), rd.Next(1, q.Count()), rd.Next(1, q.Count()), rd.Next(1, q.Count()) };
-
+            List<string> list = new List<string>(0);
             List<int> listNumbers = new List<int>();
+            var q = _MDA.電影圖片movieIimagesLists.Where(m => m.電影編號movie.上映日期releaseDate < DateTime.Now.AddDays(-30)).OrderBy(d => d.電影編號movie).Select(u => u.圖片編號image.圖片雲端imageImdb);
+
+            var q1 = _MDA.電影圖片movieIimagesLists.Where(p => p.電影編號movie.上映日期releaseDate < DateTime.Now.AddDays(-30)).OrderBy(d => d.電影編號movieId).Select(o => o.電影編號movieId).First();
+            var q2 = _MDA.電影圖片movieIimagesLists.Where(p => p.電影編號movie.上映日期releaseDate < DateTime.Now.AddDays(-30)).OrderBy(d => d.電影編號movieId).Select(o => o.電影編號movieId).Last();
+
             int number;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 20; i++)
             {
                 do
                 {
-                    number = rd.Next(1, q.Count());
+                    //資料庫要新增很多東西才可以跳更多推薦
+                    number = rd.Next(1, 25);
                 } while (listNumbers.Contains(number));
                 listNumbers.Add(number);
             }
             for (int i = 0; i < listNumbers.Count(); i++)
             {
-                var q2 = _MDA.電影圖片movieIimagesLists.Where(p => p.電影編號movieId == listNumbers[i]).FirstOrDefault();
-                list.Add(q2.電影編號movieId);
+                var q3 = _MDA.電影圖片movieIimagesLists.AsEnumerable().Where(p => p.電影編號movieId == listNumbers[i]).FirstOrDefault().圖片編號image.圖片雲端imageImdb;
+                list.Add(q3);
             }
 
             return Json(list);
         }
-
-        //public IActionResult showrecommendmovie()
-        //{
-        //    var q = _MDA.電影movies.Where(m => m.上映日期releaseDate < DateTime.Now.AddDays(-30)).Select(u => u.中文標題titleCht);
-        //    return Json(q);
-        //}
     }
 }
