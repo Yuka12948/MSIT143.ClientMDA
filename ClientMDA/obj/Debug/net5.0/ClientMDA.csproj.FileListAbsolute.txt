@@ -3274,3 +3274,4 @@ C:\Users\Student\Documents\MSIT143.ClientMDA1025_2\ClientMDA\obj\Debug\net5.0\Ra
 C:\Users\Student\Documents\MSIT143.ClientMDA1025_2\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\Components\SelectScreen\Default.cshtml.g.cs
 C:\Users\Student\Documents\MSIT143.ClientMDA1025_2\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\Components\SelectSeat\Default.cshtml.g.cs
 C:\Users\Student\Documents\MSIT143.ClientMDA1025_2\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\Components\SelectTime\Default.cshtml.g.cs
+C:\Users\Student\Documents\MSIT143.ClientMDA1025_2\ClientMDA\obj\Debug\net5.0\ClientMDA.csprojAssemblyReference.cache
