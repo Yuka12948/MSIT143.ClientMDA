@@ -681,9 +681,6 @@ C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Vi
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
-C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\Index.cshtml.g.cs
-C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\即將上映page1.cshtml.g.cs
-C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\阮玲玉.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\MovieInfoIndex.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\MovieInfoIndex2.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\PaymentWeb.cshtml.g.cs
@@ -1600,7 +1597,6 @@ C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Vi
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\MemberBonusList.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\MemberDiscount.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\OrderList.cshtml.g.cs
-C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\捍衛戰士2.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\MovieInfoIndex3.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\PaymentWeb3.cshtml.g.cs
 C:\Users\yikis\source\repos\MSIT143.ClientMDA\ClientMDA\bin\Debug\net5.0\appsettings.Development.json
@@ -2526,7 +2522,6 @@ C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\bin\Debug\net5.0\runtimes
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\System.Text.Encoding.CodePages.dll
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\評論Demo2.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\電影排行TOP5.cshtml.g.cs
-C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\Components\s1\Default.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\Components\即將上映\Default.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\Components\快速訂票\Default.cshtml.g.cs
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Theater\Components\時間\Default.cshtml.g.cs
@@ -3491,3 +3486,10 @@ C:\Users\Student\Documents\MSIT143.ClientMDA1026\ClientMDA\obj\Debug\net5.0\Clie
 C:\Users\Student\Documents\MSIT143.ClientMDA1026\ClientMDA\obj\Debug\net5.0\ref\ClientMDA.dll
 C:\Users\Student\Documents\MSIT143.ClientMDA1026\ClientMDA\obj\Debug\net5.0\ClientMDA.pdb
 C:\Users\Student\Documents\MSIT143.ClientMDA1026\ClientMDA\obj\Debug\net5.0\ClientMDA.genruntimeconfig.cache
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Shared\_WenLayout.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\Components\MovieInfo\Default.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\Components\SelectDate\Default.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\Components\SelectMovie\Default.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\Components\SelectScreen\Default.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\Components\SelectSeat\Default.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\Components\SelectTime\Default.cshtml.g.cs
