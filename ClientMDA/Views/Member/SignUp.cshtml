@@ -78,7 +78,7 @@
                     <input type="password" id="inputPwd" name="txtPassword" placeholder="密碼">
                     <span class="icon_lock"></span><small id="pwdHelp" class="form-text text-muted"></small>
                 </div>
-                <button type="submit" id="buttonSubmit" class="site-btn">註冊</button>
+                <input type="submit" id="buttonSubmit" class="site-btn" value="註冊" />
             </form>
         </div>
     </div>
@@ -134,28 +134,14 @@
         })
 
 
-        btn.addEventListener("click", async function(evt) {
-            evt.preventDefault()
-            if (phoneWarning.textContent == "" && emailWarning.textContent == "" && pwdWarning.textContent == ""
-                && inputPhone.value != "" && inputEmail.value != "" && inputPwd.value != "") {
-                const formData = new FormData(document.userInfo);
-                await fetch(document.userInfo.action, {
-                    method: "POST",
-                    body: formData
-                }).then(response => response.text())
-                    .then(data => console.log(data))
-
-                await window.location.replace('@Url.Content("~/Member/MemberMain")')
-
-                @*$.ajax({
-                    url: '@Url.Content("~/Member/SignUp")',
-                    type: 'POST',
-                    data: formData
-                }).done(data => {
-                    $('#divAlert').text(data)
-                })*@
+        btn.addEventListener("click",  function(evt) {
+            if (phoneWarning.textContent != "" || emailWarning.textContent != "" || pwdWarning.textContent != ""
+                || inputPhone.value == "" || inputEmail.value == "" || inputPwd.value == "") {
+                btn.setAttribute('type', 'button')
             }
-
+            else {
+                btn.setAttribute('type', 'submit')
+            }
 
         })
 
