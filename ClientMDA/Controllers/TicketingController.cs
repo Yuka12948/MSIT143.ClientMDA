@@ -57,6 +57,12 @@ namespace ClientMDA.Controllers
 
         public IActionResult SelectMovie()
         {
+            string user = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            if (string.IsNullOrEmpty(user))
+            {
+                HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, "~/Ticketing/SelectMovie");
+                return Redirect("~/Member/Login");
+            }
             return View();
         }
 
@@ -86,9 +92,9 @@ namespace ClientMDA.Controllers
             CSelectByMovieViewModel view = new CSelectByMovieViewModel()
             {
                 movie = this._dbContext.電影代碼movieCodes.FirstOrDefault(c => c.電影代碼編號movieCodeId == MovieID),
-                theater = this._dbContext.電影院theaters.FirstOrDefault(t => t.影城編號mainTheaterId == theaterID),
-                Delectors = this._dbContext.電影代碼movieCodes.FirstOrDefault(c => c.電影代碼編號movieCodeId == MovieID).電影編號movie.電影導演movieDirectors.Select(d => d.導演編號director.中文名字nameCht).ToList(),
-                Actors = this._dbContext.電影代碼movieCodes.FirstOrDefault(c => c.電影代碼編號movieCodeId == MovieID).電影編號movie.電影主演casts.Select(a => a.演員編號actor.中文名字nameCht).ToList(),
+                theater = this._dbContext.電影院theaters.FirstOrDefault(t => t.電影院編號theaterId == theaterID),
+                Delectors = this._dbContext.電影代碼movieCodes.FirstOrDefault(c => c.電影代碼編號movieCodeId == MovieID).電影編號movie.電影導演movieDirectors.Select(d => d.導演編號director.導演中文名字nameCht).ToList(),
+                Actors = this._dbContext.電影代碼movieCodes.FirstOrDefault(c => c.電影代碼編號movieCodeId == MovieID).電影編號movie.電影主演casts.Select(a => a.演員編號actor.演員中文名字nameCht).ToList(),
             };
             return View(view);
         }

@@ -4,8 +4,8 @@
     string delectors = "";
     string actor = "";
 
-    var d = Model.電影導演movieDirectors.Select(D => D.導演編號director.中文名字nameCht);
-    var a = Model.電影主演casts.Select(A => A.演員編號actor.中文名字nameCht);
+    var d = Model.電影導演movieDirectors.Select(D => D.導演編號director.導演中文名字nameCht);
+    var a = Model.電影主演casts.Select(A => A.演員編號actor.演員中文名字nameCht);
 
     foreach(var item in d)
     {
