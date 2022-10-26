@@ -17,6 +17,8 @@
     <None Remove="images\Theater\star\black_star.svg" />
     <None Remove="images\Theater\star\color_star.svg" />
     <None Remove="images\Theater\star\sssttar.jpg" />
+    <None Remove="owl.carousel.min.css" />
+    <None Remove="style.css" />
   </ItemGroup>
 
   <ItemGroup>
@@ -65,6 +67,10 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="images\Theater\star\sssttar.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="style.css">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
