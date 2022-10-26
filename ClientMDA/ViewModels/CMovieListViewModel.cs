@@ -7,13 +7,10 @@ namespace ClientMDA.ViewModels
 {
     public class CMovieListViewModel
     {
-        public int memberId {get;set;}
-        public int myListId { get; set; }
-        public int movieId { get; set; }
-        public int movieListId { get; set; }
-        public string movieTitle { get; set; }
-        public string myListName { get; set; }
-        public string moviePic { get; set; }
+        public int memberId { get; set; }
+        public int listId { get; set; }
+        public string listName { get; set; }
+        public List<CMovieListSubViewModel> myLists { get; set; }
 
 
 

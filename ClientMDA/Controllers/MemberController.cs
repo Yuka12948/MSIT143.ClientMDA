@@ -214,15 +214,21 @@ namespace ClientMDA.Controllers
             {
                 會員member mem = JsonSerializer.Deserialize<會員member>(a);
 
-                var q = _MDAcontext.我的片單myMovieLists.Where(m => m.會員編號memberId == mem.會員編號memberId).Select(m => new CMovieListViewModel
+                var q = _MDAcontext.片單總表movieLists.Where(m => m.會員編號memberId == mem.會員編號memberId).Select(m => new CMovieListViewModel
                 {
                     memberId = m.會員編號memberId,
-                    myListId = m.我的片單myMovieListId,
-                    movieListId = m.片單總表編號movieListId,
-                    movieId = m.電影編號movieId,
-                    movieTitle = m.電影編號movie.中文標題titleCht,
-                    myListName = m.片單總表編號movieList.片單總表名稱listName,
-                    moviePic = m.電影編號movie.電影圖片movieIimagesLists.Select(c => c.圖片編號image.圖片雲端imageImdb).FirstOrDefault()
+                    listId = m.片單總表編號movieListId,
+                    listName = m.片單總表名稱listName,
+                    myLists = _MDAcontext.我的片單myMovieLists.Where(l => l.片單總表編號movieListId == m.片單總表編號movieListId).Select(m => new CMovieListSubViewModel
+                    {
+                        memberId = m.會員編號memberId,
+                        myMovieListId = m.我的片單myMovieListId,
+                        movieId = m.電影編號movieId,
+                        movieTitle = m.電影編號movie.中文標題titleCht,
+                        moviePic = m.電影編號movie.電影圖片movieIimagesLists.Select(c => c.圖片編號image.圖片雲端imageImdb).FirstOrDefault()
+                    }).ToList(),
+
+
                 }).ToList();
 
                 return View(q);
