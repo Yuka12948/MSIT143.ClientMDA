@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ClientMDA.Models.電影movie>
+﻿@model List<ClientMDA.ViewModels.CMovieViewModel>
 @{
     ViewData["Title"] = "排行首頁";
 }
@@ -74,12 +74,15 @@
     </style>
 }
 
+<!-- #region CSS樣式 -->
 <link href="~/css/Movie/排行.css" rel="stylesheet" />
 <link href="~/css/Movie/排行-關注清單.css" rel="stylesheet" />
 <link href="~/css/Movie/排行-篩選器上收合.css" rel="stylesheet" />
 <link href="~/css/Movie/排行-Btn.css" rel="stylesheet" />
 <link href="~/css/Movie/排行-Rate.css" rel="stylesheet" />
 @*<link href="https://sweetalert2.github.io/styles/styles.css" rel="stylesheet" />*@ @*響應式demo*@
+<!-- #endregion CSS樣式 -->
+
 
 <br />
 <span style="font-size:33px">@ViewData["Title"] </span><span style="font-size:25px"> TOP 50 Movies</span>
@@ -103,152 +106,151 @@
                     </div>
                     <div class="selectDIV">
                         <div class="offcanvas-body">
-
+                            <!-- #region 單選按鈕 -->
                             <div class="btn-group" role="group" aria-label="First group">
                                 <span class="category-title"> 排行榜</span>
-                                <input type="radio" class="btn-check" name="demo" id="radio1" autocomplete="off" checked>
-                                <label class="btn btn-outline-rank" for="radio1">全部</label>
+                                <input type="radio" class="btn-check" name="sltBtn1" id="sbtn1b1" autocomplete="off" checked>
+                                <label class="btn btn-outline-rank" for="sbtn1b1">全部</label>
 
-                                <input type="radio" class="btn-check" name="demo" id="radio2" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="radio2">日榜</label>
+                                <input type="radio" class="btn-check" name="sltBtn1" id="sbtn1b2" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn1b2">日榜</label>
 
-                                <input type="radio" class="btn-check" name="demo" id="radio3" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="radio3">週榜</label>
+                                <input type="radio" class="btn-check" name="sltBtn1" id="sbtn1b3" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn1b3">週榜</label>
 
-                                <input type="radio" class="btn-check" name="demo" id="radio4" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="radio4">年榜</label>
-                            </div>
-                            <br /><br />
+                                <input type="radio" class="btn-check" name="sltBtn1" id="sbtn1b4" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn1b4">年榜</label>
+                            </div><br /><br />
 
                             <div class="btn-group">
                                 <span class="category-title"> 排　序</span>
-                                <input type="radio" class="btn-check" name="demo1" id="radio5" autocomplete="off" checked>
-                                <label class="btn btn-outline-rank" for="radio5">依評分</label>
+                                <input type="radio" class="btn-check" name="sltBtn2" id="sbtn2b1" autocomplete="off" checked>
+                                <label class="btn btn-outline-rank" for="sbtn2b1">依票房</label>
 
-                                <input type="radio" class="btn-check" name="demo1" id="radio6" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="radio6">依票房</label>
+                                <input type="radio" class="btn-check" name="sltBtn2" id="sbtn2b2" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn2b2">依評分</label>
 
-                                <input type="radio" class="btn-check" name="demo1" id="radio7" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="radio7">依評分總數</label>
-                            </div>
-                            <br /><br />
-
+                                <input type="radio" class="btn-check" name="sltBtn2" id="sbtn2b3" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn2b3">依評分總數</label>
+                            </div><br /><br />
+                            <!-- #endregion 單選按鈕 -->
+                            <!--  #region 複選按鈕 -->
                             <div class="btn-group">
                                 <span class="category-title"> 地　區</span>
-                                <input type="checkbox" class="btn-check btnCk1" id="btnCk1check0" autocomplete="off" data-toggle-class="btnCk1check0">
-                                <label class="btn btn-outline-rank" for="check0">全部</label>
+                                <input type="checkbox" class="btn-check btnCk1" name="sltBtn3" id="sbtn3b1" autocomplete="off" checked
+                                       data-toggle-class="btnCk1check0">
+                                <label class="btn btn-outline-rank" for="sbtn3b1">全部</label>
 
-                                <input type="checkbox" class="btn-check btnCk1" id="btnCk1check1" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="check1">台灣</label>
+                                <input type="checkbox" class="btn-check btnCk1" name="sltBtn3" id="sbtn3b2" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn3b2">台灣</label>
 
-                                <input type="checkbox" class="btn-check btnCk1" id="btnCk1check2" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="check2">香港</label>
+                                <input type="checkbox" class="btn-check btnCk1" name="sltBtn3" id="sbtn3b3" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn3b3">香港</label>
 
-                                <input type="checkbox" class="btn-check btnCk1" id="btnCk1check3" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="check3">中國</label>
+                                <input type="checkbox" class="btn-check btnCk1" name="sltBtn3" id="sbtn3b4" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn3b4">中國</label>
 
-                                <input type="checkbox" class="btn-check btnCk1" id="btnCk1check4" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="check4">美國</label>
+                                <input type="checkbox" class="btn-check btnCk1" name="sltBtn3" id="sbtn3b5" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn3b5">美國</label>
 
-                                <input type="checkbox" class="btn-check btnCk1" id="btnCk1check5" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="check5">英國</label>
+                                <input type="checkbox" class="btn-check btnCk1" name="sltBtn3" id="sbtn3b6" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn3b6">英國</label>
 
-                                <input type="checkbox" class="btn-check btnCk1" id="btnCk1check6" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="check6">日本</label>
+                                <input type="checkbox" class="btn-check btnCk1" name="sltBtn3" id="sbtn3b7" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn3b7">日本</label>
 
-                                <input type="checkbox" class="btn-check btnCk1" id="btnCk1check7" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="check7">韓國</label>
+                                <input type="checkbox" class="btn-check btnCk1" name="sltBtn3" id="sbtn3b8" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn3b8">韓國</label>
 
-                                <input type="checkbox" class="btn-check btnCk1" id="btnCk1check8" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="check8">泰國</label>
+                                <input type="checkbox" class="btn-check btnCk1" name="sltBtn3" id="sbtn3b9" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn3b9">泰國</label>
 
-                                <input type="checkbox" class="btn-check btnCk1" id="btnCk1check9" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="check9">印度</label>
+                                <input type="checkbox" class="btn-check btnCk1" name="sltBtn3" id="sbtn3b10" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn3b10">印度</label>
 
-                                <input type="checkbox" class="btn-check btnCk1" id="btnCk1check10" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="check10">其他</label>
-                            </div>
-                            <br /><br />
+                                <input type="checkbox" class="btn-check btnCk1" name="sltBtn3" id="sbtn3b11" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn3b11">其他</label>
+                            </div><br /><br />
 
                             <div class="btn-group">
                                 <span class="category-title"> 年　份</span>
-                                <input type="checkbox" class="btn-check" id="btnCk2check0" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="0check0">全部</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn4" id="sbtn4b1" autocomplete="off" checked>
+                                <label class="btn btn-outline-rank" for="sbtn4b1">全部</label>
 
-                                <input type="checkbox" class="btn-check" id="0check1" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="0check1">新片</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn4" id="sbtn4b2" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn4b2">新片</label>
 
-                                <input type="checkbox" class="btn-check" id="0check2" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="0check2">2022年</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn4" id="sbtn4b3" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn4b3">2022年</label>
 
-                                <input type="checkbox" class="btn-check" id="0check3" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="0check3">2021年</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn4" id="sbtn4b4" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn4b4">2021年</label>
 
-                                <input type="checkbox" class="btn-check" id="0check4" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="0check4">2020年</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn4" id="sbtn4b5" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn4b5">2020年</label>
 
-                                <input type="checkbox" class="btn-check" id="0check5" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="0check5">2019年</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn4" id="sbtn4b6" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn4b6">2019年</label>
 
-                                <input type="checkbox" class="btn-check" id="0check6" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="0check6">2018年</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn4" id="sbtn4b7" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn4b7">2018年</label>
 
-                                <input type="checkbox" class="btn-check" id="0check7" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="0check7">2017年</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn4" id="sbtn4b8" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn4b8">2017年</label>
 
-                                <input type="checkbox" class="btn-check" id="0check8" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="0check8">2016年</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn4" id="sbtn4b9" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn4b9">2016年</label>
 
-                                <input type="checkbox" class="btn-check" id="0check9" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="0check9">2015年</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn4" id="sbtn4b10" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn4b10">2015年</label>
 
-                                <input type="checkbox" class="btn-check" id="0check10" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="0check10">更早</label>
-                            </div>
-                            <br /><br />
+                                <input type="checkbox" class="btn-check" name="sltBtn4" id="sbtn4b11" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn4b11">更早</label>
+                            </div><br /><br />
 
                             <div class="btn-group">
                                 <span class="category-title"> 片　種</span>
-                                <input type="checkbox" class="btn-check" id="1check0" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="1check0">全部</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn5" id="sbtn5b1" autocomplete="off" checked>
+                                <label class="btn btn-outline-rank" for="sbtn5b1">全部</label>
 
-                                <input type="checkbox" class="btn-check" id="1check1" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="1check1">動作</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn5" id="sbtn5b2" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn5b2">動作</label>
 
-                                <input type="checkbox" class="btn-check" id="1check2" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="1check2">冒險</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn5" id="sbtn5b3" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn5b3">冒險</label>
 
-                                <input type="checkbox" class="btn-check" id="1check3" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="1check3">浪漫</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn5" id="sbtn5b4" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn5b4">浪漫</label>
 
-                                <input type="checkbox" class="btn-check" id="1check4" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="1check4">恐怖</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn5" id="sbtn5b5" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn5b5">恐怖</label>
 
-                                <input type="checkbox" class="btn-check" id="1check5" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="1check5">驚悚</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn5" id="sbtn5b6" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn5b6">驚悚</label>
 
-                                <input type="checkbox" class="btn-check" id="1check6" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="1check6">科幻</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn5" id="sbtn5b7" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn5b7">科幻</label>
 
-                                <input type="checkbox" class="btn-check" id="1check7" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="1check7">奇幻</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn5" id="sbtn5b8" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn5b8">奇幻</label>
 
-                                <input type="checkbox" class="btn-check" id="1check8" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="1check8">歷史</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn5" id="sbtn5b9" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn5b9">歷史</label>
 
-                                <input type="checkbox" class="btn-check" id="1check9" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="1check9">戰爭</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn5" id="sbtn5b10" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn5b10">戰爭</label>
 
-                                <input type="checkbox" class="btn-check" id="1check10" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="1check10">動畫電影</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn5" id="sbtn5b11" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn5b11">動畫電影</label>
 
-                                <input type="checkbox" class="btn-check" id="1check11" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="1check11">其他</label>
+                                <input type="checkbox" class="btn-check" name="sltBtn5" id="sbtn5b12" autocomplete="off">
+                                <label class="btn btn-outline-rank" for="sbtn5b12">其他</label>
                             </div><br /><br />
+                            <!-- #endregion 複選按鈕 -->
                         </div>
                     </div>
                 </div>
-                <!-- #endregion 頂部篩選器收合 -->              
+                <!-- #endregion 頂部篩選器收合 -->
                 <br /><br />
             </div>
             <div class="col-12 col-md-12">
@@ -271,49 +273,9 @@
                         <span class="charts-list-addList"> 加入片單 </span>
                     </li>
 
-                    @foreach (var item in Model)
-                    {
-
-                        <li class="charts-list-row">
-                            <div class="divRow">
-                                <span class="charts-list-rank">@Html.DisplayFor(modelItem => item.電影編號movieId)</span> @*排名 暫時放ID*@
-                                <div class="flipper">
-                                    <div class="flipper-item layer1">
-                                        <a href=@Url.Action("電影介紹","Movie", new {id= item.電影編號movieId})>
-                                            <img class="charts-list-cover" alt="" title="@Html.DisplayFor(modelItem => item.中文標題titleCht)"
-                                                 src="~/images/Theater/common/poster.png">@*抓電影海報*@
-                                        </a>
-                                        <span class="charts-list-desc">
-                                            <span class="charts-list-song" title="@Html.DisplayFor(modelItem => item.中文標題titleCht)">
-                                                <a href=@Url.Action("電影介紹","Movie", new {id= item.電影編號movieId})>@Html.DisplayFor(modelItem => item.中文標題titleCht)</a>
-                                            </span>
-                                            <span class="charts-list-artist" title="Halloween Ends">
-                                                <a href=@Url.Action("電影介紹","Movie", new {id= item.電影編號movieId})>@Html.DisplayFor(modelItem => item.英文標題titleEng)</a>
-                                            </span>
-                                        </span>
-
-                                        <span class="charts-list-content"></span>
-                                        <span class="charts-list-span"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i> 5.0</span>
-
-                                        <div class="dropdown">
-                                            <button aria-label="Rate @Html.DisplayFor(modelItem => item.中文標題titleCht)" class="ipc-rate-button ipc-rating-star-group--unrated ipc-rate-button--unrated ipc-rate-button--baseAlt"
-                                                    data-testid="rate-button" data-modal-target="#ToRate">
-                                                <span class="ipc-rating-star ipc-rating-star--baseAlt ipc-rating-star--rate">
-                                                    <i class="far fa-star" style="padding-right:5px;color:#ffc107"></i>評分
-                                                </span>
-                                            </button>
-                                        </div>
-                                        <span class="charts-list-date">@Html.DisplayFor(modelItem => item.上映日期releaseDate)</span>
-                                        <span class="charts-list-prev-rank">
-                                            <div class="wlb_ribbon" data-tconst="tt0111161" data-recordmetrics="true" style="position: relative;">
-                                                <div class="wl-ribbon standalone not-inWL" title="點擊添加到關注列表"></div>
-                                            </div>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    }
+                    <div id="篩選切換">
+                        @await Component.InvokeAsync("電影排行", new { datas = Model })
+                    </div>
 
                 </ul>
                 <!-- #endregion 排行榜body -->
@@ -397,6 +359,18 @@
 
 @section Scripts{
 
+    <!-- #region 篩選器click -->
+    <script>
+        $("#sbtn2b1").click(function () {
+                $(this).removeClass("checked").siblings().removeClass("checked").end().addClass("checked");
+            $("#篩選切換").load("@Url.Content("~/Movie/電影排行")")
+        })
+        $("#sbtn2b2").click(function () {
+                $(this).removeClass("checked").siblings().removeClass("checked").end().addClass("checked");
+            $("#篩選切換").load("@Url.Content("~/Movie/電影排行新片")")
+        })
+    </script>
+    <!-- #endregion 篩選器click -->
     <!-- #region 篩選器篩選 -->
     <script>
         $('.category').click(function () {

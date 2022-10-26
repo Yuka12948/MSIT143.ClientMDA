@@ -19,7 +19,49 @@ namespace ClientMDA.Controllers
 
         public IActionResult 評論首頁() //最新/熱門/關注評論
         {
-            return View();
+            List<CCommentViewModel> datas = null;
+            var mPoster = _MDAcontext.評論圖片明細commentImagesLists.Select(i => i);
+            datas = _MDAcontext.電影評論movieComments.OrderByDescending(c => c.發佈時間commentTime).Select
+                    (c => new CCommentViewModel
+                    {
+                        comment = c,
+                        //暱稱nickName = c.會員編號member.暱稱nickName,
+                        cImgFrList = _MDAcontext.評論圖片明細commentImagesLists.Where(i => i.評論編號commentId == c.評論編號commentId)
+                        .Select(c => c.評論圖庫編號commentImage.圖片image).ToList()
+                    }).Take(5).ToList();
+            return View(datas);
+        }
+
+        public IActionResult 最新評論() //最新評論
+        {
+            List<CCommentViewModel> datas = null;
+            var mPoster = _MDAcontext.評論圖片明細commentImagesLists.Select(i => i);
+            datas = _MDAcontext.電影評論movieComments.OrderByDescending(c => c.發佈時間commentTime).Select
+                    (c => new CCommentViewModel
+                    {
+                        comment = c,
+                        //暱稱nickName = c.會員編號member.暱稱nickName,
+                        cImgFrList = _MDAcontext.評論圖片明細commentImagesLists.Where(i => i.評論編號commentId == c.評論編號commentId)
+                        .Select(c => c.評論圖庫編號commentImage.圖片image).ToList()
+                    }).Take(6).ToList();
+
+            return ViewComponent("最新評論", datas);
+        }
+
+        public IActionResult 關注評論() //關注評論
+        {
+            List<CCommentViewModel> datas = null;
+            var mPoster = _MDAcontext.評論圖片明細commentImagesLists.Select(i => i);
+            datas = _MDAcontext.電影評論movieComments.OrderBy(c => c.會員編號memberId).Select
+                    (c => new CCommentViewModel
+                    {
+                        comment = c,
+                        //暱稱nickName = c.會員編號member.暱稱nickName,
+                        cImgFrList = _MDAcontext.評論圖片明細commentImagesLists.Where(i => i.評論編號commentId == c.評論編號commentId)
+                        .Select(c => c.評論圖庫編號commentImage.圖片image).ToList()
+                    }).Take(6).ToList();
+
+            return ViewComponent("關注評論", datas);
         }
 
         public IActionResult 電影評論(int? id) //電影單則評論

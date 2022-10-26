@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace prj_MDA.ViewModels
+namespace ClientMDA.ViewModels
 {
     public class CMovieViewModel
     {
@@ -49,7 +49,7 @@ namespace prj_MDA.ViewModels
             set { _mIimagesList = value; }
         }
 
-        public CMovieViewModel() //每做一個就建一個
+        public CMovieViewModel()
         {
             _movie = new 電影movie();
             _mCast = new 電影主演cast();

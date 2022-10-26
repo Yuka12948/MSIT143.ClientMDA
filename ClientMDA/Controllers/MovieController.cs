@@ -1,7 +1,6 @@
 ﻿using ClientMDA.Models;
 using ClientMDA.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using prj_MDA.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,20 +21,55 @@ namespace ClientMDA.Controllers
 
         public ActionResult 排行首頁(CKeywordViewModel model)
         {
-            MDAContext db = new MDAContext();
-            IEnumerable<電影movie> datas = null;
-
+            List<CMovieViewModel> datas = null;
+            var mPoster = _MDAcontext.電影圖片movieIimagesLists.Select(i => i);
             if (string.IsNullOrEmpty(model.txtKeyword))
-                datas = from p in db.電影movies
-                        select p;
+                datas = _MDAcontext.電影movies.OrderByDescending(m => m.票房boxOffice).Select
+                        (m => new CMovieViewModel
+                        {
+                            movie = m,
+                            mImgFrList = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId)
+                            .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
+                        }).Take(50).ToList();
             else
-                datas = db.電影movies.Where(p => p.中文標題titleCht.Contains(model.txtKeyword) ||
-                                                 p.英文標題titleEng.Contains(model.txtKeyword));
+                datas = _MDAcontext.電影movies.Where(m => m.中文標題titleCht.Contains(model.txtKeyword) ||
+                                                          m.英文標題titleEng.Contains(model.txtKeyword)).Select
+                        (m => new CMovieViewModel
+                        {
+                            movie = m,
+                            mImgFrList = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId)
+                            .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
+                        }).ToList();
 
             return View(datas);
         }
 
-        public IActionResult 電影介紹(int? id) //電影資訊/電影評論 int? id
+        public ActionResult 電影排行新片(CKeywordViewModel model) //電影排行新片
+        {
+            List<CMovieViewModel> datas = null;
+            var mPoster = _MDAcontext.電影圖片movieIimagesLists.Select(i => i);
+            if (string.IsNullOrEmpty(model.txtKeyword))
+                datas = _MDAcontext.電影movies.OrderByDescending(m => m.上映日期releaseDate).Select
+                        (m => new CMovieViewModel
+                        {
+                            movie = m,
+                            mImgFrList = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId)
+                            .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
+                        }).Take(50).ToList();
+            else
+                datas = _MDAcontext.電影movies.Where(m => m.中文標題titleCht.Contains(model.txtKeyword) ||
+                                                          m.英文標題titleEng.Contains(model.txtKeyword)).Select
+                        (m => new CMovieViewModel
+                        {
+                            movie = m,
+                            mImgFrList = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId)
+                            .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
+                        }).ToList();
+
+            return ViewComponent("電影排行新片", datas);
+        }
+
+        public IActionResult 電影介紹(int? id) //電影資訊/電影評論
         {
             CMovieViewModel datas = null;
             var q = _MDAcontext.電影圖片movieIimagesLists.Select(i => i);
@@ -47,8 +81,6 @@ namespace ClientMDA.Controllers
                 分級級數ratingLevel = m.電影分級編號rating.分級級數ratingLevel,
                 分級圖片ratingImage = m.電影分級編號rating.分級圖片ratingImage,
                 系列名稱seriesName = m.系列編號series.系列名稱seriesName,
-                //圖片雲端imageImdb = _MDAcontext.電影圖片movieIimagesLists.Where(i=>i.電影編號movieId == m.電影編號movieId)
-                //.FirstOrDefault(c=>c.圖片編號image.圖片雲端imageImdb)
                 mCountryName = _MDAcontext.電影產地movieOrigins.Where(i => i.電影編號movieId == m.電影編號movieId)
                 .Select(c => c.國家編號country.國家名稱countryName).ToList(),
                 mCountryImg = _MDAcontext.電影產地movieOrigins.Where(i => i.電影編號movieId == m.電影編號movieId)
@@ -60,9 +92,15 @@ namespace ClientMDA.Controllers
             return View(datas);
         }
 
-        public IActionResult 電影劇照牆()
+        public IActionResult 電影劇照牆(int? id)
         {
-            return View();
+            CMovieViewModel datas = null;
+            datas = _MDAcontext.電影movies.Where(m => m.電影編號movieId == id).Select
+            (m => new CMovieViewModel
+            {
+                movie = m,
+            }).FirstOrDefault();
+            return View(datas);
         }
 
         public IActionResult 電影劇照()

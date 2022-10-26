@@ -1,70 +1,45 @@
-﻿@{
+﻿@using ClientMDA.ViewModels
+@model CMovieViewModel
+
+@{
     ViewData["Title"] = "電影劇照牆";
 }
 
 @section Styles{
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
-    <base href="https://xieranmaya.github.io/images/cats/">
     <style>
-
-        section {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-            section::after {
-                content: '';
-                flex-grow: 999999999;
-            }
-
-        .divPhoto {
-            margin: 2px;
-            position: relative;
-        }
-        i {
-            display: block;
-        }
-
-        .divPhoto img {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            vertical-align: bottom;
-        }
     </style>
 }
 
 <br />
 <span style="font-size:33px">@ViewData["Title"] </span><span style="font-size:25px"> Photo Gallery</span>
 <br />
-<span style="font-size:15px">電影標題 (上映年份)</span>
-<br /><br />
-
-
-<html ng-app="App">
-<body ng-controller="ImageLayout">
-    <section>
-
-        <div class="divPhoto" ng-repeat="img in imgs" style="width:{{img.width*200/img.height}}px;flex-grow:{{img.width*200/img.height}}">
-            <i style="padding-bottom:{{img.height/img.width*100}}%"></i>
-            <a asp-controller="Comment" asp-action="電影評論">
-                <img src="{{img.url}}" alt="">
-            </a>
-        </div>
-    </section>
-</body>
-</html>
+<span style="font-size:15px">@Model.中文標題titleCht (@Model.上映年份releaseYear)</span>
+<br />
+<br />
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<input type="hidden" asp-for="電影編號movieId" />
+<div class="card-columns"></div>
+<ul id="ul1"></ul>
 
 @section Scripts{
-<script>
-    angular.module('App', [])
-        .controller('ImageLayout', ImageLayout)
-
-    function ImageLayout($scope, $http) {
-        $http.get('https://xieranmaya.github.io/images/cats/cats.json').success(function (imgs) {
-            $scope.imgs = imgs
+    @*<script src="~/js/Movie/PhotoGallery.js"></script>*@
+    <script src="~/js/Movie/TopGun2.js"></script>
+    <script>
+        let htmlDatas = DATAS.map(data => {
+            let { url, fullUrl, width, height } = data
+            return (
+                `
+                      <div class="card bg-dark text-white">
+                          <img src="${fullUrl}" class="card-img" alt="...">
+                              <div class="card-img-overlay">
+                                  <h5 class="card-title"></h5>
+                                  <p class="card-text"></p>
+                                  <p class="card-text"></p>
+                              </div>
+                      </div>
+                    `
+            )
         })
-    }
-</script>
-
+        document.querySelector(".card-columns").innerHTML = (htmlDatas.join(""))
+    </script>
 }

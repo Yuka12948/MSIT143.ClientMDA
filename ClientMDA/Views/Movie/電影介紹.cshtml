@@ -1,4 +1,4 @@
-﻿@model prj_MDA.ViewModels.CMovieViewModel
+﻿@model ClientMDA.ViewModels.CMovieViewModel
 
 @{
     ViewData["Title"] = "電影介紹";
@@ -35,7 +35,7 @@
 
             .anime__details__pic .comment { /*評論數量*/
                 bottom: 10px;
-/*                right: 10px;
+                /*right: 10px;
                 left: auto;*/
                 background: rgba(0,0,0,.5);
             }
@@ -66,13 +66,11 @@
             <input type="hidden" asp-for="電影編號movieId" />
         </div>
 
-
             <!-- #region 電影介紹 -->
             <section class="anime-details spad">
                 <div class="container">
                     <div class="anime__details__content">
-                        <div class="row">
-                           
+                        <div class="row">                         
                             <div class="col-lg-4">
 
                                 @{
@@ -84,21 +82,12 @@
 
                                     byte[] mCountryImg ;
                                     mCountryImg = Model.mCountryImg[0];
-
-                                    //for (var i = 0; i < 5; i++)
-                                    //{
-                                    //    string mCountryName = "";
-                                    //    if (Model.mCountryName.Count() > 0)
-                                    //    {
-                                    //        mCountryName = Model.mCountryName[0];
-                                    //    }
-                                    //}
                                  }
 
                                 @*電影海報*@
                                 <a href="@Url.Action("電影劇照牆", "Movie", new { id = Model.電影編號movieId })">
                                     <div class="anime__details__pic set-bg"
-                                         data-setbg="@urlpic">
+                                         style=background-image:url("@urlpic")>
                                         @*<img src="~/images/Comment/poster_none1.png" />*@
                                         @*<div class="comment"><i class="fa fa-comments"></i> 評論數量</div>*@
                                         @*<div class="view"><i class="fa fa-eye"></i> 瀏覽人數</div>*@
@@ -121,10 +110,9 @@
                                             <a href="#"><i class="fa fa-star"></i></a>
                                             <a href="#"><i class="fa fa-star-half"></i></a>
                                         </div>
-                                        @*<span>1.029則 評分</span>*@
                                     </div>
                                     <p class="MoviePlot">
-                                        @Model.劇情大綱plot@*.Substring(0, 100)*@
+                                        @Model.劇情大綱plot
                                     </p>
                                 </div>
                                 <div class="anime__details__btn">
@@ -148,7 +136,7 @@
                                     </div>
                                     <div class="anime__review__item__text">
                                         <h6>
-                                            <a asp-area="" asp-controller="Comment" asp-action="會員評論">會員 Rainbow -</a><span>2022-10-06 13:52</span>
+                                            <a asp-area="" asp-controller="Comment" asp-action="會員評論">Yuka - </a><span>2022-07-26 21:52</span>
                                             <span class="mem_rate">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -157,7 +145,8 @@
                                                 <i class="fa fa-star"></i>
                                             </span>
                                         </h6>
-                                        <p>評論內容 這是年度最好看的電影，沒有之一，絕對值回票價!</p>
+                                        <h5>不只關於速度與飛翔的渴望...</h5><br />
+                                        <p>湯姆．克魯斯（Tom Cruise）的《捍衛戰士：獨行俠》（Top Gun: Maverick）在各地試映過後，隨即得到了一片熱烈好評，並被不少人稱為一定要進戲院欣賞的超級大片......</p>
                                         <a asp-controller="Comment" asp-action="電影評論"><span class="see-more">詳全文 >></span></a>
                                     </div>
                                 </div>
@@ -290,18 +279,20 @@
                                                 <li>
                                                     <span>導　　演:</span>
                                                     <ul>
-                                                        <li> 導演名字</li> @*多位導演*@
+                                                        <li> 約瑟夫·柯金斯基</li> @*多位導演*@
                                                     </ul>
                                                 </li>
                                                 <li>
                                                     <span>演　　員:</span>
                                                     <ul>
-                                                        <li> 演員名字 (  EngName)</li> @*多位演員*@
+                                                        <li> 湯姆·克魯斯</li> @*多位演員*@
+                                                    <li> 珍妮佛·康納莉</li>
+                                                        <li> 麥爾斯·泰勒</li>
                                                     </ul>
-                                                </li>
+                                                </li>                                               
                                                 <li><span>電影分級:</span> @Model.分級級數ratingLevel</li>
                                                 <li><span>電影產地:</span> @mCountryName @*@mCountryImg*@</li>
-                                                
+
                                                 <li><span>片　　長:</span> @Model.片長runtime 分鐘</li>
                                                 <li><span>片　　種:</span> 動作, 劇情</li>
                                                 <li><span>票　　房:</span> @Model.票房boxOffice 億美元</li>

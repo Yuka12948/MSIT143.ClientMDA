@@ -1,4 +1,5 @@
-﻿
+﻿@model List<ClientMDA.ViewModels.CCommentViewModel>
+
 @section Styles{
     <style>
         .owl-stage-outer {
@@ -16,12 +17,6 @@
             width: 30px;
             float: left;
         }
-        /*.text-white span{
-            color:#fefefe;
-        }
-        .card-text {
-            color: #fefefe;
-        }*/
 
         .card-columns {
             -webkit-column-count: 3;
@@ -73,11 +68,29 @@
             width: 35px !important;
             margin-right: 5px;
         }
+
+        .card-text {
+            overflow: hidden !important; /*溢位*/
+            text-overflow: ellipsis !important; /*文字溢位ellipsis... */
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /*限制元素顯示文字行數*/
+            -webkit-box-orient: vertical; /*垂直排列*/
+            word-break: break-all;
+        }
+
+        .card-title {
+            overflow: hidden !important; /*溢位*/
+            text-overflow: ellipsis !important; /*文字溢位ellipsis... */
+            display: -webkit-box;
+            -webkit-line-clamp: 1; /*限制元素顯示文字行數*/
+            -webkit-box-orient: vertical; /*垂直排列*/
+            word-break: break-all;
+        }
     </style>
 }
 <link href="~/css/Comment/評論首頁.css" rel="stylesheet" />
+<link href="~/css/owl.carousel.min.css" rel="stylesheet" />
 <link href="~/css/Comment/style.css" rel="stylesheet" />
-
 <body class="text-white">
     <hr />
     <div class="section-title">
@@ -87,6 +100,7 @@
     <!--#region 評論輪播 Start-->
     <div class="container">
         <div class="hero__slider owl-carousel">
+
             <div class="hero__items set-bg" data-setbg="https://im.marieclaire.com.tw/m800c533h100b0/assets/mc/202205/628C963D8F7801653380669.jpeg">
                 <div class="row">
                     <div class="col-lg-6">
@@ -95,7 +109,7 @@
                                 <span class="mem_info">
                                     <span style="color:white">
                                         <img class="memImg" src="~/images/Comment/mem01.png" alt="">
-                                        <a asp-area="" asp-controller="Comment" asp-action="會員評論" style="font-weight:700;font-size:18px"> rainbow</a> - 2022/07/26 21:52
+                                        <a asp-area="" asp-controller="Comment" asp-action="會員評論" style="font-weight:700;font-size:18px"> Yuka@*會員*@</a> - 2022/07/26 21:52
                                     </span>
                                 </span>
                             </div>
@@ -104,48 +118,14 @@
                                 湯姆．克魯斯（Tom Cruise）的《捍衛戰士：獨行俠》（Top Gun: Maverick）在各地試映過後，隨即得到了一片熱烈好評，
                                 並被不少人稱為一定要進戲院欣賞的超級大片......
                             </p>
-
                             <a asp-area="" asp-controller="Comment" asp-action="電影評論" role="button" class="btn btn-comment">
-                                @*  href="#" *@
                                 <span>看評論</span>
                             </a>
-                            @*<div class="btn-group">
-                                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        加入追蹤
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">追蹤會員</a></li>
-                                        <li><a class="dropdown-item" href="#">收藏評論</a></li>
-                                    </ul>
-                                </div>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        加入片單
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">加入我的片單</a></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#">加入自訂片單1</a></li>
-                                        <li><a class="dropdown-item" href="#">加入自訂片單2</a></li>
-                                        <li><a class="dropdown-item" href="#">加入自訂片單3</a></li>
-                                    </ul>
-                                </div>
-
-
-                                <a asp-area="" asp-controller="Comment" asp-action="電影評論"><span>看評論</span></a>
-                                <a asp-area="" asp-controller="Comment" asp-action="電影評論">
-                                    <span>加入追蹤</span>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                                <a asp-area="" asp-controller="Comment" asp-action="電影評論">
-                                    <span>加入片單</span>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>*@
-
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="hero__items set-bg" data-setbg="https://m.media-amazon.com/images/M/MV5BMjAzMzQ4MjE0Nl5BMl5BanBnXkFtZTgwNDAyMTI1MDI@@._V1_.jpg">
                 <div class="row">
                     <div class="col-lg-6">
@@ -154,7 +134,7 @@
                                 <span class="mem_info">
                                     <span style="color:white">
                                         <img class="memImg" src="~/images/Comment/mem01.png" alt="">
-                                        <a asp-area="" asp-controller="Comment" asp-action="會員評論" style="font-weight:700;font-size:18px"> rainbow</a> - 2022/07/26 21:52
+                                        <a asp-area="" asp-controller="Comment" asp-action="會員評論" style="font-weight:700;font-size:18px"> Yuka</a> - 2022/07/26 21:52
                                     </span>
                                 </span>
                             </div>
@@ -167,6 +147,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="hero__items set-bg" data-setbg="https://m.media-amazon.com/images/M/MV5BNjNkYjUzYjAtMWJmYy00NDgxLWI0ZjUtMmEzMmQ3OWMwY2Q1XkEyXkFqcGdeQXVyMDM2NDM2MQ@@@@._V1_.jpg">
                 <div class="row">
                     <div class="col-lg-6">
@@ -200,156 +181,9 @@
     <!-- #region 最新評論 -->
     <div class="card-columns">
 
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="https://m.media-amazon.com/images/M/MV5BNTZlYTE1MDktOGRkOC00NjIwLWIyY2MtYjQxMDZlMDlmYmRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_FMjpg_UX691_.jpg" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">評論標題</h5>
-                        <span class="mem_info">
-                            <span>
-                                <img src="~/images/Comment/mem01.png" alt="" height="30">
-                                <a asp-area="" asp-controller="Comment" asp-action="我的評論">會員 Rainbow</a>
-                            </span>
-                            <span>
-                                - 2022/07/25 <span style="color:white"></span>
-                            </span><hr />
-                            <p class="card-text">
-                                這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容......
-                            </p>
-                            <a asp-controller="Comment" asp-action="會員評論"><p class="card-text"><small class="text-muted">詳全文 >> </small></p></a>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="https://m.media-amazon.com/images/M/MV5BNTZlYTE1MDktOGRkOC00NjIwLWIyY2MtYjQxMDZlMDlmYmRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_FMjpg_UX691_.jpg" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">評論標題</h5>
-                        <span class="mem_info">
-                            <span>
-                                <img src="~/images/Comment/mem01.png" alt="" height="30">
-                                會員 Rainbow
-                            </span>
-                            <span>
-                                - 2022/07/25 <span style="color:white"></span>
-                            </span><hr />
-                            <p class="card-text">
-                                這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容......
-                            </p>
-                            <a asp-controller="Comment" asp-action="會員評論"><p class="card-text"><small class="text-muted">詳全文 >> </small></p></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="https://m.media-amazon.com/images/M/MV5BNTZlYTE1MDktOGRkOC00NjIwLWIyY2MtYjQxMDZlMDlmYmRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_FMjpg_UX691_.jpg" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">評論標題</h5>
-                        <span class="mem_info">
-                            <span>
-                                <img src="~/images/Comment/mem01.png" alt="" height="30">
-                                會員 Rainbow
-                            </span>
-                            <span>
-                                - 2022/07/25 <span style="color:white"></span>
-                            </span><hr />
-                            <p class="card-text">
-                                這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容......
-                            </p>
-                            <a asp-controller="Comment" asp-action="會員評論"><p class="card-text"><small class="text-muted">詳全文 >> </small></p></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="https://m.media-amazon.com/images/M/MV5BNTZlYTE1MDktOGRkOC00NjIwLWIyY2MtYjQxMDZlMDlmYmRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_FMjpg_UX691_.jpg" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">評論標題</h5>
-                        <span class="mem_info">
-                            <span>
-                                <img src="~/images/Comment/mem01.png" alt="" height="30">
-                                會員 Rainbow
-                            </span>
-                            <span>
-                                - 2022/07/25 <span style="color:white"></span>
-                            </span><hr />
-                            <p class="card-text">
-                                這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容......
-                            </p>
-                            <a asp-controller="Comment" asp-action="會員評論"><p class="card-text"><small class="text-muted">詳全文 >> </small></p></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="https://m.media-amazon.com/images/M/MV5BNTZlYTE1MDktOGRkOC00NjIwLWIyY2MtYjQxMDZlMDlmYmRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_FMjpg_UX691_.jpg" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">評論標題</h5>
-                        <span class="mem_info">
-                            <span>
-                                <img src="~/images/Comment/mem01.png" alt="" height="30">
-                                會員 Rainbow
-                            </span>
-                            <span>
-                                - 2022/07/25 <span style="color:white"></span>
-                            </span><hr />
-                            <p class="card-text">
-                                這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容......
-                            </p>
-                            <a asp-controller="Comment" asp-action="會員評論"><p class="card-text"><small class="text-muted">詳全文 >> </small></p></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="https://m.media-amazon.com/images/M/MV5BNTZlYTE1MDktOGRkOC00NjIwLWIyY2MtYjQxMDZlMDlmYmRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_FMjpg_UX691_.jpg" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">評論標題</h5>
-                        <span class="mem_info">
-                            <span>
-                                <img src="~/images/Comment/mem01.png" alt="" height="30">
-                                會員 Rainbow
-                            </span>
-                            <span>
-                                - 2022/07/25 <span style="color:white"></span>
-                            </span><hr />
-                            <p class="card-text">
-                                這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容......
-                            </p>
-                            <a asp-controller="Comment" asp-action="會員評論"><p class="card-text"><small class="text-muted">詳全文 >> </small></p></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @await Component.InvokeAsync("最新評論", new { datas = Model })
 
     </div>
-
     <!-- #endregion 最新評論 -->
 
     <hr />
@@ -360,161 +194,12 @@
     <!-- #region 關注評論 -->
     <div class="card-columns">
 
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="https://m.media-amazon.com/images/M/MV5BNTZlYTE1MDktOGRkOC00NjIwLWIyY2MtYjQxMDZlMDlmYmRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_FMjpg_UX691_.jpg" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">評論標題</h5>
-                        <span class="mem_info">
-                            <span>
-                                <img src="~/images/Comment/mem01.png" alt="" height="30">
-                                <a asp-area="" asp-controller="Comment" asp-action="我的評論">會員 Rainbow</a>
-                            </span>
-                            <span>
-                                - 2022/07/25 <span style="color:white"></span>
-                            </span><hr />
-                            <p class="card-text">
-                                這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容......
-                            </p>
-                            <a asp-controller="Comment" asp-action="會員評論"><p class="card-text"><small class="text-muted">詳全文 >> </small></p></a>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="https://m.media-amazon.com/images/M/MV5BNTZlYTE1MDktOGRkOC00NjIwLWIyY2MtYjQxMDZlMDlmYmRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_FMjpg_UX691_.jpg" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">評論標題</h5>
-                        <span class="mem_info">
-                            <span>
-                                <img src="~/images/Comment/mem01.png" alt="" height="30">
-                                會員 Rainbow
-                            </span>
-                            <span>
-                                - 2022/07/25 <span style="color:white"></span>
-                            </span><hr />
-                            <p class="card-text">
-                                這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容......
-                            </p>
-                            <a asp-controller="Comment" asp-action="會員評論"><p class="card-text"><small class="text-muted">詳全文 >> </small></p></a>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="https://m.media-amazon.com/images/M/MV5BNTZlYTE1MDktOGRkOC00NjIwLWIyY2MtYjQxMDZlMDlmYmRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_FMjpg_UX691_.jpg" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">評論標題</h5>
-                        <span class="mem_info">
-                            <span>
-                                <img src="~/images/Comment/mem01.png" alt="" height="30">
-                                會員 Rainbow
-                            </span>
-                            <span>
-                                - 2022/07/25 <span style="color:white"></span>
-                            </span><hr />
-                            <p class="card-text">
-                                這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容......
-                            </p>
-                            <a asp-controller="Comment" asp-action="會員評論"><p class="card-text"><small class="text-muted">詳全文 >> </small></p></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="https://m.media-amazon.com/images/M/MV5BNTZlYTE1MDktOGRkOC00NjIwLWIyY2MtYjQxMDZlMDlmYmRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_FMjpg_UX691_.jpg" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">評論標題</h5>
-                        <span class="mem_info">
-                            <span>
-                                <img src="~/images/Comment/mem01.png" alt="" height="30">
-                                會員 Rainbow
-                            </span>
-                            <span>
-                                - 2022/07/25 <span style="color:white"></span>
-                            </span><hr />
-                            <p class="card-text">
-                                這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容......
-                            </p>
-                            <a asp-controller="Comment" asp-action="會員評論"><p class="card-text"><small class="text-muted">詳全文 >> </small></p></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="https://m.media-amazon.com/images/M/MV5BNTZlYTE1MDktOGRkOC00NjIwLWIyY2MtYjQxMDZlMDlmYmRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_FMjpg_UX691_.jpg" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">評論標題</h5>
-                        <span class="mem_info">
-                            <span>
-                                <img src="~/images/Comment/mem01.png" alt="" height="30">
-                                會員 Rainbow
-                            </span>
-                            <span>
-                                - 2022/07/25 <span style="color:white"></span>
-                            </span><hr />
-                            <p class="card-text">
-                                這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容......
-                            </p>
-                            <a asp-controller="Comment" asp-action="會員評論"><p class="card-text"><small class="text-muted">詳全文 >> </small></p></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="https://m.media-amazon.com/images/M/MV5BNTZlYTE1MDktOGRkOC00NjIwLWIyY2MtYjQxMDZlMDlmYmRkXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_FMjpg_UX691_.jpg" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">評論標題</h5>
-                        <span class="mem_info">
-                            <span>
-                                <img src="~/images/Comment/mem01.png" alt="" height="30">
-                                會員 Rainbow
-                            </span>
-                            <span>
-                                - 2022/07/25 <span style="color:white"></span>
-                            </span><hr />
-                            <p class="card-text">
-                                這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容這邊是評論內容......
-                            </p>
-                            <a asp-controller="Comment" asp-action="會員評論"><p class="card-text"><small class="text-muted">詳全文 >> </small></p></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @await Component.InvokeAsync("關注評論", new { datas = Model })
 
     </div>
     <!-- #endregion 關注評論 -->
 
 </body>
-
-
 
 <!-- Js Plugins -->
 <script src="~/js/jquery-3.3.1.min.js"></script>

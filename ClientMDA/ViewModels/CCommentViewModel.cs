@@ -36,7 +36,7 @@ namespace ClientMDA.ViewModels
             set { _commentImgList = value; }
         }
 
-        public CCommentViewModel()  //每做一個就建一個
+        public CCommentViewModel()
         {
             _comment = new 電影評論movieComment();
             _floor = new 回覆樓數floor();
@@ -147,13 +147,13 @@ namespace ClientMDA.ViewModels
 
         public string 中文標題titleCht { get; set; }
 
-        public virtual 電影movie 電影編號movie { get; set; }
+        //public virtual 電影movie 電影編號movie { get; set; }
 
         //---------------------------會員---------------------------//
         public string 暱稱nickName { get; set; }
         public string 會員照片image { get; set; }
 
-        public virtual 會員member 會員編號member { get; set; }
+        //public virtual 會員member 會員編號member { get; set; }
 
         //---------------------------回覆---------------------------//
 
@@ -173,7 +173,7 @@ namespace ClientMDA.ViewModels
         //public int 標籤編號hashtagId { get; set; }
         public string 標籤hashtag { get; set; }
 
-        public virtual 標籤總表hashtag 標籤編號hashtag { get; set; }
+        //public virtual 標籤總表hashtag 標籤編號hashtag { get; set; }
 
         //---------------------------評論圖片---------------------------//
 
@@ -184,7 +184,8 @@ namespace ClientMDA.ViewModels
         //public int 評論圖庫編號commentImageId { get; set; }
         public string 圖片image { get; set; }
         //public int 屏蔽invisible { get; set; }
-        public virtual 評論圖片總表commentImage 評論圖庫編號commentImage { get; set; }
+        //public virtual 評論圖片總表commentImage 評論圖庫編號commentImage { get; set; }
 
+        public List<string> cImgFrList { get; set; }
     }
 }
