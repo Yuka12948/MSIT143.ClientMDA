@@ -1,6 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Http
 @using System.Text.Json;
 @inject IHttpContextAccessor Accessor
+@using ClientMDA.ViewModels
+@model List<COrderListViewModel>
+
 @{
     會員member mem = null;
     if (Accessor.HttpContext.Session.Keys.Contains(ClientMDA.Models.CDictionary.SK_LOGINED_USER))
@@ -79,34 +82,29 @@
                         <th scope="col">訂單編號</th>
                         <th scope="col">訂單狀態</th>
                         <th scope="col">總金額</th>
-                        <th scope="col">客服紀錄</th>
+                        <th scope="col">客服</th>
                     </tr>
                 </thead>
                 <tbody class="white">
-                    <tr>
-                        <th scope="row" class="">1</th>
-                        <td class="">2022-09-23</td>
-                        <td class="orderId" id="orderId"><a>220923000007</a></td>
-                        <td class="">未付款</td>
-                        <td class="">500</td>
-                        <td class=""></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="">2</th>
-                        <td class="">2021-10-30</td>
-                        <td class="orderId" id="orderId"><a>211030000070</a></td>
-                        <td class="">已完成</td>
-                        <td class="">310</td>
-                        <td class=""></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="">3</th>
-                        <td class="">2020-04-06</td>
-                        <td class="orderId" id="orderId"><a>200406000162</a></td>
-                        <td class="">已取消</td>
-                        <td class="">630</td>
-                        <td class=""></td>
-                    </tr>
+                    @{
+                        int count = 0;
+                        foreach (var order in Model)
+                        {
+                            count++;
+                            <tr>
+                                <th scope="row" class="">@count</th>
+                                <td class="">@order.orderDate</td>
+                                <td class="" id="orderId"><a>@order.orderId</a></td>
+                                <td class="">@order.status</td>
+                                <td class="">@order.total</td>
+                                <td class=""><a>聯繫客服</a></td>
+                            </tr>
+                        }
+
+
+                    }
+
+                   
                 </tbody>
             </table>
             <!--end content-->

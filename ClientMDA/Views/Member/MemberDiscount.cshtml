@@ -2,6 +2,9 @@
 @using Microsoft.AspNetCore.Http
 @using System.Text.Json;
 @inject IHttpContextAccessor Accessor
+@using ClientMDA.ViewModels
+@model List<CCouponListViewModel>
+
 @{
     會員member mem = null;
     if (Accessor.HttpContext.Session.Keys.Contains(ClientMDA.Models.CDictionary.SK_LOGINED_USER))
@@ -83,10 +86,18 @@
         <div class="member_area">
             <!--content-->
             <h2 class="white text-left">我的抵用券</h2>
-            <input type="text" placeholder="輸入優惠代碼" />
-            <button id="buttonAdd" class="site-btn mt-3 mb-3">
-                <i class="fa fa-plus"> 新增優惠</i>
-            </button>
+            <div class="mb-2 mt-2">
+                <strong class="white">可用紅利金餘額: @mem.紅利點數bonus</strong>
+            </div>
+            <div class="mb-4">
+                @using (Html.BeginForm("AddCoupon", "Member"))
+                {
+                    @Html.TextBox("txtKeyword", null, new { @placeholder = "輸入優惠代碼" })
+                    <button type="submit" class="site-btn mt-3 mb-3"><i class="fa fa-plus"> 新增優惠</i></button>
+
+                }
+            </div>
+
             <table class="table white">
                 <thead>
                     <tr>
@@ -97,36 +108,36 @@
                     </tr>
                 </thead>
                 <tbody class="white">
-                    <tr>
-                        <th scope="row" class="">$50</th>
-                        <td class="">會員生日禮</td>
-                        <td class="">
-                            2022-10-01 00:00:00
-                            <br />-<br />
-                            2022-10-31 23:59:59
-                        </td>
-                        <td class="available">未使用</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="">$20</th>
-                        <td class="">歡慶粉絲達一萬</td>
-                        <td class="">
-                            2021-10-30 00:00:00
-                            <br />-<br />
-                            2022-02-04 23:59:59
-                        </td>
-                        <td class="overdue">已過期</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" class="">$50</th>
-                        <td class="">新會員加入禮</td>
-                        <td class="">
-                            2021-10-01 00:00:00
-                            <br />-<br />
-                            2021-10-31 23:59:59
-                        </td>
-                        <td class="used">已使用</td>
-                    </tr>
+                    @{
+
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row" class="">$@decimal.Round(item.diccount)</th>
+                                <td class="">@item.couponName</td>
+                                <td class="">
+                                    @item.dueDate
+                                </td>
+                                @{
+                                    if (item.dueDate < DateTime.Now)
+                                    {
+                                        <td class="overdue">已過期</td>
+                                    }
+                                    else if (item.used == true)
+                                    {
+                                        <td class="used">已使用</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="available">未使用</td>
+                                    }
+                                }
+
+                            </tr>
+                        }
+                    }
+
+                   
                 </tbody>
             </table>
             <!--end content-->

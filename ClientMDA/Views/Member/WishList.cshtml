@@ -1,6 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Http
 @using System.Text.Json;
 @inject IHttpContextAccessor Accessor
+@using ClientMDA.ViewModels
+@model List<CFollowListViewModel>
+
 @{
     會員member mem = null;
     if (Accessor.HttpContext.Session.Keys.Contains(ClientMDA.Models.CDictionary.SK_LOGINED_USER))
@@ -84,27 +87,37 @@
                                         <th scope="col">序</th>
                                         <th scope="col">會員暱稱</th>
                                         <th scope="col">最新發表</th>
+
                                     </tr>
                                 </thead>
                                 <tbody class="white">
-                                    <tr scope="row">
-                                        <th scope="row" class="">1</th>
-                                        <td><a>暱稱</a></td>
-                                        <td>
-                                            <a>不只關於速度與飛翔的渴望 也與我們的悔恨以及所需要的勇氣有關 --2022/10/22</a><br />
-                                            <a>專題∣必看《阿凡達》的５大理由重溫：看完再迎《阿凡達2：水之道》！ --2022/10/8</a><br />
-                                            <a>專題∣《幸福入場券》之外！５部茱莉亞羅勃茲主演浪漫愛情喜劇評論標題 --2022/9/28</a><br />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" class="">2</th>
-                                        <td><a>暱稱</a></td>
-                                        <td>
-                                            <a>不只關於速度與飛翔的渴望 也與我們的悔恨以及所需要的勇氣有關 --2022/10/22</a><br />
-                                            <a>專題∣必看《阿凡達》的５大理由重溫：看完再迎《阿凡達2：水之道》！ --2022/10/8</a><br />
-                                            <a>專題∣《幸福入場券》之外！５部茱莉亞羅勃茲主演浪漫愛情喜劇評論標題 --2022/9/28</a><br />
-                                        </td>
-                                    </tr>
+
+                                    @{
+                                        int count = 0;
+                                        foreach (var item in Model)
+                                        {
+                                            if (item.targetId == 1) //會員
+                                            {
+                                                count++;
+                                                <tr scope="row">
+                                                    <th scope="row" class="">@count</th>
+                                                    <td><a>@item.followMemName</a></td>
+                                                    <td>
+                                                        @{
+                                                            foreach (string s in item.comments)
+                                                            {
+                                                                <a>@s</a><br />
+                                                            }
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                        }
+
+                                    }
+
+                                
 
                                 </tbody>
                             </table>
@@ -125,23 +138,34 @@
                                     </tr>
                                 </thead>
                                 <tbody class="white">
-                                    <tr>
-                                        <th scope="row" class="">1</th>
-                                        <td><a>不只關於速度與飛翔的渴望 也與我們的悔恨以及所需要的勇氣有關</a></td>
-                                        <td>
-                                            <a>推推 --2022/10/22 18:36</a><br />
-                                            <a>必看 --2022/9/28 18:36</a><br />
-                                            <a>浪漫愛情喜劇 --2022/10/8 18:36</a><br />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" class="">2</th>
-                                        <td><a>專題∣必看《阿凡達》的５大理由重溫：看完再迎《阿凡達2：水之道》！</a></td>
-                                        <td>
-                                            <a>不只關於速度與飛翔的渴望 --2022/10/22 18:36</a><br />
-                                            <a>看完再迎《阿凡達2：水之道》！ --2022/9/28 18:36</a><br />
-                                        </td>
-                                    </tr>
+
+                                    @{
+                                        int count2 = 0;
+                                        foreach (var item in Model)
+                                        {
+                                            if (item.targetId == 2) //評論
+                                            {
+                                                count2++;
+                                                <tr scope="row">
+
+                                                    <th scope="row" class="">@count2</th>
+                                                    <td><a>@item.followComTitle</a></td>
+                                                    <td>
+                                                        @{
+                                                            foreach (string s in item.replies)
+                                                            {
+                                                                <a>@s</a><br />
+                                                            }
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                        }
+
+                                    }
+
+                                   
 
                                 </tbody>
                             </table>

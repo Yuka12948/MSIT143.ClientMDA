@@ -90,6 +90,7 @@
                 <thead>
                     <tr>
                         <th scope="col">序</th>
+                        @*<th scope="col">電影</th>*@
                         <th scope="col">標題</th>
                         <th scope="col">內文</th>
                         <th scope="col">發布時間</th>
@@ -102,9 +103,11 @@
                         foreach (var comm in Model)
                         {
                             count++;
+                            if (comm.評論標題commentTitle == null) { continue; }
 
                             <tr>
                                 <th scope="row" class="">@count</th>
+                                @*<td>@comm.電影編號movie.中文標題titleCht</td>*@
                                 <td class="">@comm.評論標題commentTitle</td>
                                 @{ if (comm.評論內容comments.Length > 50)
                                     {
@@ -125,48 +128,7 @@
 
                         }
                     }
-                    @*<tr>
-                            <th scope="row" class="">1</th>
-                            <td class="">專題∣《幸福入場券》之外！５部茱莉亞羅勃茲主演浪漫愛情喜劇</td>
-                            <td class="">好久不見的「經典」好萊塢喜劇《幸福入場券 Ticket to Paradise》來了。之所以稱之「經典」，並不是因為它已經...</td>
-                            <td class="">2022/10/02</td>
-                            <td>
-                                <button type="button" class="btn btn-link">編輯</button>
-                                <button type="button" class="btn btn-link del" data-toggle="modal" data-target="#exampleModal">刪除</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="">2</th>
-                            <td class="">專題∣必看《阿凡達》的５大理由重溫：看完再迎《阿凡達2：水之道》！</td>
-                            <td class="">2009年的好萊塢電影《阿凡達》是部殿堂級電影，是大導演詹姆斯卡麥隆在《鐵達尼號》之後傾注心力所打造的鉅...</td>
-                            <td class="">2022/09/19</td>
-                            <td>
-                                <button type="button" class="btn btn-link">編輯</button>
-                                <button type="button" class="btn btn-link del" data-toggle="modal" data-target="#exampleModal">刪除</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="">3</th>
-                            <td class="">專題∣《死侍3》影片公開：你可能錯過的５個彩蛋詳解</td>
-                            <td class="">真是萬萬沒想到！萊恩雷諾斯近期用推特公佈《死侍3》的上映日期，不僅如此，最令人驚喜的莫過於休傑克曼將以...</td>
-                            <td class="">2022/10/02</td>
-                            <td>
-                                <button type="button" class="btn btn-link">編輯</button>
-                                <button type="button" class="btn btn-link del" data-toggle="modal" data-target="#exampleModal">刪除</button>
-                            </td>
-                        </tr>
-                        <tr id="comment4">
-                            <th scope="row" class="commentLink4">4</th>
-                            <td class="commentLink4">
-                                不只關於速度與飛翔的渴望 也與我們的悔恨以及所需要的勇氣有關
-                            </td>
-                            <td class="commentLink4">湯姆．克魯斯的《捍衛戰士：獨行俠》在各地試映過後，隨即得到了一片熱烈好評， 並被不少人稱為一定要進戲院欣賞的超級大片...</td>
-                            <td class="commentLink4">2022/09/23</td>
-                            <td>
-                                <button type="button" class="btn btn-link">編輯</button>
-                                <button type="button" class="btn btn-link del" data-modal-target="#modal">刪除</button>
-                            </td>
-                        </tr>*@
+             
                 </tbody>
             </table>
             <!--end content-->
@@ -176,86 +138,7 @@
 
 
 @section Scripts{
-    @*<script>
-            const com = document.querySelectorAll(".commentLink4")
-
-            com.forEach(c => c.addEventListener("click", () => {
-                console.log("check")
-                window.location.assign('@Url.Content("~/comment/")' + encodeURI("會員評論"))
-            }))
-        </script>*@
-<script>
-            const add = document.querySelector("#buttonAdd")
-            add.addEventListener("click", () => {
-                window.location.assign('@Url.Content("~/member/WriteComment")')
-            })
-
-        </script>
-    @*<script>
-            const btns = document.querySelectorAll(".del")
-
-
-            function showModal(titleHtml, contentHtml, buttons) {
-                const modal = document.createElement("div");
-
-                modal.classList.add("modal");
-                modal.innerHTML = `
-                                            <div class="modal__inner">
-                                                <div class="modal__top">
-                                                    <div class="modal__title">${titleHtml}</div>
-                                                    <button class="modal__close" type="button">
-                                                        <span class="material-icons"><i class="fa fa-times" aria-hidden="true"></i></span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal__content">${contentHtml}</div>
-                                                <div class="modal__bottom"></div>
-                                            </div>
-                                        `;
-
-                for (const button of buttons) {
-                    const element = document.createElement("button");
-                    element.setAttribute("type", "button");
-
-                    if (button.triggerClose) {
-                        element.classList.add("btn-secondary");
-                    }
-                    else { element.classList.add("btn-danger"); }
-                    element.classList.add("modal__button");
-                    element.textContent = button.label;
-                    element.addEventListener("click", () => {
-                        if (button.triggerClose) {
-                            document.body.removeChild(modal);
-                        }
-
-                    });
-
-                    modal.querySelector(".modal__bottom").appendChild(element);
-                }
-
-                modal.querySelector(".modal__close").addEventListener("click", () => {
-                    document.body.removeChild(modal);
-                });
-
-                document.body.appendChild(modal);
-            }
-
-            btns.forEach(btn => btn.addEventListener('click', () => {
-
-                showModal("刪除評論", '<span id="c">確定要刪除嗎?</span><p class= "font-italic" id="c"> 注意: 此動作無法復原</p>', [
-                    {
-                        label: "取消",
-                        triggerClose: true
-                    },
-                    {
-                        label: "確定刪除",
-                        triggerClose: false
-                    }
-                ])
-
-            }))
-
-
-        </script>*@
+  
 
 
 
