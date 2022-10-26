@@ -17,6 +17,12 @@ namespace ClientMDA.ViewModels
         private 電影圖片總表movieImage _movieImage;
         private 電影代碼movieCode _movieCode;
         private 電影圖片movieIimagesList _movieIimagesList;
+        private 出售座位狀態seatStatus _seatStatus;
+        public 出售座位狀態seatStatus seatStatus
+        {
+            get { return _seatStatus; }
+            set { _seatStatus = value; }
+        }
         public 電影圖片movieIimagesList movieIimagesList
         {
             get { return _movieIimagesList; }
@@ -32,7 +38,17 @@ namespace ClientMDA.ViewModels
             _Cinema = new 影廳cinema();
             _theater = new 電影院theater();
             _movieImage = new 電影圖片總表movieImage();
+            _seatStatus = new 出售座位狀態seatStatus();
+
+
         }
+
+        public string 出售座位資訊seatSoldInfo
+        {
+            get { return _seatStatus.出售座位資訊seatSoldInfo; }
+            set { _seatStatus.出售座位資訊seatSoldInfo = value; }
+        }
+
         public 電影代碼movieCode movieCode
         {
             get { return _movieCode; }
@@ -50,7 +66,7 @@ namespace ClientMDA.ViewModels
             set { _theater = value; }
         }
 
-        public string 放映時間playTime { get; set; }
+
 
         //public List<string> 放映開始時間playTime2 { get; set; }
 
@@ -100,7 +116,7 @@ namespace ClientMDA.ViewModels
         public DateTime? 上映日期releaseDate
         {
             get { return _movie.上映日期releaseDate; }
-            set { _movie.上映日期releaseDate = value; }
+            set { _movie.上映日期releaseDate =  value; }
         }
         public int 片長runtime
         {
@@ -122,9 +138,9 @@ namespace ClientMDA.ViewModels
             get { return _movie.期待度anticipation; }
             set { _movie.期待度anticipation = value; }
         }
-        public float? 票房boxOffice
+        public double? 票房boxOffice
         {
-            get { return (float?)_movie.票房boxOffice; }
+            get { return _movie.票房boxOffice; }
             set { _movie.票房boxOffice = value; }
         }
         public string 劇情大綱plot
@@ -170,6 +186,9 @@ namespace ClientMDA.ViewModels
         }
 
         public List<CcinemaViewMode> cinemas影廳種類 { get; set; }
+        public List<CSeatViewMode> 座位資訊{ get; set; }
+
+        public string seat座位 { get; set; }
 
         //-------------------------------------
         public int 圖片編號imageId
@@ -177,7 +196,7 @@ namespace ClientMDA.ViewModels
             get { return _movieImage.圖片編號imageId; }
             set { _movieImage.圖片編號imageId = value; }
         }
-     
+        
         public string 圖片image
         {
             get { return _movieImage.圖片image; }

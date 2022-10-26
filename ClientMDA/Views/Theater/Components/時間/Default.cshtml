@@ -6,8 +6,8 @@
 
 <style>
     .roddy {
-        background-color: rgb(229, 10, 132);
-        box-shadow: rgb(0 0 0 / 50%) 0px 2px 4px 0px;
+        border: 2px solid blue;
+        box-shadow: blue 0px 2px 4px 0px;
     }
     .oo {
     }
@@ -19,44 +19,56 @@
 
 @foreach (var item in Model)
 {
+
+
+
+
+
+    @foreach (CcinemaViewMode q in item.cinemas影廳種類)
+    {
+        
+        @if (q.場次ID.Count > 0)
+        {
 <div class="cinemabox" id="ts22">
+
     <div class="cinemaName">
         @item.電影院名稱theaterName
-        
     </div>
     <div class="toggleBox  sts" id="time">
         @{
-            foreach (CcinemaViewMode q in item.cinemas影廳種類)
-            {
                 <div class="sessionBox" id="tt">
-                    <div class="version" id="tn">
-                        @q.CinemaName
-                    </div>
+                
+                    @if (q.場次ID.Count > 0)
+                    {
 
-
-        
-                    <div class="session" >
-                    @for (int i = 0; i < q.場次ID.Count(); i++)
-                        {
-                            string a =q.放映時間[i];
+                      
+                        <div class="version" id="tn">
+                            @q.CinemaName
                             
-                        <div class="time" id="playtime">
-                            <input type="hidden" class="場次" value="@q.場次ID[i]">
-                            <input type="hidden" class="電影" value="@q.場次ID[i]">
-
+                        </div>
+                    }
+                    <div class="session">
+                        @for (int i = 0; i < q.場次ID.Count(); i++)
+                        {
+                            string a = q.放映時間[i];
+                        <div class="time tt1" >
+                           @*@foreach(var x in q.場次座位數量) { 
+                            <input type="hidden" class="場場" value="@x.座位數量">
+                           }*@
+                            <div style="display:none" class="場次123">@q.場次ID[i]</div>
                             <span class="seats"></span> @a
+                          
                         </div>
 
-                    }
+                        }
 
                     </div>
-                  
-                    @*}*@
                 </div>
-            }
         }
     </div>
 </div>
+                        }
+        }
 }
 <script>
     $(".time").click(function () {
@@ -65,7 +77,8 @@
         var a = $(".kk .version").html()
         var t = $(".roddy").html()
         var 場次 = $(".time.roddy input").val()
-        console.log(場次)
+        var 座位 = $(".場場").val()
+        console.log(座位)
         //console.log(t)
         document.querySelector("#新視窗").style.display = "inline"
         document.querySelector("#影城").innerHTML=i
@@ -74,19 +87,30 @@
         document.querySelector("#版本").innerHTML = a
 
     })
-    $(".session .time").hover(function () {
+    //$(".session .time").hover(function () {
+    //    $(this).removeClass("roddy").siblings().removeClass("roddy").end().addClass("roddy");
+    //},
+    //    function () {
+    //        $(this).prevAll().removeClass("roddy").end().removeClass("roddy");
+    //    });
+    $(".tt1").hover(function () {
 
         $(this).removeClass("roddy").siblings().removeClass("roddy").end().addClass("roddy");
+        var 場次 = $(".場次123").html()
+        var 場次2 = $(".場場").html()
+        console.log(場次2)
+
+        console.log(場次)
     },
         function () {
-
             $(this).prevAll().removeClass("roddy").end().removeClass("roddy");
-
         });
+
     $(".session .time").click(function () {
         $(this).removeClass("iooi").siblings().removeClass("iooi").end().addClass("iooi");
         $(".submit").addClass("iooi")
-
+        var 場次 = $(".場次").val()
+        console.log(場次)
     })
     $(".cinemabox").hover(function () {
 

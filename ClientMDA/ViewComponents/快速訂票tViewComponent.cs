@@ -9,9 +9,8 @@ namespace ClientMDA.ViewConponents
 {
     public class 快速訂票ViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(CTheater datas) {
-
-
+        public async Task<IViewComponentResult> InvokeAsync(CTheater datas)
+        {
             return View(datas);
 
         }

@@ -20,7 +20,12 @@
 
     int d = System.DateTime.Now.Day;
     int m = System.DateTime.Now.Month;
+    int y = System.DateTime.Now.Year;
+
+
     <div>
+        <input type="hidden" value="@Model.電影編號movieId" id="movidID">
+
         <div class="MovieInfoWrapper--167fgjt gYTkop" style="background-color:white" id="videoID">
             <div>
                 @await Component.InvokeAsync("快速訂票", new { datas = Model })
@@ -32,7 +37,11 @@
                             電影時刻
                         </div>
                         <div class="movie-intro-title">
-                            電影介紹
+                            
+                            <a href="@Url.Action("電影評論", "Comment", new { id = Model.電影編號movieId })">
+                                電影介紹
+                            </a>
+
                         </div>
                     </div>
 
@@ -61,26 +70,31 @@
                             </div>
                             <div class="datePart">
                                 <div class="dateHidden">
-                                   @{ 
-                                       DateTime dateValue = DateTime.Now.Date;
-                                       Console.WriteLine((int)dateValue.DayOfWeek);
-                                    <div class="datebox checked">
-                                        <div class="week">
-                                            @dateValue.AddDays(0).ToString("dddd")
+                                    @{
+                                        DateTime dateValue = DateTime.Now.Date;
+                                        Console.WriteLine((int)dateValue.DayOfWeek);
+                                        <div class="datebox checked">
+
+                                            <input type="hidden" value="@y@m@d">
+                                            <div class="week">
+                                                @dateValue.AddDays(0).ToString("dddd")
+                                            </div>
+                                            <div class="date">
+                                                @(d+"日")
+                                            </div>
+                                            <div class="month">
+                                                @(m + "月")
+                                            </div>
+
                                         </div>
-                                        <div class="date">
-                                            @(d+"日")
-                                        </div>
-                                        <div class="month">
-                                            @(m + "月")
-                                        </div>
-                                    </div>
-                                       }
+                                    }
                                     @for (int x = 1; x < 7; x++)
                                     {
                                         DateTime date = DateTime.Now.Date;
                                         Console.WriteLine((int)date.DayOfWeek);
                                         <div class="datebox">
+                                            <input type="hidden" value="@y@m@(d+x)">
+
                                             <div class="week">
                                                 @date.AddDays(x).ToString("dddd")
                                             </div>
@@ -92,97 +106,9 @@
                                             </div>
                                         </div>
                                     }
-
-
-
-                                </div>
-                                <div class="dateHiddenRWD">
-                                    <div class="slick-initialized slick-slider">
-                                        <div class="slick-list">
-                                            <div class="slick-track" style="opacity: 1; transform: translate3d(0px, 0px, 0px);">
-                                                <div class="slick-slide slick-active dateboxRWD" data-index="0" style="outline: none; width: 0px;" tabindex="-1">
-                                                    <div class="week">
-                                                        星期日
-                                                    </div>
-                                                    <div class="date">
-                                                        2
-                                                    </div>
-                                                    <div class="month">
-                                                        10月
-                                                    </div>
-                                                </div>
-                                                <div class="slick-slide dateboxRWD" data-index="1" style="outline: none; width: 0px;" tabindex="-1">
-                                                    <div class="week">
-                                                        星期一
-                                                    </div>
-                                                    <div class="date">
-                                                        3
-                                                    </div>
-                                                    <div class="month">
-                                                        10月
-                                                    </div>
-                                                </div>
-                                                <div class="slick-slide dateboxRWD" data-index="2" style="outline: none; width: 0px;" tabindex="-1">
-                                                    <div class="week">
-                                                        星期二
-                                                    </div>
-                                                    <div class="date">
-                                                        4
-                                                    </div>
-                                                    <div class="month">
-                                                        10月
-                                                    </div>
-                                                </div>
-                                                <div class="slick-slide dateboxRWD" data-index="3" style="outline: none; width: 0px;" tabindex="-1">
-                                                    <div class="week">
-                                                        星期四
-                                                    </div>
-                                                    <div class="date">
-                                                        6
-                                                    </div>
-                                                    <div class="month">
-                                                        10月
-                                                    </div>
-                                                </div>
-                                                <div class="slick-slide dateboxRWD" data-index="4" style="outline: none; width: 0px;" tabindex="-1">
-                                                    <div class="week">
-                                                        星期五
-                                                    </div>
-                                                    <div class="date">
-                                                        30
-                                                    </div>
-                                                    <div class="month">
-                                                        9月
-                                                    </div>
-                                                </div>
-                                                <div class="slick-slide dateboxRWD" data-index="5" style="outline: none; width: 0px;" tabindex="-1">
-                                                    <div class="week">
-                                                        星期六
-                                                    </div>
-                                                    <div class="date">
-                                                        1
-                                                    </div>
-                                                    <div class="month">
-                                                        10月
-                                                    </div>
-                                                </div>
-                                                <div class="slick-slide dateboxRWD" data-index="6" style="outline: none; width: 0px;" tabindex="-1">
-                                                    <div class="week">
-                                                        星期三
-                                                    </div>
-                                                    <div class="date">
-                                                        5
-                                                    </div>
-                                                    <div class="month">
-                                                        10月
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="tipsbox">
+                            @*<div class="tipsbox">
                                 <div class="text status">
                                     座位狀態
                                 </div>
@@ -200,13 +126,12 @@
                                 </div>
                                 <img src="~/images/Theater/common/nonono.svg" class="text icon" />
 
-                            </div>
-
+                            </div>*@
                             <div class="look">
                                 <div style="display:none" class="MovieTimeChoicePeopleWrapper--80gyip cVKeVY" id="新視窗">
                                     <div class="box">
                                         <svg class="closeIcon" id="關閉" height="1em" preserveAspectRatio="xMidYMid meet" style="fill:white;vertical-align: middle;" viewBox="0 0 40 40" width="1em">
-                                            <g >
+                                            <g>
                                                 <path style="color: white" d="m31.2 8.5c6.4 6.3 6.4 16.7 0 23s-16.6 6.3-22.9 0-6.4-16.7 0-23 16.6-6.3 22.9 0z m-0.9 22c5.8-5.7 5.8-15.3 0-21s-15.3-5.8-21.1 0-5.8 15.3 0 21 15.3 5.8 21.1 0z m-4-18l1 0.9-6.6 6.6 6.6 6.6-1 0.9-6.5-6.6-6.6 6.6-1-0.9 6.6-6.6-6.5-6.6 0.9-0.9 6.6 6.6z"></path>
                                             </g>
                                         </svg>
@@ -224,7 +149,7 @@
                                                     影城
                                                 </div>
                                                 <div class="infoText" id="影城">
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="info">
@@ -232,7 +157,7 @@
                                                     日期
                                                 </div>
                                                 <div class="infoText time" id="日期">
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="info version">
@@ -240,7 +165,7 @@
                                                     版本
                                                 </div>
                                                 <div class="infoText" id="版本">
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="info last">
@@ -287,9 +212,9 @@
 
 
                                 <div class="MovieTimeCinemasWrapper--h6wg7n cqralC" style="background-color:white" id="北部">
-                                    
-                                    
-                                    
+
+
+
                                     <div class="timeWrapper" id="時刻表">
 
 
@@ -305,7 +230,7 @@
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>
     </div>
 
     <form method="post" action="~/Ticketing/SeatMap" id="submitform">
@@ -327,10 +252,14 @@
              areaCH.style.display = "none"
                 document.querySelector("#地區名稱").innerHTML = "北區"
                 var 地區 = document.querySelector("#地區名稱").innerHTML
-                var 電影id = $("#movidID").val() 
+                var 電影id = $("#movidID").val()
+                var 時間=$(".checked input").val()
                 console.log(電影id)
+                console.log(時間)
                 var url = "@Url.Content("~/Theater/area")"
-                var params = `?keyword=${地區}&id=${parseInt(電影id)}`
+               
+                var id = `?id=${parseInt(電影id)}`
+                var params = `?keyword=${地區}&id=${parseInt(電影id)}&time=${parseInt(時間)}`
                 $("#時刻表").load(url + params)
                 $(".time span").attr("style", "background-color:rgb(0, 179, 65)")
 
@@ -339,39 +268,49 @@
                     areaCH.style.display = "none"
                     document.querySelector("#地區名稱").innerHTML = "桃竹苗"
                     var 地區 = document.querySelector("#地區名稱").innerHTML
-                    var url = "@Url.Content("~/Theater/area")"
-                    var params = `?keyword=${地區}`
-                    $("#時刻表").load(url + params)
-                    $(".time span").attr("style", "background-color:rgb(0, 179, 65)")
+                var 電影id = $("#movidID").val()
+                var 時間=$(".checked input").val()
+                console.log(電影id)
+                console.log(時間)
+                var url = "@Url.Content("~/Theater/area")"
+                var params = `?keyword=${地區}&id=${parseInt(電影id)}&time=${parseInt(時間)}`
+                $("#時刻表").load(url + params)
+                $(".time span").attr("style", "background-color:rgb(0, 179, 65)")
 
                 })
                 $("#no03").click(function () {
                      areaCH.style.display = "none"
                      document.querySelector("#地區名稱").innerHTML = "中區"
-                     var 地區 = document.querySelector("#地區名稱").innerHTML
-                    var url = "@Url.Content("~/Theater/area")"
-                    var params = `?keyword=${地區}`
-                    $("#時刻表").load(url + params)
-                    $(".time span").attr("style", "background-color:rgb(0, 179, 65)")
-
+               var 地區 = document.querySelector("#地區名稱").innerHTML
+                var 電影id = $("#movidID").val()
+                var 時間=$(".checked input").val()
+                console.log(電影id)
+                console.log(時間)
+                var url = "@Url.Content("~/Theater/area")"
+                var params = `?keyword=${地區}&id=${parseInt(電影id)}&time=${parseInt(時間)}`
+                $("#時刻表").load(url + params)
+                $(".time span").attr("style", "background-color:rgb(0, 179, 65)")
                 })
                 $("#no04").click(function () {
              areaCH.style.display = "none"
                     document.querySelector("#地區名稱").innerHTML = "南區及離島"
-                    var 地區 = document.querySelector("#地區名稱").innerHTML
-                    var url = "@Url.Content("~/Theater/area")"
-                    var params = `?keyword=${地區}`
-                    $("#時刻表").load(url + params)
-                    $(".time span").attr("style", "background-color:rgb(0, 179, 65)")
-
+               var 地區 = document.querySelector("#地區名稱").innerHTML
+                var 電影id = $("#movidID").val()
+                var 時間=$(".checked input").val()
+                console.log(電影id)
+                console.log(時間)
+                var url = "@Url.Content("~/Theater/area")"
+                var params = `?keyword=${地區}&id=${parseInt(電影id)}&time=${parseInt(時間)}`
+                $("#時刻表").load(url + params)
+                $(".time span").attr("style", "background-color:rgb(0, 179, 65)")
                 })
    let ff=false
     $(".numbox  .num").hover(function () {
-        
+
         $(this).removeClass("numChecked").siblings().removeClass("numChecked").end().addClass("numChecked");
         },
         function () {
-          
+
             $(this).prevAll().removeClass("numChecked").end().removeClass("numChecked");
     });
     $(".numbox .num").click(function () {
@@ -401,7 +340,7 @@
             let ToseatParament = `?${場次}&${parseInt(人數)}`;
             let Actionstr = ToseatMapUrl + ToseatParament;
 
-       
+
         }
         else {
             alert("請點選人數")
@@ -409,8 +348,30 @@
         }
     })
 
+
     const form = document.getElementById('submitform');
     const screeniD = document.getElementById('ScreenID');
     const Count = document.getElementById('Count');
+    $(".dateHidden .datebox").click(function () {
+        $(this).removeClass("checked").siblings().removeClass("checked").end().addClass("checked");
+        var 地區 = document.querySelector("#地區名稱").innerHTML
+        if (地區 != "請選擇地區") {
+                var 電影id = $("#movidID").val()
+                var 時間=$(".checked input").val()
+                console.log(電影id)
+                console.log(時間)
+                var url = "@Url.Content("~/Theater/area")"
+                var params = `?keyword=${地區}&id=${parseInt(電影id)}&time=${parseInt(時間)}`
+                $("#時刻表").load(url + params)
+                $(".time span").attr("style", "background-color:rgb(0, 179, 65)")
+
+
+        }
+
+
+
+    });
+
+
 
 </script>

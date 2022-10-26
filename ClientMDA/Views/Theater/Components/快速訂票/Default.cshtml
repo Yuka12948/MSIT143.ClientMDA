@@ -8,6 +8,8 @@
     int d = System.DateTime.Now.Day;
     int m = System.DateTime.Now.Month;
 
+}
+
     <div style="display:none" id="video" class="commonStyled__WrapperSampleNoContent-sc-kt5vy-9 MovieVideoWrapper--1y1ldiy exLSHN bbzzdC ">
         <svg fill="currentColor" class="icon" id="close" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
             <g>
@@ -30,10 +32,31 @@
                 <iframe allowfullscreen frameborder="0" height="400" src=@Model.預告片trailer width="1980"></iframe>
             </div>
         </div>
+        
+  
         <div class="info_box">
-            <div class="poster" style="background-image:url(https://img.ezding.com.tw/photos/ezding/poster/px_fcatm0873074_0003.jpg), url('../common/poster_default.png')">
-                <div class="video_icon" style="background-image: url('../common/videoPlay.svg')"></div>
-            </div>
+
+
+            @{
+                string urlpic = "";
+                if (Model.MPimg.Count > 0)
+                    //urlpic = "https://localhost:44381/images/MovieImage/" + Model.MPimg[0];
+                    urlpic =Model.MPimg[0];
+
+                else
+                {
+                    urlpic = "../../images/Theater/common/poster.png";
+                }
+                <div class="poster" style="background-image:url('@urlpic')">
+                    <div class="video_icon" style="background-image: url('../common/videoPlay.svg')"></div>
+                </div>
+
+
+
+            }
+
+
+
             <div class="text_info">
                 <div class="grade">
                     @Model.分級級數ratingLevel
@@ -46,7 +69,7 @@
                     <div class="title_en_us">
                         @Model.英文標題titleEng
                     </div>
-                </div><span class="rel_date">上映日期：<!-- -->@Model.上映日期releaseDate</span><span class="length">片長：<!-- -->@Model.片長runtime<!-- -->分鐘</span>
+                </div><span class="rel_date">上映日期：<!-- -->@Model.上映日期releaseDate.Value.ToString("D")</span><span class="length">片長：<!-- -->@Model.片長runtime<!-- -->分鐘</span>
             </div>
             <div class="scores">
                 <div class="ez_score score">
