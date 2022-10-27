@@ -128,7 +128,7 @@
 
                         }
                     }
-             
+
                 </tbody>
             </table>
             <!--end content-->
@@ -138,9 +138,23 @@
 
 
 @section Scripts{
-  
+    <script>
+    const create = document.querySelector("#buttonAdd")
 
+        create.addEventListener("click", () => {
 
+    window.location.assign('@Url.Content("~/member/writecomment")')
+    })
 
+    </script>
+    @*<script>
+            const com = document.querySelectorAll(".commentLink4")
+
+            com.forEach(c=>c.addEventListener("click", () => {
+            console.log("check")
+            window.location.assign('@Url.Content("~/comment/")'+encodeURI("會員評論"))
+            }))
+
+        </script>*@
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 }
