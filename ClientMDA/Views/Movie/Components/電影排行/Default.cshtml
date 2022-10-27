@@ -2,10 +2,7 @@
 @{
     ViewData["Title"] = "Default"; @*電影排行*@
 }
-<script>
-    let x = Math.floor((Math.random(* 10) + 1);
-    document.getElementById("AAA").innerHTML = x;
-</script>
+
 @{
     int count = 0;
     for (var i = 0; i < Model.Count; i++)
@@ -27,33 +24,34 @@
                             <img class="charts-list-cover" id="poster" alt="" title="@Html.DisplayFor(modelItem => Model[i].中文標題titleCht)"
                                  src="@urlpic"> @* 空圖時"~/images/Comment/poster_none1.png"*@
                             </a>
-                        <span class="charts-list-desc">
-                            <span class="charts-list-song" title="@Html.DisplayFor(modelItem => Model[i].中文標題titleCht)">
-                                <a href=@Url.Action("電影介紹","Movie", new {id= Model[i].電影編號movieId})>@Html.DisplayFor(modelItem => Model[i].中文標題titleCht)</a>
-                            </span>
-                            <span class="charts-list-artist" title="@Html.DisplayFor(modelItem => Model[i].英文標題titleEng)">
-                                <a href=@Url.Action("電影介紹","Movie", new {id= Model[i].電影編號movieId})>@Html.DisplayFor(modelItem => Model[i].英文標題titleEng)</a>
-                            </span>
-                        </span>
-
-                        <span class="charts-list-content"></span>
-                        <span class="charts-list-span" id="rate"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i> 5</span>
-
-                        <div class="dropdown">
-                            <button aria-label="Rate @Html.DisplayFor(modelItem => Model[i].中文標題titleCht)" class="ipc-rate-button ipc-rating-star-group--unrated ipc-rate-button--unrated ipc-rate-button--baseAlt"
-                                    data-testid="rate-button" data-modal-target="#ToRate">
-                                <span class="ipc-rating-star ipc-rating-star--baseAlt ipc-rating-star--rate">
-                                    <i class="far fa-star" style="padding-right:5px;color:#ffc107"></i>評分
+                            <span class="charts-list-desc">
+                                <span class="charts-list-song" title="@Html.DisplayFor(modelItem => Model[i].中文標題titleCht)">
+                                    <a href=@Url.Action("電影介紹","Movie", new {id= Model[i].電影編號movieId})>@Html.DisplayFor(modelItem => Model[i].中文標題titleCht)</a>
                                 </span>
-                            </button>
-                        </div>
-                        <span class="charts-list-date">@Html.DisplayFor(modelItem => Model[i].上映日期releaseDate)</span>
-                        <span class="charts-list-prev-rank">
-                            <div class="wlb_ribbon" data-tconst="tt0111161" data-recordmetrics="true" style="position: relative;">
-                                <div class="wl-ribbon standalone not-inWL" title="點擊添加到關注列表"></div>
+                                <span class="charts-list-artist" title="@Html.DisplayFor(modelItem => Model[i].英文標題titleEng)">
+                                    <a href=@Url.Action("電影介紹","Movie", new {id= Model[i].電影編號movieId})>@Html.DisplayFor(modelItem => Model[i].英文標題titleEng)</a>
+                                </span>
+                            </span>
+
+                            <span class="charts-list-content"></span>
+                            <span class="charts-list-span"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i> 5</span>
+
+                            <div class="dropdown">
+                                <button aria-label="Rate @Html.DisplayFor(modelItem => Model[i].中文標題titleCht)" @*呼叫評分*@
+                                        class="ipc-rate-button ipc-rating-star-group--unrated ipc-rate-button--unrated ipc-rate-button--baseAlt"
+                                        data-testid="rate-button" data-modal-target="#ToRate">
+                                    <span class="ipc-rating-star ipc-rating-star--baseAlt ipc-rating-star--rate">
+                                        <i class="far fa-star" style="padding-right:5px;color:#ffc107"></i>評分
+                                    </span>
+                                </button>
                             </div>
-                        </span>
-                    </div>
+                            <span class="charts-list-date">@Html.DisplayFor(modelItem => Model[i].上映日期releaseDate)</span>
+                            <span class="charts-list-prev-rank">
+                                <div class="wlb_ribbon" data-tconst="tt0111161" data-recordmetrics="true" style="position: relative;">
+                                    <div class="wl-ribbon standalone not-inWL" title="點擊添加到關注列表"></div>
+                                </div>
+                            </span>
+                        </div>
                 </div>
             </div>
         </li>

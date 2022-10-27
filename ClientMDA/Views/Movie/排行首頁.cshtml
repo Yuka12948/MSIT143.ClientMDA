@@ -279,6 +279,8 @@
 
                 </ul>
                 <!-- #endregion 排行榜body -->
+
+                <script src="~/js/Movie/排行-Rate.js"></script>
                 <!-- #region IMDB評分版型 -->
                 <div id="MovieRate" class="ipc-promptable-base__panel MovieRate" data-focus-lock-disabled="false">
                     <div class="ipc-promptable-base__focus-lock" data-testid="promptable__pc" style="max-height: calc(507px - 6rem);">
@@ -303,7 +305,7 @@
                                 <div class="ipc-rating-prompt__container">
                                     <h4 class="ipc-rating-prompt__content-header">評分此部電影</h4>
                                     <div class="ipc-rating-prompt__content-title">
-                                        電影標題
+                                        @Model[0].中文標題titleCht
                                         @*@Html.DisplayFor(modelItem => item.中文標題titleCht)*@
                                     </div>
                                     <div class="ipc-rating-prompt__rating-container">
@@ -408,6 +410,7 @@
             })
         });
     </script>
+    <script src="~/js/Movie/排行-Rate.js"></script>
     <!-- #endregion 響應式元件 -->
     <!-- #region 響應式元件js/css/cdn -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
