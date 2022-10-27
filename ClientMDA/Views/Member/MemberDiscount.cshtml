@@ -92,9 +92,9 @@
             <div class="mb-4">
                 @using (Html.BeginForm("AddCoupon", "Member"))
                 {
-                    @Html.TextBox("txtKeyword", null, new { @placeholder = "輸入優惠代碼" })
+                    @Html.TextBox("txtKeyword", null, new { @id = "txt", @placeholder = "輸入優惠代碼" })
                     <button type="submit" class="site-btn mt-3 mb-3"><i class="fa fa-plus"> 新增優惠</i></button>
-
+                    <button type="button" id="demo" class="site-btn mt-3 mb-3">demo</button>
                 }
             </div>
 
@@ -137,7 +137,7 @@
                         }
                     }
 
-                   
+
                 </tbody>
             </table>
             <!--end content-->
@@ -148,5 +148,11 @@
 @section Scripts{
 
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-
+    <script>
+        const demo = document.querySelector("#demo")
+        const txt = document.querySelector("#txt")
+        demo.addEventListener("click", () => {
+            txt.value = "Bday100"
+        })
+    </script>
 }
