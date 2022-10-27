@@ -1,5 +1,4 @@
-﻿
-////banner
+﻿//banner
 var swiper = new Swiper(".mySwiper", {
     spaceBetween: 30,
     centeredSlides: true,
@@ -41,16 +40,30 @@ var swiper = new Swiper(".mySwiperRATE", {
 //modal
 const openModalButtons = document.querySelectorAll('[data-modal-target]')
 const closeModalButtons = document.querySelectorAll('[data-close-button]')
-const overlay = document.getElementById('overlay')
+const overlay = document.querySelector('#overlay')
 const headerofstar = document.getElementById("in-rating-movie");
+const movienum = document.getElementById('movienum');
+
+function openModal(modal) {
+    if (modal == null) return
+    modal.classList.add('active')
+    overlay.classList.add('active')    
+}
+
+function closeModal(modal) {
+    if (modal == null) return
+    modal.classList.remove('active')
+    overlay.classList.remove('active')
+}
 
 for (let i = 0; i < openModalButtons.length; i++) {
-    openModalButtons[i].addEventListener('click', event => {
-        const modal = document.querySelector("#modal")
+    openModalButtons[i].addEventListener('click', e=> {
+        const modal = document.querySelector("#modal")       
         openModal(modal)
         const f = $(event.currentTarget).parents(".box").find("h5")[0].textContent
+        const o = $(event.currentTarget).parents(".box").find("a")[1].getAttribute('data')      
         headerofstar.textContent = f
-
+        document.getElementById('movienum').value = o;
     })
 }
 
@@ -68,47 +81,54 @@ closeModalButtons.forEach(button => {
     })
 })
 
-function openModal(modal) {
-    if (modal == null) return
-    modal.classList.add('active')
-    overlay.classList.add('active')
-}
 
-function closeModal(modal) {
-    if (modal == null) return
-    modal.classList.remove('active')
-    overlay.classList.remove('active')
-}
 
 //modal2
-const openModalButtonsE = document.querySelectorAll('#openbtnE')
-const closeModalButtonsE = document.querySelectorAll('#closebtnE')
-const overlayE = document.getElementById('overlayE')
-const headerofstarE = document.getElementById("in-rating-movieE");
+//const openModalButtons2 = document.querySelectorAll('#openbtnE')
+//const closeModalButtons2 = document.querySelectorAll('#closebtnE')
+//const overlay2 = document.querySelector('#overlayE')
+//const headerofstar2 = document.getElementById("in-rating-movieE");
 
-for (let i = 0; i < openModalButtonsE.length; i++) {
-    openModalButtonsE[i].addEventListener('click', event => {
-        const modal = document.querySelector("#modalE")
-        openModal(modal)
-        const f = $(event.currentTarget).parents(".box").find("h5")[0].textContent
-        headerofstarE.textContent = f
-        console.log(f)
-    })
-}
 
-overlay.addEventListener('click', () => {
-    const modals = document.querySelectorAll('.modalstE.active')
-    modals.forEach(modal => {
-        closeModal(modal)
-    })
-})
+//function openModal2(modal) {
+//    if (modal == null) return
+//    modal.classList.add('active')
+//    overlay2.classList.add('active')
+//}
 
-closeModalButtonsE.forEach(button => {
-    button.addEventListener('click', () => {
-        const modal = button.closest('.modalstE')
-        closeModal(modal)
-    })
-})
+//function closeModal2(modal) {
+//    if (modal == null) return
+//    modal.classList.remove('active')
+//    overlay2.classList.remove('active')
+//}
+
+//for (let i = 0; i < openModalButtons2.length; i++) {
+//    openModalButtons2[i].addEventListener('click', event => {
+//        const modal = document.querySelector("#modalstE")
+//        openModal2(modal)
+//        const f = $(event.currentTarget).parents(".box").find("h5")[0].textContent
+//        const o = $(event.currentTarget).parents(".box").find("a")[1].getAttribute('data')
+//        headerofstar2.textContent = f
+//        document.getElementById('movienumE').value = o;
+//    })
+//}
+
+//overlay2.addEventListener('click', () => {
+//    const modals = document.querySelectorAll('.modalstE.active')
+//    modals.forEach(modal => {
+//        closeModal2(modal)
+//    })
+//})
+
+//closeModalButtons2.forEach(button => {
+//    button.addEventListener('click', () => {
+//        const modal = button.closest('.modalstE')
+//        closeModal2(modal)
+//    })
+//})
+
+
+
 
 
 //change font
@@ -145,17 +165,10 @@ for (let i = 0; i < bookmarkadd.length; i++) {
             /*grabCursor: true,*/
     });
 
-//img click
-const img = document.querySelectorAll('#swipersw-slide')
+//add rate
 
-//for (let i = 0; i < img.length; i++) {
-//    img[i].addEventListener('click', ev => {
-//        console.log('hello')
-//        let image = document.createElement('a')
-//        console.log(image)
-//        image.setAttribute('href', 'https://www.imdb.com/title/tt0926084/?ref_=hm_tpks_tt_t_1_pd_tp1_pbr_ic');
-//        ev.target.appendChild(image);
-        
 
-//    })
-//}
+
+
+
+

@@ -1,4 +1,6 @@
 ﻿
+@model ClientMDA.ViewModels.CHomepageViewModel
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -23,7 +25,7 @@
         <div class="swiper-wrapper">
 
             <div class="swiper-slide" id="img-wrapper">
-                <div id="imgbox">
+                <div id="imgbox" data="">
                     <img src="https://movies.yahoo.com.tw/x/r/w800/i/o/production/movie-photos/September2022/b5JWfc4a9PrczgP40zbl-1920x1080.jpg" alt="電影版 後空翻少年！！">
                 </div>
                 <div class="hangposter">
@@ -53,7 +55,7 @@
                 </div>
             </div>
             <div class="swiper-slide" id="img-wrapper">
-                <div id="imgbox">
+                <div id="imgbox" data="">
                     <img src="https://movies.yahoo.com.tw/x/r/w800/i/o/production/movie-photos/September2022/PEQ1LzNrvP4SDV94mrI3-2168x1080.jpg" alt="微笑">
                 </div>
                 <div class="hangposter">
@@ -82,7 +84,7 @@
                 </div>
             </div>
             <div class="swiper-slide" id="img-wrapper">
-                <div id="imgbox">
+                <div id="imgbox" data="">
                     <img src="https://movies.yahoo.com.tw/x/r/w800/i/o/production/movie-photos/August2022/YCDYyJp4rD0hSJLfm2kp-1280x720.jpg" alt="小獅子王">
                 </div>
                 <div class="hangposter">
@@ -111,7 +113,7 @@
                 </div>
             </div>
             <div class="swiper-slide" id="img-wrapper">
-                <div id="imgbox">
+                <div id="imgbox" data="">
                     <img src="https://movies.yahoo.com.tw/x/r/w800/i/o/production/movie-photos/August2022/JYpVC8dOoU5zW5u7oBoq-1433x1080.jpg" alt="金髮夢露">
                 </div>
                 <div class="hangposter">
@@ -140,7 +142,7 @@
                 </div>
             </div>
             <div class="swiper-slide" id="img-wrapper">
-                <div id="imgbox">
+                <div id="imgbox" data="">
                     <img src="https://movies.yahoo.com.tw/x/r/w800/i/o/production/movie-photos/June2022/UYgvPUSEOxuopne8TVF7-1920x1080.jpg" alt="鱷魚歌王">
                 </div>
                 <div class="hangposter">
@@ -169,7 +171,7 @@
                 </div>
             </div>
             <div class="swiper-slide" id="img-wrapper">
-                <div id="imgbox">
+                <div id="imgbox" data="">
                     <img src="https://movies.yahoo.com.tw/x/r/w800/i/o/production/movie-photos/July2022/YltxlJUE90FYqKymttsh-1628x1080.jpg" alt="月光光新慌慌：萬聖結">
                 </div>
                 <div class="hangposter">
@@ -198,7 +200,7 @@
                 </div>
             </div>
             <div class="swiper-slide" id="img-wrapper">
-                <div id="imgbox">
+                <div id="imgbox" data="">
                     <img src="https://movies.yahoo.com.tw/x/r/w800/i/o/production/movie-photos/August2022/hWVp8s9XljiyxfZWnl6k-1620x1080.jpg" alt="戀之光">
                 </div>
                 <div class="hangposter">
@@ -297,7 +299,7 @@
                 </div>
                 <div class="info">
                     @*標題超連結&標題*@
-                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="ranktitle"></a></h5>
+                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="ranktitle" data=""></a></h5>
                 </div>
                 <div class="AddList">
                     <button class="buyBtn">
@@ -351,7 +353,7 @@
                 </div>
                 <div class="info">
                     @*標題超連結&標題*@
-                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="ranktitle"></a></h5>
+                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="ranktitle" data=""></a></h5>
                 </div>
                 <div class="AddList">
                     <button class="buyBtn">
@@ -405,7 +407,7 @@
                 </div>
                 <div class="info">
                     @*標題超連結&標題*@
-                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="ranktitle"></a></h5>
+                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="ranktitle" data=""></a></h5>
                 </div>
                 <div class="AddList">
                     <button class="buyBtn">
@@ -459,7 +461,7 @@
                 </div>
                 <div class="info">
                     @*標題超連結&標題*@
-                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="ranktitle"></a></h5>
+                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="ranktitle" data=""></a></h5>
                 </div>
                 <div class="AddList">
                     <button class="buyBtn">
@@ -513,7 +515,7 @@
                 </div>
                 <div class="info">
                     @*標題超連結&標題*@
-                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="ranktitle"></a></h5>
+                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="ranktitle" data=""></a></h5>
                 </div>
                 <div class="AddList">
                     <button class="buyBtn">
@@ -567,7 +569,7 @@
                 </div>
                 <div class="info">
                     @*標題超連結&標題*@
-                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="ranktitle"></a></h5>
+                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="ranktitle" data=""></a></h5>
                 </div>
                 <div class="AddList">
                     <button class="buyBtn">
@@ -621,7 +623,7 @@
                 </div>
                 <div class="info">
                     @*標題超連結&標題*@
-                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="ranktitle"></a></h5>
+                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="ranktitle" data=""></a></h5>
                 </div>
                 <div class="AddList">
                     <button class="buyBtn">
@@ -675,7 +677,7 @@
                 </div>
                 <div class="info">
                     @*標題超連結&標題*@
-                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="ranktitle"></a></h5>
+                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="ranktitle" data=""></a></h5>
                 </div>
                 <div class="AddList">
                     <button class="buyBtn">
@@ -729,7 +731,7 @@
                 </div>
                 <div class="info">
                     @*標題超連結&標題*@
-                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="ranktitle"></a></h5>
+                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="ranktitle" data=""></a></h5>
                 </div>
                 <div class="AddList">
                     <button class="buyBtn">
@@ -783,7 +785,7 @@
                 </div>
                 <div class="info">
                     @*標題超連結&標題*@
-                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="ranktitle"></a></h5>
+                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="ranktitle" data=""></a></h5>
                 </div>
                 <div class="AddList">
                     <button class="buyBtn">
@@ -818,7 +820,6 @@
         </div>
     </div>
 </div>
-
 <div class="swiper mySwiperRATE">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
@@ -862,7 +863,7 @@
                 </div>
                 <div class="info">
                     @*標題超連結&標題*@
-                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="newestmovie"></a></h5>
+                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="newestmovie" data=""></a></h5>
                 </div>
                 <div class="AddList">
                     <button class="buyBtn">
@@ -916,7 +917,7 @@
                 </div>
                 <div class="info">
                     @*標題超連結&標題*@
-                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="newestmovie"></a></h5>
+                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="newestmovie" data=""></a></h5>
                 </div>
                 <div class="AddList">
                     <button class="buyBtn">
@@ -970,7 +971,7 @@
                 </div>
                 <div class="info">
                     @*標題超連結&標題*@
-                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="newestmovie"></a></h5>
+                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="newestmovie" data=""></a></h5>
                 </div>
                 <div class="AddList">
                     <button class="buyBtn">
@@ -1024,7 +1025,7 @@
                 </div>
                 <div class="info">
                     @*標題超連結&標題*@
-                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="newestmovie"></a></h5>
+                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="newestmovie" data=""></a></h5>
                 </div>
                 <div class="AddList">
                     <button class="buyBtn">
@@ -1078,7 +1079,7 @@
                 </div>
                 <div class="info">
                     @*標題超連結&標題*@
-                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="newestmovie"></a></h5>
+                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="newestmovie" data=""></a></h5>
                 </div>
                 <div class="AddList">
                     <button class="buyBtn">
@@ -1132,7 +1133,7 @@
                 </div>
                 <div class="info">
                     @*標題超連結&標題*@
-                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="newestmovie"></a></h5>
+                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="newestmovie" data=""></a></h5>
                 </div>
                 <div class="AddList">
                     <button class="buyBtn">
@@ -1186,7 +1187,7 @@
                 </div>
                 <div class="info">
                     @*標題超連結&標題*@
-                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="newestmovie"></a></h5>
+                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="newestmovie" data=""></a></h5>
                 </div>
                 <div class="AddList">
                     <button class="buyBtn">
@@ -1240,7 +1241,7 @@
                 </div>
                 <div class="info">
                     @*標題超連結&標題*@
-                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="newestmovie"></a></h5>
+                    <h5 class="title titleofmovie"><a href="https://movies.yahoo.com.tw/movieinfo_main/%E5%B9%B8%E7%A6%8F%E5%85%A5%E5%A0%B4%E5%88%B8-ticket-to-paradise-13611" id="newestmovie" data=""></a></h5>
                 </div>
                 <div class="AddList">
                     <button class="buyBtn">
@@ -1829,11 +1830,11 @@
                 <h4>本日推薦</h4>
             </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-4">
-            <div class="btn__all">
-                <a href="/Theater" class="primary-btn">View All <span class="arrow_right"></span></a>
-            </div>
-        </div>
+        @*<div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="btn__all">
+                    <a href="/Theater" class="primary-btn">View All <span class="arrow_right"></span></a>
+                </div>
+            </div>*@
     </div>
 </div>
 <div id="swipercon">
@@ -1841,7 +1842,7 @@
         <div class="swiper-wrapper" id="swiper-wrappersw">
             <div class="swiper-slide" id="swipersw-slide">
                 <a href="https://www.youtube.com/watch?v=Q1TPRt2IWtA">
-                    <img class="blur" src="" alt="" id="imggrab" style=" width: 280px; height: 414px;">
+                    <img class="blur" src="" alt="" id="imggrab" data="" style=" width: 280px; height: 414px;">
                 </a>
                 <div class="ipc-watchlist-ribbon ipc-focusable ipc-watchlist-ribbon--m ipc-watchlist-ribbon--baseAlt ipc-watchlist-ribbon--onImage ipc-poster__watchlist-ribbon poster-card-watchlist-ribbon" aria-label="add to watchlist" role="button" tabindex="0" id="bookmarkRE">
                     <svg class="ipc-watchlist-ribbon__bg" width="68px" height="68px" color="red" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" role="presentation" id="BOOOKmarkRE">
@@ -1856,7 +1857,7 @@
             </div>
             <div class="swiper-slide" id="swipersw-slide">
                 <a href="https://www.youtube.com/watch?v=Q1TPRt2IWtA">
-                    <img class="blur" src="" alt="" id="imggrab" style=" width: 280px; height: 414px;">
+                    <img class="blur" src="" alt="" id="imggrab" data="" style=" width: 280px; height: 414px;">
                 </a>
                 <div class="ipc-watchlist-ribbon ipc-focusable ipc-watchlist-ribbon--m ipc-watchlist-ribbon--baseAlt ipc-watchlist-ribbon--onImage ipc-poster__watchlist-ribbon poster-card-watchlist-ribbon" aria-label="add to watchlist" role="button" tabindex="0" id="bookmarkRE">
                     <svg class="ipc-watchlist-ribbon__bg" width="68px" height="68px" color="red" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" role="presentation" id="BOOOKmarkRE">
@@ -1871,7 +1872,7 @@
             </div>
             <div class="swiper-slide" id="swipersw-slide">
                 <a href="https://www.youtube.com/watch?v=Q1TPRt2IWtA">
-                    <img class="blur" src="" alt="" id="imggrab" style=" width: 280px; height: 414px;">
+                    <img class="blur" src="" alt="" id="imggrab" data="" style=" width: 280px; height: 414px;">
                 </a>
                 <div class="ipc-watchlist-ribbon ipc-focusable ipc-watchlist-ribbon--m ipc-watchlist-ribbon--baseAlt ipc-watchlist-ribbon--onImage ipc-poster__watchlist-ribbon poster-card-watchlist-ribbon" aria-label="add to watchlist" role="button" tabindex="0" id="bookmarkRE">
                     <svg class="ipc-watchlist-ribbon__bg" width="68px" height="68px" color="red" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" role="presentation" id="BOOOKmarkRE">
@@ -1886,7 +1887,7 @@
             </div>
             <div class="swiper-slide" id="swipersw-slide">
                 <a href="https://www.youtube.com/watch?v=Q1TPRt2IWtA">
-                    <img class="blur" src="" alt="" id="imggrab" style=" width: 280px; height: 414px;">
+                    <img class="blur" src="" alt="" id="imggrab" data="" style=" width: 280px; height: 414px;">
                 </a>
                 <div class="ipc-watchlist-ribbon ipc-focusable ipc-watchlist-ribbon--m ipc-watchlist-ribbon--baseAlt ipc-watchlist-ribbon--onImage ipc-poster__watchlist-ribbon poster-card-watchlist-ribbon" aria-label="add to watchlist" role="button" tabindex="0" id="bookmarkRE">
                     <svg class="ipc-watchlist-ribbon__bg" width="68px" height="68px" color="red" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" role="presentation" id="BOOOKmarkRE">
@@ -1901,7 +1902,7 @@
             </div>
             <div class="swiper-slide" id="swipersw-slide">
                 <a href="https://www.youtube.com/watch?v=Q1TPRt2IWtA">
-                    <img class="blur" src="" alt="" id="imggrab" style=" width: 280px; height: 414px;">
+                    <img class="blur" src="" alt="" id="imggrab" data="" style=" width: 280px; height: 414px;">
                 </a>
                 <div class="ipc-watchlist-ribbon ipc-focusable ipc-watchlist-ribbon--m ipc-watchlist-ribbon--baseAlt ipc-watchlist-ribbon--onImage ipc-poster__watchlist-ribbon poster-card-watchlist-ribbon" aria-label="add to watchlist" role="button" tabindex="0" id="bookmarkRE">
                     <svg class="ipc-watchlist-ribbon__bg" width="68px" height="68px" color="red" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" role="presentation" id="BOOOKmarkRE">
@@ -1916,7 +1917,7 @@
             </div>
             <div class="swiper-slide" id="swipersw-slide">
                 <a href="https://www.youtube.com/watch?v=Q1TPRt2IWtA">
-                    <img class="blur" src="" alt="" id="imggrab" style=" width: 280px; height: 414px;">
+                    <img class="blur" src="" alt="" id="imggrab" data="" style=" width: 280px; height: 414px;">
                 </a>
                 <div class="ipc-watchlist-ribbon ipc-focusable ipc-watchlist-ribbon--m ipc-watchlist-ribbon--baseAlt ipc-watchlist-ribbon--onImage ipc-poster__watchlist-ribbon poster-card-watchlist-ribbon" aria-label="add to watchlist" role="button" tabindex="0" id="bookmarkRE">
                     <svg class="ipc-watchlist-ribbon__bg" width="68px" height="68px" color="red" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" role="presentation" id="BOOOKmarkRE">
@@ -1931,7 +1932,7 @@
             </div>
             <div class="swiper-slide" id="swipersw-slide">
                 <a href="https://www.youtube.com/watch?v=Q1TPRt2IWtA">
-                    <img class="blur" src="" alt="" id="imggrab" style=" width: 280px; height: 414px;">
+                    <img class="blur" src="" alt="" id="imggrab" data="" style=" width: 280px; height: 414px;">
                 </a>
                 <div class="ipc-watchlist-ribbon ipc-focusable ipc-watchlist-ribbon--m ipc-watchlist-ribbon--baseAlt ipc-watchlist-ribbon--onImage ipc-poster__watchlist-ribbon poster-card-watchlist-ribbon" aria-label="add to watchlist" role="button" tabindex="0" id="bookmarkRE">
                     <svg class="ipc-watchlist-ribbon__bg" width="68px" height="68px" color="red" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" role="presentation" id="BOOOKmarkRE">
@@ -1946,7 +1947,7 @@
             </div>
             <div class="swiper-slide" id="swipersw-slide">
                 <a href="https://www.youtube.com/watch?v=Q1TPRt2IWtA">
-                    <img class="blur" src="" alt="" id="imggrab" style=" width: 280px; height: 414px;">
+                    <img class="blur" src="" alt="" id="imggrab" data="" style=" width: 280px; height: 414px;">
                 </a>
                 <div class="ipc-watchlist-ribbon ipc-focusable ipc-watchlist-ribbon--m ipc-watchlist-ribbon--baseAlt ipc-watchlist-ribbon--onImage ipc-poster__watchlist-ribbon poster-card-watchlist-ribbon" aria-label="add to watchlist" role="button" tabindex="0" id="bookmarkRE">
                     <svg class="ipc-watchlist-ribbon__bg" width="68px" height="68px" color="red" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" role="presentation" id="BOOOKmarkRE">
@@ -1961,7 +1962,7 @@
             </div>
             <div class="swiper-slide" id="swipersw-slide">
                 <a href="https://www.youtube.com/watch?v=Q1TPRt2IWtA">
-                    <img class="blur" src="" alt="" id="imggrab" style=" width: 280px; height: 414px;">
+                    <img class="blur" src="" alt="" id="imggrab" data="" style=" width: 280px; height: 414px;">
                 </a>
                 <div class="ipc-watchlist-ribbon ipc-focusable ipc-watchlist-ribbon--m ipc-watchlist-ribbon--baseAlt ipc-watchlist-ribbon--onImage ipc-poster__watchlist-ribbon poster-card-watchlist-ribbon" aria-label="add to watchlist" role="button" tabindex="0" id="bookmarkRE">
                     <svg class="ipc-watchlist-ribbon__bg" width="68px" height="68px" color="red" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" role="presentation" id="BOOOKmarkRE">
@@ -1980,7 +1981,7 @@
         <div class="swiper-wrapper" id="swiper-wrappersw">
             <div class="swiper-slide" id="swipersw-slide">
                 <a href="https://www.youtube.com/watch?v=Q1TPRt2IWtA">
-                    <img class="blur" src="" alt="" id="imggrab" style=" width: 280px; height: 414px;">
+                    <img class="blur" src="" alt="" id="imggrab" data="" style=" width: 280px; height: 414px;">
                 </a>
                 <div class="ipc-watchlist-ribbon ipc-focusable ipc-watchlist-ribbon--m ipc-watchlist-ribbon--baseAlt ipc-watchlist-ribbon--onImage ipc-poster__watchlist-ribbon poster-card-watchlist-ribbon" aria-label="add to watchlist" role="button" tabindex="0" id="bookmarkRE">
                     <svg class="ipc-watchlist-ribbon__bg" width="68px" height="68px" color="red" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" role="presentation" id="BOOOKmarkRE">
@@ -1995,7 +1996,7 @@
             </div>
             <div class="swiper-slide" id="swipersw-slide">
                 <a href="https://www.youtube.com/watch?v=Q1TPRt2IWtA">
-                    <img class="blur" src="" alt="" id="imggrab" style=" width: 280px; height: 414px;">
+                    <img class="blur" src="" alt="" id="imggrab" data="" style=" width: 280px; height: 414px;">
                 </a>
                 <div class="ipc-watchlist-ribbon ipc-focusable ipc-watchlist-ribbon--m ipc-watchlist-ribbon--baseAlt ipc-watchlist-ribbon--onImage ipc-poster__watchlist-ribbon poster-card-watchlist-ribbon" aria-label="add to watchlist" role="button" tabindex="0" id="bookmarkRE">
                     <svg class="ipc-watchlist-ribbon__bg" width="68px" height="68px" color="red" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" role="presentation" id="BOOOKmarkRE">
@@ -2010,7 +2011,7 @@
             </div>
             <div class="swiper-slide" id="swipersw-slide">
                 <a href="https://www.youtube.com/watch?v=Q1TPRt2IWtA">
-                    <img class="blur" src="" alt="" id="imggrab" style=" width: 280px; height: 414px;">
+                    <img class="blur" src="" alt="" id="imggrab" data="" style=" width: 280px; height: 414px;">
                 </a>
                 <div class="ipc-watchlist-ribbon ipc-focusable ipc-watchlist-ribbon--m ipc-watchlist-ribbon--baseAlt ipc-watchlist-ribbon--onImage ipc-poster__watchlist-ribbon poster-card-watchlist-ribbon" aria-label="add to watchlist" role="button" tabindex="0" id="bookmarkRE">
                     <svg class="ipc-watchlist-ribbon__bg" width="68px" height="68px" color="red" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" role="presentation" id="BOOOKmarkRE">
@@ -2025,7 +2026,7 @@
             </div>
             <div class="swiper-slide" id="swipersw-slide">
                 <a href="https://www.youtube.com/watch?v=Q1TPRt2IWtA">
-                    <img class="blur" src="" alt="" id="imggrab" style=" width: 280px; height: 414px;">
+                    <img class="blur" src="" alt="" id="imggrab" data="" style=" width: 280px; height: 414px;">
                 </a>
                 <div class="ipc-watchlist-ribbon ipc-focusable ipc-watchlist-ribbon--m ipc-watchlist-ribbon--baseAlt ipc-watchlist-ribbon--onImage ipc-poster__watchlist-ribbon poster-card-watchlist-ribbon" aria-label="add to watchlist" role="button" tabindex="0" id="bookmarkRE">
                     <svg class="ipc-watchlist-ribbon__bg" width="68px" height="68px" color="red" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" role="presentation" id="BOOOKmarkRE">
@@ -2040,7 +2041,7 @@
             </div>
             <div class="swiper-slide" id="swipersw-slide">
                 <a href="https://www.youtube.com/watch?v=Q1TPRt2IWtA">
-                    <img class="blur" src="" alt="" id="imggrab" style=" width: 280px; height: 414px;">
+                    <img class="blur" src="" alt="" id="imggrab" data="" style=" width: 280px; height: 414px;">
                 </a>
                 <div class="ipc-watchlist-ribbon ipc-focusable ipc-watchlist-ribbon--m ipc-watchlist-ribbon--baseAlt ipc-watchlist-ribbon--onImage ipc-poster__watchlist-ribbon poster-card-watchlist-ribbon" aria-label="add to watchlist" role="button" tabindex="0" id="bookmarkRE">
                     <svg class="ipc-watchlist-ribbon__bg" width="68px" height="68px" color="red" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" role="presentation" id="BOOOKmarkRE">
@@ -2055,7 +2056,7 @@
             </div>
             <div class="swiper-slide" id="swipersw-slide">
                 <a href="https://www.youtube.com/watch?v=Q1TPRt2IWtA">
-                    <img class="blur" src="" alt="" id="imggrab" style=" width: 280px; height: 414px;">
+                    <img class="blur" src="" alt="" id="imggrab" data="" style=" width: 280px; height: 414px;">
                 </a>
                 <div class="ipc-watchlist-ribbon ipc-focusable ipc-watchlist-ribbon--m ipc-watchlist-ribbon--baseAlt ipc-watchlist-ribbon--onImage ipc-poster__watchlist-ribbon poster-card-watchlist-ribbon" aria-label="add to watchlist" role="button" tabindex="0" id="bookmarkRE">
                     <svg class="ipc-watchlist-ribbon__bg" width="68px" height="68px" color="red" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" role="presentation" id="BOOOKmarkRE">
@@ -2070,7 +2071,7 @@
             </div>
             <div class="swiper-slide" id="swipersw-slide">
                 <a href="https://www.youtube.com/watch?v=Q1TPRt2IWtA">
-                    <img class="blur" src="" alt="" id="imggrab" style=" width: 280px; height: 414px;">
+                    <img class="blur" src="" alt="" id="imggrab" data="" style=" width: 280px; height: 414px;">
                 </a>
                 <div class="ipc-watchlist-ribbon ipc-focusable ipc-watchlist-ribbon--m ipc-watchlist-ribbon--baseAlt ipc-watchlist-ribbon--onImage ipc-poster__watchlist-ribbon poster-card-watchlist-ribbon" aria-label="add to watchlist" role="button" tabindex="0" id="bookmarkRE">
                     <svg class="ipc-watchlist-ribbon__bg" width="68px" height="68px" color="red" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" role="presentation" id="BOOOKmarkRE">
@@ -2085,7 +2086,7 @@
             </div>
             <div class="swiper-slide" id="swipersw-slide">
                 <a href="https://www.youtube.com/watch?v=Q1TPRt2IWtA">
-                    <img class="blur" src="" alt="" id="imggrab" style=" width: 280px; height: 414px;">
+                    <img class="blur" src="" alt="" id="imggrab" data="" style=" width: 280px; height: 414px;">
                 </a>
                 <div class="ipc-watchlist-ribbon ipc-focusable ipc-watchlist-ribbon--m ipc-watchlist-ribbon--baseAlt ipc-watchlist-ribbon--onImage ipc-poster__watchlist-ribbon poster-card-watchlist-ribbon" aria-label="add to watchlist" role="button" tabindex="0" id="bookmarkRE">
                     <svg class="ipc-watchlist-ribbon__bg" width="68px" height="68px" color="red" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" role="presentation" id="BOOOKmarkRE">
@@ -2100,7 +2101,7 @@
             </div>
             <div class="swiper-slide" id="swipersw-slide">
                 <a href="https://www.youtube.com/watch?v=Q1TPRt2IWtA">
-                    <img class="blur" src="" alt="" id="imggrab" style=" width: 280px; height: 414px;">
+                    <img class="blur" src="" alt="" id="imggrab" data="" style=" width: 280px; height: 414px;">
                 </a>
                 <div class="ipc-watchlist-ribbon ipc-focusable ipc-watchlist-ribbon--m ipc-watchlist-ribbon--baseAlt ipc-watchlist-ribbon--onImage ipc-poster__watchlist-ribbon poster-card-watchlist-ribbon" aria-label="add to watchlist" role="button" tabindex="0" id="bookmarkRE">
                     <svg class="ipc-watchlist-ribbon__bg" width="68px" height="68px" color="red" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" role="presentation" id="BOOOKmarkRE">
@@ -2169,111 +2170,207 @@
             <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
             <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
         </div>
+        <div style="visibility:hidden">
+            <input type="text" id="movienum" value="" />
+        </div>
         <div id="summitbox">
-            <button class="sumitstarBtn" id="summit">送出 </button>
+            <button class="sumitstarBtn" id="submit">送出 </button>
         </div>
     </div>
 </div>
-<div id="overlay"></div>
+<div id="overlay" class="overlay" data-close-layout></div>
 
 @*期待度*@
-<div class="modalstE " id="modalE">
-    <div class="fa fa-star " id="fafastarrateE">
-        <span id="rate-numberE">?</span>
-    </div>
-    <div class="modal-rating-headerE">
-        <div class="modal-rating-header-btnE">
-            <button class="modal-close-btnE" id="closebtnE">&times;</button>
+@*<div class="modalstE fade" id="modalstE">
+        <div class="fa fa-star " id="fafastarrateE">
+            <span id="rate-numberE">?</span>
         </div>
-    </div>
-    <div class="modal-rating-bodyE" id="modal-rating-bodyE">
-        <div id="rating-titleE">
-            <span id="rating-itE">你有多期待</span>
-            <div id="in-rating-movieE">
-                <span id="rating-movie-headerE"></span>
+        <div class="modal-rating-headerE">
+            <div class="modal-rating-header-btnE">
+                <button class="modal-close-btnE" id="closebtnE" >&times;</button>
             </div>
         </div>
-        <div class="ratingE">
-            <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-            <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-            <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-            <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-            <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-        </div>
-        <div id="summitboxE">
-            <button class="sumitstarBtnE" id="summit">送出 </button>
+        <div class="modal-rating-bodyE" id="modal-rating-bodyE">
+            <div id="rating-titleE">
+                <span id="rating-itE">你有多期待</span>
+                <div id="in-rating-movieE">
+                    <span id="rating-movie-headerE"></span>
+                </div>
+            </div>
+            <div class="ratingE">
+                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+            </div>
+            <div  style="visibility:hidden">
+
+                <input type="text" id="movienumE" value="" />
+            </div>
+            <div id="summitboxE">
+                <button class="sumitstarBtnE" id="summit">送出 </button>
+            </div>
         </div>
     </div>
-</div>
-<div id="overlayE"></div>
+    <div id="overlayE" class="overlay" data-close-layout></div>*@
 
+
+
+<form method="post" action="~/Api/checklogin" id="dataSubmit" style="display:none">
+</form>
+
+<form method="post" action="" id="form1" style="display:none">
+    <input type="text" asp-for="會員編號Member_ID" id="會員編號Member_ID" />
+    <input type="text" asp-for="電影編號Movie_ID" id="電影編號Movie_ID" />
+    <input type="text" asp-for="評分Rate" id="評分Rate" />
+</form>
+<form method="post" action="" id="form3" style="display:none">
+    <input type="text" asp-for="會員編號Member_IDbook" id="會員編號Member_IDbook" />
+    <input type="text" asp-for="電影編號Movie_IDbook" id="電影編號Movie_IDbook" />
+    <input type="text" asp-for="片單總表編號MovieList_ID" id="片單總表編號MovieList_ID" />
+</form>
 
 @section Scripts{
+
     <script>
-        const poster = document.querySelectorAll("#rankposter");
-        const ranktitle = document.querySelectorAll("#ranktitle");
-        const newtitle = document.querySelectorAll("#newestmovie");
-        const newposters = document.querySelectorAll("#newestposter");
-        const recommendposters = document.querySelectorAll("#imggrab");
+    const bannermovieid = document.querySelectorAll("#imgbox");
+    const poster = document.querySelectorAll("#rankposter");
+    const ranktitle = document.querySelectorAll("#ranktitle");
+    const newtitle = document.querySelectorAll("#newestmovie");
+    const newposters = document.querySelectorAll("#newestposter");
+    const recommendposters = document.querySelectorAll("#imggrab");
+    const bookmark = document.querySelectorAll("#bookmark,#bookmarkboard")
 
+    //還沒設定資料banner目前不抓電影編號
+    async function bannermovie() {
+            let bannernum = await fetch("@Url.Content("~/api/shownewnum")");
+        let data3 = await bannernum.json();
+            for (let i = 0; i < imgbox.length; i++) {
+            imgbox[i].setAttribute('data', `${data3[i]}`);
+            }
+        }
 
-
-        async function rankposter() {
-            let response = await fetch("@Url.Content("~/api/showrankposter")");
-            let data = await response.json();
+    async function rankposter() {
+            let rankimg = await fetch("@Url.Content("~/api/showrankposter")");
+            let data = await rankimg.json();
             for (let i = 0; i< poster.length; i++) {
                 poster[i].setAttribute('src', `${data[i]}`);
             }
-        }
-        async function rankmovie() {
-            let resp = await fetch("@Url.Content("~/api/showrankmovie")")
-            let d = await resp.json();
+            let ranktit = await fetch("@Url.Content("~/api/showrankmovie")")
+            let data2 = await ranktit.json();
             for (let i = 0; i < ranktitle.length; i++) {
-                ranktitle[i].innerText = d[i];
-                poster[i].setAttribute('alt', `${d[i]}`);
+                ranktitle[i].innerText = data2[i];
+                poster[i].setAttribute('alt', `${data2[i]}`);
+            }
+             let ranknum = await fetch("@Url.Content("~/api/showranknum")")
+            let data3 = await ranknum.json();
+            for (let i = 0; i < ranktitle.length; i++) {
+                ranktitle[i].setAttribute('data', `${data3[i]}`);
             }
         }
 
-        async function newmovie() {
-            let res = await fetch("@Url.Content("~/api/shownewmovie")")
-            let da = await res.json();
+    //還沒上映要鎖評論
+    //篩選電影那邊看要不要過濾尚未上映的
+    async function newmovie() {
+            let newmovie = await fetch("@Url.Content("~/api/shownewmovie")")
+            let data = await newmovie.json();
             for (let i = 0; i < newtitle.length; i++) {
-                newtitle[i].innerText = da[i]
-                newposters[i].setAttribute('alt', `${da[i]}`);
+                newtitle[i].innerText = data[i]
+                newposters[i].setAttribute('alt', `${data[i]}`);
             }
-        }
-        async function newposter() {
-            let response = await fetch("@Url.Content("~/api/shownewposter")");
-            let data = await response.json();
+            let newimg = await fetch("@Url.Content("~/api/shownewposter")");
+            let data2 = await newimg.json();
              for (let i = 0; i < newposters.length; i++) {
-                 newposters[i].setAttribute('src', `${data[i]}`);
+                 newposters[i].setAttribute('src', `${data2[i]}`);
+            }
+            let newtit = await fetch("@Url.Content("~/api/shownewnum")");
+            let data3 = await newtit.json();
+            for (let i = 0; i < newtitle.length; i++) {
+                 newtitle[i].setAttribute('data', `${data3[i]}`);
             }
         }
 
-        async function recommendposter() {
+    async function recommendposter() {
             let response = await fetch("@Url.Content("~/api/showrecommendposter")");
-             let data = await response.json();
-             console.log(data)
-            for (let i = 0; i < recommendposters.length; i++) {
+            let data = await response.json();
+            /*console.log(data)*/
+        for (let i = 0; i < recommendposters.length; i++) {
                 recommendposters[i].setAttribute('src', `${data[i]}`);
             }
+        //for (let i = 21; i < recommendposters.length; i++) {
+        //        recommendposters[i].setAttribute('data', `${data[i]}`);
+        //    }
         }
-
-        rankposter();
-        newmovie();
-        newposter();
-        rankmovie();
-        recommendposter();
-        const summit = document.querySelectorAll("#summit");
-
-
-        @*async function checklogin() {
-            let res = await fetch("@Url.Content("~/hapi/checklogin")");
-            /*let data=*/
+    @*async function checkid() {
+            let response = await fetch("@Url.Content("~/api/getmemID")")
+            let data = await response.json()
+           /* console.log(data)*/
         }*@
-    </script>
-}
+    $(window).on('load', async function () {
+         let response = await fetch("@Url.Content("~/api/getmemID")")
+            let data = await response.json()
+        $('#會員編號Member_ID').val(data)
+        /*$('#會員編號Member_IDbook').val(data)*/
+        @*let res = await fetch('@Url.Content("~/api/getmemlist")')
+        let data2 = await res.json();
+        console.log(data2)*@
+        //$('#片單總表編號MovieList_ID').val(data2)
+            rankposter();
+            newmovie();
+            recommendposter();
+            disableBtn();
+            bannermovie();
+    });
 
+    function disableBtn() {
+        document.getElementById("submit").disabled = true;
+    }
+
+    function enableBtn() {
+
+        document.getElementById("submit").disabled = false;
+        document.getElementById("submit").style.backgroundColor = "#708090";
+    }
+
+    $('input[type=radio]').change(function () {
+        enableBtn();
+        if ($('#會員編號Member_ID').val() != 0)
+        {
+            $('#評分Rate').val($(this).val());
+            $('#電影編號Movie_ID').val($('#movienum').val());
+            $('#submit').click(function ()
+            {
+                $('#form1').submit();
+            })
+        }
+        else if ($('#會員編號Member_ID').val() == 0) {
+            $('#submit').click(function ()
+            {
+                $('#dataSubmit').submit();
+            })
+        }
+    });
+        bookmark.forEach(e => {
+            e.addEventListener('click', () => {
+                if ($('#會員編號Member_IDbook').val() != 0) {
+                    $('#電影編號Movie_IDbook').val($('#movienum').val());
+                    $('#form3').submit();
+                }
+                else if ($('#會員編號Member_ID').val() == 0) {
+                    $('#submit').click(function () {
+                        $('#dataSubmit').submit();
+                    })
+                }
+            })
+        })
+
+
+
+    </script>
+
+}
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-<script src="~/js/HomePage/banner.js"></script>
+
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> @*footer樣式*@
+<script src="~/js/HomePage/banner.js"></script>

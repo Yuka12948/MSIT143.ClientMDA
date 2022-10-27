@@ -1,4 +1,4 @@
-﻿.rating, .ratingE{
+﻿.rating, .ratingE {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
@@ -25,7 +25,7 @@
         .rating > label:hover:before,
         .rating > label:hover ~ label:before,
         .ratingE > label:hover:before,
-        .ratingE > label:hover ~ label:before{
+        .ratingE > label:hover ~ label:before {
             opacity: 1 !important;
         }
 
@@ -60,11 +60,9 @@
         transform: translate(-50%,-50%) scale(1);
     }
 
-     
-   /* .modalstE.active {
-        transform: translate(-50%,-50%) scale(1);
-    }*/
-#fafastarrate, #fafastarrateE{
+
+
+#fafastarrate, #fafastarrateE {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -73,9 +71,11 @@
     color: #00b0f0;
     z-index: 7;
 }
+
 #fafastarrate, .rating > label {
     color: rgba(245,197,24);
 }
+
 .modalst > #fafastarrate,
 .modalstE > #fafastarrateE {
     padding-left: 34%
@@ -128,19 +128,20 @@
     align-items: center;
 }
 
-#rating-it, #rating-itE{
+#rating-it, #rating-itE {
     font-size: 1.6rem;
     /*改字的顏色*/
     color: rgba(245,197,24);
 }
+
 #rating-it {
     color: #00b0f0;
 }
 
-    #in-rating-movie, #in-rating-movieE {
-        font-size: 2rem;
-        padding-top: 10px;
-    }
+#in-rating-movie, #in-rating-movieE {
+    font-size: 2rem;
+    padding-top: 10px;
+}
 
 #rating-title, #rating-titleE {
     text-align: center;
@@ -181,5 +182,3 @@
 .modal-rating-header-btn, .modal-rating-header-btnE {
     z-index: 9;
 }
-
-
