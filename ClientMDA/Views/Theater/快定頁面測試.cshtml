@@ -99,10 +99,24 @@
                                                 @date.AddDays(x).ToString("dddd")
                                             </div>
                                             <div class="date">
-                                                @(d+x+"日")
+                                                @{if ((d + x) >= 32)
+                                                    {
+                                                        @((d + x - 31) + "日");
+                                                    }
+                                                    else if ((d + x) < 32)
+                                                    {
+                                                        @(d + x + "日");
+                                                    }
+
+                                                }
                                             </div>
                                             <div class="month">
-                                                @(m+"月")
+                                                @{if ((d + x) >= 32)
+                                                    { @( (m+1 + "月") );
+                                        }
+                                        else if ((d + x) < 32)
+                                        { @( (m  + "月") );
+                                        } }
                                             </div>
                                         </div>
                                     }

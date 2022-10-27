@@ -95,6 +95,13 @@
     <None Include="Views\Comment\Components\關注評論\Default.cshtml" />
     <None Include="Views\Movie\Components\電影排行\Default.cshtml" />
     <None Include="Views\Movie\Components\電影排行新片\Default.cshtml" />
+    <None Include="Views\Theater\Components\即將上映\Default.cshtml" />
+    <None Include="Views\Theater\Components\快速訂票\Default.cshtml" />
+    <None Include="Views\Theater\Components\時間\Default.cshtml" />
+    <None Include="Views\Theater\Components\現正熱映\Default.cshtml" />
+    <None Include="Views\Theater\Components\頁數\Default.cshtml" />
+    <None Include="Views\Theater\快定頁面測試.cshtml" />
+    <None Include="Views\Theater\測試業面.cshtml" />
     <None Include="Views\Ticketing\Components\MovieInfo\Default.cshtml" />
     <None Include="Views\Ticketing\Components\SelectDate\Default.cshtml" />
     <None Include="Views\Ticketing\Components\SelectMovie\Default.cshtml" />

@@ -51,13 +51,14 @@
                         @for (int i = 0; i < q.場次ID.Count(); i++)
                         {
                             string a = q.放映時間[i];
-                        <div class="time tt1" >
-                           @*@foreach(var x in q.場次座位數量) { 
-                            <input type="hidden" class="場場" value="@x.座位數量">
-                           }*@
+                        <div class="time tt1">
+                            @*@foreach(var x in q.場次座位數量) {
+         <input type="hidden" class="場場" value="@x.座位數量">
+        }*@
+                            <input type="hidden" class="場場" value="@q.場次ID[i]">
                             <div style="display:none" class="場次123">@q.場次ID[i]</div>
                             <span class="seats"></span> @a
-                          
+
                         </div>
 
                         }
