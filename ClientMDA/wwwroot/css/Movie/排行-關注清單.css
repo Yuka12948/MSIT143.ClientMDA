@@ -8,11 +8,10 @@
         list-style-type: none;
     }
 
-        .header-nav {
+/*        .header-nav {
         will-change: transform;
-    }
-
-    /*header {
+    }*/
+/*    header {
         height: 52px;
         position: fixed;
         top: 0;
@@ -27,7 +26,7 @@
         -webkit-transition-duration: 0.4s;
         transition-duration: 0.4s;
         z-index: 100;
-    }*/
+    }
 
         header nav {
             background-color: rgba(38, 38, 38, 0.7);
@@ -131,9 +130,8 @@
             padding: 5px 0;
             display: block;
             color: #a0a0a0;
-        }
-
-    .nav-toggle-phone,
+        }*/
+/*    .nav-toggle-phone,
     .nav-toggle-phone:active,
     .nav-toggle-phone:visited,
     .nav-toggle-phone:hover {
@@ -143,8 +141,8 @@
         top: 10px;
         right: 15px;
         z-index: 170;
-    }
-
+    }*/
+/*
     header.is-open-phone nav {
         width: 100%;
     }
@@ -162,7 +160,7 @@
         transition-property: background-color;
         -webkit-transition-duration: 0.4s;
         transition-duration: 0.4s;
-    }
+    }*/
 }
 
 @media (min-width: 760px) {
@@ -173,10 +171,10 @@
         list-style-type: none;
     }
 
-    header {
-        /*height: 80px;*/
-        /*position: fixed;*/
-/*        top: 0;
+/*    header {
+        height: 80px;
+        position: fixed;
+        top: 0;
         left: 0;
         width: 100%;
         background-color: rgba(3, 3, 3, 0.8);
@@ -185,28 +183,28 @@
         -webkit-transition-property: background-color;
         transition-property: background-color;
         -webkit-transition-duration: 0.4s;
-        transition-duration: 0.4s;*/
-        /*z-index: 100;*/
+        transition-duration: 0.4s;
+        z-index: 100;
     }
 
-/*            header::after {
+            header::after {
             display: block;
             clear: both;
             content: "";
-        }*/
+        }
 
-/*            header nav {
+            header nav {
             float: right;
         }*/
 }
 
-@media (min-width: 760px) and (min-width: 760px) and (max-width: 1019px) {
+/*@media (min-width: 760px) and (min-width: 760px) and (max-width: 1019px) {
     header .container {
         max-width: 100%;
     }
-}
+}*/
 
-@media (min-width: 760px) {
+/*@media (min-width: 760px) {
     .logo {
         padding: 15px;
         width: 139px;
@@ -248,8 +246,8 @@
             color: #fff;
             display: block;
         }
-}
-
+}*/
+/*
 @media (min-width: 760px) and (min-width: 760px) and (max-width: 1019px) {
     .header-nav > li > a,
     .header-nav > li > a:active,
@@ -381,7 +379,7 @@
         -webkit-transition-duration: 0.4s;
         transition-duration: 0.4s;
     }
-}
+}*/
 
 footer {
     background-color: #030303;

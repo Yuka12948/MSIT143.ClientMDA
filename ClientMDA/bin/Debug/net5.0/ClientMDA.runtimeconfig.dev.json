@@ -1,9 +1,14 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
+<<<<<<< HEAD
       "C:\\Users\\jo3wait\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\jo3wait\\.nuget\\packages",
       "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
+=======
+      "C:\\Users\\boboc\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\boboc\\.nuget\\packages"
+>>>>>>> feature/電影排行+評論
     ]
   }
 }

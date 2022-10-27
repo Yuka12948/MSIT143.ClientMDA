@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\Comment\poster_none1.png" />
     <None Remove="images\Theater\common\caret-up.svg" />
     <None Remove="images\Theater\common\changepage-icon.svg" />
     <None Remove="images\Theater\common\changepage-icon0.svg" />
@@ -17,9 +18,14 @@
     <None Remove="images\Theater\star\black_star.svg" />
     <None Remove="images\Theater\star\color_star.svg" />
     <None Remove="images\Theater\star\sssttar.jpg" />
+    <None Remove="owl.carousel.min.css" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="images\Movie\poster_none1.png">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Include="images\Theater\common\caret-up.svg">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
@@ -71,7 +77,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="images\Comment\" />
     <Folder Include="images\HomePage\" />
     <Folder Include="images\Shopping\" />
     <Folder Include="images\Ticketing\" />
@@ -86,6 +91,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Comment\Components\最新評論\Default.cshtml" />
+    <None Include="Views\Comment\Components\關注評論\Default.cshtml" />
+    <None Include="Views\Movie\Components\電影排行\Default.cshtml" />
+    <None Include="Views\Movie\Components\電影排行新片\Default.cshtml" />
     <None Include="Views\Ticketing\Components\MovieInfo\Default.cshtml" />
     <None Include="Views\Ticketing\Components\SelectDate\Default.cshtml" />
     <None Include="Views\Ticketing\Components\SelectMovie\Default.cshtml" />
@@ -150,6 +159,7 @@
     <None Include="wwwroot\js\Member\tinymce\themes\mobile\theme.min.js" />
     <None Include="wwwroot\js\Member\tinymce\themes\silver\theme.min.js" />
     <None Include="wwwroot\js\Member\tinymce\tinymce.min.js" />
+    <None Include="wwwroot\js\Movie\PhotoGallery.js" />
     <None Include="wwwroot\Wencssjs\css\bootstrap-grid.css.map" />
     <None Include="wwwroot\Wencssjs\css\bootstrap-grid.min.css.map" />
     <None Include="wwwroot\Wencssjs\css\bootstrap-grid.rtl.css.map" />
