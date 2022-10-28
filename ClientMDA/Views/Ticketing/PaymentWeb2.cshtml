@@ -120,6 +120,27 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+    .paypal{
+
+    }
+
+    .credit {
+    }
+
+    .opayment {
+
+    }
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
 </style>
 
 
@@ -245,7 +266,7 @@
                             </div>
                             <div class="form-check">
                                 <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
-                                <label class="mb-0" for="debit">大佬卡</label>
+                                <label class="mb-0" for="debit">歐付寶支付</label>
                             </div>
                             <div class="form-check">
                                 <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
@@ -253,7 +274,7 @@
                             </div>
                         </div>
 
-                        <div class="row gy-3">
+                        <div class="row gy-3 credit">
                             <div class="col-md-10 pb-2">
                                 <label for="cc-number" class="form-label">信用卡號碼</label>
                                 <input type="text" class="form-control" id="cc-number" placeholder="" required>
@@ -292,8 +313,10 @@
                         <input type="hidden" name="ScreenID" id="ScreenID" value="@Model.ScreenID" />
                         <input type="hidden" name="SeatInfo" id="SeatInfo" value="@Model.SeatInfo" />
                         <input type="hidden" name="TicketInfo" id="TicketInfo" value="@Model.TicketInfo" />
-                        <button class="w-75 btn btn-primary btn-lg" type="submit">確認付款</button>
-                        <button class="ml-3 btn btn-dark btn-lg" type="button" id="Demo">Demo</button>
+                        <button class="w-75 btn btn-primary btn-lg credit" type="submit">確認付款</button>
+                        <button class="w-75 btn btn-primary btn-lg bi-paypal paypal" type="button">PAYPAL</button>
+                        <button class="w-75 btn btn-primary btn-lg opayment" type="button" id="opayment">前往歐付寶頁面</button>
+                        <button class="ml-3 btn btn-dark btn-lg credit" type="button" id="Demo">Demo</button>
                     </form>
                 </div>
             </div>
@@ -313,7 +336,7 @@
         </div>
         <div class="row justify-content-center m-auto pb-4">
             <div>
-                <input type="text" placeholder="驗證碼" class="w-100" id="ckeckcode"/>
+                <input type="text" placeholder="驗證碼" class="w-100" id="ckeckcode" />
             </div>
         </div>
         <div class="row">
@@ -340,6 +363,9 @@
     const form = document.getElementById("formInfo");
     const view = document.getElementById("all");
     const preloader = document.getElementById("preloder");
+
+    $('.opayment').hide();
+    $('.paypal').hide();
 
     (() => {
         'use strict'
@@ -381,9 +407,9 @@
 
     $('#Demo').click(() => {
         console.log('click');
-        firstName.value = '蔡';
-        lastName.value = '雲陽';
-        username.value = '超級大佬';
+        firstName.value = '王';
+        lastName.value = '小名';
+        username.value = '曉華';
         email.value = 'annlan08@gmail.com'
         address.value = '台北市大安區復興南路一段';
         ccnumber.value = '5882-5646-5465-6666';
@@ -429,5 +455,28 @@
         }
         console.log(data);
     }
+
+    $('#credit').click(function () {
+        $('.credit').show();
+        $('.opayment').hide();
+        $('.paypal').hide();
+    })
+
+    $('#debit').click(function () {
+        $('.credit').hide();
+        $('.opayment').show();
+        $('.paypal').hide();
+    })
+
+    $('#paypal').click(function () {
+        $('.credit').hide();
+        $('.opayment').hide();
+        $('.paypal').show();
+    })
+
+    $('#opayment').click(function () {
+        $('#formInfo').attr("action", "OPayment")
+        $('#formInfo').submit();
+    })
 </script>
 

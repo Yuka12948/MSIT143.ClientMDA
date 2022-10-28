@@ -33,6 +33,7 @@ namespace ClientMDA.ViewComponents
                                MovieName = s.電影代碼movieCodeNavigation.電影編號movie.中文標題titleCht,
                                MoviePicture = s.電影代碼movieCodeNavigation.電影編號movie.電影圖片movieIimagesLists.FirstOrDefault().圖片編號image.圖片image,
                                MovieVersion = s.電影代碼movieCodeNavigation.語言編號language.語言名稱languageName,
+                               MovieOnlineUrl=s.電影代碼movieCodeNavigation.電影編號movie.電影圖片movieIimagesLists.FirstOrDefault().圖片編號image.圖片雲端imageImdb,
                            }).Distinct().ToListAsync());
             }
             return View(list);

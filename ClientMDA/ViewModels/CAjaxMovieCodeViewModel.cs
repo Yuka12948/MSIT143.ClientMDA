@@ -11,6 +11,7 @@ namespace ClientMDA.ViewModels
         public string MovieVersion { get; set; }
         public string MovieName { get; set; }
         public string MoviePicture { get; set; }
+        public string MovieOnlineUrl { get; set; }
 
     }
 }

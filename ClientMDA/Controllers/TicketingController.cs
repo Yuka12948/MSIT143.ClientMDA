@@ -13,6 +13,10 @@ using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 //using Newtonsoft.Json;
 using System.Text.Json;
+using System.Collections.Specialized;
+using System.Web;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace ClientMDA.Controllers
 {
@@ -42,6 +46,7 @@ namespace ClientMDA.Controllers
             _dbContext.導演總表directors.ToList();
             _dbContext.電影導演movieDirectors.ToList();
             _dbContext.演員總表actors.ToList();
+            _dbContext.會員members.ToList();
 
             _dbContext.商品資料products.ToList();
             _dbContext.購買商品明細receipts.ToList();
@@ -175,21 +180,107 @@ namespace ClientMDA.Controllers
 
         public IActionResult PaymentWeb3(CCreateOrderViewModel order)
         {
-            fn_建立新訂單總表(order.ScreenID, 28);
-            fn_修改出售座位狀態(order.ScreenID, order.SeatInfo);
+            if (order.ScreenID != 0 && order.SeatInfo != "")
+            {
+                string SessionStr = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+                會員member member = JsonSerializer.Deserialize<會員member>(SessionStr);
 
-            int NewOrderID = this._dbContext.訂單總表orders.AsEnumerable().LastOrDefault().訂單狀態編號orderStatusId;
+                fn_建立新訂單總表(order.ScreenID, member.會員編號memberId);
+                fn_修改出售座位狀態(order.ScreenID, order.SeatInfo);
+                int NewOrderID = this._dbContext.訂單總表orders.AsEnumerable().LastOrDefault().訂單狀態編號orderStatusId;
+                fn_建立新訂單明細(NewOrderID, order.TicketInfo);
+                fn_建立新出售座位明細(NewOrderID, order.ScreenID, order.SeatInfo);
+                string MemberName = this._dbContext.會員members.Where(m => m.會員編號memberId == member.會員編號memberId).Select(n => (n.姓氏lName + n.名字fName)).FirstOrDefault();
+                fn_寄送郵件("annlan08@gmail.com", MemberName, order.fullPrice);
+            }
+            else
+            {
+                string jsonstr = JsonSerializer.Serialize(order);
+                HttpContext.Session.SetString(CDictionary.SK_ORDER_INFO, jsonstr);
+                return View("OPayment", order);
+            }
+            return View();
+        }
+        
+        public IActionResult PaymentWebO()
+        {
+            CCreateOrderViewModel order = new CCreateOrderViewModel();
+            string json = HttpContext.Session.GetString(CDictionary.SK_ORDER_INFO);
+            order = JsonSerializer.Deserialize<CCreateOrderViewModel>(json);
+            return RedirectToAction("PaymentWeb3", order);
+        }
+            
+        #endregion
 
-            fn_建立新訂單明細(NewOrderID, order.TicketInfo);
-            fn_建立新出售座位明細(NewOrderID, order.ScreenID, order.SeatInfo);
+        #region //歐付寶
+        public IActionResult OPayment(CCreateOrderViewModel order)
+        {
+            string jsonstr = JsonSerializer.Serialize(order);
+            HttpContext.Session.SetString(CDictionary.SK_ORDER_INFO, jsonstr);
 
-            string MemberName = this._dbContext.會員members.Where(m => m.會員編號memberId == 28).Select(n => (n.姓氏lName + n.名字fName)).FirstOrDefault();
+            #region 金流支付
+            string tradeNo = Guid.NewGuid().ToString();
+            tradeNo = tradeNo.Substring(tradeNo.Length - 12, 12);
+            ViewBag.tradeNo = tradeNo;
+            string timenow = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+            ViewBag.timenow = timenow;
+            string moviename = this._dbContext.場次screenings.Where(s => s.場次編號screeningId == order.ScreenID).Select(s => s.電影代碼movieCodeNavigation.電影編號movie.中文標題titleCht).FirstOrDefault();
+            List<CTicketItemViewModel> ticketlist = fn_票種字串轉換List(order.TicketInfo);
+            int total = Convert.ToInt32(order.fullPrice);
+            string ItemName = "";
+            string filename = "";
+            string ticketname ="";
+            decimal ticketprice = 0;
+            foreach (var item in ticketlist)
+            {
+                filename = this._dbContext.場次screenings.Where(s => s.場次編號screeningId == order.ScreenID).Select(s => s.電影代碼movieCodeNavigation.電影編號movie.中文標題titleCht).FirstOrDefault();
+                ticketname = this._dbContext.票價資訊ticketPrices.Where(t => t.票價明細ticketId == item.TicketID).FirstOrDefault().票種編號ticketType.票種名稱ticketTypeName;
+                ticketprice = this._dbContext.票價資訊ticketPrices.Where(t => t.票價明細ticketId == item.TicketID).FirstOrDefault().價格ticketPrice;
+                ItemName += $"{filename}-{ticketname}({ticketprice}元)X{item.TicketCount}#";
+            }
+            ItemName = ItemName.Substring(0, ItemName.Length - 1);
+            ViewBag.Total = total;
+            ViewBag.ItemName = ItemName;
+            NameValueCollection parameters = HttpUtility.ParseQueryString(string.Empty);
+            parameters["HashKey"] = "5294y06JbISpM5x9";
+            parameters["ChoosePayment"] = "Credit";
+            parameters["ClientBackURL"] = $"{Request.Scheme}://{Request.Host}/Ticketing/PaymentWebO";    //完成後跳回去的頁面
+            parameters["CreditInstallment"] = "";
+            parameters["EncryptType"] = "1";
+            parameters["InstallmentAmount"] = "";
+            parameters["ItemName"] = ItemName;
+            parameters["MerchantID"] = "2000132";
+            parameters["MerchantTradeDate"] = timenow;
+            parameters["MerchantTradeNo"] = tradeNo;
+            parameters["PaymentType"] = "aio";
+            parameters["Redeem"] = "";
+            parameters["ReturnURL"] = "https://developers.opay.tw/AioMock/MerchantReturnUrl";
+            parameters["StoreID"] = "";
+            parameters["TotalAmount"] = total.ToString();
+            parameters["TradeDesc"] = "建立信用卡測試訂單";
+            parameters["HashIV"] = "v77hoKGq4kWxNNIS";
 
-            fn_寄送郵件("annlan08@gmail.com", MemberName, order.fullPrice);
+            ViewBag.ClientBackURL = $"{Request.Scheme}://{Request.Host}/Ticketing/PaymentWebO";
 
+            string checkMacValue = parameters.ToString();
+
+            checkMacValue = checkMacValue.Replace("=", "%3d").Replace("&", "%26");
+
+            using var hash = SHA256.Create();
+            var byteArray = hash.ComputeHash(Encoding.UTF8.GetBytes(checkMacValue.ToLower()));
+            checkMacValue = Convert.ToHexString(byteArray).ToUpper();
+            ViewBag.checkMacValue = checkMacValue;
+            #endregion
             return View();
         }
 
+        [NonAction]
+        public string Get_SHA256_Hash(string value)
+        {
+            using var hash = SHA256.Create();
+            var byteArray = hash.ComputeHash(System.Text.Encoding.UTF8.GetBytes(value));
+            return Convert.ToHexString(byteArray).ToUpper();
+        }
         #endregion
 
         #region ViewComponent區
@@ -420,7 +511,7 @@ namespace ClientMDA.Controllers
             int count = 0;
             foreach (string item in seatArr)
             {
-                if (!(item.Contains("NA")) && !(item.Contains("saled")) && !(string.IsNullOrWhiteSpace(item)))
+                if (!(item.Contains("NA")) && !(item.Contains("saled")) && !(string.IsNullOrWhiteSpace(item)) && !(item.Contains("||")) && !(string.IsNullOrEmpty(item))) 
                     count++;
             }
             return count;

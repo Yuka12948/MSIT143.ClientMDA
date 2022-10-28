@@ -42,7 +42,6 @@ namespace ClientMDA.ViewComponents
                             TypeName = s.Key.ToString()
                         }).ToList();
             }
-            int a = 0;
             return View(list);
         }
 
@@ -53,7 +52,7 @@ namespace ClientMDA.ViewComponents
             int count = 0;
             foreach (string item in seatArr)
             {
-                if (!(item.Contains("NA")) && !(item.Contains("saled")) && !(string.IsNullOrWhiteSpace(item)))
+                if (!(item.Contains("NA")) && !(item.Contains("saled")) && !(string.IsNullOrWhiteSpace(item)) && !item.Contains("||")) 
                     count++;
             }
             return count;
