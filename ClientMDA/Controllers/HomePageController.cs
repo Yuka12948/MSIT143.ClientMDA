@@ -38,11 +38,11 @@ namespace ClientMDA.Controllers
                 _MDA.電影評論movieComments.Add(m);
                 _MDA.SaveChanges();
             }
-            if (p.會員編號Member_IDbook != 0)
+            else if (p.電影編號Movie_IDbook != 0)
             {
                 我的片單myMovieList l = new 我的片單myMovieList();
                 l.會員編號memberId = p.會員編號Member_IDbook;
-                l.片單總表編號movieListId = p.片單總表編號MovieList_ID = 43;
+                l.片單總表編號movieListId = p.片單總表編號MovieList_ID;
                 l.電影編號movieId = p.電影編號Movie_IDbook;
                 _MDA.我的片單myMovieLists.Add(l);
                 _MDA.SaveChanges();

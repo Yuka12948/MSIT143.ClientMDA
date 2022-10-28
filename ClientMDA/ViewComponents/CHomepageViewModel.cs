@@ -17,6 +17,9 @@ namespace ClientMDA.ViewModels
         public int 片單總表編號MovieList_ID { get; set; }
         public int 會員編號Member_IDbook { get; set; }
         public int 電影編號Movie_IDbook { get; set; }
+
+        //List<int> 圖片編號
+        public List<int> 圖片編號 { get; set; }
     }
 
     

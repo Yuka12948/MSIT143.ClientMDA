@@ -116,13 +116,13 @@ content-banner :hover {
     /* width:90%;*/
 }
 /*#BOOOkmark, #BOOOkmarkboard*/
-.ipc-watchlist-ribbon__bg-ribbon {
+.ipc-watchlist-ribbon__bg-ribbon, .ipc-watchlist-ribbon__bg-ribbon1 {
     fill: rgb(35, 35,37,.6);
     border: solid;
     border-color: rgb(128 128 128);
     z-index: 5;
 }
-    .ipc-watchlist-ribbon__bg-ribbon.active {
+    .ipc-watchlist-ribbon__bg-ribbon.active, .ipc-watchlist-ribbon__bg-ribbon1.active {
         fill: rgba(245,197,24)
     }
 
@@ -173,6 +173,6 @@ content-banner :hover {
     cursor: pointer;
     
 }
-#bookplusboardinner, #bookplusREy {
+#bookplusboardinner, #bookplusREy, #bookplusboardinner1 {
     font-size: 2.15rem;
 }

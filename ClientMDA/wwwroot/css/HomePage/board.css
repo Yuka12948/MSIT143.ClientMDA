@@ -93,7 +93,7 @@
     align-items:center;
 }
 
-.AddListBtn {
+.AddListBtn{
     border: 0;
     border-radius: 10px;
     background-color: rgba(44,44,44,0.6);
@@ -128,10 +128,10 @@
         background-color: rgba(60,60,60,0.6);
     }
 
-#addlistbtn {
+#addlistbtn, #browseBtn {
     writing-mode: vertical-lr;
     overflow: no-display;
-    align-items: center;
+   /* align-items: center;*/
 }
 
 #swiper-paginationR {

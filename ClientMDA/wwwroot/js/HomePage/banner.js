@@ -37,13 +37,17 @@ var swiper = new Swiper(".mySwiperRATE", {
 
 });
 
-//modal
+//modal  
 const openModalButtons = document.querySelectorAll('[data-modal-target]')
 const closeModalButtons = document.querySelectorAll('[data-close-button]')
 const overlay = document.querySelector('#overlay')
 const headerofstar = document.getElementById("in-rating-movie");
 const movienum = document.getElementById('movienum');
 
+function disableBtn() {
+    document.getElementById("submit").style.backgroundColor = "dimgrey";
+    document.getElementById("submit").disabled = true;
+}
 function openModal(modal) {
     if (modal == null) return
     modal.classList.add('active')
@@ -54,6 +58,12 @@ function closeModal(modal) {
     if (modal == null) return
     modal.classList.remove('active')
     overlay.classList.remove('active')
+    disableBtn();
+    $("#1").prop('checked', false);
+    $("#2").prop('checked', false);
+    $("#3").prop('checked', false);
+    $("#4").prop('checked', false);
+    $("#5").prop('checked', false);    
 }
 
 for (let i = 0; i < openModalButtons.length; i++) {
@@ -84,51 +94,56 @@ closeModalButtons.forEach(button => {
 
 
 //modal2
-//const openModalButtons2 = document.querySelectorAll('#openbtnE')
-//const closeModalButtons2 = document.querySelectorAll('#closebtnE')
-//const overlay2 = document.querySelector('#overlayE')
-//const headerofstar2 = document.getElementById("in-rating-movieE");
+const openModalButtons2 = document.querySelectorAll('#openbtnE')
+const closeModalButtons2 = document.querySelector('#closebtnE')
+const overlay2 = document.querySelector('#overlayE')
+const headerofstar2 = document.getElementById("in-rating-movieE");
+//const movienum = document.getElementById('movienum');
 
-
-//function openModal2(modal) {
-//    if (modal == null) return
-//    modal.classList.add('active')
-//    overlay2.classList.add('active')
+//function disableBtn() {
+//    document.getElementById("submit").style.backgroundColor = "dimgrey";
+//    document.getElementById("submit").disabled = true;
 //}
 
-//function closeModal2(modal) {
-//    if (modal == null) return
-//    modal.classList.remove('active')
-//    overlay2.classList.remove('active')
-//}
+function openModal2(modal2) {
+    if (modal2 == null) return
+    modal2.classList.add('active')
+    overlay2.classList.add('active')
+}
 
-//for (let i = 0; i < openModalButtons2.length; i++) {
-//    openModalButtons2[i].addEventListener('click', event => {
-//        const modal = document.querySelector("#modalstE")
-//        openModal2(modal)
-//        const f = $(event.currentTarget).parents(".box").find("h5")[0].textContent
-//        const o = $(event.currentTarget).parents(".box").find("a")[1].getAttribute('data')
-//        headerofstar2.textContent = f
-//        document.getElementById('movienumE').value = o;
-//    })
-//}
+function closeModal2(modal2) {
+    if (modal2 == null) return
+    modal2.classList.remove('active')
+    overlay2.classList.remove('active')
 
-//overlay2.addEventListener('click', () => {
-//    const modals = document.querySelectorAll('.modalstE.active')
-//    modals.forEach(modal => {
-//        closeModal2(modal)
-//    })
-//})
+    //disableBtn();
+    //$("#1").prop('checked', false);
+    //$("#2").prop('checked', false);
+    //$("#3").prop('checked', false);
+    //$("#4").prop('checked', false);
+    //$("#5").prop('checked', false);
+}
 
-//closeModalButtons2.forEach(button => {
-//    button.addEventListener('click', () => {
-//        const modal = button.closest('.modalstE')
-//        closeModal2(modal)
-//    })
-//})
+for (let i = 0; i < openModalButtons2.length; i++) {
+    openModalButtons2[i].addEventListener('click', en => {
+        const modal2 = document.querySelector("#modalstE")
+        openModal2(modal2)
+        const f = $(event.currentTarget).parents(".box").find("h5")[0].textContent
+        headerofstar2.textContent = f
+        //const o = $(event.currentTarget).parents(".box").find("a")[1].getAttribute('data')
+        //document.getElementById('movienumE').value = o;
+    })
+}
 
+overlay2.addEventListener('click', () => {
+    const modals2 = document.querySelector('.modalstE.active')
+    closeModal2(modals2)
+})
 
-
+closeModalButtons2.addEventListener('click', () => {
+        const modals2 = document.querySelector('.modalstE.active')
+        closeModal2(modals2)
+    })
 
 
 //change font
@@ -140,24 +155,6 @@ for (let i = 0; i < titles.length; i++) {
     }
 }
 
-/*bookmark*/
-const bookmarkadd = document.querySelectorAll('#bookmarkpluss,#bookplusboardinner,#bookplusREy');
-const bookmarkbg = document.querySelectorAll('.ipc-watchlist-ribbon__bg-ribbon');
-
-for (let i = 0; i < bookmarkadd.length; i++) {
-    bookmarkadd[i].addEventListener('click', event => {
-        let add = '✓';
-
-        if (bookmarkadd[i].textContent == add) {
-            bookmarkadd[i].textContent = "+";
-            bookmarkbg[i].classList.remove('active')
-        }
-        else {
-            bookmarkadd[i].textContent = add;
-            bookmarkbg[i].classList.add('active');
-        }
-    })
-}
 
 //swiper
     var swiper = new Swiper(".mySwipersw", {
