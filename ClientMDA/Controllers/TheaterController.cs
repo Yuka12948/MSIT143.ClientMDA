@@ -26,7 +26,7 @@ namespace ClientMDA.Controllers
                 movie = p,
                 分級級數ratingLevel = p.電影分級編號rating.分級級數ratingLevel,
                 MPimg = _MDA.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == p.電影編號movieId)
-                .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
+                .Select(c => c.圖片編號image.圖片image).ToList()
             }).ToList();
             return ViewComponent("現正熱映", datas);
         }
@@ -40,7 +40,7 @@ namespace ClientMDA.Controllers
                 movie = p,
                 分級級數ratingLevel = p.電影分級編號rating.分級級數ratingLevel,
                 MPimg = _MDA.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == p.電影編號movieId)
-                .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
+                .Select(c => c.圖片編號image.圖片image).ToList()
 
             }).ToList();
          
@@ -56,7 +56,7 @@ namespace ClientMDA.Controllers
                           movie = p,
                           分級級數ratingLevel = p.電影分級編號rating.分級級數ratingLevel,
                           MPimg = _MDA.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == p.電影編號movieId)
-                                  .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
+                                  .Select(c => c.圖片編號image.圖片image).ToList()
 
                       }).ToList();
             return ViewComponent("即將上映",datas);
@@ -70,7 +70,7 @@ namespace ClientMDA.Controllers
                     movie = p,
                     分級級數ratingLevel = p.電影分級編號rating.分級級數ratingLevel,
                     MPimg = _MDA.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == p.電影編號movieId)
-                                  .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
+                                  .Select(c => c.圖片編號image.圖片image).ToList()
 
                 }).FirstOrDefault();
 
@@ -89,7 +89,7 @@ namespace ClientMDA.Controllers
                     movie = p,
                     分級級數ratingLevel = p.電影分級編號rating.分級級數ratingLevel,
                     MPimg = _MDA.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == p.電影編號movieId)
-                                  .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
+                                  .Select(c => c.圖片編號image.圖片image).ToList()
 
                 }).ToList();
                 return ViewComponent("即將上映", datas);
@@ -104,7 +104,7 @@ namespace ClientMDA.Controllers
                     movie = p,
                     分級級數ratingLevel = p.電影分級編號rating.分級級數ratingLevel,
                     MPimg = _MDA.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == p.電影編號movieId)
-                                  .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
+                                  .Select(c => c.圖片編號image.圖片image).ToList()
 
                 }).Skip(i - j).Take(i).ToList();
                 return ViewComponent("即將上映", datas);
@@ -121,7 +121,7 @@ namespace ClientMDA.Controllers
                     movie = p,
                     分級級數ratingLevel = p.電影分級編號rating.分級級數ratingLevel,
                     MPimg = _MDA.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == p.電影編號movieId)
-                                  .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
+                                  .Select(c => c.圖片編號image.圖片image).ToList()
                 }).ToList();
                 return ViewComponent("現正熱映", datas);
             }
@@ -136,7 +136,7 @@ namespace ClientMDA.Controllers
                 movie = p,
                 分級級數ratingLevel = p.電影分級編號rating.分級級數ratingLevel,
                 MPimg = _MDA.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == p.電影編號movieId)
-                                  .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
+                                  .Select(c => c.圖片編號image.圖片image).ToList()
             }).Skip(i - j).Take(i).ToList();
             return ViewComponent("現正熱映", datas);
         }
