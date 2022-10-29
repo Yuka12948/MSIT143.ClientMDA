@@ -24,12 +24,7 @@ namespace ClientMDA.Controllers
 
 
 
-        public IActionResult MemberMain()
-        {
-            if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)
-                return RedirectToAction("Login");
-            return View();
-        }
+        #region login-->login2 or signup-->logout
         public IActionResult Login()
         {
             return View();
@@ -46,13 +41,6 @@ namespace ClientMDA.Controllers
             else
                 return RedirectToAction("SignUp");//, new { phone = vModel.txtphone }
         }
-
-        public IActionResult checkExist(string phone)
-        {
-            bool isExist = _MDAcontext.會員members.Any(m => m.會員電話cellphone == phone);
-            return Content(isExist.ToString(), "text/plain");
-        }
-
         public IActionResult Login2(/*string phone*/)
         {
             //ViewBag.phone = phone;
@@ -90,11 +78,6 @@ namespace ClientMDA.Controllers
                 return View();
             }
         }
-        public bool checkPsw(int id, string psw)
-        {
-            bool isPsw = _MDAcontext.會員members.Any(m => m.會員編號memberId == id && m.密碼password == psw);
-            return isPsw;
-        }
         public IActionResult SignUp()
         {
             var a = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
@@ -113,6 +96,12 @@ namespace ClientMDA.Controllers
             _MDAcontext.會員members.Add(m);
             _MDAcontext.SaveChanges();
 
+            片單總表movieList l = new 片單總表movieList();
+            l.片單總表名稱listName = "我的片單(預設)";
+            l.會員編號memberId = _MDAcontext.會員members.Where(m => m.會員電話cellphone == vModel.txtPhone).Select(m => m.會員編號memberId).FirstOrDefault();
+            _MDAcontext.片單總表movieLists.Add(l);
+            _MDAcontext.SaveChanges();
+
             string jsonUser = JsonSerializer.Serialize(m);
             HttpContext.Session.SetString(CDictionary.SK_LOGINED_USER, jsonUser);
 
@@ -125,6 +114,23 @@ namespace ClientMDA.Controllers
             else
                 return RedirectToAction("MemberMain");
         }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove(CDictionary.SK_LOGINED_USER);
+            return View();
+        }
+
+        #endregion
+
+        public IActionResult MemberMain()
+        {
+            if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)
+                return RedirectToAction("Login");
+            return View();
+        }
+
+        #region edit-member, password
         public IActionResult MemberEdit()
         {
             if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)
@@ -169,6 +175,47 @@ namespace ClientMDA.Controllers
             return RedirectToAction("MemberEdit");
         }
 
+        public IActionResult PasswordEdit()
+        {
+            if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)
+                return RedirectToAction("Login");
+            return View();
+        }
+        [HttpPost]
+        public IActionResult PasswordEdit(CPasswordViewModel vModel)
+        {
+            會員member mem = _MDAcontext.會員members.FirstOrDefault(m => m.會員編號memberId == vModel.memberId);
+            if (mem != null && mem.密碼password == vModel.txt_old_password)
+            {
+                mem.密碼password = vModel.txt_new_password;
+                _MDAcontext.SaveChanges();
+
+                string jsonUser = JsonSerializer.Serialize(mem);
+                HttpContext.Session.SetString(CDictionary.SK_LOGINED_USER, jsonUser);
+
+                ViewBag.txtSuccess = "s";
+            }
+            else
+            {
+                ViewBag.txtError = false;
+
+            }
+            return View();
+        }
+        #endregion
+
+        public IActionResult checkExist(string phone)
+        {
+            bool isExist = _MDAcontext.會員members.Any(m => m.會員電話cellphone == phone);
+            return Content(isExist.ToString(), "text/plain");
+        }
+
+        public bool checkPsw(int id, string psw)
+        {
+            bool isPsw = _MDAcontext.會員members.Any(m => m.會員編號memberId == id && m.密碼password == psw);
+            return isPsw;
+        }
+
         public IActionResult CommentList(CKeywordViewModel model)
         {
             if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)
@@ -187,8 +234,8 @@ namespace ClientMDA.Controllers
                     datas = q.Where(c => c.評論標題commentTitle.Contains(model.txtKeyword));
                 return View(datas);
             }
-
         }
+
         public IActionResult CommentEdit(int? id)
         {
             if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)
@@ -221,6 +268,7 @@ namespace ClientMDA.Controllers
                     listName = m.片單總表名稱listName,
                     myLists = _MDAcontext.我的片單myMovieLists.Where(l => l.片單總表編號movieListId == m.片單總表編號movieListId).Select(m => new CMovieListSubViewModel
                     {
+                        listId = m.片單總表編號movieListId,
                         memberId = m.會員編號memberId,
                         myMovieListId = m.我的片單myMovieListId,
                         movieId = m.電影編號movieId,
@@ -236,38 +284,8 @@ namespace ClientMDA.Controllers
 
         }
 
-        public IActionResult PasswordEdit()
-        {
-            if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)
-                return RedirectToAction("Login");
-            return View();
-        }
-        [HttpPost]
-        public IActionResult PasswordEdit(CPasswordViewModel vModel)
-        {
-            會員member mem = _MDAcontext.會員members.FirstOrDefault(m => m.會員編號memberId == vModel.memberId);
-            if (mem != null && mem.密碼password == vModel.txt_old_password)
-            {
-                mem.密碼password = vModel.txt_new_password;
-                _MDAcontext.SaveChanges();
 
-                string jsonUser = JsonSerializer.Serialize(mem);
-                HttpContext.Session.SetString(CDictionary.SK_LOGINED_USER, jsonUser);
 
-                ViewBag.txtSuccess = "s";
-            }
-            else
-            {
-                ViewBag.txtError = false;
-
-            }
-            return View();
-        }
-        public IActionResult Logout()
-        {
-            HttpContext.Session.Remove(CDictionary.SK_LOGINED_USER);
-            return View();
-        }
         public IActionResult MemberBonusList()
         {
             var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
@@ -275,33 +293,16 @@ namespace ClientMDA.Controllers
                 return RedirectToAction("Login");
             return View();
         }
-        public IActionResult AddCoupon(CKeywordViewModel model)
-        {
-            var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
-            會員member mem = JsonSerializer.Deserialize<會員member>(a);
-            var q = _MDAcontext.優惠總表coupons.Where(c => c.優惠代碼couponCode == model.txtKeyword).FirstOrDefault();
-            if (q != null)
-            {
-                優惠明細couponList coupon = new 優惠明細couponList
-                {
-                    會員編號memberId = mem.會員編號memberId,
-                    優惠編號couponId = q.優惠編號couponId,
-                    是否使用優惠oxCouponUsing = false,
-                };
-                _MDAcontext.優惠明細couponLists.Add(coupon);
-                _MDAcontext.SaveChanges();
-            }
 
-
-            return RedirectToAction("MemberDiscount");
-        }
-        public IActionResult MemberDiscount()
+        #region coupon 
+        public IActionResult MemberDiscount(string msg)
         {
             var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
             if (a == null)
                 return RedirectToAction("Login");
             else
             {
+                ViewData.Clear();
                 會員member mem = JsonSerializer.Deserialize<會員member>(a);
                 var q = _MDAcontext.優惠明細couponLists.Where(c => c.會員編號memberId == mem.會員編號memberId).Select(c => new CCouponListViewModel
                 {
@@ -313,12 +314,63 @@ namespace ClientMDA.Controllers
                     used = c.是否使用優惠oxCouponUsing
 
                 }).OrderByDescending(c => c.dueDate).ToList();
-
-
+                if (msg != null)
+                    ViewBag.under = msg;
                 return View(q);
             }
-
         }
+        public IActionResult checkCoupon(string coupon)
+        {
+            string result = "";
+            var q = _MDAcontext.優惠總表coupons.Where(c => c.優惠代碼couponCode == coupon).FirstOrDefault();
+            if (q != null)
+            {
+                if (q.優惠截止日期couponDueDate < DateTime.Now)
+                {
+                    result = "ex";
+                }
+                else
+                    result = q.優惠所需紅利bonusCost.ToString();
+            }
+            else
+                result = "no";
+            return Content(result, "text/plain");
+        }
+        public IActionResult AddCoupon(CKeywordViewModel model)
+        {
+            string alert = "";
+            var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            會員member mem = JsonSerializer.Deserialize<會員member>(a);
+            var q = _MDAcontext.優惠總表coupons.Where(c => c.優惠代碼couponCode == model.txtKeyword).FirstOrDefault();
+            if (q != null)
+            {
+                if (q.優惠所需紅利bonusCost <= mem.紅利點數bonus)
+                {
+                    mem.紅利點數bonus = mem.紅利點數bonus - q.優惠所需紅利bonusCost;
+                    string jsonUser = JsonSerializer.Serialize(mem);
+                    HttpContext.Session.SetString(CDictionary.SK_LOGINED_USER, jsonUser);
+
+                    優惠明細couponList coupon = new 優惠明細couponList
+                    {
+                        會員編號memberId = mem.會員編號memberId,
+                        優惠編號couponId = q.優惠編號couponId,
+                        是否使用優惠oxCouponUsing = false,
+                    };
+
+                    _MDAcontext.優惠明細couponLists.Add(coupon);
+                    _MDAcontext.SaveChanges();
+
+                }
+                else { alert = "不足"; }
+
+                return RedirectToAction("MemberDiscount", new { msg = alert });
+            }
+            else
+                return RedirectToAction("MemberDiscount");
+        }
+        #endregion
+
+
         public IActionResult OrderList()
         {
             var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
@@ -337,44 +389,14 @@ namespace ClientMDA.Controllers
                     tickets = i.訂單明細orderDetails.Select(d => d.張數count).ToList(),
                     ticketPrice = i.訂單明細orderDetails.Select(d => d.票價明細ticket.價格ticketPrice).ToList(),
                 }).ToList();
-
-
-                //var qTest = _MDAcontext.訂單總表orders.Where(o => o.會員編號memberId == mem.會員編號memberId);
-                //List<string> sta = new List<string> { "未付款", "已完成", "取消" };
-                //foreach (var i in qTest)
-                //{
-                //    COrderListViewModel vm = new COrderListViewModel();
-                //    decimal price = 0;
-                //    vm.memberId = i.會員編號memberId;
-                //    vm.orderDate = i.訂單時間orderTime;
-                //    vm.orderId = i.訂單編號orderId;
-                //    vm.status = sta[i.訂單狀態編號orderStatusId-1];
-
-                //    foreach(var ii in i.訂單明細orderDetails)
-                //    {
-                //        price += (ii.張數count) * (ii.票價明細ticket.價格ticketPrice);
-                //    }
-                //    vm.orderPrice = price;
-
-                //    vmList.Add(vm);
-                //}
-
                 return View(q);
             }
-
         }
         public IActionResult NotFormal()
         {
             return View();
         }
-        public IActionResult test()
-        {
-            return View();
-        }
-        public IActionResult test2()
-        {
-            return View();
-        }
+       
         public IActionResult WriteComment()
         {
             if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)
@@ -415,9 +437,7 @@ namespace ClientMDA.Controllers
                         .Where(c => c.評論編號commentId == f.連接編號connectId)
                         .OrderByDescending(r => r.發佈時間floorTime)
                         .Select(r => r.回覆內容floors)
-                        .Take(3).ToList(),
-
-
+                        .Take(3).ToList()
                 }).ToList();
 
                 return View(q);
@@ -429,6 +449,7 @@ namespace ClientMDA.Controllers
             return Content(q.暱稱nickName, "text/plain", System.Text.Encoding.UTF8);
         }
 
+        #region load cities
         //讀取所有城市資料
         public IActionResult City()
         {
@@ -450,11 +471,95 @@ namespace ClientMDA.Controllers
             return Json(roads);
 
         }
+
+        #endregion
+
         public IActionResult autoCmpMovie(string movie)
         {
             var movies = _MDAcontext.電影movies.Where(m => m.中文標題titleCht.Contains(movie) || m.英文標題titleEng.ToUpper().Contains(movie.ToUpper())).Select(p => p.中文標題titleCht);
             return Json(movies);
 
+        }
+
+        public IActionResult WatchListCreate(List<CWatchListCreateViewModel> ls)
+        {
+            var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            會員member mem = JsonSerializer.Deserialize<會員member>(a);
+
+            var q = _MDAcontext.片單總表movieLists.Where(l => l.會員編號memberId == mem.會員編號memberId);
+
+            foreach (CWatchListCreateViewModel item in ls)
+            {
+                if (item.listId == 0)
+                {
+                    片單總表movieList ml = new 片單總表movieList();
+                    ml.片單總表名稱listName = item.listName;
+                    ml.會員編號memberId = mem.會員編號memberId;
+                    _MDAcontext.片單總表movieLists.Add(ml);
+                }
+                else if (q.Any(l => l.片單總表編號movieListId == item.listId))
+                {
+                    var toEdit = q.First(l => l.片單總表編號movieListId == item.listId);
+                    toEdit.片單總表名稱listName = item.listName;
+                }
+            }
+
+            foreach (片單總表movieList list in q.ToList())
+            {
+                if (ls.Any(l => l.listId == list.片單總表編號movieListId) == false)
+                {
+                    var toDel = _MDAcontext.我的片單myMovieLists.Where(l => l.片單總表編號movieListId == list.片單總表編號movieListId);
+                    _MDAcontext.我的片單myMovieLists.RemoveRange(toDel);
+
+                    _MDAcontext.片單總表movieLists.Remove(list);
+                }
+            }
+
+            _MDAcontext.SaveChanges();
+            return RedirectToAction("WatchList");
+        }
+        public IActionResult MyWatchListEdit(List<CWatchListEditViewModel> mv)
+        {
+            var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            會員member mem = JsonSerializer.Deserialize<會員member>(a);
+            int listId = mv.First(m => m.listId != 0).listId;
+            foreach (CWatchListEditViewModel item in mv)
+            {
+                if (item.movieId == 0)
+                {
+                    我的片單myMovieList ml = new 我的片單myMovieList();
+                    ml.電影編號movieId = _MDAcontext.電影movies.First(m => m.中文標題titleCht == item.movieName).電影編號movieId;
+                    ml.片單總表編號movieListId = listId;
+                    ml.會員編號memberId = mem.會員編號memberId;
+                    _MDAcontext.我的片單myMovieLists.Add(ml);
+                }
+            }
+            var q = _MDAcontext.我的片單myMovieLists.Where(l => l.片單總表編號movieListId == listId);
+            foreach (我的片單myMovieList item in q.ToList())
+            {
+                if (mv.Any(m => m.mylistId == item.我的片單myMovieListId) == false)
+                {
+                    _MDAcontext.我的片單myMovieLists.Remove(item);
+                }
+            }
+
+            _MDAcontext.SaveChanges();
+            return RedirectToAction("WatchList");
+        }
+       
+        public IActionResult checkWatchList(string name)
+        {
+            var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            會員member mem = JsonSerializer.Deserialize<會員member>(a);
+            bool isExist = _MDAcontext.片單總表movieLists.Where(l => l.會員編號memberId == mem.會員編號memberId).Any(l => l.片單總表名稱listName == name);
+            return Content(isExist.ToString(), "text/plain");
+        }
+        public IActionResult checkWatchListMoive(string name)
+        {
+            var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            會員member mem = JsonSerializer.Deserialize<會員member>(a);
+            bool isExist = _MDAcontext.我的片單myMovieLists.Where(l => l.片單總表編號movieList.會員編號memberId == mem.會員編號memberId).Any(l => l.電影編號movie.中文標題titleCht == name);
+            return Content(isExist.ToString(), "text/plain");
         }
 
 

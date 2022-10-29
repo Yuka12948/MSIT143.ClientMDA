@@ -84,7 +84,6 @@
     <Folder Include="wwwroot\css\Shopping\" />
     <Folder Include="wwwroot\css\Ticketing\" />
     <Folder Include="wwwroot\images\HomePage\" />
-    <Folder Include="wwwroot\images\Member\" />
     <Folder Include="wwwroot\images\Comment\" />
     <Folder Include="wwwroot\images\Ticketing\" />
     <Folder Include="wwwroot\images\Shopping\" />

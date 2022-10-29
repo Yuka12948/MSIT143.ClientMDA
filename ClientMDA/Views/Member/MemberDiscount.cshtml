@@ -87,16 +87,25 @@
             <!--content-->
             <h2 class="white text-left">我的抵用券</h2>
             <div class="mb-2 mt-2">
-                <strong class="white">可用紅利金餘額: @mem.紅利點數bonus</strong>
+                <strong class="white text-left">紅利點數餘額: @mem.紅利點數bonus</strong>
             </div>
-            <div class="mb-4">
-                @using (Html.BeginForm("AddCoupon", "Member"))
-                {
+            @using (Html.BeginForm("AddCoupon", "Member"))
+            {
+                <div class="mb-1">
                     @Html.TextBox("txtKeyword", null, new { @id = "txt", @placeholder = "輸入優惠代碼" })
-                    <button type="submit" class="site-btn mt-3 mb-3"><i class="fa fa-plus"> 新增優惠</i></button>
+                    <button type="button" class="site-btn mt-3 mb-2" id="check">查詢優惠</button>
                     <button type="button" id="demo" class="site-btn mt-3 mb-3">demo</button>
-                }
-            </div>
+
+                </div>
+                <div class="mb-2 white text-left">
+                    <label>優惠券所需紅利點數: </label>
+                    <label id="cost"></label>
+                </div>
+                <div>
+                    <button type="submit" class="site-btn mb-2" id="submit" disabled><i class="fa fa-plus"> 確認新增</i></button>
+                </div>
+            }
+
 
             <table class="table white">
                 <thead>
@@ -136,23 +145,52 @@
                             </tr>
                         }
                     }
-
-
                 </tbody>
             </table>
+
             <!--end content-->
         </div>
     </div>
 </div>
 
+
 @section Scripts{
 
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <script>
+        var myJsVariable = '@ViewBag.under'
+
+            if (myJsVariable !=null&&myJsVariable!="") {
+                window.alert("紅利點數不足")        }
+
         const demo = document.querySelector("#demo")
         const txt = document.querySelector("#txt")
         demo.addEventListener("click", () => {
             txt.value = "Bday100"
         })
+
+        const btnSubmit = document.querySelector("#submit")
+        const btnCheck = document.querySelector("#check")
+        const lblCost = document.querySelector("#cost")
+        btnCheck.addEventListener("click", async() => {
+        const url = "@Url.Content("~/member/checkCoupon")"
+        const params = `?coupon=${txt.value}`
+            let response = await fetch(url + params)  //resolve->response, reject
+            let data = await response.text()
+            //console.log(data)
+            if (data == 'no') {
+                lblCost.textContent = "查無優惠"
+            }
+            else if (data == "ex") {
+                lblCost.textContent = "優惠已過期"
+            }
+            else
+            {
+                lblCost.textContent = data
+                btnSubmit.removeAttribute("disabled")
+            }
+
+        })
+
     </script>
 }

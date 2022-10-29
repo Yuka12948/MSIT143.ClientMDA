@@ -12,5 +12,6 @@ namespace ClientMDA.ViewModels
         public int movieId { get; set; }
         public string movieTitle { get; set; }
         public string moviePic { get; set; }
+        public int listId { get; set; }
     }
 }
