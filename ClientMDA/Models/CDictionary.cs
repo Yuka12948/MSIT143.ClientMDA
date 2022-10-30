@@ -15,6 +15,8 @@ namespace ClientMDA.Models
         public static readonly string SK登後要前往的頁面 = "SK登後要前往的頁面";
         public static readonly string SK_LOGINED_USER = "SK_LOGINED_USER";
         public static readonly string SK_USER_PHONE = "SK_USER_PHONE";
+        public static readonly string SK_FORGETPASSWORD = "SK_FORGETPASSWORD";
+        public static readonly string SK_PICTURECODE = "SK_PICTURECODE";
         public static readonly string SK_ORDER_INFO = "SK_ORDER_INFO";
     }
 }

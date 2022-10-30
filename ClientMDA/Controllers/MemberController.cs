@@ -9,6 +9,10 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Drawing;
+using System.Text;
+using MimeKit;
+using MailKit.Net.Smtp;
 
 namespace ClientMDA.Controllers
 {
@@ -22,8 +26,6 @@ namespace ClientMDA.Controllers
             _enviro = p;
         }
 
-
-
         #region login-->login2 or signup-->logout
         public IActionResult Login()
         {
@@ -32,8 +34,7 @@ namespace ClientMDA.Controllers
         [HttpPost]
         public IActionResult Login(CLoginViewModel vModel)
         {
-            string jsonUserPhone = JsonSerializer.Serialize(vModel.txtphone);
-            HttpContext.Session.SetString(CDictionary.SK_USER_PHONE, jsonUserPhone);
+            HttpContext.Session.SetString(CDictionary.SK_USER_PHONE, vModel.txtphone);
 
             bool isExist = _MDAcontext.會員members.Any(m => m.會員電話cellphone == vModel.txtphone);
             if (isExist)
@@ -44,8 +45,8 @@ namespace ClientMDA.Controllers
         public IActionResult Login2(/*string phone*/)
         {
             //ViewBag.phone = phone;
-            var a = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
-            ViewBag.phone = JsonSerializer.Deserialize<string>(a);
+            ViewBag.phone = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+
             //CLogin2ViewModel mem = new CLogin2ViewModel();
             //mem.txtphone = phone;
             return View();
@@ -80,8 +81,8 @@ namespace ClientMDA.Controllers
         }
         public IActionResult SignUp()
         {
-            var a = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
-            ViewBag.phone = JsonSerializer.Deserialize<string>(a);
+            ViewBag.phone = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+
             return View();
         }
         [HttpPost]
@@ -121,6 +122,191 @@ namespace ClientMDA.Controllers
             return View();
         }
 
+        #endregion
+
+        #region forgePwd
+        public ActionResult checkValidatePic(string code)
+        {
+            string picCode = HttpContext.Session.GetString(CDictionary.SK_PICTURECODE);
+            if (code == picCode)
+            {
+                return Content("T", "text/plain");
+            }
+            else
+            {
+                return Content("F", "text/plain");
+            }
+        }
+
+        public IActionResult Login2ForgetPwd()
+        {
+            ViewBag.phone = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+
+            sendmail();
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Login2ForgetPwd(CLogin2ViewModel vModel)
+        {
+            ViewBag.phone = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+
+            string Code = HttpContext.Session.GetString(CDictionary.SK_FORGETPASSWORD);
+
+            if (Code != null)
+            {
+                if (Code == vModel.txtPassword)
+                {
+                    ViewBag.txtError = true;
+                    return RedirectToAction("Login2ResetPwd");
+                }
+                else
+                {
+                    ViewBag.txtError = false;
+                    return View();
+                }
+            }
+            return View();
+        }
+        public IActionResult Login2ResetPwd()
+        {
+            string phone = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+
+            ViewBag.memId = _MDAcontext.會員members.Where(m => m.會員電話cellphone == phone).Select(m => m.會員編號memberId).FirstOrDefault();
+            ViewBag.phone = phone;
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Login2ResetPwd(CPasswordViewModel vm)
+        {
+            會員member mem = _MDAcontext.會員members.FirstOrDefault(m => m.會員編號memberId == vm.memberId);
+            if (mem != null)
+            {
+                mem.密碼password = vm.txt_new_password;
+                _MDAcontext.SaveChanges();
+
+                string jsonUser = JsonSerializer.Serialize(mem);
+                HttpContext.Session.SetString(CDictionary.SK_LOGINED_USER, jsonUser);
+
+                string page = HttpContext.Session.GetString(CDictionary.SK登後要前往的頁面);
+                if (!string.IsNullOrEmpty(page))
+                {
+                    HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, "");
+                    return Redirect(page);
+                }
+                else
+                    return RedirectToAction("MemberMain");
+            }
+            else
+            {
+                ViewBag.txtError = false;
+                ViewBag.phone = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+            }
+
+            return View();
+        }
+
+        public IActionResult sendmail()
+        {
+            string phone = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+
+            string email = _MDAcontext.會員members.Where(m => m.會員電話cellphone == phone).Select(m => m.電子信箱email).FirstOrDefault();
+            string name = "";
+            string nick = _MDAcontext.會員members.Where(m => m.會員電話cellphone == phone).Select(m => m.暱稱nickName).FirstOrDefault();
+            if (string.IsNullOrEmpty(nick))
+                name = phone;
+            else
+                name = nick;
+
+            MimeMessage message = new MimeMessage();
+            BodyBuilder builder = new BodyBuilder();
+
+            Random ran = new Random();
+            string rndPsw = RandomCode(8);
+            HttpContext.Session.SetString(CDictionary.SK_FORGETPASSWORD, rndPsw);
+            builder.HtmlBody = $"<p>{name}您好，重設密碼的驗證碼(8碼)為{rndPsw}</p>" +
+                              $"<hr/>" +
+                              $"<p>當前時間:{DateTime.Now:yyyy-MM-dd HH:mm:ss}</p>";
+
+            message.From.Add(new MailboxAddress("MDA官網", "jo3wait@outlook.com"));
+            message.To.Add(new MailboxAddress("親愛的顧客", "jo3wait@outlook.com"));//email
+            message.Subject = "MDA重設密碼驗證信";
+            message.Body = builder.ToMessageBody();
+
+            using (SmtpClient client = new SmtpClient())
+            {
+                client.Connect("smtp.outlook.com", 587, MailKit.Security.SecureSocketOptions.StartTls); //587 TLS
+                client.Authenticate("jo3wait@outlook.com", "Car710451");
+                client.Send(message);
+                client.Disconnect(true);
+            }
+            return Json("send");
+        }
+
+
+        private string RandomCode(int length)
+        {
+            string s = "0123456789zxcvbnmasdfghjklqwertyuiop";
+            StringBuilder sb = new StringBuilder();
+            Random rand = new Random();
+            int index;
+            for (int i = 0; i < length; i++)
+            {
+                index = rand.Next(0, s.Length);
+                sb.Append(s[index]);
+            }
+            return sb.ToString();
+        }
+        private void PaintInterLine(Graphics g, int num, int width, int height)
+        {
+            Random r = new Random();
+            int startX, startY, endX, endY;
+            for (int i = 0; i < num; i++)
+            {
+                startX = r.Next(0, width);
+                startY = r.Next(0, height);
+                endX = r.Next(0, width);
+                endY = r.Next(0, height);
+                g.DrawLine(new Pen(Brushes.Red), startX, startY, endX, endY);
+            }
+        }
+        public ActionResult GetValidatePic()
+        {
+            byte[] data = null;
+            string code = RandomCode(5);
+            HttpContext.Session.SetString(CDictionary.SK_PICTURECODE, code);
+            //TempData["code"] = code;
+            //定義一個畫板
+            MemoryStream ms = new MemoryStream();
+            using (Bitmap map = new Bitmap(100, 40))
+            {
+                //畫筆,在指定畫板畫板上畫圖
+                //g.Dispose();
+                using (Graphics g = Graphics.FromImage(map))
+                {
+                    g.Clear(Color.White);
+                    g.DrawString(code, new Font("黑體", 18.0F), Brushes.Blue, new Point(10, 8));
+                    //繪製干擾線(數字代表幾條)
+                    PaintInterLine(g, 10, map.Width, map.Height);
+                }
+                map.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            }
+            data = ms.GetBuffer();
+            return File(data, "image/jpeg");
+        }
+        public ActionResult queryEmail()
+        {
+            string phone = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+
+            string data = _MDAcontext.會員members.Where(m => m.會員電話cellphone == phone).Select(m => m.電子信箱email).FirstOrDefault();
+            return Content(data, "text/plain");
+        }
+        public ActionResult testValidatePic()
+        {
+            if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)
+                return RedirectToAction("Login");
+            else
+                return View();
+        }
         #endregion
 
         public IActionResult MemberMain()
@@ -215,76 +401,6 @@ namespace ClientMDA.Controllers
             bool isPsw = _MDAcontext.會員members.Any(m => m.會員編號memberId == id && m.密碼password == psw);
             return isPsw;
         }
-
-        public IActionResult CommentList(CKeywordViewModel model)
-        {
-            if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)
-                return RedirectToAction("Login");
-            else
-            {
-                var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
-                會員member mem = JsonSerializer.Deserialize<會員member>(a);
-                IEnumerable<電影評論movieComment> datas = null;
-                var q = _MDAcontext.電影評論movieComments.Where(c => c.會員編號memberId == mem.會員編號memberId);
-                if (string.IsNullOrEmpty(model.txtKeyword))
-                {
-                    datas = q;
-                }
-                else
-                    datas = q.Where(c => c.評論標題commentTitle.Contains(model.txtKeyword));
-                return View(datas);
-            }
-        }
-
-        public IActionResult CommentEdit(int? id)
-        {
-            if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)
-                return RedirectToAction("Login");
-            else
-            {
-                var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
-                會員member mem = JsonSerializer.Deserialize<會員member>(a);
-                if (mem.正式會員formal == false)
-                {
-                    return RedirectToAction("NotFormal");
-                }
-                return View();
-            }
-        }
-
-        public IActionResult WatchList()
-        {
-            var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
-            if (a == null)
-                return RedirectToAction("Login");
-            else
-            {
-                會員member mem = JsonSerializer.Deserialize<會員member>(a);
-
-                var q = _MDAcontext.片單總表movieLists.Where(m => m.會員編號memberId == mem.會員編號memberId).Select(m => new CMovieListViewModel
-                {
-                    memberId = m.會員編號memberId,
-                    listId = m.片單總表編號movieListId,
-                    listName = m.片單總表名稱listName,
-                    myLists = _MDAcontext.我的片單myMovieLists.Where(l => l.片單總表編號movieListId == m.片單總表編號movieListId).Select(m => new CMovieListSubViewModel
-                    {
-                        listId = m.片單總表編號movieListId,
-                        memberId = m.會員編號memberId,
-                        myMovieListId = m.我的片單myMovieListId,
-                        movieId = m.電影編號movieId,
-                        movieTitle = m.電影編號movie.中文標題titleCht,
-                        moviePic = m.電影編號movie.電影圖片movieIimagesLists.Select(c => c.圖片編號image.圖片雲端imageImdb).FirstOrDefault()
-                    }).ToList(),
-
-
-                }).ToList();
-
-                return View(q);
-            }
-
-        }
-
-
 
         public IActionResult MemberBonusList()
         {
@@ -396,22 +512,15 @@ namespace ClientMDA.Controllers
         {
             return View();
         }
-       
-        public IActionResult WriteComment()
+        public IActionResult test()
         {
-            if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)
-                return RedirectToAction("Login");
-            else
-            {
-                var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
-                會員member mem = JsonSerializer.Deserialize<會員member>(a);
-                if (mem.正式會員formal == false)
-                {
-                    return RedirectToAction("NotFormal");
-                }
-                return View();
-            }
+            return View();
         }
+        public IActionResult test2()
+        {
+            return View();
+        }
+
         public IActionResult WishList() //followList
         {
             var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
@@ -481,6 +590,39 @@ namespace ClientMDA.Controllers
 
         }
 
+        #region watchList
+        public IActionResult WatchList()
+        {
+            var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            if (a == null)
+                return RedirectToAction("Login");
+            else
+            {
+                會員member mem = JsonSerializer.Deserialize<會員member>(a);
+
+                var q = _MDAcontext.片單總表movieLists.Where(m => m.會員編號memberId == mem.會員編號memberId).Select(m => new CMovieListViewModel
+                {
+                    memberId = m.會員編號memberId,
+                    listId = m.片單總表編號movieListId,
+                    listName = m.片單總表名稱listName,
+                    myLists = _MDAcontext.我的片單myMovieLists.Where(l => l.片單總表編號movieListId == m.片單總表編號movieListId).Select(m => new CMovieListSubViewModel
+                    {
+                        listId = m.片單總表編號movieListId,
+                        memberId = m.會員編號memberId,
+                        myMovieListId = m.我的片單myMovieListId,
+                        movieId = m.電影編號movieId,
+                        movieTitle = m.電影編號movie.中文標題titleCht,
+                        moviePic = m.電影編號movie.電影圖片movieIimagesLists.Select(c => c.圖片編號image.圖片雲端imageImdb).FirstOrDefault()
+                    }).ToList(),
+
+
+                }).ToList();
+
+                return View(q);
+            }
+
+        }
+       
         public IActionResult WatchListCreate(List<CWatchListCreateViewModel> ls)
         {
             var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
@@ -546,7 +688,6 @@ namespace ClientMDA.Controllers
             _MDAcontext.SaveChanges();
             return RedirectToAction("WatchList");
         }
-       
         public IActionResult checkWatchList(string name)
         {
             var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
@@ -563,5 +704,73 @@ namespace ClientMDA.Controllers
         }
 
 
+        #endregion
+
+        #region comment
+        public IActionResult CommentList(CKeywordViewModel model)
+        {
+            if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)
+                return RedirectToAction("Login");
+            else
+            {
+                var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+                會員member mem = JsonSerializer.Deserialize<會員member>(a);
+                IEnumerable<電影評論movieComment> datas = null;
+                var q = _MDAcontext.電影評論movieComments.Where(c => c.會員編號memberId == mem.會員編號memberId);
+                if (string.IsNullOrEmpty(model.txtKeyword))
+                {
+                    datas = q;
+                }
+                else
+                    datas = q.Where(c => c.評論標題commentTitle.Contains(model.txtKeyword));
+                return View(datas);
+            }
+        }
+
+        public IActionResult CommentEdit(int? id)
+        {
+            if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)
+                return RedirectToAction("Login");
+            else
+            {
+                var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+                會員member mem = JsonSerializer.Deserialize<會員member>(a);
+                if (mem.正式會員formal == false)
+                {
+                    return RedirectToAction("NotFormal");
+                }
+                return View();
+            }
+        }
+        public IActionResult WriteComment()
+        {
+            if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)
+                return RedirectToAction("Login");
+            else
+            {
+                var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+                會員member mem = JsonSerializer.Deserialize<會員member>(a);
+                if (mem.正式會員formal == false)
+                {
+                    return RedirectToAction("NotFormal");
+                }
+                return View();
+            }
+        }
+        public IActionResult CommentCreate()
+        {
+            var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            if (a == null)
+                return RedirectToAction("Login");
+            else
+            {
+                會員member mem = JsonSerializer.Deserialize<會員member>(a);
+            }
+
+            return View();
+        }
+
+
+        #endregion
     }
 }

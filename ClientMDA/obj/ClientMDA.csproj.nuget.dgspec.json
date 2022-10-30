@@ -1,25 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj": {}
+    "C:\\Users\\jo3wait\\Documents\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj": {}
   },
   "projects": {
-    "C:\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj": {
+    "C:\\Users\\jo3wait\\Documents\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
+        "projectUniqueName": "C:\\Users\\jo3wait\\Documents\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
         "projectName": "ClientMDA",
-        "projectPath": "C:\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
-        "packagesPath": "C:\\Users\\yikis\\.nuget\\packages\\",
-        "outputPath": "C:\\MSIT143.ClientMDA\\ClientMDA\\obj\\",
+        "projectPath": "C:\\Users\\jo3wait\\Documents\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
+        "packagesPath": "C:\\Users\\jo3wait\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jo3wait\\Documents\\MSIT143.ClientMDA\\ClientMDA\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\yikis\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\jo3wait\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -77,6 +75,10 @@
             "MimeKit": {
               "target": "Package",
               "version": "[3.4.1, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[5.0.3, )"
             }
           },
           "imports": [
@@ -97,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.412\\RuntimeIdentifierGraph.json"
         }
       }
     }
