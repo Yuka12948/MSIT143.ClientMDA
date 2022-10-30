@@ -18,7 +18,9 @@
     padding-left: 16px;
     vertical-align: baseline;
 }
-
+#infolist {
+    padding-top: 60px;
+}
     .info h5 {
         font-size: 1.5rem;
         color: whitesmoke;

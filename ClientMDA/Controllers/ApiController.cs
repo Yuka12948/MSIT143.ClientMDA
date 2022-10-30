@@ -109,6 +109,48 @@ namespace ClientMDA.Controllers
             return Json(q);
         }
 
+        public IActionResult ranknumlist()
+        {
+            List<int> list = new List<int>();
+            string a = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+            if (a != null)
+            {
+                string b = JsonSerializer.Deserialize<string>(a);
+                var q = _MDA.會員members.Where(m => m.會員電話cellphone == b).Select(p => p.會員編號memberId).FirstOrDefault();
+                //var q2 = (from x in _MDA.電影圖片movieIimagesLists
+                //        join y in _MDA.電影排行movieRanks on x.圖片編號image.電影名稱movieName equals y.電影movie
+                //        where x.圖片編號image.電影名稱movieName == y.電影movie
+                //        orderby y.排行編號rankId ascending
+                //        select x.電影編號movie.電影編號movieId).ToArray();
+                var c = _MDA.片單總表movieLists.Where(p => p.片單總表名稱listName == "我的片單(預設)" && p.會員編號memberId == q).Select(o => o.片單總表編號movieListId).FirstOrDefault(); ;
+                var q3 = _MDA.我的片單myMovieLists.AsEnumerable().Where(m => m.會員編號memberId == q && m.片單總表編號movieListId == c).OrderBy(i => i.電影編號movieId).Select(m => m.我的片單myMovieListId);
+
+                return Json(q3);
+            }
+            return Json(0);
+        }
+
+        public IActionResult ranknumlistmo()
+        {
+            List<int> list = new List<int>();
+            string a = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+            if (a != null)
+            {
+                string b = JsonSerializer.Deserialize<string>(a);
+                var q = _MDA.會員members.Where(m => m.會員電話cellphone == b).Select(p => p.會員編號memberId).FirstOrDefault();
+                //var q2 = (from x in _MDA.電影圖片movieIimagesLists
+                //          join y in _MDA.電影排行movieRanks on x.圖片編號image.電影名稱movieName equals y.電影movie
+                //          where x.圖片編號image.電影名稱movieName == y.電影movie
+                //          orderby y.排行編號rankId ascending
+                //          select x.電影編號movie.電影編號movieId).ToArray();
+                var c = _MDA.片單總表movieLists.Where(p => p.片單總表名稱listName == "我的片單(預設)" && p.會員編號memberId == q).Select(o => o.片單總表編號movieListId).FirstOrDefault(); ;
+                var q3 = _MDA.我的片單myMovieLists.AsEnumerable().Where(m => m.會員編號memberId == q && m.片單總表編號movieListId == c).Select(m => m.電影編號movieId);
+
+                return Json(q3);
+            }
+            return Json(0);
+        }
+
         public IActionResult showrankmovie()
         {
             var q1 = from a in _MDA.電影排行movieRanks
@@ -137,7 +179,7 @@ namespace ClientMDA.Controllers
 
         public IActionResult showrecommendposter()
         {
-            List<string> list = new List<string>(0);
+            List<string> list = new List<string>();
             List<string> list2 = new List<string>();
             List<string> list3 = new List<string>();
             List<int> listNumbers = new List<int>();
@@ -170,6 +212,7 @@ namespace ClientMDA.Controllers
             return Json(q2);
         }
 
+        //抓片單電影編號
         public IActionResult bookmarkget()
         {
             string a = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
@@ -179,6 +222,57 @@ namespace ClientMDA.Controllers
                 var q = _MDA.會員members.Where(m => m.會員電話cellphone == b).Select(p => p.會員編號memberId).FirstOrDefault();
                 var q2 = _MDA.我的片單myMovieLists.Where(m => m.會員編號memberId == q).Select(m => m.電影編號movieId).Distinct();
                 return Json(q2);
+            }
+            return Json(0);
+        }
+
+        public IActionResult showlistmovie()
+        {
+            string a = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+            if (a != null)
+            {
+                string b = JsonSerializer.Deserialize<string>(a);
+                var q = _MDA.會員members.Where(m => m.會員電話cellphone == b).Select(p => p.會員編號memberId).FirstOrDefault();
+                var q2 = _MDA.我的片單myMovieLists.Where(m => m.會員編號memberId == q).Select(m => m.電影編號movie.中文標題titleCht);
+                return Json(q2);
+            }
+            return Json(0);
+        }
+
+        public IActionResult showlistposter()
+        {
+            string a = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+            if (a != null)
+            {
+                List<string> list = new List<string>();
+                string b = JsonSerializer.Deserialize<string>(a);
+                var q = _MDA.會員members.Where(m => m.會員電話cellphone == b).Select(p => p.會員編號memberId).FirstOrDefault();
+                var q2 = _MDA.我的片單myMovieLists.Where(m => m.會員編號memberId == q).Select(m => m.電影編號movieId).Distinct().ToArray();
+                for (var i = 0; i < q2.Count(); i++)
+                {
+                    var q3 = _MDA.電影圖片movieIimagesLists.Where(m => m.電影編號movieId == q2[i]).FirstOrDefault().圖片編號image.圖片雲端imageImdb;
+                    list.Add(q3);
+                }
+                return Json(list);
+            }
+            return Json(0);
+        }
+
+        public IActionResult getlistnumber()
+        {
+            string a = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+            if (a != null)
+            {
+                List<string> list = new List<string>();
+                string b = JsonSerializer.Deserialize<string>(a);
+                var q = _MDA.會員members.Where(m => m.會員電話cellphone == b).Select(p => p.會員編號memberId).FirstOrDefault();
+                var q2 = _MDA.我的片單myMovieLists.Where(m => m.會員編號memberId == q).Select(m => m.電影編號movieId).Distinct().ToArray();
+                for (var i = 0; i < q2.Count(); i++)
+                {
+                    var q3 = _MDA.電影圖片movieIimagesLists.Where(m => m.電影編號movieId == q2[i]).FirstOrDefault().圖片編號image.圖片雲端imageImdb;
+                    list.Add(q3);
+                }
+                return Json(list);
             }
             return Json(0);
         }

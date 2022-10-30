@@ -47,6 +47,13 @@ namespace ClientMDA.Controllers
                 _MDA.我的片單myMovieLists.Add(l);
                 _MDA.SaveChanges();
             }
+            else if (p.我的片單MyMovieList_ID != 0)
+            {
+                我的片單myMovieList l = new 我的片單myMovieList();
+                l.我的片單myMovieListId = p.我的片單MyMovieList_ID;
+                _MDA.我的片單myMovieLists.Remove(l);
+                _MDA.SaveChanges();
+            }
             return View();
         }
         public IActionResult Privacy()
