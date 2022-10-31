@@ -95,13 +95,14 @@ namespace ClientMDA.ViewModels
             set { _comment.評論內容comments = value; }
         }
 
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm}")]
         [DisplayName("發佈時間")]
         public DateTime 發佈時間commentTime
         {
             get { return _comment.發佈時間commentTime; }
             set { _comment.發佈時間commentTime = value; }
         }
-
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         [DisplayName("觀影日期")]
         public DateTime? 觀影日期viewingTime
         {

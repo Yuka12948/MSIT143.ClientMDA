@@ -64,7 +64,7 @@
                                     {
                                         <img class="img-fluid rounded-circle" src="~/images/Member/MEMBER.png" alt="">
                                     }
-                                    <a asp-controller="Comment" asp-action="會員評論">@Model.暱稱nickName</a>
+                                    <a @Url.Action("會員評論","Comment", new {id= Model.會員編號memberId})>@Model.暱稱nickName</a>
                                 </span>
                                 @if (Model.觀影方式source != null)
                                 {
@@ -195,13 +195,13 @@
                             <form action="#">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-6 col-sm-6">
-                                        <input type="text" placeholder="Name">
+                                        <input type="text" placeholder="Name" style="max-width:none">
                                     </div>
                                     @*<div class="col-lg-6 col-md-6 col-sm-6">
                                             <input type="text" placeholder="Email">
                                         </div>*@
                                 <div class="col-lg-12">
-                                    <textarea placeholder="Message"></textarea>
+                                    <textarea placeholder="Message" style="max-width:none"></textarea>
                                     <button type="submit" class="site-btn">送出</button>
                                     @*<a href="@Url.Action("WriteComment","member")>送出</a>*@
 

@@ -52,6 +52,15 @@
             -webkit-box-orient: vertical; /*垂直排列*/
             word-break: break-all;
         }
+
+        .mComment-text {
+            overflow: hidden !important; /*溢位*/
+            text-overflow: ellipsis !important; /*文字溢位ellipsis... */
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /*限制元素顯示文字行數*/
+            -webkit-box-orient: vertical; /*垂直排列*/
+            word-break: break-all;
+        }
     </style>
 }
 

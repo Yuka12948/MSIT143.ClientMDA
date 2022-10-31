@@ -28,7 +28,7 @@
                             </span>
                         </h6>
                         <h5>@Model[i].評論標題commentTitle</h5><br />
-                        <p>@Model[i].評論內容comments</p>
+                        <p class="mComment-text">@Model[i].評論內容comments</p>
                         <a href="@Url.Action("電影評論", "Comment", new { id = Model[i].評論編號commentId})"><span class="see-more">詳全文 >></span></a>
                     </div>
                 </div>
