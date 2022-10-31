@@ -147,13 +147,7 @@ closeModalButtons2.addEventListener('click', () => {
 
 
 //change font
-const titles = document.querySelectorAll('h5 a');
-for (let i = 0; i < titles.length; i++) {
-    if (titles[i].innerText.length >= 9) {
-        titles[i].style.fontSize = "1.15rem";
 
-    }
-}
 
 
 //swiper

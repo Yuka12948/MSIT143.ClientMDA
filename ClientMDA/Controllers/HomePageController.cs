@@ -25,7 +25,7 @@ namespace ClientMDA.Controllers
         {
             return View();
         }
-        
+
         [HttpPost]
         public IActionResult Index(CHomepageViewModel p)
         {
@@ -57,7 +57,7 @@ namespace ClientMDA.Controllers
             }
             return View();
         }
-        
+
         public IActionResult 排行()
         {
             var s = (from a in _MDA.電影圖片movieIimagesLists
@@ -76,7 +76,7 @@ namespace ClientMDA.Controllers
 
             return View(s);
         }
-        
+
         //public IActionResult 新片排行()
         //{
         //    var s = (from a in _MDA.電影圖片movieIimagesLists
@@ -155,7 +155,7 @@ namespace ClientMDA.Controllers
 
         //    return ViewComponent("本周新片", s);
         //}
-        
+
         public IActionResult 期待()
         {
             var d = (from a in _MDA.電影movies
