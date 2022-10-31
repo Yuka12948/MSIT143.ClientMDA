@@ -7,6 +7,7 @@ namespace ClientMDA.ViewModels
 {
     public class CWriteCommentViewModel
     {
+        public int CommentId { get; set; }
         public int MemberId { get; set; }
         public string nick { get; set; }
         public string comTitle { get; set; }
@@ -16,7 +17,7 @@ namespace ClientMDA.ViewModels
         public decimal rate { get; set; }
         public decimal anti { get; set; }
         public int open { get; set; }
-        public bool floor { get; set; }
+        public int floor { get; set; }
         public string content { get; set; }
 
     }
