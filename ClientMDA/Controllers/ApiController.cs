@@ -82,6 +82,41 @@ namespace ClientMDA.Controllers
 
         }
 
+        public IActionResult checklogin2()
+        {
+            string user = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            if (user == null)
+            {
+                HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, "~/HomePage/排行");
+                return Redirect("~/Member/Login");
+            }
+            return View();
+
+        }
+        public IActionResult checklogin3()
+        {
+            string user = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            if (user == null)
+            {
+                HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, "~/HomePage/本周");
+                return Redirect("~/Member/Login");
+            }
+            return View();
+
+        }
+
+        public IActionResult checklogin4()
+        {
+            string user = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            if (user == null)
+            {
+                HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, "~/HomePage/期待");
+                return Redirect("~/Member/Login");
+            }
+            return View();
+
+        }
+
         public IActionResult showrankposter()
         {
             //抓不到圖片名稱為英文
@@ -124,27 +159,6 @@ namespace ClientMDA.Controllers
                 //        select x.電影編號movie.電影編號movieId).ToArray();
                 var c = _MDA.片單總表movieLists.Where(p => p.片單總表名稱listName == "我的片單(預設)" && p.會員編號memberId == q).Select(o => o.片單總表編號movieListId).FirstOrDefault(); ;
                 var q3 = _MDA.我的片單myMovieLists.AsEnumerable().Where(m => m.會員編號memberId == q && m.片單總表編號movieListId == c).OrderBy(i => i.電影編號movieId).Select(m => m.我的片單myMovieListId);
-
-                return Json(q3);
-            }
-            return Json(0);
-        }
-
-        public IActionResult ranknumlistmo()
-        {
-            List<int> list = new List<int>();
-            string a = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
-            if (a != null)
-            {
-                string b = JsonSerializer.Deserialize<string>(a);
-                var q = _MDA.會員members.Where(m => m.會員電話cellphone == b).Select(p => p.會員編號memberId).FirstOrDefault();
-                //var q2 = (from x in _MDA.電影圖片movieIimagesLists
-                //          join y in _MDA.電影排行movieRanks on x.圖片編號image.電影名稱movieName equals y.電影movie
-                //          where x.圖片編號image.電影名稱movieName == y.電影movie
-                //          orderby y.排行編號rankId ascending
-                //          select x.電影編號movie.電影編號movieId).ToArray();
-                var c = _MDA.片單總表movieLists.Where(p => p.片單總表名稱listName == "我的片單(預設)" && p.會員編號memberId == q).Select(o => o.片單總表編號movieListId).FirstOrDefault(); ;
-                var q3 = _MDA.我的片單myMovieLists.AsEnumerable().Where(m => m.會員編號memberId == q && m.片單總表編號movieListId == c).Select(m => m.電影編號movieId);
 
                 return Json(q3);
             }
@@ -275,6 +289,69 @@ namespace ClientMDA.Controllers
                 return Json(list);
             }
             return Json(0);
+        }
+
+        public IActionResult getrankex()
+        {
+            var d = from a in _MDA.電影movies
+                    join b in _MDA.電影排行movieRanks on a.中文標題titleCht equals b.電影movie
+                    orderby b.排行編號rankId ascending
+                    select a.期待度anticipation;
+
+            return Json(d);
+        }
+
+        public IActionResult getrankac()
+        {
+            var d = from a in _MDA.電影movies
+                    join b in _MDA.電影排行movieRanks on a.中文標題titleCht equals b.電影movie
+
+                    orderby b.排行編號rankId ascending
+                    select a.評分rate;
+
+            return Json(d);
+        }
+
+        public IActionResult getnewex()
+        {
+            var d = _MDA.電影圖片movieIimagesLists.Where(m => m.電影編號movie.上映日期releaseDate >= (DateTime.Now.AddDays(-7)) && m.電影編號movie.上映日期releaseDate <= (DateTime.Now.AddDays(7))).OrderBy(d => d.電影編號movie.上映日期releaseDate).Select(v => v.電影編號movie.期待度anticipation);
+
+            return Json(d);
+        }
+
+        public IActionResult getnewac()
+        {
+            var d = _MDA.電影圖片movieIimagesLists.Where(m => m.電影編號movie.上映日期releaseDate >= (DateTime.Now.AddDays(-7)) && m.電影編號movie.上映日期releaseDate <= (DateTime.Now.AddDays(7))).OrderBy(d => d.電影編號movie.上映日期releaseDate).Select(v => v.電影編號movie.評分rate);
+
+            return Json(d);
+        }
+
+        public IActionResult showexrankmovie()
+        {
+            var d = _MDA.電影圖片movieIimagesLists.Where(m => m.電影編號movie.上映日期releaseDate >= (DateTime.Now.AddDays(30))).OrderByDescending(d => d.電影編號movie.期待度anticipation).Select(v => v.電影編號movie.中文標題titleCht);
+
+            return Json(d);
+        }
+
+        public IActionResult showexrankposter()
+        {
+            var d = _MDA.電影圖片movieIimagesLists.Where(m => m.電影編號movie.上映日期releaseDate >= (DateTime.Now.AddDays(30))).OrderByDescending(d => d.電影編號movie.期待度anticipation).Select(v => v.圖片編號image.圖片雲端imageImdb);
+
+            return Json(d);
+        }
+        
+        public IActionResult showexrankmovienuber()
+        {
+            var d = _MDA.電影圖片movieIimagesLists.Where(m => m.電影編號movie.上映日期releaseDate >= (DateTime.Now.AddDays(30))).OrderByDescending(d => d.電影編號movie.期待度anticipation).Select(v => v.電影編號movie.電影編號movieId);
+
+            return Json(d);
+        }
+
+        public IActionResult getreeex()
+        {
+            var d = _MDA.電影圖片movieIimagesLists.Where(m => m.電影編號movie.上映日期releaseDate >= (DateTime.Now.AddDays(30))).OrderByDescending(d => d.電影編號movie.期待度anticipation).Select(v => v.電影編號movie.期待度anticipation);
+
+            return Json(d);
         }
     }
 }
