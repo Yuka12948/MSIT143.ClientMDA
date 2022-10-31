@@ -319,7 +319,12 @@ namespace ClientMDA.Controllers
 
         #region Ajax區
 
-
+        public IActionResult Coupon(string code)
+        {
+            string json = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            //優惠總表coupon coupon=this._dbContext.
+            return null;
+        }
 
 
         #endregion

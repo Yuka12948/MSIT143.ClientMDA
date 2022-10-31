@@ -52,8 +52,6 @@ namespace ClientMDA.ViewComponents
                 SelectSeatInfo= seatInfo,               
             };
 
-
-
             return info;
         }
 

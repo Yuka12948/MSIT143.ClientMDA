@@ -17,6 +17,10 @@
 
     string[] tcikstArr = Model.ticketInfo訂票資訊.Split('#');
     string movieInfotext = Model.MovieInfo電影介紹;
+    if(string.IsNullOrEmpty(movieInfotext))
+    {
+        movieInfotext = "無電影資訊";
+    }
     if (movieInfotext.Length >= 200)
     {
         movieInfotext = movieInfotext.Remove(200);
