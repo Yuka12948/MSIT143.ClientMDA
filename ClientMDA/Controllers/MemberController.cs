@@ -754,21 +754,36 @@ namespace ClientMDA.Controllers
                 {
                     return RedirectToAction("NotFormal");
                 }
-                return View();
+                return View(new CKeywordViewModel());
             }
         }
-        public IActionResult CommentCreate()
+        [HttpPost]
+        public IActionResult WriteComment(CWriteCommentViewModel vm)
         {
             var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
-            if (a == null)
-                return RedirectToAction("Login");
-            else
+            會員member mem = JsonSerializer.Deserialize<會員member>(a);
+            電影評論movieComment com = new 電影評論movieComment()
             {
-                會員member mem = JsonSerializer.Deserialize<會員member>(a);
-            }
-
-            return View();
+                公開等級編號publicId = vm.open,
+                屏蔽invisible = 0,
+                是否開放討論串oxFloor = vm.floor,
+                會員編號memberId = mem.會員編號memberId,
+                期待度anticipation = vm.anti,
+                觀影方式source = vm.way,
+                評分rate = vm.rate,
+                觀影日期viewingTime = DateTime.Parse(vm.watchDate),
+                發佈時間commentTime = DateTime.Now,
+                電影編號movieId = _MDAcontext.電影movies.Where(m => m.中文標題titleCht == vm.movieName || m.英文標題titleEng == vm.movieName).Select(m => m.電影編號movieId).FirstOrDefault(),
+                評論內容comments = vm.content,
+                評論標題commentTitle = vm.comTitle,
+            };
+            _MDAcontext.電影評論movieComments.Add(com);
+            _MDAcontext.SaveChanges();
+            var id = _MDAcontext.電影評論movieComments.Where(c => c.會員編號memberId == mem.會員編號memberId && c.評論標題commentTitle == vm.comTitle
+            /*&& c.發佈時間commentTime == com.發佈時間commentTime*/).FirstOrDefault();
+            return RedirectToAction("電影評論", "Comment", new { id = id.評論編號commentId });
         }
+
 
 
         #endregion

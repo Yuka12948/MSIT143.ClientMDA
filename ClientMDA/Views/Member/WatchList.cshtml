@@ -152,35 +152,35 @@
                     foreach (CMovieListViewModel list in Model)
                     {
                         string modalName = "Edit" + list.listId;
-                        <div class="content">
-                            <div class="card-title">
-                                <p>
-                                    @list.listName
-                                    <input type="hidden" name="listId" value="@list.listId" />
-                                    <button class="btn btn-link btn-sm edit" data-toggle="modal" data-target="#@modalName">
-                                        <i class="fa fa-pencil-square-o"></i>
-                                    </button>
-                                </p>
-                            </div>
-                            <div class="swiper-container">
-                                <div class="swiper-wrapper">
-                                    @{
-                                        foreach (var movie in list.myLists)
-                                        {
-                                            <div class="swiper-slide"
-                                                 style="background-image: url('@movie.moviePic')">
+                                <div class="content">
+                                    <div class="card-title">
+                                        <p>
+                                            @list.listName
+                                            <input type="hidden" name="listId" value="@list.listId" />
+                                            <button class="btn btn-link btn-sm edit" data-toggle="modal" data-target="#@modalName">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                            </button>
+                                        </p>
+                                    </div>
+                                    <div class="swiper-container">
+                                        <div class="swiper-wrapper">
+                                            @{
+                                                foreach (var movie in list.myLists)
+                                                {
+                                                    <div class="swiper-slide"
+                                                         style="background-image: url('@movie.moviePic')">
 
-                                                <a href="id=@movie.movieId">
-                                                    <p class="movie-card">@movie.movieTitle</p>
-                                                </a>
-                                            </div>
-                                        }
-                                    }
+                                                        <a href='@Url.Content($"~/movie/電影介紹?id={movie.movieId}")'>
+                                                            <p class="movie-card">@movie.movieTitle</p>
+                                                        </a>
+                                                    </div>
+                                                }
+                                            }
 
+                                        </div>
+                                    </div>
+                                    <div style="clear:both;"></div>
                                 </div>
-                            </div>
-                            <div style="clear:both;"></div>
-                        </div>
 
 
                         <!--edit modal-->

@@ -1560,3 +1560,8 @@ C:\Users\Student\Documents\MSIT143.ClientMDA1031night\ClientMDA\obj\Debug\net5.0
 C:\Users\Student\Documents\MSIT143.ClientMDA1031night\ClientMDA\obj\Debug\net5.0\ClientMDA.pdb
 C:\Users\Student\Documents\MSIT143.ClientMDA1031night\ClientMDA\obj\Debug\net5.0\ClientMDA.genruntimeconfig.cache
 C:\Users\Student\Documents\MSIT143.ClientMDA1031night\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\Components\OrderInfo\Default.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\HomePage\test3.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\HomePage\排行.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\HomePage\期待.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\HomePage\本周.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\Components\OrderInfo\Default.cshtml.g.cs
