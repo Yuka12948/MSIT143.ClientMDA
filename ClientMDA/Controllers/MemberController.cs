@@ -13,6 +13,7 @@ using System.Drawing;
 using System.Text;
 using MimeKit;
 using MailKit.Net.Smtp;
+using System.Text.RegularExpressions;
 
 namespace ClientMDA.Controllers
 {
@@ -512,15 +513,7 @@ namespace ClientMDA.Controllers
         {
             return View();
         }
-        public IActionResult test()
-        {
-            return View();
-        }
-        public IActionResult test2()
-        {
-            return View();
-        }
-
+       
         public IActionResult WishList() //followList
         {
             var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
@@ -720,14 +713,67 @@ namespace ClientMDA.Controllers
                 if (string.IsNullOrEmpty(model.txtKeyword))
                 {
                     datas = q;
+                    foreach (var item in datas)
+                    {
+                        item.評論內容comments = StripHTML(item.評論內容comments);
+                    }
                 }
                 else
+                {
                     datas = q.Where(c => c.評論標題commentTitle.Contains(model.txtKeyword));
+                    foreach (var item in datas)
+                    {
+                        item.評論內容comments = StripHTML(item.評論內容comments);
+                    }
+                }
                 return View(datas);
             }
         }
 
         public IActionResult CommentEdit(int? id)
+        {
+            if (id == null)
+                return RedirectToAction("CommentList");
+            var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            會員member mem = JsonSerializer.Deserialize<會員member>(a);
+            CWriteCommentViewModel com = new CWriteCommentViewModel();
+            var q = _MDAcontext.電影評論movieComments.Where(c => c.評論編號commentId == id).Select(c => new CWriteCommentViewModel
+            {
+                CommentId = (int)id,
+                MemberId = c.會員編號memberId,
+                comTitle = c.評論標題commentTitle,
+                movieName = _MDAcontext.電影movies.Where(m => m.電影編號movieId == c.電影編號movieId).Select(m => m.中文標題titleCht).FirstOrDefault(),
+                nick = mem.暱稱nickName,
+                watchDate = String.Format("{0:yyyy-MM-dd}", c.觀影日期viewingTime),
+                content = c.評論內容comments,
+                rate = (decimal)c.評分rate,
+                way = c.觀影方式source,
+                open = (int)c.公開等級編號publicId,
+                floor = (bool)c.是否開放討論串oxFloor == true ? 1 : 0,
+            }).FirstOrDefault();
+
+            return View(q);
+        }
+        [HttpPost]
+        public IActionResult CommentEdit(CWriteCommentViewModel vm)
+        {
+            var q = _MDAcontext.電影評論movieComments.First(c => c.評論編號commentId == vm.CommentId);
+            q.評論標題commentTitle = vm.comTitle;
+            q.評論內容comments = vm.content;
+            q.評分rate = vm.rate;
+            q.觀影日期viewingTime = DateTime.Parse(vm.watchDate);
+            q.觀影方式source = vm.way;
+            q.公開等級編號publicId = vm.open;
+            if (vm.floor == 1)
+                q.是否開放討論串oxFloor = true;
+            else
+                q.是否開放討論串oxFloor = false;
+
+            _MDAcontext.SaveChanges();
+
+            return RedirectToAction("電影評論", "Comment", new { id = vm.CommentId });
+        }
+        public IActionResult WriteComment()
         {
             if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)
                 return RedirectToAction("Login");
@@ -742,33 +788,21 @@ namespace ClientMDA.Controllers
                 return View();
             }
         }
-        public IActionResult WriteComment()
-        {
-            if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)
-                return RedirectToAction("Login");
-            else
-            {
-                var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
-                會員member mem = JsonSerializer.Deserialize<會員member>(a);
-                if (mem.正式會員formal == false)
-                {
-                    return RedirectToAction("NotFormal");
-                }
-                return View(new CKeywordViewModel());
-            }
-        }
         [HttpPost]
         public IActionResult WriteComment(CWriteCommentViewModel vm)
         {
             var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
             會員member mem = JsonSerializer.Deserialize<會員member>(a);
+            bool floor = true;
+            if (vm.floor != 1)
+                floor = false;
             電影評論movieComment com = new 電影評論movieComment()
             {
                 公開等級編號publicId = vm.open,
                 屏蔽invisible = 0,
-                是否開放討論串oxFloor = vm.floor,
+                是否開放討論串oxFloor = floor,
                 會員編號memberId = mem.會員編號memberId,
-                期待度anticipation = vm.anti,
+                //期待度anticipation=vm.anti,
                 觀影方式source = vm.way,
                 評分rate = vm.rate,
                 觀影日期viewingTime = DateTime.Parse(vm.watchDate),
@@ -779,15 +813,20 @@ namespace ClientMDA.Controllers
             };
             _MDAcontext.電影評論movieComments.Add(com);
             _MDAcontext.SaveChanges();
-            var id = _MDAcontext.電影評論movieComments.Where(c => c.會員編號memberId == mem.會員編號memberId && c.評論標題commentTitle == vm.comTitle
-            /*&& c.發佈時間commentTime == com.發佈時間commentTime*/).FirstOrDefault();
-            return RedirectToAction("電影評論", "Comment", new { id = id.評論編號commentId });
+            var id = _MDAcontext.電影評論movieComments.Where(c => c.會員編號memberId == mem.會員編號memberId && c.評論標題commentTitle == vm.comTitle)
+                .Select(c => c.評論編號commentId).FirstOrDefault();
+            return RedirectToAction("電影評論", "Comment", new { id = id });
         }
 
 
 
         #endregion
-
+        public string StripHTML(string input)
+        {
+            if (input == null)
+                return "";
+            return Regex.Replace(input, "<[a-zA-Z/].*?>", String.Empty);
+        }
         public IActionResult GetfullOrderInfo(int orderId) //訂單詳情
         {
             return ViewComponent("OrderInfo", orderId);

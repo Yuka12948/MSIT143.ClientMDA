@@ -122,7 +122,7 @@
                                 <td class="">@comm.發佈時間commentTime</td>
                                 <td>
                                     @Html.ActionLink("編輯", "CommentEdit", new { id = comm.評論編號commentId }) |
-                                    @Html.ActionLink("刪除", "Delete", "Product", new { id = comm.評論編號commentId }, new { onclick = "return confirm('確定刪除')" })
+                                    @Html.ActionLink("刪除", "CommentDelete", new { id = comm.評論編號commentId }, new { onclick = "return confirm('確定刪除')" })
                                 </td>
                             </tr>
 
