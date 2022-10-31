@@ -998,7 +998,9 @@ namespace ClientMDA.Models
 
                 entity.Property(e => e.票房boxOffice).HasColumnName("票房BoxOffice");
 
-                entity.Property(e => e.系列編號seriesId).HasColumnName("系列編號Series_ID");
+                entity.Property(e => e.系列編號seriesId)
+                    .HasColumnName("系列編號Series_ID")
+                    .HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.英文標題titleEng)
                     .IsRequired()
@@ -1193,6 +1195,18 @@ namespace ClientMDA.Models
                 entity.ToTable("電影排行MovieRank");
 
                 entity.Property(e => e.排行編號rankId).HasColumnName("排行編號Rank_ID");
+
+                entity.Property(e => e.周末票房boxOfficeWeekend)
+                    .HasMaxLength(50)
+                    .HasColumnName("周末票房BoxOffice_Weekend");
+
+                entity.Property(e => e.周次weeks)
+                    .HasMaxLength(50)
+                    .HasColumnName("周次Weeks");
+
+                entity.Property(e => e.累積票房boxOfficeGross)
+                    .HasMaxLength(50)
+                    .HasColumnName("累積票房BoxOffice_Gross");
 
                 entity.Property(e => e.電影movie)
                     .HasMaxLength(100)

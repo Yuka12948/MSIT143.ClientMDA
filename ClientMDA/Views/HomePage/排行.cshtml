@@ -141,9 +141,9 @@
                                                             <a href=@Url.Action("電影介紹","Movie", new {id= Model[i].電影編號Movie_ID})>@Html.DisplayFor(modelItem => Model[i].電影英Movie_En)</a>
                                                         </span>
                                                     </span>
-                                                    <span class="charts-list-span" id="i">1111111</span>
-                                                    <span class="charts-list-span" id="ii">2222222</span>
-                                                    <span class="charts-list-span" id="iii">3</span>
+                                                    <span class="charts-list-span" id="i">@Model[i].周末票房BoxOffice_Weekend (美元)</span>
+                                                    <span class="charts-list-span" id="ii">@Model[i].累積票房BoxOffice_Gross (美元)</span>
+                                                    <span class="charts-list-span" id="iii">@Model[i].周次Weeks</span>
                                                     <div class="charts-list-span" id="iiii">
                                                         <div class="ipc-watchlist-ribbon ipc-focusable ipc-watchlist-ribbon--m ipc-watchlist-ribbon--baseAlt ipc-watchlist-ribbon--onImage ipc-poster__watchlist-ribbon poster-card-watchlist-ribbon" aria-label="add to watchlist" role="button" tabindex="0" id="bookmarkboard">
                                                             <svg class="ipc-watchlist-ribbon__bg" @*width="500px" height="500px*@ color="red" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" role="presentation" id="BOOOKmarkboard">

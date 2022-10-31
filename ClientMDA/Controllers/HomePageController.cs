@@ -70,10 +70,11 @@ namespace ClientMDA.Controllers
                          電影編號Movie_ID = a.電影編號movieId,
                          電影Movie = b.電影movie,
                          電影英Movie_En = a.電影編號movie.英文標題titleEng,
-                         電影排名Movie_Rank = b.電影排名movieRank
-
+                         電影排名Movie_Rank = b.電影排名movieRank,
+                         周末票房BoxOffice_Weekend = b.周末票房boxOfficeWeekend,
+                         累積票房BoxOffice_Gross=b.累積票房boxOfficeGross,
+                         周次Weeks=b.周次weeks,
                      }).ToList();
-
             return View(s);
         }
 

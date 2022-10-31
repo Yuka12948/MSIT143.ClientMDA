@@ -2357,3 +2357,7 @@ img {
     .AddListBtn:hover {
         background-color: rgba(60,60,60,0.6);
     }
+
+    #i,#ii,#iii{
+        color:white;
+    }

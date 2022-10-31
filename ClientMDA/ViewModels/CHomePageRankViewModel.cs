@@ -12,6 +12,9 @@ namespace ClientMDA.ViewModels
         public string 電影英Movie_En { get; set; }
         public string 電影排名Movie_Rank { get; set; }
         public string 圖片雲端ImageIMDB { get; set; }
+        public string 周末票房BoxOffice_Weekend { get; set; }
+        public string 累積票房BoxOffice_Gross { get; set; }
+        public string 周次Weeks { get; set; }
 
 
         public int 會員編號Member_IDbook { get; set; }
