@@ -30,6 +30,10 @@
             color: #00b0f0;
             background-color: rgba(0,0,0,.075);
         }
+        .table-hover tbody tr:hover a{
+            color: #00b0f0;
+            background-color: rgba(0,0,0,.075);
+        }
     </style>
 }
 
@@ -108,7 +112,7 @@
                             <tr>
                                 <th scope="row" class="">@count</th>
                                 @*<td>@comm.電影編號movie.中文標題titleCht</td>*@
-                                <td class="">@comm.評論標題commentTitle</td>
+                                <td class=""><a href='@Url.Content($"~/comment/電影評論/{comm.評論編號commentId}")'>@comm.評論標題commentTitle</a></td>
                                 @{ if (comm.評論內容comments.Length > 50)
                                     {
                                         <td class="">@comm.評論內容comments.Substring(0, 50)...</td>
