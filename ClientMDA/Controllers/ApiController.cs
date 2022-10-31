@@ -192,12 +192,12 @@ namespace ClientMDA.Controllers
             }
             for (int i = 0; i < listNumbers.Count(); i++)
             {
-                var q3 = _MDA.電影圖片movieIimagesLists.AsEnumerable().Where(p => p.電影編號movieId == listNumbers[i]).Select(o=>o.圖片編號image.圖片雲端imageImdb).FirstOrDefault();
+                var q3 = _MDA.電影圖片movieIimagesLists.AsEnumerable().Where(p => p.電影編號movieId == listNumbers[i]).Select(o => o.圖片編號image.圖片雲端imageImdb).FirstOrDefault();
                 list.Add(q3);
             }
             for (int i = 0; i < listNumbers.Count(); i++)
             {
-                var q4 = _MDA.電影圖片movieIimagesLists.AsEnumerable().Where(o => o.電影編號movieId == listNumbers[i]).Select(p=>p.電影編號movie.電影編號movieId).FirstOrDefault().ToString();
+                var q4 = _MDA.電影圖片movieIimagesLists.AsEnumerable().Where(o => o.電影編號movieId == listNumbers[i]).Select(p => p.電影編號movie.電影編號movieId).FirstOrDefault().ToString();
                 list.Add(q4);
             }
             return Json(list);

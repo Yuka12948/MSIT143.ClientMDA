@@ -2354,7 +2354,7 @@
             for (let i = 0; i < rankstar.length; i++) {
                 rankstar[i].innerText = data8[i]
                 }
-            //片名+電影編號+全部超連結
+            //片名+電影編號+全部超連結+電影標題fontsize
             let ranktit = await fetch("@Url.Content("~/api/showrankmovie")")
             let data2 = await ranktit.json();
             let ranknum = await fetch("@Url.Content("~/api/showranknum")")
@@ -2367,6 +2367,12 @@
                 newtrailer[i].setAttribute('href', '/Theater/快定頁面測試/' + `${data3[i]}`)
                 newintro[i].setAttribute("onclick", `location.href='/Movie/電影介紹/${data3[i]}'`)
                 newbuy[i].setAttribute("onclick", `location.href='/Theater/快定頁面測試/${data3[i]}'`)
+                if (data2[i].length >= 9 && data2[i].length < 15) {
+                    ranktitle[i].style.fontSize = "1.13rem";
+                }
+                else if (data2[i].length >= 15) {
+                    ranktitle[i].style.fontSize = "0.98rem";
+                }
             }
             //判斷有沒有登錄，片單中的電影發亮+片單編號
             let r = await fetch("@Url.Content("~/api/getmemID")")
@@ -2392,7 +2398,7 @@
         //本周新片
         //篩選電影那邊看要不要過濾尚未上映的
         async function newmovie() {
-            //片名+電影編號
+            //片名+電影編號+電影標題fontsize
             let newmovie = await fetch("@Url.Content("~/api/shownewmovie")")
             let data = await newmovie.json();
             let newtit = await fetch("@Url.Content("~/api/shownewnum")");
@@ -2405,6 +2411,12 @@
                 weektrailer[i].setAttribute('href', '/Theater/快定頁面測試/' + `${data3[i]}`)
                 weekintro[i].setAttribute("onclick", `location.href='/Movie/電影介紹/${data3[i]}'`)
                 weekbuy[i].setAttribute("onclick", `location.href='/Theater/快定頁面測試/${data3[i]}'`)
+                if (data[i].length >= 9 && data[i].length < 15) {
+                    newtitle[i].style.fontSize = "1.13rem";
+                }
+                else if (data[i].length >= 15) {
+                    newtitle[i].style.fontSize = "0.98rem";
+                }
             }
             //海報
             let newimg = await fetch("@Url.Content("~/api/shownewposter")");
@@ -2445,7 +2457,7 @@
 
         //期待排行
         async function expmovieall() {
-            //片名+電影編號
+            //片名+電影編號+電影標題fontsize
             let expmovies = await fetch("@Url.Content("~/api/showexrankmovie")")
             let data = await expmovies.json()
             let getmemmovieid = await fetch('@Url.Content("~/api/showexrankmovienuber")')
@@ -2458,6 +2470,12 @@
                 exptrailer[i].setAttribute('href', '/Theater/快定頁面測試/' + `${data3[i]}`)
                 expintro[i].setAttribute("onclick", `location.href='/Movie/電影介紹/${data3[i]}'`)
                 expbuy[i].setAttribute("onclick", `location.href='/Theater/快定頁面測試/${data3[i]}'`)
+                if (data[i].length >= 9 && data[i].length <15) {
+                    exptitle[i].style.fontSize = "1.13rem";
+                }
+                else if (data[i].length >= 15) {
+                    exptitle[i].style.fontSize = "0.98rem";
+                }
             }
             //關掉評分按鈕+抓海報
             let listimg = await fetch("@Url.Content("~/api/showexrankposter")");
@@ -2527,7 +2545,7 @@
 
         //我的清單
         async function listmovie() {
-            //電影標題+電影編號
+            //電影標題+電影編號+電影標題fontsize
             let listmovie = await fetch("@Url.Content("~/api/showlistmovie")")
             let data = await listmovie.json();
             let listmoviem = await fetch("@Url.Content("~/api/showlistmovienem")")
@@ -2538,6 +2556,12 @@
                 listtitle[i].setAttribute('data', `${data6[i]}`)
                 listtitle[i].setAttribute('href', '/Movie/電影介紹/' + `${data6[i]}`)
                 listtrailer[i].setAttribute('href', '/Movie/電影介紹/' + `${data6[i]}`)
+                if (data[i].length >= 9 && data[i].length < 15) {
+                    listtitle[i].style.fontSize = "1.13rem";
+                }
+                else if (data[i].length >= 15) {
+                    listtitle[i].style.fontSize = "0.98rem";
+                }
             }
             //電影海報
             let listimg = await fetch("@Url.Content("~/api/showlistposter")");
@@ -2632,19 +2656,8 @@
             disableBtn();
             bannermovie();
             expmovieall()
-            font();
             //console.log($(ranktitle)[0])
         });
-
-        //改變標題字體大小 很像有問題
-        function font() {
-        const titles = document.querySelectorAll('h5 a');
-        for (let i = 0; i < titles.length; i++) {
-            if (titles[i].innerText.length >= 9) {
-                titles[i].style.fontSize = "1.1rem";
-                }
-            }
-        }
 
         //評分表單
         //評分表單的送出按鈕
