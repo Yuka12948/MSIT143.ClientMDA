@@ -77,8 +77,8 @@ namespace ClientMDA.Controllers
             (m => new CMovieViewModel
             {
                 movie = m,
-                //演員中文名字nameCht = m.電影主演casts,
-                分級級數ratingLevel = m.電影分級編號rating.分級級數ratingLevel,
+                    //演員中文名字nameCht = m.電影主演casts,
+                    分級級數ratingLevel = m.電影分級編號rating.分級級數ratingLevel,
                 分級圖片ratingImage = m.電影分級編號rating.分級圖片ratingImage,
                 系列名稱seriesName = m.系列編號series.系列名稱seriesName,
                 mCountryName = _MDAcontext.電影產地movieOrigins.Where(i => i.電影編號movieId == m.電影編號movieId)
