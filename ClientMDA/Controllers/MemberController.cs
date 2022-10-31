@@ -772,5 +772,10 @@ namespace ClientMDA.Controllers
 
 
         #endregion
+
+        public IActionResult GetfullOrderInfo(int orderId) //訂單詳情
+        {
+            return ViewComponent("OrderInfo", orderId);
+        }
     }
 }

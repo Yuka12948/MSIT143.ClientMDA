@@ -19,6 +19,7 @@
 
 @section Styles{
     <link href="~/css/Member/MemberMain.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
         .control-label {
             color: white;
@@ -31,6 +32,38 @@
 
         .content {
             margin: 0 auto;
+        }
+
+        .border-bottom-0 {
+            color: black !important;
+            border-block-color: grey;
+        }
+
+        .row {
+            text-align: center;
+        }
+
+
+        .seatrow .dot {
+            display: inline-block;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            margin: 0.2vw;
+            cursor: pointer;
+            background-color: black;
+        }
+
+        .seatrow div {
+            display: block;
+        }
+
+        .seatrow .selected {
+            background-color: deeppink;
+        }
+
+        .seatrow .none {
+            background-color: transparent;
         }
     </style>
 }
@@ -82,7 +115,7 @@
                         <th scope="col">訂單編號</th>
                         <th scope="col">訂單狀態</th>
                         <th scope="col">總金額</th>
-                        <th scope="col">客服</th>
+                        <th scope="col">查看詳情</th>
                     </tr>
                 </thead>
                 <tbody class="white">
@@ -97,14 +130,14 @@
                                 <td class="" id="orderId"><a>@order.orderId</a></td>
                                 <td class="">@order.status</td>
                                 <td class="">@order.total</td>
-                                <td class=""><a>聯繫客服</a></td>
+                                <td class="w3-button w3-green w3-large" value="@order.orderId"><a>訂單詳情</a></td>
                             </tr>
                         }
 
 
                     }
 
-                   
+
                 </tbody>
             </table>
             <!--end content-->
@@ -112,6 +145,32 @@
     </div>
 </div>
 
+<div id="id01" class="w3-modal">
+
+</div>
+
 @section Scripts{
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script>
+            $('.w3-green').click(function () {
+                let id = this.getAttribute('value')
+                console.log(id);
+                $('#id01').css('display', 'block');
+                CallAjax(id);
+
+        })
+
+        async function CallAjax(orderId) {
+        $("#id01").empty();
+           let _url = await '@Url.Action("GetfullOrderInfo", "Member")' + `?orderId=${orderId}`;
+                $.ajax({
+                    type: "GET",
+                    url: _url,
+                    success: function (result) {
+                        console.log(result);
+                        $('#id01').html(result);
+                    }});}
+
+
+    </script>
 }
