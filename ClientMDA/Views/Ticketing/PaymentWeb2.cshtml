@@ -491,7 +491,7 @@
                     success: function (result) {
                         console.log(result);
                         if (result == 'F') {
-                            window.alert("無此優惠");
+                            window.alert("無此優惠或你已使用過優惠");
                         }
                         else {
                             $('#coupontype').text(result['優惠名稱couponName']);

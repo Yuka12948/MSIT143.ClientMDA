@@ -2,7 +2,7 @@
 @model List<CAjaxCinemaTypeViewModel>
 @{
     var q = Model;
-    
+
 }
 
 @*選擇影廳*@
@@ -54,20 +54,22 @@
                 {
                     foreach (var screen in item.Info_list)
                     {
-                        string seatstr = $"{screen.seatCount}座位";
+                        string seatstr = $"{screen.seatCount}";
                         if (flag == 1)
                         {
 
                             <div class="screen ScreenPicker showscreen" data="@data" value="@screen.id">
                                 <i class="d-block pt-3 ">@screen.Start_time</i>
-                                <i class="d-block ">@seatstr</i>
+                                <i class="d-block " style="font-size:10px;color:lightcyan">@seatstr</i>
+                                <i class="d-block " style="font-size:10px;color:lightcyan">剩餘座位</i>
                             </div>
                         }
                         else
                         {
                             <div class="screen ScreenPicker" data="@data" value="@screen.id">
                                 <i class="d-block pt-3 ">@screen.Start_time</i>
-                                <i class="d-block ">@seatstr</i>
+                                <i class="d-block " style="font-size:10px;color:lightcyan">@seatstr</i>
+                                <i class="d-block " style="font-size:10px;color:lightcyan">剩餘座位</i>
                             </div>
                         }
                     }

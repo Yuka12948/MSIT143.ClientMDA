@@ -57,8 +57,13 @@
         .TicketCounter .count-value {
         }
 
-        .Ticket{
+        .Ticket {
+        }
 
+        .plus {
+        }
+
+        .sub {
         }
     </style>
 </head>
@@ -72,17 +77,18 @@
         <div class="row">
             <div class="col-lg-8 align-self-lg-start">
                 @{
+
                     foreach (var item in Model.ALLticketInfo)
                     {
                         string name = item.TicketName票種名稱;
-                        decimal price = item.TicketPrice票價;
+                        string price = $"NT${item.TicketPrice票價.ToString("0.#")}元";
                         int id = item.TicketID票價明細;
                         <div class="border border-5 border-light p-3 m-3">
                             <div class="row Ticket">
                                 <input type="hidden" value="@id" />
                                 <div class="col-3 ml-3"><h4>@name</h4></div>
-                                <div class="col-2 ml-3 text-center"><h4>@price</h4></div>
-                                <div class="col-5 TicketCounter text-right"><span class="fa-solid fa-plus"></span> <span class="pr-3 pl-3 count-value"> 0 </span> <span class="fa-solid fa-subtract"></span></div>
+                                <div class="col-3 ml-3 text-center"><h4>@price</h4></div>
+                                <div class="col-5 TicketCounter text-right"><label class="btn btn-secondary plus"><span class="fa-solid fa-plus"></span></label> <span class="pr-3 pl-3 count-value"> 0 </span> <label class="btn btn-secondary sub"><span class="fa-solid fa-subtract"></span></label></div>
                             </div>
                         </div>
                     }
@@ -134,7 +140,7 @@
     const maxcount =@MAXcount;
     let currentValue = 0;
 
-    $('.fa-plus').click(function () {
+    $('.plus').click(function () {
         let text = $(event.currentTarget).parents('.TicketCounter').find('span')[1].textContent;
         let value = parseInt(text);
         if (value == maxcount) {
@@ -146,7 +152,7 @@
         }
     })
 
-    $('.fa-subtract').click(function () {
+    $('.sub').click(function () {
         let text = $(event.currentTarget).parents('.TicketCounter').find('span')[1].textContent;
         let value = parseInt(text);
         if (value == 0) {

@@ -68,8 +68,8 @@
 
     .seatrow .dot {
         display: inline-block;
-        width: 13px;
-        height: 13px;
+        width: 15px;
+        height: 15px;
         border-radius: 50%;
         margin: 0.2vw;
         cursor: pointer;
@@ -92,6 +92,12 @@
 
     .seatrow .saled {
         background-color: rgb(100, 100, 100);
+    }
+
+    .seatrow .love {
+        background-image: url("/images/Ticketing/love.jpg");
+        background-position: center;
+        background-size: contain;
     }
 
     .seatMap {
@@ -150,7 +156,6 @@
 <div id="preloder">
     <div class="loader"></div>
 </div>
-
 <section>
     <input type="hidden" value="@count" id="countValue" />
     <div class="movieInfo-library">
@@ -173,6 +178,7 @@
                 <div class="dot selected"></div><div class="sampleName">您的座位</div>
                 <div class="dot green2"></div><div class="sampleName">未售出</div>
                 <div class="dot saled"></div><div class="sampleName">已售出</div>
+                <div class="dot love"></div><div class="sampleName">愛心座位</div>
                 <div class="screen">銀幕</div>
             </div>
         </div>
@@ -191,19 +197,23 @@
                             }
                             else if (seat.Contains("||"))
                             {
-                                @:</div></div><div>
+                            @:</div></div><div>
                                 @:<div class="seatrow">
+                                }
+                                else if (seat.Contains("saled"))
+                                {
+                                    @:<div class="dot saled"></div>
+                                }
+                                else if (seat.Contains("love"))
+                                {
+                                    @:<div class="dot love"></div>
+                                }
+                                else if (seat != "")
+                                {
+                                    @:<div class="dot green" data="@seat"></div>
+                                }
                             }
-                            else if (seat.Contains("saled"))
-                            {
-                                @:<div class="dot saled"></div>
-                            }
-                            else if (seat != "")
-                            {
-                                @:<div class="dot green" data="@seat"></div>
-                            }
-                        }
-                     @:</div></div>
+                        @:</div></div>
             }
             <form method="post" action="~/Ticketing/SelectTicket">
                 <div class="main-button" style="color:#e75e8d">
@@ -289,7 +299,7 @@
         }
         seatInfo.value = seatArr.join('#');
         console.log(seatInfo.value);
-        
+
     })
 
 

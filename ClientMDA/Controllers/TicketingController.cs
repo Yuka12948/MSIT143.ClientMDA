@@ -174,6 +174,10 @@ namespace ClientMDA.Controllers
             payview.MovieVersion電影版本 = this._dbContext.電影代碼movieCodes.Where(cd => cd.電影代碼編號movieCodeId == payment1.MovieCode).Select(l => l.語言編號language.語言名稱languageName).FirstOrDefault();
             payview.MovieInfo電影介紹 = this._dbContext.電影movies.Where(m => m.電影編號movieId == payment1.MovieID).Select(m => m.劇情大綱plot).FirstOrDefault();
             payview.Alltciket = fn_票種字串轉換List(payment1.Ticketstring);
+
+            string address = this._dbContext.電影院theaters.FirstOrDefault(t => t.電影院編號theaterId == payment1.theaterID).地址address;
+            ViewBag.addressInfo = fn_地址轉經緯度(address);
+
             return View(payview);
         }
 
@@ -199,6 +203,17 @@ namespace ClientMDA.Controllers
 
             HttpContext.Session.SetString(CDictionary.SK_ORDER_INFO, "");
 
+            string jsoncoupon = HttpContext.Session.GetString(CDictionary.SK_使用的優惠券);
+            if (!string.IsNullOrEmpty(jsoncoupon))
+            {
+                優惠總表coupon coupon = JsonSerializer.Deserialize<優惠總表coupon>(jsoncoupon);
+                優惠明細couponList couponlist = this._dbContext.優惠明細couponLists
+                                                  .Where(c => c.會員編號memberId == member.會員編號memberId && c.優惠編號couponId == coupon.優惠編號couponId)
+                                                  .FirstOrDefault();
+                couponlist.是否使用優惠oxCouponUsing = true;
+                this._dbContext.SaveChanges();
+                HttpContext.Session.SetString(CDictionary.SK_使用的優惠券, "");
+            }
             return View();
         }
 
@@ -393,6 +408,11 @@ namespace ClientMDA.Controllers
             return View();
         }
 
+        public void fn_退票座位回歸可選(int orderID)
+        {
+
+        }
+
 
         #endregion
 
@@ -569,7 +589,8 @@ namespace ClientMDA.Controllers
 
         public string fn_地址轉經緯度(string address)
         {
-            string url = String.Format("http://maps.google.com/maps/api/geocode/json?sensor=false&address={0}", address);
+            string _url = $"https://maps.googleapis.com/maps/api/geocode/json?address={address}&key=AIzaSyAiIO_bYPUlozPgpWf3KXtdgZI_xmHLhDg";
+            string url = String.Format(_url);
             string result = String.Empty;
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
             using (var response = request.GetResponse())
@@ -803,6 +824,16 @@ namespace ClientMDA.Controllers
             return nums;
         }
 
+
+        #endregion
+
+
+        #region 外來者
+
+        public IActionResult makeseat()
+        {
+            return View();
+        }
 
         #endregion
     }
