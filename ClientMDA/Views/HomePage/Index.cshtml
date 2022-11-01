@@ -2556,11 +2556,13 @@
                 listtitle[i].setAttribute('data', `${data6[i]}`)
                 listtitle[i].setAttribute('href', '/Movie/電影介紹/' + `${data6[i]}`)
                 listtrailer[i].setAttribute('href', '/Movie/電影介紹/' + `${data6[i]}`)
-                if (data[i].length >= 9 && data[i].length < 15) {
-                    listtitle[i].style.fontSize = "1.13rem";
-                }
-                else if (data[i].length >= 15) {
-                    listtitle[i].style.fontSize = "0.98rem";
+                if (data[i] != null) {
+                    if (data[i].length >= 9 && data[i].length < 15) {
+                        listtitle[i].style.fontSize = "1.13rem";
+                    }
+                    else if (data[i].length >= 15) {
+                        listtitle[i].style.fontSize = "0.98rem";
+                    }
                 }
             }
             //電影海報
