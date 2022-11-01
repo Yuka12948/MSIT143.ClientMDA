@@ -12,7 +12,7 @@ namespace ClientMDA.ViewModels
         public string targetName { get; set; }
         public int connectId { get; set; }
         public string followMemName { get; set; }
-        public List<string> comments { get; set; }
+        public List<CWriteCommentViewModel> comments { get; set; }
         public string followComTitle { get; set; }
         public List<string> replies { get; set; }
 

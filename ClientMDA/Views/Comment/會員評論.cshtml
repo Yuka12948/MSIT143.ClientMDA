@@ -32,7 +32,8 @@
                 <span class="text-white-50 mb-0">此用戶觀看過N部電影</span>*@
             <span class="text-white-50 mb-0">4則評論 ‧ 7人追蹤</span><br />
             <div class="membtn">
-                <button class="btn btn-info btn-sm">追蹤會員</button>
+                @Html.ActionLink("追蹤會員", "follow會員", new { followMid = 1},new { @class= "btn btn-info btn-sm", id="followMem"}) |
+                @*<button class="btn btn-info btn-sm" id="follow">追蹤會員</button>*@
                 <button class="btn btn-danger btn-sm">檢舉</button>
             </div>
         </div>
@@ -66,7 +67,6 @@
                     </div>
                 </dd>
                 <!--#endregion 左側文章 end-->
-
                 <!--#region 右側文章 start-->
                 <dd class="pos-right clearfix">
                     <div class="circ"></div>
@@ -86,7 +86,6 @@
                     </div>
                 </dd>
                 <!--#endregion 右側文章 end-->
-
                 <!--月份 2-->
                 <dt>Jan 2021</dt>
 
@@ -109,7 +108,6 @@
                     </div>
                 </dd>
                 <!--#endregion 左側文章 end-->
-
                 <!--右側文章 start-->
                 <dd class="pos-right clearfix">
                     <div class="circ"></div>
@@ -151,8 +149,14 @@
 
     </script>
     @*<script src="jquery.min.js"></script>
-      <script src="bootstrap.min.js"></script>*@
+        <script src="bootstrap.min.js"></script>*@
     <script src="~/js/Comment/jquery.eeyellow.Timeline.js"></script> @*我的評論時間軸*@
 
+    <script>
+        //const follow = document.querySelector('#followMem')
+        //follow.addEventListener('click', () => {
+
+        //})
+    </script>
 
 

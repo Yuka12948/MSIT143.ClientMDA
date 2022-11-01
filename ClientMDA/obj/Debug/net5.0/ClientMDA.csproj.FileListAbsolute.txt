@@ -2272,3 +2272,6 @@ C:\Users\Student\Documents\MSIT143.ClientMDA1101mor\ClientMDA\obj\Debug\net5.0\C
 C:\Users\Student\Documents\MSIT143.ClientMDA1101mor\ClientMDA\obj\Debug\net5.0\ref\ClientMDA.dll
 C:\Users\Student\Documents\MSIT143.ClientMDA1101mor\ClientMDA\obj\Debug\net5.0\ClientMDA.pdb
 C:\Users\Student\Documents\MSIT143.ClientMDA1101mor\ClientMDA\obj\Debug\net5.0\ClientMDA.genruntimeconfig.cache
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\HomePage\Components\排行\Default.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\HomePage\Components\期待\Default.cshtml.g.cs
+C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\HomePage\Components\本周\Default.cshtml.g.cs

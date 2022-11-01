@@ -1,9 +1,11 @@
 ﻿using ClientMDA.Models;
 using ClientMDA.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ClientMDA.Controllers
@@ -61,6 +63,47 @@ namespace ClientMDA.Controllers
         public IActionResult 會員評論() //會員個別評論頁面
         {
             return View();
+        }
+
+        public IActionResult follow會員(int followMid) //點按追蹤會員
+        {
+            string user = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            會員member mem = JsonSerializer.Deserialize<會員member>(user);
+            if (string.IsNullOrEmpty(user))
+            {
+                HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, $"~/Comment/會員評論/{followMid}");
+                return Redirect("~/Member/Login");
+            }
+            我的追蹤清單myFollowList follow = new 我的追蹤清單myFollowList()
+            {
+                會員編號memberId=mem.會員編號memberId,
+                對象targetId=1, //會員
+                追讚倒編號actionTypeId=0, //追蹤
+                連接編號connectId= followMid,
+            };
+            _MDAcontext.我的追蹤清單myFollowLists.Add(follow);
+            _MDAcontext.SaveChanges();
+            return RedirectToAction("會員評論", new { id= followMid });
+        }
+        public IActionResult follow評論(int followCid) //點按追蹤評論
+        {
+            string user = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            會員member mem = JsonSerializer.Deserialize<會員member>(user);
+            if (string.IsNullOrEmpty(user))
+            {
+                HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, $"~/Comment/電影評論/{followCid}");
+                return Redirect("~/Member/Login");
+            }
+            我的追蹤清單myFollowList follow = new 我的追蹤清單myFollowList()
+            {
+                會員編號memberId = mem.會員編號memberId,
+                對象targetId = 2, //評論
+                追讚倒編號actionTypeId = 0, //追蹤
+                連接編號connectId = followCid,
+            };
+            _MDAcontext.我的追蹤清單myFollowLists.Add(follow);
+            _MDAcontext.SaveChanges();
+            return RedirectToAction("電影評論", new { id = followCid });
         }
     }
 }
