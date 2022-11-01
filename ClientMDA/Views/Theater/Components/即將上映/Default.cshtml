@@ -33,12 +33,12 @@
                 <div class="coming">
                     上映日期<span>@Model[i].上映日期releaseDate.Value.ToString("D")</span>
                 </div>
-                <div class="title" title="阮玲玉">
+                <div class="title" title="@Model[i].中文標題titleCht">
                     <input class="mov" type="hidden" value="@Model[i].電影編號movieId" />
 
                     @Model[i].中文標題titleCht
                 </div>
-                <div class="en" title="Ruan Ling Yu">
+                <div class="en" title="@Model[i].英文標題titleEng">
                     @Model[i].英文標題titleEng
                 </div>
                 <div class="grade">
