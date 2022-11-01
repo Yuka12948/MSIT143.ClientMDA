@@ -532,7 +532,10 @@ namespace ClientMDA.Controllers
                     comments = _MDAcontext.電影評論movieComments
                         .Where(m => m.會員編號memberId == f.連接編號connectId)
                         .OrderByDescending(c => c.發佈時間commentTime)
-                        .Select(c => c.評論標題commentTitle)
+                        .Select(c => new CWriteCommentViewModel {
+                        CommentId=c.評論編號commentId,
+                        comTitle=c.評論標題commentTitle,
+                        })
                         .Take(3).ToList(),
                     followComTitle = _MDAcontext.電影評論movieComments.Where(c => c.評論編號commentId == f.連接編號connectId).Select(c => c.評論標題commentTitle).FirstOrDefault(),
                     replies = _MDAcontext.回覆樓數floors

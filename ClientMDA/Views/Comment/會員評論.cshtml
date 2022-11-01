@@ -1,4 +1,16 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http
+@using System.Text.Json;
+@inject IHttpContextAccessor Accessor
+@{
+    var a = "";
+    會員member mem = null;
+    if (Accessor.HttpContext.Session.Keys.Contains(ClientMDA.Models.CDictionary.SK_LOGINED_USER))
+    {
+        a = Accessor.HttpContext.Session.GetString(ClientMDA.Models.CDictionary.SK_LOGINED_USER);
+        mem = JsonSerializer.Deserialize<會員member>(a);
+    }
+
+}
 @{
     ViewData["Title"] = "會員評論";
 }
@@ -32,8 +44,50 @@
                 <span class="text-white-50 mb-0">此用戶觀看過N部電影</span>*@
             <span class="text-white-50 mb-0">4則評論 ‧ 7人追蹤</span><br />
             <div class="membtn">
-                <button class="btn btn-info btn-sm">追蹤會員</button>
-                <button class="btn btn-danger btn-sm">檢舉</button>
+                @Html.ActionLink("追蹤會員", "follow會員", new { followMid = 1 }, new { @class = "btn btn-info btn-sm", id = "followMem" }) |
+                @Html.ActionLink("取消追蹤", "unfollow會員", new { followMid = 1 }, new { @class = "btn btn-info btn-sm", id = "followMem" }) |
+                @*<button class="btn btn-info btn-sm" id="follow">追蹤會員</button>*@
+                <!-- Button trigger modal -->
+                <button type="button" id="btnReport" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#reportModal">檢舉</button>
+                @{
+                    if (mem != null)
+                    {
+                        <!-- Modal -->
+                        <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                @using (Html.BeginForm("Report檢舉", "Comment"))
+                                {
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle" style="color:black">檢舉</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body" style="color:black">
+                                            <!--modal content start-->
+                                            <input type="hidden" name="會員編號Member_ID" value="@mem.會員編號memberId" />
+                                            <input type="hidden" name="對象Target_ID" value="1" />
+                                            <input type="hidden" name="追讚倒編號ActionType_ID" value="3" />
+                                            <input type="hidden" name="連接編號Connect_ID" value="1" />
+                                            <input type="hidden" name="" value="" />
+                                            <div><label>檢舉人</label><input type="text" readonly value="@mem.會員電話cellphone" /></div>
+                                            <div><label>檢舉對象</label><input type="text" readonly value="Yuka" /></div>
+                                            <div><label>檢舉理由</label><textarea cols="50" name="檢舉理由ReportReason"></textarea></div>
+                                            <!--modal content end-->
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                            <button type="submit" class="btn btn-primary" id="submitAddList">確定</button>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <!--modal end-->
+                    }
+                }
+
             </div>
         </div>
     </div>
@@ -66,7 +120,6 @@
                     </div>
                 </dd>
                 <!--#endregion 左側文章 end-->
-
                 <!--#region 右側文章 start-->
                 <dd class="pos-right clearfix">
                     <div class="circ"></div>
@@ -86,7 +139,6 @@
                     </div>
                 </dd>
                 <!--#endregion 右側文章 end-->
-
                 <!--月份 2-->
                 <dt>Jan 2021</dt>
 
@@ -109,7 +161,6 @@
                     </div>
                 </dd>
                 <!--#endregion 左側文章 end-->
-
                 <!--右側文章 start-->
                 <dd class="pos-right clearfix">
                     <div class="circ"></div>
@@ -139,20 +190,44 @@
         </div>
     </body>
 
-    <script>
-        $('.VivaTimeline').vivaTimeline();
-        $('.VivaTimeline').vivaTimeline({
-            carousel: true
-        });
-        $('.VivaTimeline').vivaTimeline({
-            carousel: true,
-            carouselTime: 3000
-        });
+    @section Scripts{
+        <script>
+            $('.VivaTimeline').vivaTimeline();
+            $('.VivaTimeline').vivaTimeline({
+                carousel: true
+            });
+            $('.VivaTimeline').vivaTimeline({
+                carousel: true,
+                carouselTime: 3000
+            });
 
-    </script>
-    @*<script src="jquery.min.js"></script>
-      <script src="bootstrap.min.js"></script>*@
-    <script src="~/js/Comment/jquery.eeyellow.Timeline.js"></script> @*我的評論時間軸*@
+        </script>
+        @*<script src="jquery.min.js"></script>
+            <script src="bootstrap.min.js"></script>*@
+        <script src="~/js/Comment/jquery.eeyellow.Timeline.js"></script> @*我的評論時間軸*@
+
+        <script>
+            //const follow = document.querySelector('#followMem')
+            //follow.addEventListener('click', () => {
+
+            //})
+
+
+
+        </script>
+        <script>
+            window.onload=function () {
+                if ('@a' == "") {
+                    document.querySelector("#btnReport").addEventListener('click', () => {
+                        @{Accessor.HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, "~/Comment/會員評論/1");}
+                        window.location = '@Url.Content("~/member/login")'
+                    })
+                }
+            }
+
+        </script>
+        
+    }
 
 
 
