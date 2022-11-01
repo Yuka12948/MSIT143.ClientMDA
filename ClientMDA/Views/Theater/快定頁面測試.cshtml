@@ -48,7 +48,7 @@
                     <div class="MovieTimeWrapper--77br0i cjKQBC">
                         <div class="wrapper">
                             <div class="location">
-                                <span id="地區名稱" style="color:black">請選擇地區</span><svg class="icon" id="地區" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
+                                <span id="地區名稱" style="color:black">今日場次</span><svg class="icon" id="地區" height="1em" preserveAspectRatio="xMidYMid meet" style="vertical-align: middle;" viewBox="0 0 40 40" width="1em">
                                     <g>
                                         <path d="m31.4 15.7q0 0.6-0.5 1l-10 10q-0.4 0.4-1 0.4t-1-0.4l-10-10q-0.4-0.4-0.4-1t0.4-1 1-0.4h20q0.6 0 1 0.4t0.5 1z"></path>
                                     </g>
@@ -233,6 +233,7 @@
 
 
 
+                                        @await Component.InvokeAsync("時間", new { id = Model.電影編號movieId })
 
 
 
@@ -257,6 +258,7 @@
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 @*footer樣式*@
 <script>
+    const areaCH = document.querySelector("#地區選擇")
     $("#地區").click(function () {
         if (areaCH.style.display == "inline") { areaCH.style.display = "none" }
         else
@@ -369,7 +371,7 @@
     $(".dateHidden .datebox").click(function () {
         $(this).removeClass("checked").siblings().removeClass("checked").end().addClass("checked");
         var 地區 = document.querySelector("#地區名稱").innerHTML
-        if (地區 != "請選擇地區") {
+        
                 var 電影id = $("#movidID").val()
                 var 時間=$(".checked input").val()
                 console.log(電影id)
@@ -380,7 +382,6 @@
                 $(".time span").attr("style", "background-color:rgb(0, 179, 65)")
 
 
-        }
 
 
 
