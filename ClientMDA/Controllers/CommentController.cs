@@ -59,21 +59,40 @@ namespace ClientMDA.Controllers
 
             return View(datas);
         }
-
+        
         public IActionResult 會員評論() //會員個別評論頁面
         {
             return View();
         }
+        #region follow report
+        [HttpPost]
+        public IActionResult Report檢舉(我的追蹤清單myFollowList vm) 
+        {
 
-        public IActionResult follow會員(int followMid) //點按追蹤會員
+            我的追蹤清單myFollowList follow = new 我的追蹤清單myFollowList()
+            {
+                會員編號memberId = vm.會員編號memberId,
+                對象targetId = vm.對象targetId, 
+                追讚倒編號actionTypeId = vm.追讚倒編號actionTypeId, 
+                連接編號connectId = vm.連接編號connectId,
+                檢舉理由reportReason=vm.檢舉理由reportReason,
+                處理狀態status=0,
+            };
+            _MDAcontext.我的追蹤清單myFollowLists.Add(follow);
+            _MDAcontext.SaveChanges();
+            //ViewBag.txtSuccess = "s";
+            return Redirect($"~/Comment/會員評論/{vm.連接編號connectId}");
+        }
+            public IActionResult follow會員(int followMid) //點按追蹤會員
         {
             string user = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
-            會員member mem = JsonSerializer.Deserialize<會員member>(user);
+            
             if (string.IsNullOrEmpty(user))
             {
                 HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, $"~/Comment/會員評論/{followMid}");
                 return Redirect("~/Member/Login");
             }
+            會員member mem = JsonSerializer.Deserialize<會員member>(user);
             我的追蹤清單myFollowList follow = new 我的追蹤清單myFollowList()
             {
                 會員編號memberId=mem.會員編號memberId,
@@ -84,6 +103,27 @@ namespace ClientMDA.Controllers
             _MDAcontext.我的追蹤清單myFollowLists.Add(follow);
             _MDAcontext.SaveChanges();
             return RedirectToAction("會員評論", new { id= followMid });
+        }
+        public IActionResult unfollow會員(int followMid) //點按追蹤會員
+        {
+            string user = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            會員member mem = JsonSerializer.Deserialize<會員member>(user);
+            if (string.IsNullOrEmpty(user))
+            {
+                HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, $"~/Comment/會員評論/{followMid}");
+                return Redirect("~/Member/Login");
+            }
+            我的追蹤清單myFollowList follow = new 我的追蹤清單myFollowList()
+            {
+                會員編號memberId = mem.會員編號memberId,
+                對象targetId = 1, //會員
+                追讚倒編號actionTypeId = 0, //追蹤
+                連接編號connectId = followMid,
+            };
+            _MDAcontext.我的追蹤清單myFollowLists.Add(follow);
+            _MDAcontext.SaveChanges();
+            //return RedirectToAction("會員評論", new { id = followMid });
+            return Content("1", "text/plain");
         }
         public IActionResult follow評論(int followCid) //點按追蹤評論
         {
@@ -105,5 +145,6 @@ namespace ClientMDA.Controllers
             _MDAcontext.SaveChanges();
             return RedirectToAction("電影評論", new { id = followCid });
         }
+        #endregion
     }
 }
