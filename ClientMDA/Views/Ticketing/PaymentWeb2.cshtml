@@ -121,26 +121,23 @@
             cursor: pointer;
         }
 
-    .paypal{
-
+    .paypal {
     }
 
     .credit {
     }
 
     .opayment {
-
     }
 
-.box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
-}
-
+    .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+    }
 </style>
 
 
@@ -173,22 +170,22 @@
                         <li class="list-group-item d-flex justify-content-between bg-light">
                             <div class="text-success">
                                 <h6 class="my-0">優惠折扣</h6>
-                                <small>折扣內容資訊</small>
+                                <small id="coupontype">折扣內容資訊</small>
                             </div>
-                            <span class="text-success">$0</span>
+                            <span class="text-success" id="discount">$0</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
                             <span style="color:gray!important">總價(NT$)</span>
-                            <strong style="color:black!important">$@totalPrice.ToString("0.00#")</strong>
+                            <strong style="color:black!important" id="totalprice">$@totalPrice.ToString("0.00#")</strong>
                         </li>
                     </ul>
 
-                    <form class="card p-2">
+                    <div class="card p-2">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="優惠碼">
-                            <button type="submit" class="btn btn-secondary">輸入優惠碼</button>
+                            <input type="text" class="form-control" placeholder="優惠碼" id="coupontext">
+                            <button type="button" class="btn btn-secondary" id="couponbtn">輸入優惠碼</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
                 <div class="col-md-7 col-lg-8">
                     <h4 class="mb-3">帳單地址</h4>
@@ -349,134 +346,163 @@
     </div>
 </div>
 
-<script>
-    (function ($) {
-        $(window).on('load', function () {
-            $(".loader").fadeOut();
-            $("#preloder").delay(20).fadeOut("slow");
-        });
-    })(jQuery);
+@section Scripts{
+    <script>
+        let total =@totalPrice;
+            (function ($) {
+            $(window).on('load', function () {
+                $(".loader").fadeOut();
+                $("#preloder").delay(20).fadeOut("slow");
+            });
+        })(jQuery);
 
-    const modal = document.getElementById("myModal");
-    const close = document.getElementById("closeModal");
-    const code = document.getElementById("ckeckcode");
-    const form = document.getElementById("formInfo");
-    const view = document.getElementById("all");
-    const preloader = document.getElementById("preloder");
+        const modal = document.getElementById("myModal");
+        const close = document.getElementById("closeModal");
+        const code = document.getElementById("ckeckcode");
+        const form = document.getElementById("formInfo");
+        const view = document.getElementById("all");
+        const preloader = document.getElementById("preloder");
 
-    $('.opayment').hide();
-    $('.paypal').hide();
+        $('.opayment').hide();
+        $('.paypal').hide();
 
-    (() => {
-        'use strict'
-        const forms = document.querySelectorAll('.needs-validation')
+        (() => {
+            'use strict'
+            const forms = document.querySelectorAll('.needs-validation')
 
-        Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
-                if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                }
-                else {
-                    event.preventDefault()
-                    modal.style.display = "block";
-                    let checkemail = email.value
-                    let url = "/Ticketing/sendmail" + `?email=${checkemail}`;
-                    CallAjax(url);
-                }
-                form.classList.add('was-validated')
-            }, false)
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    else {
+                        event.preventDefault()
+                        modal.style.display = "block";
+                        let checkemail = email.value
+                        let url = "/Ticketing/sendmail" + `?email=${checkemail}`;
+                        CallAjax(url);
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+
+        close.addEventListener('click', function () {
+            modal.style.display = "none";
         })
-    })()
-
-    close.addEventListener('click', function () {
-        modal.style.display = "none";
-    })
 
 
-    let firstName = document.getElementById('firstName');
-    let lastName = document.getElementById('lastName');
-    let username = document.getElementById('username');
-    let email = document.getElementById('email');
-    let address = document.getElementById('address');
-    let ccnumber = document.getElementById('cc-number');
-    let ccexpirationM = document.getElementById('cc-expirationM');
-    let ccexpirationY = document.getElementById('cc-expirationY');
-    let cccvv = document.getElementById('cc-cvv');
-    let address2 = document.getElementById('address2');
+        let firstName = document.getElementById('firstName');
+        let lastName = document.getElementById('lastName');
+        let username = document.getElementById('username');
+        let email = document.getElementById('email');
+        let address = document.getElementById('address');
+        let ccnumber = document.getElementById('cc-number');
+        let ccexpirationM = document.getElementById('cc-expirationM');
+        let ccexpirationY = document.getElementById('cc-expirationY');
+        let cccvv = document.getElementById('cc-cvv');
+        let address2 = document.getElementById('address2');
 
-    $('#Demo').click(() => {
-        console.log('click');
-        firstName.value = '王';
-        lastName.value = '小名';
-        username.value = '曉華';
-        email.value = 'annlan08@gmail.com'
-        address.value = '台北市大安區復興南路一段';
-        ccnumber.value = '5882-5646-5465-6666';
-        ccexpirationM.value = '12';
-        ccexpirationY.value = '2035';
-        cccvv.value = '666';
-        address2.value = '台北市'
-    })
+        $('#Demo').click(() => {
+            console.log('click');
+            firstName.value = '王';
+            lastName.value = '小名';
+            username.value = '曉華';
+            email.value = 'annlan08@gmail.com'
+            address.value = '台北市大安區復興南路一段';
+            ccnumber.value = '5882-5646-5465-6666';
+            ccexpirationM.value = '12';
+            ccexpirationY.value = '2035';
+            cccvv.value = '666';
+            address2.value = '台北市'
+        })
 
-    $('#modalClose').click(() => {
-        modal.style.display = "none";
-    })
+        $('#modalClose').click(() => {
+            modal.style.display = "none";
+        })
 
-    $('#modalRe').click(() => {
-        let checkemail = email.value
-        let url = "/Ticketing/sendmail" + `?email=${checkemail}`;
-        CallAjax(url);
-    })
+        $('#modalRe').click(() => {
+            let checkemail = email.value
+            let url = "/Ticketing/sendmail" + `?email=${checkemail}`;
+            CallAjax(url);
+        })
 
-    $('#modalOK').click(() => {
-        console.log('click');
-        modal.style.display = "none";
-        let checkcode = code.value
-        let url = "/Ticketing/checkcode" + `?code=${checkcode}`;
-        CallAjaxCheck(url);
-    })
+        $('#modalOK').click(() => {
+            console.log('click');
+            modal.style.display = "none";
+            let checkcode = code.value
+            let url = "/Ticketing/checkcode" + `?code=${checkcode}`;
+            CallAjaxCheck(url);
+        })
 
-    async function CallAjax(url) {
-        let response = await fetch(`${url}`)
-    }
-
-    async function CallAjaxCheck(url) {
-        let response = await fetch(`${url}`)
-        let data = await response.json();
-        if (data == 1) {
-            view.style.display = "none";
-            preloader.style.display = "block";
-            form.submit();
-
+        async function CallAjax(url) {
+            let response = await fetch(`${url}`)
         }
-        else {
-            window.alert("驗證碼錯誤");
+
+        async function CallAjaxCheck(url) {
+            let response = await fetch(`${url}`)
+            let data = await response.json();
+            if (data == 1) {
+                view.style.display = "none";
+                preloader.style.display = "block";
+                form.submit();
+
+            }
+            else {
+                window.alert("驗證碼錯誤");
+            }
+            console.log(data);
         }
-        console.log(data);
-    }
 
-    $('#credit').click(function () {
-        $('.credit').show();
-        $('.opayment').hide();
-        $('.paypal').hide();
-    })
+        $('#credit').click(function () {
+            $('.credit').show();
+            $('.opayment').hide();
+            $('.paypal').hide();
+        })
 
-    $('#debit').click(function () {
-        $('.credit').hide();
-        $('.opayment').show();
-        $('.paypal').hide();
-    })
+        $('#debit').click(function () {
+            $('.credit').hide();
+            $('.opayment').show();
+            $('.paypal').hide();
+        })
 
-    $('#paypal').click(function () {
-        $('.credit').hide();
-        $('.opayment').hide();
-        $('.paypal').show();
-    })
+        $('#paypal').click(function () {
+            $('.credit').hide();
+            $('.opayment').hide();
+            $('.paypal').show();
+        })
 
-    $('#opayment').click(function () {
-        $('#formInfo').attr("action", "OPayment")
-        $('#formInfo').submit();
-    })
-</script>
+        $('#opayment').click(function () {
+            $('#formInfo').attr("action", "OPayment")
+            $('#formInfo').submit();
+        })
+
+        $('#couponbtn').click(function () {
+            let code = $('#coupontext').val();
+            CallAjaxCoupon(code);
+        })
+
+        async function CallAjaxCoupon(code) {
+            let _url = await '@Url.Action("Coupon", "Ticketing")' + `?code=${code}`;
+                $.ajax({
+                    type: "GET",
+                    url: _url,
+                    success: function (result) {
+                        console.log(result);
+                        if (result == 'F') {
+                            window.alert("無此優惠");
+                        }
+                        else {
+                            $('#coupontype').text(result['優惠名稱couponName']);
+                            $('#discount').text(`$-${result['優惠折扣couponDiscount']}`);
+                            let t = parseInt(total) - parseInt(result['優惠折扣couponDiscount']);
+                            $('#totalprice').text(`$${t}.00`);
+                            $('#fullPrice').val(t);
+                        }
+                    }});}
+
+    </script>
+}
+
 

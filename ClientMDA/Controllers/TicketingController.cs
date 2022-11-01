@@ -11,12 +11,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
-//using Newtonsoft.Json;
 using System.Text.Json;
 using System.Collections.Specialized;
 using System.Web;
 using System.Security.Cryptography;
 using System.Text;
+using System.Net;
+using System.IO;
 
 namespace ClientMDA.Controllers
 {
@@ -322,8 +323,17 @@ namespace ClientMDA.Controllers
         public IActionResult Coupon(string code)
         {
             string json = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
-            //優惠總表coupon coupon=this._dbContext.
-            return null;
+            會員member member = JsonSerializer.Deserialize<會員member>(json);
+            優惠總表coupon coupon = this._dbContext.優惠明細couponLists
+                                      .Where(c => c.優惠編號coupon.優惠代碼couponCode == code && c.會員編號memberId == member.會員編號memberId && c.是否使用優惠oxCouponUsing == false)
+                                      .Select(c => c.優惠編號coupon).FirstOrDefault();
+            if (coupon != null)
+            {
+                string json_coupon = JsonSerializer.Serialize(coupon);
+                HttpContext.Session.SetString(CDictionary.SK_使用的優惠券, json_coupon);
+                return Json(coupon);
+            }
+            return Json('F');
         }
 
 
@@ -372,6 +382,17 @@ namespace ClientMDA.Controllers
 
             return Json("0");
         }
+
+        #endregion
+
+        #region 退票
+
+        public IActionResult refund(int orderID)
+        {
+
+            return View();
+        }
+
 
         #endregion
 
@@ -530,6 +551,35 @@ namespace ClientMDA.Controllers
             return Date;
 
         }
+
+        [NonAction]
+        public void fn_新增使用優惠明細()
+        {
+
+        }
+
+        [NonAction]
+        public void fn_修改優惠明細()
+        {
+
+        }
+        #endregion
+
+        #region 地圖
+
+        public string fn_地址轉經緯度(string address)
+        {
+            string url = String.Format("http://maps.google.com/maps/api/geocode/json?sensor=false&address={0}", address);
+            string result = String.Empty;
+            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
+            using (var response = request.GetResponse())
+            using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+            {
+                result = sr.ReadToEnd();
+                return result;
+            }
+        }
+
         #endregion
 
         #region 自動產生資料

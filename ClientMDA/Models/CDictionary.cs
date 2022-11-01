@@ -18,5 +18,6 @@ namespace ClientMDA.Models
         public static readonly string SK_FORGETPASSWORD = "SK_FORGETPASSWORD";
         public static readonly string SK_PICTURECODE = "SK_PICTURECODE";
         public static readonly string SK_ORDER_INFO = "SK_ORDER_INFO";
+        public static readonly string SK_使用的優惠券 = "SK_使用的優惠券";
     }
 }
