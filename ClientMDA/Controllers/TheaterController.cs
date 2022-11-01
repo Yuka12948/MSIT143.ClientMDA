@@ -171,17 +171,19 @@ namespace ClientMDA.Controllers
             CinemaName = c.廳種名稱cinemaClsName,
             放映時間 = c.場次screenings.Where(x => x.電影代碼movieCode == mcid && x.放映日期playDate == timer).Select(s => s.放映開始時間playTime).ToList(),
             場次ID = c.場次screenings.Where(x => x.電影代碼movieCode == mcid && x.放映日期playDate == timer).Select(s => s.場次編號screeningId).ToList(),
-            場次座位數量 = _MDA.場次screenings.Where(x => x.電影代碼movieCode == mcid && x.放映日期playDate == timer).Select(s => new CSeatViewMode {
-                座位數量=s.出售座位狀態seatStatuses.Select(o=>o.出售座位資訊seatSoldInfo).FirstOrDefault()
+            場次座位數量 = _MDA.場次screenings.Where(x => x.電影代碼movieCode == mcid && x.放映日期playDate == timer).Select(s => new CSeatViewMode
+            {
+                座位數量 = s.出售座位狀態seatStatuses.Select(o => o.出售座位資訊seatSoldInfo).FirstOrDefault()
 
-                }).ToList()
+            }).ToList()
         }).ToList(),
 
     }).ToList();
             }
-            else if (keyword == "桃竹苗") {
+            else if (keyword == "桃竹苗")
+            {
                 datas = _MDA.電影院theaters.Where(p => p.地址address.Contains("桃") ||
-                p.地址address.Contains("苗") || p.地址address.Contains("竹") 
+                p.地址address.Contains("苗") || p.地址address.Contains("竹")
                 ).Select
                 (i => new CTheater
                 {
@@ -200,7 +202,7 @@ namespace ClientMDA.Controllers
             else if (keyword == "中區")
             {
                 datas = _MDA.電影院theaters.Where(p => p.地址address.Contains("台中") ||
-                p.地址address.Contains("雲林") 
+                p.地址address.Contains("雲林")
                 ).Select
                 (i => new CTheater
                 {
@@ -210,14 +212,15 @@ namespace ClientMDA.Controllers
                         CinemaID = c.影廳編號cinemaId,
                         CinemaName = c.廳種名稱cinemaClsName,
                         放映時間 = c.場次screenings.Where(x => x.電影代碼movieCode == mcid && x.放映日期playDate == timer).Select(s => s.放映開始時間playTime).ToList(),
-                        場次ID = c.場次screenings.Where(x => x.電影代碼movieCode == mcid && x.放映日期playDate == timer).Select(s => s.場次編號screeningId).ToList(),                                                         
+                        場次ID = c.場次screenings.Where(x => x.電影代碼movieCode == mcid && x.放映日期playDate == timer).Select(s => s.場次編號screeningId).ToList(),
                     }).ToList(),
                     //seat座位 =  _MDA.出售座位狀態seatStatuses.Where(c => c.場次編號screening.影廳編號cinema.電影院編號theaterId == i.電影院編號theaterId).Select(c => c.出售座位資訊seatSoldInfo).FirstOrDefault(),
 
                 }).ToList();
             }
-            else {
-                datas = _MDA.電影院theaters.Where(p =>p.地址address.Contains("高雄") ||
+            else if (keyword == "南區及離島")
+            {
+                datas = _MDA.電影院theaters.Where(p => p.地址address.Contains("高雄") ||
                 p.地址address.Contains("嘉義") || p.地址address.Contains("台南")
                 ).Select
                 (i => new CTheater
@@ -234,7 +237,25 @@ namespace ClientMDA.Controllers
                     //seat座位 = _MDA.出售座位狀態seatStatuses.Where(c => c.場次編號screening.影廳編號cinema.電影院編號theaterId == i.電影院編號theaterId).Select(c => c.出售座位資訊seatSoldInfo).FirstOrDefault(),
                 }).ToList();
             }
-            return ViewComponent("時間",datas);
+            else
+            {
+                datas = _MDA.電影院theaters.Select
+            (i => new CTheater
+            {
+             theater = i,
+             cinemas影廳種類 = _MDA.影廳cinemas.Where(c => c.電影院編號theaterId == i.電影院編號theaterId).Select(c => new CcinemaViewMode
+             {
+                 CinemaID = c.影廳編號cinemaId,
+                 CinemaName = c.廳種名稱cinemaClsName,
+                 放映時間 = c.場次screenings.Where(x => x.電影代碼movieCode == mcid && x.放映日期playDate == timer).Select(s => s.放映開始時間playTime).ToList(),
+                 場次ID = c.場次screenings.Where(x => x.電影代碼movieCode == mcid && x.放映日期playDate == timer).Select(s => s.場次編號screeningId).ToList(),
+
+             }).ToList(),
+                                //seat座位 = _MDA.出售座位狀態seatStatuses.Where(c => c.場次編號screening.影廳編號cinema.電影院編號theaterId == i.電影院編號theaterId).Select(c => c.出售座位資訊seatSoldInfo).FirstOrDefault(),
+                            }).ToList();
+                        }
+
+            return ViewComponent("時間地區",datas);
         } //完工
 
         public int fn_計算座位數(string seatInfo) { 
