@@ -59,10 +59,31 @@ namespace ClientMDA.Controllers
 
             return View(datas);
         }
-        
-        public IActionResult 會員評論() //會員個別評論頁面
+
+        public IActionResult 會員評論(int id) //會員個別評論頁面
         {
-            return View();
+            CCommentViewModel datas = null;
+            datas = _MDAcontext.電影評論movieComments.Where(c => c.會員編號memberId == id).Select
+            (c => new CCommentViewModel
+            {
+                comment = c,
+                公開等級public = c.公開等級編號public.公開等級public,
+                中文標題titleCht = c.電影編號movie.中文標題titleCht,
+                暱稱nickName = c.會員編號member.暱稱nickName,
+                會員照片image = c.會員編號member.會員照片image,
+                //回覆內容floors = c.回覆樓數floors.
+                //發佈時間floorTime = c.
+                //被按讚次數thumbsUp
+                //被倒讚次數thumbsDown
+                //標籤明細編號chId =c.標籤明細hashtagsLists
+                //標籤編號hashtagId
+                //標籤hashtag
+                //評論圖片編號ccId
+                //評論圖庫編號commentImageId
+                //圖片image
+            }).FirstOrDefault();
+
+            return View(datas);
         }
         #region follow report
         [HttpPost]
