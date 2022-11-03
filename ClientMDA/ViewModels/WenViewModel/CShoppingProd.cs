@@ -11,22 +11,22 @@ namespace ClientMDA.ViewModel.WenViewModel
     public class CShoppingProd
     {
         private 商品資料product _product;
-        private 電影院theater _theater;
+        //private 電影院theater _theater;
 
         public 商品資料product product
         {
             get { return _product; }
             set { _product = value; }
         }
-        public 電影院theater theater
-        {
-            get { return _theater; }
-            set { _theater = value; }
-        }
+        //public 電影院theater theater
+        //{
+        //    get { return _theater; }
+        //    set { _theater = value; }
+        //}
         public CShoppingProd()
         {
             _product = new 商品資料product();
-            _theater = new 電影院theater();
+            //_theater = new 電影院theater();
         }
 
         public int 商品編號productId
