@@ -19,10 +19,10 @@ namespace ClientMDA.ViewConponents
             _MDAcontext.評論圖片總表commentImages.ToList();
         }
         //用這個 async Task<IViewComponentResult> InvokeAsync
-        public async Task<IViewComponentResult> InvokeAsync(List<CCommentViewModel> datas)
+        public async Task<IViewComponentResult> InvokeAsync(List<CCommentViewModel> datas, int? id)
         {
             var memPhoto = _MDAcontext.會員members.Select(i => i);
-            datas = _MDAcontext.電影評論movieComments.OrderByDescending(c => c.發佈時間commentTime).Select
+            datas = _MDAcontext.電影評論movieComments.Where(m => m.電影編號movieId == id).OrderByDescending(c => c.發佈時間commentTime).Select
                     (c => new CCommentViewModel
                     {
                         comment = c,

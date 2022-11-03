@@ -23,11 +23,19 @@
                         <h5 class="card-title">@Html.DisplayFor(modelItem => Model[i].評論標題commentTitle)</h5>
                         <span class="mem_info">
                             <span>
-                                <img src="~/images/Comment/mem01.png" alt="" height="30">
+                                @if (Model[i].會員照片image != null)
+                                {
+                                    <img class="memImg" src="https://localhost:44381/images/Member/@Model[i].會員照片image" alt="">
+                                }
+                                else
+                                {
+                                    <img class="memImg" src="~/images/Member/MEMBER.png" alt="">
+                                    @*會員預設大頭貼 https://dummyimage.com/150x150/6c757d/dee2e6.jpg *@
+                                }
                                 <a href=@Url.Action("會員評論","Comment", new {id= Model[i].會員編號memberId})>@Html.DisplayFor(modelItem => Model[i].暱稱nickName)</a>
                             </span>
                             <span>
-                                - @Html.DisplayFor(modelItem => Model[i].發佈時間floorTime) <span style="color:white"></span>
+                                - @Html.DisplayFor(modelItem => Model[i].發佈時間commentTime) <span style="color:white"></span>
                             </span><hr />
                             <p class="card-text">
                                 @Html.DisplayFor(modelItem => Model[i].評論內容comments)

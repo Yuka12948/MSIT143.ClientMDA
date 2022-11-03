@@ -4,7 +4,7 @@
 }
 
 @{
-    <div class="col-lg-8 col-md-8">
+    <div class="col-lg-11 col-md-8">
         <!-- #region 電影評論 -->
         <div class="anime__details__review">
             <div class="section-title">
@@ -13,8 +13,6 @@
 
             @for (var i = 0; i < Model.Count; i++)
             {
-
-
                 <div class="anime__review__item">
                     <div class="anime__review__item__pic">
                         <img src="~/images/Comment/mem01.png" alt="">
@@ -33,14 +31,29 @@
                     </div>
                 </div>
             }
-
+            @*評論分頁*@
+            @*<nav aria-label="...">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item disabled">
+                        <span class="page-link">Previous</span>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item active" aria-current="page">
+                        <span class="page-link">2</span>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>*@
         </div>
         <!-- #endregion 電影資訊 -->
         <!-- #region 你的評論 -->
         <div class="anime__details__form">
-            <div class="section-title">
+            @*<div class="section-title">
                 <h5>你的評論</h5>
-            </div>
+            </div>*@
             <form action="#">
                 <textarea placeholder="Your Comment" class="txtarea"></textarea><br />
                 <button type="submit"><i class="fa fa-location-arrow"></i>送出</button>

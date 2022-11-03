@@ -313,7 +313,7 @@ namespace ClientMDA.ViewModels
         public IFormFile mImgFrIFF { get; set; }
         public List<string> mImgFrList { get; set; }
         public List<string> mCountryName { get; set; }
-        public List<byte[]> mCountryImg { get; set; }
-        
+        //public List<byte[]> mCountryImg { get; set; }
+        public List<CCountryImageViewModel> mCountryImg { get; set; }
     }
 }

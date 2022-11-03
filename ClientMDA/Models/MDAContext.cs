@@ -70,7 +70,7 @@ namespace ClientMDA.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=MDA;Integrated Security=True");
             }
         }
@@ -328,7 +328,9 @@ namespace ClientMDA.Models
                     .HasMaxLength(50)
                     .HasColumnName("國家名稱Country_Name");
 
-                entity.Property(e => e.國旗countryImage).HasColumnName("國旗Country_Image");
+                entity.Property(e => e.國旗countryImage)
+                    .HasMaxLength(200)
+                    .HasColumnName("國旗Country_Image");
             });
 
             modelBuilder.Entity<地址address>(entity =>

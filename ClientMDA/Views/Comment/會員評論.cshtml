@@ -38,21 +38,21 @@
 <div id="memBgImg" class="py-1 bg-image-full">
     @*會員背景圖*@
     <div class="text-center my-5">
-        @{ if (@Model.會員照片image != null)
-            {
-                <img style="width: 100%+733px !important;" class="img-fluid rounded-circle mb-4" width="150" alt="..."
-                     src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg">
-            }
-            else
-            {
-                <img style="width: 100%+733px !important;" class="img-fluid rounded-circle mb-4" width="150" alt="..."
-                     src="~/images/Comment/mem01.png">
-                @*會員預設大頭貼 https://dummyimage.com/150x150/6c757d/dee2e6.jpg *@
-            }
+
+        @if (@Model.會員照片image != null)
+        {
+            <img style="width: 100%+733px !important;" class="img-fluid rounded-circle mb-4" width="150" alt="..."
+                 src="https://localhost:44381/images/Member/@Model.會員照片image">
+        }
+        else
+        {
+            <img style="width: 100%+733px !important;" class="img-fluid rounded-circle mb-4" width="150" alt="..."
+                 src="~/images/Member/MEMBER.png">
+            @*會員預設大頭貼 https://dummyimage.com/150x150/6c757d/dee2e6.jpg *@
         }
         <h4 class="text-white fs-3 fw-bolder">@Model.暱稱nickName</h4>
         @*<span class="text-white-50 mb-0">@@帳號</span><br />
-            <span class="text-white-50 mb-0">此用戶觀看過N部電影</span>*@
+        <span class="text-white-50 mb-0">此用戶觀看過N部電影</span>*@
         <span class="text-white-50 mb-0">@*@mem.電影評論movieComments.Count*@ 則評論 ‧ N人追蹤</span><br />
         <div class="membtn">
             @Html.ActionLink("追蹤會員", "follow會員", new { followMid = 1 }, new { @class = "btn btn-info btn-sm", id = "followMem" })

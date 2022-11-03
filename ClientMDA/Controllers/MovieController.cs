@@ -77,14 +77,20 @@ namespace ClientMDA.Controllers
             (m => new CMovieViewModel
             {
                 movie = m,
-                    //演員中文名字nameCht = m.電影主演casts,
-                    分級級數ratingLevel = m.電影分級編號rating.分級級數ratingLevel,
+                分級級數ratingLevel = m.電影分級編號rating.分級級數ratingLevel,
                 分級圖片ratingImage = m.電影分級編號rating.分級圖片ratingImage,
                 系列名稱seriesName = m.系列編號series.系列名稱seriesName,
+
+                mCountryImg = _MDAcontext.電影產地movieOrigins.Where(i => i.電影編號movieId == m.電影編號movieId).Select
+                (c => new CCountryImageViewModel
+                {
+                    countryName = c.國家編號country.國家名稱countryName,
+                    countryImage = c.國家編號country.國旗countryImage,
+                }
+                ).ToList(),
+
                 mCountryName = _MDAcontext.電影產地movieOrigins.Where(i => i.電影編號movieId == m.電影編號movieId)
                 .Select(c => c.國家編號country.國家名稱countryName).ToList(),
-                mCountryImg = _MDAcontext.電影產地movieOrigins.Where(i => i.電影編號movieId == m.電影編號movieId)
-                .Select(c => c.國家編號country.國旗countryImage).ToList(),
                 mImgFrList = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId)
                 .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
 
@@ -114,6 +120,6 @@ namespace ClientMDA.Controllers
             電影分級movieRating rating = _MDAcontext.電影分級movieRatings.Find(id);
             byte[] context = rating.分級圖片ratingImage;
             return File(context, "image/jpeg");
-        }
+        } //電影分級img
     }
 }

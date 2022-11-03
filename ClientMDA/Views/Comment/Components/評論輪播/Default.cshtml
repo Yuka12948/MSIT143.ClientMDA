@@ -7,6 +7,8 @@
 
     @foreach (var item in Model)
     {
+        var t = item.發佈時間commentTime;
+
         <div class="hero__items set-bg" data-setbg="https://im.marieclaire.com.tw/m800c533h100b0/assets/mc/202205/628C963D8F7801653380669.jpeg">
             <div class="row">
                 <div class="col-lg-6">
@@ -14,8 +16,17 @@
                         <div class="label">
                             <span class="mem_info">
                                 <span style="color:white">
-                                    <img class="memImg" src="~/images/Comment/mem01.png" alt="">
-                                    <a href="@Url.Action("會員評論","Comment", new {id= item.會員編號memberId})" style="font-weight:700;font-size:18px"> @item.暱稱nickName</a> - @item.發佈時間commentTime
+                                    @if (item.會員照片image != null)
+                                    {
+                                        <img class="memImg" src="https://localhost:44381/images/Member/@item.會員照片image" alt="">
+
+                                    }
+                                    else
+                                    {
+                                        <img class="memImg" src="~/images/Member/MEMBER.png" alt="">
+                                        @*會員預設大頭貼 https://dummyimage.com/150x150/6c757d/dee2e6.jpg *@
+                                    }
+                                    <a href="@Url.Action("會員評論","Comment", new {id= item.會員編號memberId})" style="font-weight:700;font-size:18px"> @item.暱稱nickName</a> - @Html.DisplayFor(modelItem => item.發佈時間commentTime)
                                 </span>
                             </span>
                         </div>

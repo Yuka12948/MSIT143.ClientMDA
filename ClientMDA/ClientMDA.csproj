@@ -94,6 +94,7 @@
     <None Include="Views\Comment\Components\評論輪播\Default.cshtml" />
     <None Include="Views\Comment\Components\關注評論\Default.cshtml" />
     <None Include="Views\Member\Components\OrderInfo\Default.cshtml" />
+    <None Include="Views\Movie\Components\電影劇照牆list\Default.cshtml" />
     <None Include="Views\Movie\Components\電影排行\Default.cshtml" />
     <None Include="Views\Movie\Components\電影排行新片\Default.cshtml" />
     <None Include="Views\Movie\Components\電影評論list\Default.cshtml" />

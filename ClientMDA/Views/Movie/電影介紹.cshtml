@@ -27,8 +27,8 @@
         }
 
             .anime__details__pic .view { /*瀏覽人數*/
-                top:10px;
-                left:0;
+                top: 10px;
+                left: 0;
                 /*bottom: 10px;*/
                 background: rgba(0,0,0,0);
             }
@@ -61,8 +61,40 @@
             -webkit-box-orient: vertical; /*垂直排列*/
             word-break: break-all;
         }
+
+        .anime__details__rating span { /*評分分數位置*/
+            display: inline;
+        }
+
+        .set-bg h3 { /*電影海報-觀看劇照文字效果*/
+            opacity: 0;
+            text-align: center;
+            font-weight: 900;
+            color: rgba(255,255,255,.8);
+            background-color: rgba(0,0,0,.35);
+            /*background: linear-gradient(top,#0b0c2a,rgba(51,51,51,0));*/
+            padding: 242px 0 242px 0;
+        }
+
+        .set-bg:hover { /*電影海報-滑入效果*/
+            /*-webkit-filter: opacity(65%);*/ /* Safari */
+            /*filter: opacity(65%);
+            text-decoration: none;
+            transition: all .4s linear;*/
+        }
+
+            .set-bg:hover h3 { /*電影海報-觀看劇照文字效果*/
+                opacity: 1;
+                transition: opacity .5s ease-in-out;
+            }
     </style>
 }
+
+<link href="~/css/fontawesome-free-6.2.0-web/all.css" rel="stylesheet" />
+@*電影icon樣式*@
+<script src="~/js/fontawesome-free-6.2.0-web/all.js"></script>
+@*電影icon樣式*@
+<link href="~/css/font-awesome.min.css" rel="stylesheet" />
 
 <form asp-action="List" enctype="multipart/form-data">
 
@@ -87,27 +119,38 @@
                             string mCountryName = "";
                             mCountryName = Model.mCountryName[0];
 
-                            byte[] mCountryImg;
-                            mCountryImg = Model.mCountryImg[0];
+                            //byte[] mCountryImg;
+                            //mCountryImg = Model.mCountryImg[0];
                         }
 
                         @*電影海報*@
                         <a href="@Url.Action("電影劇照牆", "Movie", new { id = Model.電影編號movieId })">
-                            <div class="anime__details__pic set-bg" data-setbg="@urlpic" style="background-image:url('@urlpic')">
-                                <div class="view"><img height="35" src="@Url.Action("ShowPhoto", "Movie", new { id = @Model.電影分級編號ratingId })" /></div>
-                            </div>
+                            @{if (urlpic != null)
+                                {
+                                    <div title="@Model.中文標題titleCht" class="anime__details__pic set-bg" data-setbg="@urlpic" style="background-image:url('@urlpic')">
+                                        <H3>觀看劇照</H3>
+                                        <div class="view"><img height="35" src="@Url.Action("ShowPhoto", "Movie", new { id = @Model.電影分級編號ratingId })" /></div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div title="@Model.中文標題titleCht 劇照" class="anime__details__pic set-bg" data-setbg="~/images/Movie/poster_none1.png"
+                                         style="background-image: url('~/images/Movie/poster_none1.png')">
+                                        <div class="view"><img height="35" src="@Url.Action("ShowPhoto", "Movie", new { id = @Model.電影分級編號ratingId })" /></div>
+                                    </div>
+                                }}
                         </a>
                     </div>
                     <div class="col-lg-8">
                         @*電影資訊*@
                         <div class="anime__details__text">
                             <div class="anime__details__title">
-                                <h3>@Model.中文標題titleCht</h3>
-                                <span>@Model.英文標題titleEng</span>
+                                <h3><i class="fa-solid fa-film"></i> @Model.中文標題titleCht</h3>
+                                <span> @Model.英文標題titleEng</span>
                             </div>
                             <div class="anime__details__rating">
                                 <div class="rating">
-                                    <h4><i class="fa fa-star"></i> 4.9 分</h4>
+                                    <h4><i class="fa fa-star" style="color:#ffc107;"></i><span class="fs-4"> 4.9</span></h4>
                                 </div>
                             </div>
                             <p class="MoviePlot">
@@ -144,7 +187,6 @@
                                         <li><span>上映年份:</span> @Model.上映年份releaseYear</li>
                                         <li>
                                             <span>上映日期:</span>
-                                            @*@mov.上映日期releaseDate*@
                                             @Html.DisplayFor(model => model.上映日期releaseDate)
                                         </li>
 
@@ -161,8 +203,14 @@
                                             </ul>
                                         </li>
                                         <li><span>電影分級:</span> @Model.分級級數ratingLevel</li>
-                                        <li><span>電影產地:</span> @mCountryName @mCountryImg</li>
-                                        <div class="view"><img height="35" src="@Url.Action("ShowCtyImg", "Movie", new { id = @Model.國家編號countryId })" /></div>
+                                        <li><span>電影產地:</span> @mCountryName</li>
+                                        <div class="view">
+                                            @foreach (var item in Model.mCountryImg)
+                                            {
+                                                <label>@item.countryName</label>
+                                                <img class="" height="35" src="https://localhost:44381/images/Country/@item.countryImage" alt="">
+                                            }
+                                        </div>
                                         <li><span>片　　長:</span> @Model.片長runtime 分鐘</li>
                                         <li><span>片　　種:</span> 動作, 劇情</li>
                                         <li><span>票　　房:</span> @Model.票房boxOffice 億美元</li>
