@@ -21,6 +21,9 @@ namespace ClientMDA.ViewModels
         public int 我的片單MyMovieList_ID { get; set; }
         //List<int> 圖片編號
         public List<int> 圖片編號 { get; set; }
+        //comment
+        public int 評論編號Comment_ID { get; set; }
+        
     }
 
     

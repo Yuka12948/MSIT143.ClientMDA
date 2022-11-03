@@ -162,3 +162,16 @@
         background-color: rgba(60,60,60,0.6);
     }
 
+#ratetip1, #ratetip2 {
+    display: none;
+}
+#openbtn:hover + #ratetip1, #openbtn0:hover + #ratetip1 {
+    display: block;
+}
+#openbtnE:hover + #ratetip2 {
+    display: block;
+}
+.showRate {
+    display: flex;
+    align-items: center
+}

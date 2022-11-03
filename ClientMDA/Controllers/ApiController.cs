@@ -1,4 +1,5 @@
 ﻿using ClientMDA.Models;
+using ClientMDA.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -15,6 +16,7 @@ namespace ClientMDA.Controllers
     {
         private readonly ILogger<ApiController> _logger;
         private readonly MDAContext _MDA;
+        
         Random rd = new Random();
 
         public ApiController(ILogger<ApiController> logger, MDAContext MDA)
@@ -354,6 +356,105 @@ namespace ClientMDA.Controllers
         {
             var d = _MDA.電影圖片movieIimagesLists.Where(m => m.電影編號movie.上映日期releaseDate >= (DateTime.Now.AddDays(30))).OrderByDescending(d => d.電影編號movie.期待度anticipation).Select(v => v.電影編號movie.期待度anticipation);
             return Json(d);
+        }
+
+        //加入評分資料
+        public IActionResult RateSubmit(int Member_ID ,int Movie_ID,int Rate)
+        {
+            string a = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+            if (a != null) 
+            { 
+                電影評論movieComment m = new 電影評論movieComment();
+            m.會員編號memberId = Member_ID;
+            m.電影編號movieId = Movie_ID;
+            m.評分rate = Rate;
+            m.發佈時間commentTime =DateTime.Now;
+            _MDA.電影評論movieComments.Add(m);
+                _MDA.SaveChanges();
+
+                //要改用評論的評分 目前資料太少無法用平均
+                var q = _MDA.電影movies.Where(p => p.電影編號movieId == Movie_ID).FirstOrDefault();                
+                decimal y = decimal.Round(((Convert.ToDecimal(q.評分rate) + Convert.ToDecimal(Rate)) / 2), 1, MidpointRounding.ToEven);
+                q.評分rate = y;                
+                _MDA.SaveChanges();
+                return Content("1","text/plain");
+            }
+            return Content("0", "text/plain");
+        }
+
+        //找評論ID
+        public IActionResult getComment()
+        {
+            string a = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+            if (a != null)
+            {
+                var q = _MDA.會員members.Where(m => m.會員電話cellphone == a).Select(p => p.會員編號memberId).FirstOrDefault();
+                var d = _MDA.電影評論movieComments.Where(o => o.會員編號memberId == q).OrderBy(p=>p.評論編號commentId).Select(p => p.評論編號commentId);
+                
+                return Json(d);
+            }
+            return Json(0);
+        }
+        //找評論電影編號
+        public IActionResult getCommentMovie()
+        {
+            string a = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+            if (a != null)
+            {
+                var q = _MDA.會員members.Where(m => m.會員電話cellphone == a).Select(p => p.會員編號memberId).FirstOrDefault();
+                var d = _MDA.電影評論movieComments.Where(o => o.會員編號memberId == q).OrderBy(p => p.評論編號commentId).Select(p => p.電影編號movieId);
+
+                return Json(d);
+            }
+            return Json(0);
+        }
+        //找評論電影編號
+        public IActionResult getCommenRank()
+        {
+            string a = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+            if (a != null)
+            {
+                var q = _MDA.會員members.Where(m => m.會員電話cellphone == a).Select(p => p.會員編號memberId).FirstOrDefault();
+                var d = _MDA.電影評論movieComments.Where(o => o.會員編號memberId == q).OrderBy(p => p.評論編號commentId).Select(p => p.評分rate);
+
+                return Json(d);
+            }
+            return Json(0);
+        }
+
+        //刪除評分資料
+        public IActionResult RateDelete(int Comment_ID)
+        {
+            string a = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+            if (a != null)
+            {
+                var q = _MDA.電影評論movieComments.FirstOrDefault(t => t.評論編號commentId == Comment_ID);
+                _MDA.電影評論movieComments.Remove(q);
+                _MDA.SaveChanges();
+                return Content("1", "text/plain");
+            }
+            return Content("0", "text/plain");
+        }
+
+        //編輯評分資料
+        public IActionResult RateEdit(int Comment_ID, int Rate,int Movie_ID)
+        {
+            string a = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+            if (a != null)
+            {
+                var q = _MDA.電影評論movieComments.FirstOrDefault(t => t.評論編號commentId == Comment_ID);
+                q.評分rate = Rate;
+                _MDA.電影評論movieComments.Update(q);
+                _MDA.SaveChanges();
+                //電影movie mm = new 電影movie();
+                //decimal e = Convert.ToDecimal(_MDA.電影movies.Where(p => p.電影編號movieId == Movie_ID).Select(o => o.評分rate));
+                //decimal y = Math.Round(((e + Rate) / 2), 1);
+                //mm.評分rate = y;
+                //_MDA.電影movies.Update(mm);
+                //_MDA.SaveChanges();
+                return Content("1", "text/plain");
+            }
+            return Content("0", "text/plain");
         }
     }
 }
