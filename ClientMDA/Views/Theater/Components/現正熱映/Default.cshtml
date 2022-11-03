@@ -4,7 +4,7 @@
 @{
     ViewData["Title"] = "Default";
 
- 
+
 
 }
 
@@ -31,12 +31,34 @@
 
                 }
                 <div class="star">
-                    <div class="commonStyled__MovieStars-sc-kt5vy-3 ijuViJ ">
+                    <div class="commonStyled__MovieStars-sc-kt5vy-3 ijuViJ" style="text-align: center">
+
+                        @{ decimal? x = Model[i].評分rate;
+
+                                <div class="star" style=" text-align: center"><i class="fas fa-star" style="color:#ffc107"></i></div>
+                                <div class="star" style=" text-align: center">@x</div>
+                                
+                                
+                                
+                                @*<div class="star"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i></div>
+                                <div class="star"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i></div>
+                                <div class="star"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i></div>
+                                <div class="star"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i></div>*@
+
+
+
+
+
+                        }
+                        @*<div class="star"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i></div>
                         <div class="star"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i></div>
                         <div class="star"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i></div>
                         <div class="star"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i></div>
-                        <div class="star"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i></div>
-                        <div class="star"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i></div>
+                        <div class="star"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i></div>*@
+
+
+
+
                     </div>
                 </div>
 
