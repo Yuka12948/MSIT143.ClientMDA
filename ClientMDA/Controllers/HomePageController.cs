@@ -25,11 +25,51 @@ namespace ClientMDA.Controllers
         {
             return View();
         }
-
-        public IActionResult QA()
+        public IActionResult QandA()
         {
             return View();
         }
+        public IActionResult GeneraInfor()
+        {
+            return ViewComponent("一般資訊");
+        }
+        public IActionResult memQa()
+        {
+            return ViewComponent("會員問題");
+        }
+        public IActionResult rateQa()
+        {
+            return ViewComponent("評分問題"); 
+        }
+        public IActionResult commentQa()
+        {
+            return ViewComponent("評論問題"); 
+        }
+        public IActionResult addlistQa()
+        {
+            return ViewComponent("加入片單");
+        }
+        public IActionResult orderticketQa()
+        {
+            return ViewComponent("訂票問題");
+        }
+        public IActionResult taketicketQa()
+        {
+            return ViewComponent("取票問題");
+        }
+        public IActionResult refundQa()
+        {
+            return ViewComponent("退票問題");
+        }
+        public IActionResult couponQa()
+        {
+            return ViewComponent("優惠券");
+        }
+        public IActionResult shopQa()
+        {
+            return ViewComponent("購物問題");
+        }
+        
 
         [HttpPost]
         public IActionResult Index(CHomepageViewModel p)
