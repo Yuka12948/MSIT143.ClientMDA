@@ -161,17 +161,17 @@ namespace ClientMDA.Controllers
             //var image = builder.LinkedResources.Add("C:\Users\Student\Documents\123\ClientMDA\wwwroot\images\Ticketing\3.jpg");
             //==>這裡可以放入圖片路徑
 
-            builder.HtmlBody = "親愛的客戶您好,訂單已成立" + $"當前時間:{DateTime.Now:yyyy-MM-dd HH:mm:ss}";
+            builder.HtmlBody = "親愛的客戶您好,訂單已成立" + $"當前時間:{DateTime.Now:yyyy-MM-dd HH:mm:ss}<br/>";
             //=>內容
 
             message.From.Add(new MailboxAddress("M.D.A.購物商城", "rainbow_kapok@hotmail.com"));
             message.To.Add(new MailboxAddress("Wennie", "rainbow.wenwen@gmail.com"));
             string orderid = "";
            
-            foreach (var item in CRList)
-            {
-                orderid += item.購買商品明細編號receiptId+",";               
-            }
+            //foreach (var item in CRList)
+            //{
+            //    orderid += item.購買商品明細編號receiptId+",";               
+            //}
             string jsonCart = HttpContext.Session.GetString(WenCDictionary.SK_PURCHASED_PRODUCTS);
             list = JsonSerializer.Deserialize<List<WenCAddToCartItem>>(jsonCart);
 
@@ -180,23 +180,39 @@ namespace ClientMDA.Controllers
             string amount = "";
             string price = "";
             string stotal = "";
-            foreach (var item in list)
-            {
-                name += item.商品名稱productName+",";
-                amount+=item.count+",";
-                price += item.商品價格productPrice.ToString("0") + ",";
-                stotal += item.小計.ToString("0") + ",";
-            }
+            //string Coupon_Code = "";
+            //string hiddenpoint = "";
 
-            builder.HtmlBody =
-             $"<div style='border: 1px solid black;text-align: left;'>" +
-             $"<h3>訂單明細</h3>" +
-             $"<p>商品明細編號{orderid}</p>" +
-             $"<p>商品名稱: {name}</p>" +
-             $"<p>數量: {amount}</p>" +
-             $"<p>單價: {price}</p>" +
-             $"<p>小計: {stotal}</p>" +
-             $"</div>";
+            //v.Count
+            int c = v.Count;
+            string a = $"<table style='border:3px solid #7B7B7B;width:500px;'><thead style='border:1px solid gray;'><tr><th>商品明細編號</th><th>商品名稱</th><th>數量</th></tr></thead><tbody style='text-align:center;'>";
+            var q = (from p in _context.購買商品明細receipts
+                    orderby p.購買商品明細編號receiptId descending
+                    select p).Take(c).ToList();
+
+            for (int i =0; i < c; i++)
+            {
+                a += $"<tr><td>{q[i].購買商品明細編號receiptId}</td><td>{list[i].商品名稱productName}</td><td>{list[i].count}</td></tr>";
+            }
+            //foreach (var item in list)
+            //{
+            //    name += item.商品名稱productName+",";
+            //    amount+=item.count+",";
+            //    price += item.商品價格productPrice.ToString("0") + ",";
+            //    stotal += item.小計.ToString("0") + ",";
+            //    //Coupon_Code += item.Coupon_Code.ToString("0");
+            //    //hiddenpoint += item.hiddenpoint.ToString("0");
+            //    a += $"<tr><td>{00}</td><td>{item.商品名稱productName}</td><td>{item.count}</td></tr>";
+            //}
+            a += "</tbody></table>";
+            builder.HtmlBody += a;
+
+             //$"<div style='border: 1px solid black;text-align: left;'>" +
+             //$"<h3>訂單明細</h3>" +
+             //$"<p>商品明細編號: {orderid}</p>" +
+             //$"<p>商品名稱: {name}</p>" +
+             //$"<p>數量: {amount}</p>" +                   
+             //$"</div>";
             message.Subject = "您好，訂單已成立"; //==>標題          
             message.Body = builder.ToMessageBody();
             using (SmtpClient client = new SmtpClient())
@@ -206,10 +222,15 @@ namespace ClientMDA.Controllers
                 //outlook.com smtp.outlook.com port:25
                 //yahoo smtp.mail.yahoo.com.tw port:465
                 //gmail smtp.gmail.com port:587
-                client.Authenticate("rainbow_kapok@hotmail.com", "rainbowwenwen1104");
+                client.Authenticate("rainbow_kapok@hotmail.com", "rainbow1104");
                 client.Send(message);
                 client.Disconnect(true);
             }
+
+           
+            list.Clear();
+            jsonCart = JsonSerializer.Serialize(list);
+            HttpContext.Session.SetString(WenCDictionary.SK_PURCHASED_PRODUCTS, jsonCart);
             return RedirectToAction("ThankU");
 
         }
@@ -225,25 +246,70 @@ namespace ClientMDA.Controllers
         }
         public IActionResult OptTheater()
         {
-            if (HttpContext.Session.Keys.Contains(WenCDictionary.SK_PURCHASED_PRODUCTS))//session有東西
+            try
             {
-                string jsonCart = HttpContext.Session.GetString(WenCDictionary.SK_PURCHASED_PRODUCTS);
-                cart = JsonSerializer.Deserialize<List<WenCAddToCartItem>>(jsonCart);
-                //string last =(cart.Last().電影院編號theaterId).ToString();
-                WenCAddToCartItem T = new WenCAddToCartItem()
+                if (!HttpContext.Session.Keys.Contains(WenCDictionary.SK_PURCHASED_PRODUCTS))
                 {
-                    電影院名稱theaterName = cart[cart.Count - 1].電影院名稱theaterName,
-                    電影院編號theaterId = cart[cart.Count - 1].電影院編號theaterId
+                    var query = from m in _context.電影院theaters
+                                select m;
 
-                };
+                    WenCAddToCartItem T = new WenCAddToCartItem()
+                    {
+                        電影院名稱theaterName = query.Select(m=>m.電影院名稱theaterName).ToString(),
+                        電影院編號theaterId = Convert.ToInt32(query.Select(m=>m.電影院編號theaterId))
 
+                    };
 
-                return Json(T);
+                    return Json(T);
+
+                    //int index = list.FindIndex(m => m.商品編號productId == id);
+                    //list.RemoveAt(index);
+                    //jsonCart = JsonSerializer.Serialize(list);
+                    //HttpContext.Session.SetString(WenCDictionary.SK_PURCHASED_PRODUCTS, jsonCart);
+                    //return RedirectToAction("Index");
+                }
+                else
+                {
+
+                    string jsonCart = HttpContext.Session.GetString(WenCDictionary.SK_PURCHASED_PRODUCTS);
+                    cart = JsonSerializer.Deserialize<List<WenCAddToCartItem>>(jsonCart);
+                    //string last =(cart.Last().電影院編號theaterId).ToString();
+                    WenCAddToCartItem T = new WenCAddToCartItem()
+                    {
+                        電影院名稱theaterName = cart[cart.Count - 1].電影院名稱theaterName,
+                        電影院編號theaterId = cart[cart.Count - 1].電影院編號theaterId
+
+                    };
+                    return Json(T);
+
+                }              
+                
             }
-            else
+            catch (Exception)
             {
+
                 return RedirectToAction("Index");
             }
+            //if (HttpContext.Session.Keys.Contains(WenCDictionary.SK_PURCHASED_PRODUCTS))//session有東西
+            //{
+               
+            //    string jsonCart = HttpContext.Session.GetString(WenCDictionary.SK_PURCHASED_PRODUCTS);
+            //    cart = JsonSerializer.Deserialize<List<WenCAddToCartItem>>(jsonCart);
+            //    //string last =(cart.Last().電影院編號theaterId).ToString();
+            //    WenCAddToCartItem T = new WenCAddToCartItem()
+            //    {
+            //        電影院名稱theaterName = cart[cart.Count - 1].電影院名稱theaterName,
+            //        電影院編號theaterId = cart[cart.Count - 1].電影院編號theaterId
+
+            //    };
+
+
+            //    return Json(T);
+            //}
+            //else
+            //{
+            //    return RedirectToAction("Index");
+            //}
         }
 
         //List<WenIndexItem> mylist = null;
@@ -350,16 +416,17 @@ namespace ClientMDA.Controllers
                 .Select(p => p).ToList();
             return Json(q);
         }
-
+        List<System.Linq.IQueryable<decimal>> myCoupon = new List<System.Linq.IQueryable<decimal>>();
         public IActionResult expoint(string Coupon_Code)
         {
             //var redpoint = this._context.會員members.Select(m => m.紅利點數bonus);
             //var Coupon=this._context.
 
-            var q = _context.優惠總表coupons
+            var Coupon = _context.優惠總表coupons
                 .Where(c => c.優惠代碼couponCode == Coupon_Code)
                 .Select(c => c.優惠折扣couponDiscount);
-            return Json(q);
+            myCoupon.Add(Coupon);
+            return Json(Coupon);
         }
         //public IActionResult Theater()
         //{

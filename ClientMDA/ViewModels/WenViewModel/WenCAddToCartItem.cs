@@ -21,7 +21,8 @@ namespace ClientMDA.ViewModel.WenViewModel
         public string 類別category { get; set; }
         public int count { get; set; }
         public decimal 小計 { get { return this.商品價格productPrice * this.count; } }
-        public string Coupon_Code { get; set; }
+        public int Coupon_Code { get; set; }
+        public int hiddenpoint { get; set; }
         public int No { get; set; }
         public int 訂單編號Order_ID { get; set; }
         public 商品資料product product { get; set; }
