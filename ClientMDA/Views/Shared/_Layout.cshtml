@@ -61,13 +61,13 @@
                         <nav class="header__menu mobile-menu">
                             <ul>
                                 <li>
-                                    <a class="aBorder corHome" asp-area="" asp-controller="HomePage" asp-action="Index">電影首頁</a>
+                                    <a class="aBorder" asp-area="" asp-controller="HomePage" asp-action="Index">電影首頁</a>
                                 </li>
-                                <li >@*active*@
-                                    <a class="aBorder corTick" asp-area="" asp-controller="Ticketing" asp-action="SelectMovie">快速訂票</a>
+                                <li class="active">
+                                    <a class="aBorder" asp-area="" asp-controller="Ticketing" asp-action="SelectMovie">快速訂票</a>
                                 </li>
                                 <li>
-                                    <a class="aBorder corThea" text-white fs-2" asp-area="" asp-controller="Theater" asp-action="測試業面">電影時刻@*<span class="arrow_carrot-down"></span>*@</a>
+                                    <a class="aBorder" text-white fs-2" asp-area="" asp-controller="Theater" asp-action="測試業面">電影時刻@*<span class="arrow_carrot-down"></span>*@</a>
                                     @*<ul class="dropdown">
                                             <li><a asp-area="" asp-controller="Theater" asp-action="Index">上映中</a></li>
                                             <li><a asp-area="" asp-controller="Theater" asp-action="即將上映page1">即將上映</a></li>
@@ -76,16 +76,16 @@
                                         </ul>*@
                                 </li>
                                 <li>
-                                    <a class="aBorder corRank" asp-area="" asp-controller="Movie" asp-action="排行首頁">電影排行</a>
+                                    <a class="aBorder" asp-area="" asp-controller="Movie" asp-action="排行首頁">電影排行</a>
                                 </li>
                                 <li>
-                                    <a class="aBorder corComm" asp-area="" asp-controller="Comment" asp-action="評論首頁">電影評論@*<span class="arrow_carrot-down"></span>*@</a>
+                                    <a class="aBorder" asp-area="" asp-controller="Comment" asp-action="評論首頁">電影評論@*<span class="arrow_carrot-down"></span>*@</a>
                                     @*<ul class="dropdown">
                                             <li><a asp-area="" asp-controller="Comment" asp-action="我的評論">我的評論</a></li>
                                         </ul>*@
                                 </li>  <!--./blog.html-->
                                 <li>
-                                    <a class="aBorder corCart" asp-area="" asp-controller="WenShoppingCart" asp-action="Index">商城</a>
+                                    <a class="aBorder" asp-area="" asp-controller="WenShoppingCart" asp-action="Index">商城</a>
                                 </li>
                             </ul>
                         </nav>
@@ -223,25 +223,38 @@
         <!-- Copyright -->
     </footer>
     <!-- footer End -->
+    <figure class="幫幫忙" style="float:right; position: fixed;right: 0;top:98%;width:600px;margin-top: -2.5em;border-block: initial;        list-style-type: none;">
+        <button id="hope"  style="background-color:white;color:black;width:200px;height:60px;right:0;float:right">
+            小幫手
+        </button>
+        <iframe class="小幫手"  src='https://webchat.botframework.com/embed/mist143mda-bot?s=YPZzm2dE_QU.nWqDzj-7VllSaxQSGpjeUPjIFHQNaDZbJAoj3nu8OVI' style='display:none; min-width: 200px; width: 600px; min-height: 500px;'></iframe>
+
+    </figure>
+    <script src="~/js/bot.js"></script>
+    @*<script>
+        var pmer = 0;
+        const help = document.querySelector(".小幫手")
+        const helper = document.querySelector(".幫幫忙")
+
+        $("button").click(function () {
+            pmer++
+            if (pmer == 1) {
+                help.style.display = "inline";
+                helper.style.top = "47%"
+
+            }
+            else if (pmer>1){
+            pmer=0
+                help.style.display = "none"
+                helper.style.top = "98%"
+
+            }
+        })
+    </script>*@
     <script src="~/js/bootstrap.min.js"></script>
     <script src="~/js/jquery-3.4.1.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> @*footer樣式*@
     @await RenderSectionAsync("Scripts", required: false)
-
-    <script>
-        $(document).ready(function () {
-            $(".aBorder").click(function () {
-                $(this).parent().siblings().attr({
-                    "class": ""
-                }).end().attr({
-                    "class": "active"
-                });
-            });
-        })
-
-    </script>
-
-
 
 </body>
 
