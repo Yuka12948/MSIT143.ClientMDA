@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ClientMDA.ViewConponents
@@ -27,12 +28,19 @@ namespace ClientMDA.ViewConponents
                     (c => new CCommentViewModel
                     {
                         comment = c,
+                        評論內容comments = StripHTML(c.評論內容comments),
                         暱稱nickName = c.會員編號member.暱稱nickName,
                         cImgFrList = _MDAcontext.評論圖片明細commentImagesLists.Where(i => i.評論編號commentId == c.評論編號commentId)
                         .Select(c => c.評論圖庫編號commentImage.圖片image).ToList()
                     }).Take(6).ToList();
 
             return View(datas);
+        }
+        public static string StripHTML(string input)
+        {
+            if (input == null)
+                return "";
+            return Regex.Replace(input, "<[a-zA-Z/].*?>", String.Empty);
         }
     }
 }

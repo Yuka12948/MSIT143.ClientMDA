@@ -90,10 +90,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Comment\Components\時間軸評論\Default.cshtml" />
     <None Include="Views\Comment\Components\最新評論\Default.cshtml" />
     <None Include="Views\Comment\Components\評論輪播\Default.cshtml" />
     <None Include="Views\Comment\Components\關注評論\Default.cshtml" />
     <None Include="Views\Member\Components\OrderInfo\Default.cshtml" />
+    <None Include="Views\Movie\Components\演員list\Default.cshtml" />
     <None Include="Views\Movie\Components\電影劇照牆list\Default.cshtml" />
     <None Include="Views\Movie\Components\電影排行\Default.cshtml" />
     <None Include="Views\Movie\Components\電影排行新片\Default.cshtml" />

@@ -48,7 +48,7 @@
                             </span>
                             @*電影評分*@
                             <span class="charts-list-content"></span>
-                            <span class="charts-list-span"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i> 5</span>
+                            <span class="charts-list-span"><i class="fas fa-star" style="padding-right:5px;color:#ffc107"></i> @Html.DisplayFor(modelItem => Model[i].評分rate)</span>
                             @*會員評分*@
                             <div class="dropdown">
                                 <button aria-label="Rate @Html.DisplayFor(modelItem => Model[i].中文標題titleCht)"

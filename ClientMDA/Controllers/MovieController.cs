@@ -80,20 +80,47 @@ namespace ClientMDA.Controllers
                 分級級數ratingLevel = m.電影分級編號rating.分級級數ratingLevel,
                 分級圖片ratingImage = m.電影分級編號rating.分級圖片ratingImage,
                 系列名稱seriesName = m.系列編號series.系列名稱seriesName,
-
-                mCountryImg = _MDAcontext.電影產地movieOrigins.Where(i => i.電影編號movieId == m.電影編號movieId).Select
+                mRateList = m.電影評論movieComments.Select(i => i.評分rate).ToList(),
+                    //導演List
+                    mDirectorList = _MDAcontext.電影導演movieDirectors.Where(i => i.電影編號movieId == m.電影編號movieId).Select
+                (c => new CMovieDirectorViewModel
+                {
+                    directorChtName = c.導演編號director.導演中文名字nameCht,
+                    directorEngName = c.導演編號director.導演英文名字nameEng,
+                    directorImg = c.導演編號director.導演照片image,
+                }
+                ).ToList(),
+                    //演員List
+                    mActorList = _MDAcontext.電影主演casts.Where(i => i.電影編號movieId == m.電影編號movieId).Select
+                (c => new CMovieActorViewModel
+                {
+                    ActorChtName = c.演員編號actor.演員中文名字nameCht,
+                    ActorEngName = c.演員編號actor.演員英文名字nameEng,
+                    ActorImg = c.演員編號actor.演員照片image,
+                    CharacterName = c.角色名字characterName,
+                    CharacterTxt = c.角色說明characterIllustrate,
+                }
+                ).ToList(),
+                    //國家List
+                    mCountryList = _MDAcontext.電影產地movieOrigins.Where(i => i.電影編號movieId == m.電影編號movieId).Select
                 (c => new CCountryImageViewModel
                 {
                     countryName = c.國家編號country.國家名稱countryName,
                     countryImage = c.國家編號country.國旗countryImage,
                 }
                 ).ToList(),
-
-                mCountryName = _MDAcontext.電影產地movieOrigins.Where(i => i.電影編號movieId == m.電影編號movieId)
-                .Select(c => c.國家編號country.國家名稱countryName).ToList(),
-                mImgFrList = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId)
-                .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
-
+                    //國家名稱
+                    //mCountryName = _MDAcontext.電影產地movieOrigins.Where(i => i.電影編號movieId == m.電影編號movieId)
+                    //.Select(c => c.國家編號country.國家名稱countryName).ToList(),
+                    mImgFrList = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId).Select
+                (c => c.圖片編號image.圖片雲端imageImdb).ToList(),
+                    //片種List
+                    mTypeList = _MDAcontext.電影片種movieTypes.Where(i => i.電影編號movieId == m.電影編號movieId).Select
+                (c => new CMovieTypeViewModel
+                {
+                    mType = c.片種編號type.片種名稱totalTypeName,
+                }
+                ).ToList(),
             }).FirstOrDefault();
             return View(datas);
         }

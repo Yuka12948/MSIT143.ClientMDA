@@ -1,0 +1,171 @@
+﻿@model List<ClientMDA.ViewModels.CMovieViewModel>
+@{
+    ViewData["Title"] = "Default"; @*演員list*@
+}
+@{
+    <div class="col-lg-11 col-md-8">
+        <!-- #region 演員資訊 -->
+        <div class="anime__details__review">
+            <div class="section-title">
+                <h5>電影主演</h5>
+            </div>
+        </div>
+        <div class="owl-carousel testimonial-carousel owl-loaded owl-drag">
+
+            @*@for (var i = 0; i < Model.Count; i++)
+            { 
+            @Model[i].ActorChtName
+            }*@
+
+
+                <div class="owl-stage-outer">
+                    <div class="owl-stage" style="transition: all 2s ease 0s; width: 3800px; transform: translate3d(-1140px, 0px, 0px);">
+                        <div class="owl-item cloned" style="width: 380px;">
+                            <div class="testimonial-item px-3">
+                                <div class="bg-light shadow-sm rounded mb-4 p-4">
+                                    <h3 class="fas fa-quote-left text-primary mr-3"></h3>
+                                    Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum clita
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/testimonial-2.jpg" style="width: 70px; height: 70px;" alt="Image">
+                                    <div class="pl-3">
+                                        <h5>Parent Name</h5>
+                                        <i>Profession</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="owl-item cloned" style="width: 380px;">
+                            <div class="testimonial-item px-3">
+                                <div class="bg-light shadow-sm rounded mb-4 p-4">
+                                    <h3 class="fas fa-quote-left text-primary mr-3"></h3>
+                                    Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum clita
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/testimonial-3.jpg" style="width: 70px; height: 70px;" alt="Image">
+                                    <div class="pl-3">
+                                        <h5>Parent Name</h5>
+                                        <i>Profession</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="owl-item cloned" style="width: 380px;">
+                            <div class="testimonial-item px-3">
+                                <div class="bg-light shadow-sm rounded mb-4 p-4">
+                                    <h3 class="fas fa-quote-left text-primary mr-3"></h3>
+                                    Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum clita
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/testimonial-4.jpg" style="width: 70px; height: 70px;" alt="Image">
+                                    <div class="pl-3">
+                                        <h5>Parent Name</h5>
+                                        <i>Profession</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="owl-item active" style="width: 380px;">
+                            <div class="testimonial-item px-3">
+                                <div class="bg-light shadow-sm rounded mb-4 p-4">
+                                    <h3 class="fas fa-quote-left text-primary mr-3"></h3>
+                                    Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum clita
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/testimonial-1.jpg" style="width: 70px; height: 70px;" alt="Image">
+                                    <div class="pl-3">
+                                        <h5>Parent Name</h5>
+                                        <i>Profession</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="owl-item active center" style="width: 380px;">
+                            <div class="testimonial-item px-3">
+                                <div class="bg-light shadow-sm rounded mb-4 p-4">
+                                    <h3 class="fas fa-quote-left text-primary mr-3"></h3>
+                                    Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum clita
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/testimonial-2.jpg" style="width: 70px; height: 70px;" alt="Image">
+                                    <div class="pl-3">
+                                        <h5>Parent Name</h5>
+                                        <i>Profession</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="owl-item active" style="width: 380px;">
+                            <div class="testimonial-item px-3">
+                                <div class="bg-light shadow-sm rounded mb-4 p-4">
+                                    <h3 class="fas fa-quote-left text-primary mr-3"></h3>
+                                    Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum clita
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/testimonial-3.jpg" style="width: 70px; height: 70px;" alt="Image">
+                                    <div class="pl-3">
+                                        <h5>Parent Name</h5>
+                                        <i>Profession</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="owl-item" style="width: 380px;">
+                            <div class="testimonial-item px-3">
+                                <div class="bg-light shadow-sm rounded mb-4 p-4">
+                                    <h3 class="fas fa-quote-left text-primary mr-3"></h3>
+                                    Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum clita
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/testimonial-4.jpg" style="width: 70px; height: 70px;" alt="Image">
+                                    <div class="pl-3">
+                                        <h5>Parent Name</h5>
+                                        <i>Profession</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="owl-item cloned" style="width: 380px;">
+                            <div class="testimonial-item px-3">
+                                <div class="bg-light shadow-sm rounded mb-4 p-4">
+                                    <h3 class="fas fa-quote-left text-primary mr-3"></h3>
+                                    Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum clita
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/testimonial-1.jpg" style="width: 70px; height: 70px;" alt="Image">
+                                    <div class="pl-3">
+                                        <h5>Parent Name</h5>
+                                        <i>Profession</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="owl-item cloned" style="width: 380px;">
+                            <div class="testimonial-item px-3">
+                                <div class="bg-light shadow-sm rounded mb-4 p-4">
+                                    <h3 class="fas fa-quote-left text-primary mr-3"></h3>
+                                    Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum clita
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/testimonial-2.jpg" style="width: 70px; height: 70px;" alt="Image">
+                                    <div class="pl-3">
+                                        <h5>Parent Name</h5>
+                                        <i>Profession</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="owl-item cloned" style="width: 380px;">
+                            <div class="testimonial-item px-3">
+                                <div class="bg-light shadow-sm rounded mb-4 p-4">
+                                    <h3 class="fas fa-quote-left text-primary mr-3"></h3>
+                                    Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum clita
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/testimonial-3.jpg" style="width: 70px; height: 70px;" alt="Image">
+                                    <div class="pl-3">
+                                        <h5>Parent Name</h5>
+                                        <i>Profession</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><div class="owl-nav disabled"><div class="owl-prev">prev</div><div class="owl-next">next</div></div><div class="owl-dots"><div class="owl-dot"><span></span></div><div class="owl-dot active"><span></span></div><div class="owl-dot"><span></span></div><div class="owl-dot"><span></span></div></div>
+            </div>
+    </div>
+}
+<script>
+
+</script>

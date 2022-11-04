@@ -314,6 +314,11 @@ namespace ClientMDA.ViewModels
         public List<string> mImgFrList { get; set; }
         public List<string> mCountryName { get; set; }
         //public List<byte[]> mCountryImg { get; set; }
-        public List<CCountryImageViewModel> mCountryImg { get; set; }
+        public List<CCountryImageViewModel> mCountryList { get; set; }
+        public List<CMovieDirectorViewModel> mDirectorList { get; set; }
+        public List<CMovieActorViewModel> mActorList { get; set; }
+        public List<CMovieTypeViewModel> mTypeList { get; set; }
+
+        public List<decimal?> mRateList { get; set; }
     }
 }
