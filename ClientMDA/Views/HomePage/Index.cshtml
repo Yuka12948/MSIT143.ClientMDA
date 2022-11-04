@@ -2797,11 +2797,13 @@
         let dd="";
         let aa="";
         let bb = "";
-        let cc=""
+        let cc = ""
+        let yy=""
         //改變星星
         $('input[type=radio]').click((event) => {
             bb = starmovieid.value
             aa = $('#會員編號Member_ID').val()
+            yy = $('#movienum').val()
             enableBtn();
             if ($('#會員編號Member_ID').val() != 0) {
                 dd = event.target.value;
@@ -2822,7 +2824,7 @@
                 if (ee.value == 1 || ee.value == 2 || ee.value == 3 || ee.value == 4 || ee.value == 5) {
                     cc = document.getElementById('memrankid').value
                     let url1 = "@Url.Content("~/api/RateEdit")"
-                    let par = `?&Comment_ID=${cc}&Rate=${dd}&Member_ID=${aa}`
+                    let par = `?Comment_ID=${cc}&Rate=${dd}&Member_ID=${aa}&Movie_ID=${yy}`
                     let res = await fetch(url1 + par);
                     let data = await res.text();
                     if (data == "1") {
@@ -2859,7 +2861,7 @@
         $('#deletestar').click(async function () {
             cc = document.getElementById('memrankid').value
             let url1 = "@Url.Content("~/api/RateDelete")"
-            let par = `?Comment_ID=${cc}`
+            let par = `?Comment_ID=${cc}&Rate=${dd}&&Movie_ID=${yy}`
             let res = await fetch(url1 + par);
             let data = await res.text();
             rankposter();

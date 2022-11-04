@@ -26,6 +26,11 @@ namespace ClientMDA.Controllers
             return View();
         }
 
+        public IActionResult QA()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Index(CHomepageViewModel p)
         {

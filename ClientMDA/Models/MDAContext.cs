@@ -24,6 +24,7 @@ namespace ClientMDA.Models
         public virtual DbSet<出售座位明細seatSold> 出售座位明細seatSolds { get; set; }
         public virtual DbSet<出售座位狀態seatStatus> 出售座位狀態seatStatuses { get; set; }
         public virtual DbSet<商品資料product> 商品資料products { get; set; }
+        public virtual DbSet<問與答qA> 問與答qAs { get; set; }
         public virtual DbSet<回覆樓數floor> 回覆樓數floors { get; set; }
         public virtual DbSet<國家總表country> 國家總表countrys { get; set; }
         public virtual DbSet<地址address> 地址addresses { get; set; }
@@ -277,6 +278,21 @@ namespace ClientMDA.Models
                     .HasConstraintName("FK_商品資料Products_電影院Theater");
             });
 
+            modelBuilder.Entity<問與答qA>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("問與答Q&A");
+
+                entity.Property(e => e.QAId)
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("Q&A_ID");
+
+                entity.Property(e => e.問題question).HasColumnName("問題Question");
+
+                entity.Property(e => e.答案answer).HasColumnName("答案Answer");
+            });
+
             modelBuilder.Entity<回覆樓數floor>(entity =>
             {
                 entity.HasKey(e => e.樓數編號floorId)
@@ -328,7 +344,9 @@ namespace ClientMDA.Models
                     .HasMaxLength(50)
                     .HasColumnName("國家名稱Country_Name");
 
-                entity.Property(e => e.國旗countryImage).HasColumnName("國旗Country_Image");
+                entity.Property(e => e.國旗countryImage)
+                    .HasMaxLength(200)
+                    .HasColumnName("國旗Country_Image");
             });
 
             modelBuilder.Entity<地址address>(entity =>

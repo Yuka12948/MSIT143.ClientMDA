@@ -87,8 +87,8 @@
                             string mCountryName = "";
                             mCountryName = Model.mCountryName[0];
 
-                            byte[] mCountryImg;
-                            mCountryImg = Model.mCountryImg[0];
+                            //byte[] mCountryImg;
+                            //mCountryImg = Model.mCountryImg[0];
                         }
 
                         @*電影海報*@
@@ -161,7 +161,7 @@
                                             </ul>
                                         </li>
                                         <li><span>電影分級:</span> @Model.分級級數ratingLevel</li>
-                                        <li><span>電影產地:</span> @mCountryName @mCountryImg</li>
+                                        <li><span>電影產地:</span> @mCountryName @*@mCountryImg*@</li>
                                         <div class="view"><img height="35" src="@Url.Action("ShowCtyImg", "Movie", new { id = @Model.國家編號countryId })" /></div>
                                         <li><span>片　　長:</span> @Model.片長runtime 分鐘</li>
                                         <li><span>片　　種:</span> 動作, 劇情</li>

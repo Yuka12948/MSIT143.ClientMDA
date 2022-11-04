@@ -422,13 +422,17 @@ namespace ClientMDA.Controllers
         }
 
         //刪除評分資料
-        public IActionResult RateDelete(int Comment_ID)
+        public IActionResult RateDelete(int Comment_ID, int Rate, int Movie_ID)
         {
             string a = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
             if (a != null)
             {
                 var q = _MDA.電影評論movieComments.FirstOrDefault(t => t.評論編號commentId == Comment_ID);
                 _MDA.電影評論movieComments.Remove(q);
+                _MDA.SaveChanges();
+                var q2 = _MDA.電影movies.Where(p => p.電影編號movieId == Movie_ID).FirstOrDefault();
+                decimal y = decimal.Round(((Convert.ToDecimal(q2.評分rate) * 2) - Rate), 1, MidpointRounding.ToEven);
+                q2.評分rate = y;
                 _MDA.SaveChanges();
                 return Content("1", "text/plain");
             }
@@ -442,15 +446,13 @@ namespace ClientMDA.Controllers
             if (a != null)
             {
                 var q = _MDA.電影評論movieComments.FirstOrDefault(t => t.評論編號commentId == Comment_ID);
+                var q2 = _MDA.電影movies.Where(p => p.電影編號movieId == Movie_ID).FirstOrDefault();
+                decimal y = decimal.Round((((Convert.ToDecimal(q2.評分rate) * 2) - Convert.ToDecimal(q.評分rate) + Rate) / 2), 1, MidpointRounding.ToEven); ;
                 q.評分rate = Rate;
                 _MDA.電影評論movieComments.Update(q);
                 _MDA.SaveChanges();
-                //電影movie mm = new 電影movie();
-                //decimal e = Convert.ToDecimal(_MDA.電影movies.Where(p => p.電影編號movieId == Movie_ID).Select(o => o.評分rate));
-                //decimal y = Math.Round(((e + Rate) / 2), 1);
-                //mm.評分rate = y;
-                //_MDA.電影movies.Update(mm);
-                //_MDA.SaveChanges();
+                q2.評分rate = y;
+                _MDA.SaveChanges();              
                 return Content("1", "text/plain");
             }
             return Content("0", "text/plain");
