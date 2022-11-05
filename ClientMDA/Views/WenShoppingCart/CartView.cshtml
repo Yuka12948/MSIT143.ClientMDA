@@ -164,13 +164,17 @@
             <table class="table table-borderless text-success justify-content-end">
 
                 <tr>
-                    <td>請輸入優惠代碼</td>
+                    <td>優惠代碼</td>
                     <td>
                         <input id="Coupon_Code" type="text" />
                         <input id="hiddenpoint" type="hidden" />
                     </td>
                     <td>
-                        <button class="btn btn-outline-info" type="submit" id="btnpoint">優惠</button>
+                        <button class="btn btn-outline-warning" type="submit" id="btnpass">貼上</button>
+
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-info" type="submit" id="btnpoint">使用</button>
 
                     </td>
                     <td id="discount">
@@ -224,9 +228,18 @@
         let Coupon_Code = document.getElementById('Coupon_Code')
         let mypoint = document.getElementById('mypoint')
         let btn = document.getElementById('btnpoint')
+        let btnpass = document.getElementById('btnpass')
         let u1 = document.getElementById("u1")
 
-        let subcreateR = document.getElementById('subcreateR')
+        //let subcreateR = document.getElementById('subcreateR')
+
+        btnpass.addEventListener('click', async() => {
+
+            const text = await navigator.clipboard.readText();
+            console.log(text);
+            Coupon_Code.value = text;
+           
+        })
 
         function listBtn() {
             var listBtn = document.getElementById('listBtn');

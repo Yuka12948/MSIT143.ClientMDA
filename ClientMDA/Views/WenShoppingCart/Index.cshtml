@@ -169,10 +169,10 @@
                 for (let prd of Prdresult) {
                     innobj += `<div class="pt-2" >
                                 <div class="container">
-                                    <ul class="list-unstyled text-success">
+                                    <ul class="list-unstyled text-success" style="float:left;margin-right:25px;margin-top:30px;">
                                         <li class="media p-3">
                                             <input type="hidden" value="${prd.商品編號productId}" />
-                                            <img src="/images/WenProduct/${prd.商品圖片路徑imagePath}" class=" w-25 mr-3 img-thumbnail img-fluid" />
+                                            <img src="/images/WenProduct/${prd.商品圖片路徑imagePath}" class="mr-3 img-thumbnail img-fluid" style="width:150px;height:120px" />
                                             <div class="media-body">
                                                 <h4>${prd.商品名稱productName}</h4>
                                                 <p><i class="fa-solid fa-sign-hanging"></i>${prd.商品介紹introduce}</p>

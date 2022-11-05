@@ -80,6 +80,7 @@
 
              return (
                  `<div class="container">
+<div class="col-md-4">
                  <div typeof="hidden" value="${item.商品編號productId}"></div>
                  <div class="card bg-white text-dark" style="width: 20rem; height:33rem;" >
                  <img class="card-img-top img-thumbnail p-4" src="/images/WenProduct/${item.商品圖片路徑imagePath}" />
@@ -88,6 +89,7 @@
                  <p class="card-text">類別: ${item.類別category}</br>價格: ${item.商品價格productPrice}</br>描述: ${item.商品介紹introduce}</p>
                  <a href="#" class="btn btn-outline-success">加入購物車</a>
                 </div>
+</div>
                 </div>
 </div>`
                  )

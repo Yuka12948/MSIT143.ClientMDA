@@ -166,7 +166,7 @@ namespace ClientMDA.Controllers
 
             message.From.Add(new MailboxAddress("M.D.A.購物商城", "rainbow_kapok@hotmail.com"));
             message.To.Add(new MailboxAddress("Wennie", "rainbow.wenwen@gmail.com"));
-            string orderid = "";
+            //string orderid = "";
            
             //foreach (var item in CRList)
             //{
@@ -176,23 +176,23 @@ namespace ClientMDA.Controllers
             list = JsonSerializer.Deserialize<List<WenCAddToCartItem>>(jsonCart);
 
             //int index = list.FindIndex(m => m.訂單編號Order_ID.Equals(oid));          
-            string name = "";
-            string amount = "";
-            string price = "";
-            string stotal = "";
+            //string name = "";
+            //string amount = "";
+            //string price = "";
+            //string stotal = "";
             //string Coupon_Code = "";
             //string hiddenpoint = "";
 
             //v.Count
             int c = v.Count;
-            string a = $"<table style='border:3px solid #7B7B7B;width:500px;'><thead style='border:1px solid gray;'><tr><th>商品明細編號</th><th>商品名稱</th><th>數量</th></tr></thead><tbody style='text-align:center;'>";
+            string a = $"<table style='border:3px solid #7B7B7B;width:500px;'><thead style='border:1px solid gray;'><tr><th>商品明細編號</th><th>商品名稱</th><th>數量</th><th>電影院名稱</th></tr></thead><tbody style='text-align:center;'>";
             var q = (from p in _context.購買商品明細receipts
                     orderby p.購買商品明細編號receiptId descending
                     select p).Take(c).ToList();
 
             for (int i =0; i < c; i++)
             {
-                a += $"<tr><td>{q[i].購買商品明細編號receiptId}</td><td>{list[i].商品名稱productName}</td><td>{list[i].count}</td></tr>";
+                a += $"<tr style='border-bottom: 3px dashed #bebebe;'><td>{q[i].購買商品明細編號receiptId}</td><td>{list[i].商品名稱productName}</td><td>{list[i].count}</td>{list[i].電影院名稱theaterName}<td></td></tr>";
             }
             //foreach (var item in list)
             //{
@@ -244,6 +244,10 @@ namespace ClientMDA.Controllers
             return View();
 
         }
+        public IActionResult Activity()
+        {
+            return View();
+        }
         public IActionResult OptTheater()
         {
             try
@@ -252,13 +256,17 @@ namespace ClientMDA.Controllers
                 {
                     var query = from m in _context.電影院theaters
                                 select m;
-
-                    WenCAddToCartItem T = new WenCAddToCartItem()
+                    List<WenCAddToCartItem> T = new();
+                    foreach (var i in query)
                     {
-                        電影院名稱theaterName = query.Select(m=>m.電影院名稱theaterName).ToString(),
-                        電影院編號theaterId = Convert.ToInt32(query.Select(m=>m.電影院編號theaterId))
+                        WenCAddToCartItem c = new WenCAddToCartItem()
+                        {
+                            電影院名稱theaterName = i.電影院名稱theaterName,
+                            電影院編號theaterId = Convert.ToInt32(i.電影院編號theaterId),
 
-                    };
+                        };
+                        T.Add(c);
+                    }
 
                     return Json(T);
 

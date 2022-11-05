@@ -17,62 +17,42 @@
         -moz-appearance: textfield;
     }
 </style>
-<h4>加入購物車</h4>
-<div style="display:block;height:40px;"></div>
+
+<div style="display:block;height:20px;"></div>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
-<div class="form-horizontal col-12">
     <form action="AddToCart" method="post">
-        <div class="form-group">
-            <input type="hidden" name="商品編號productId" value="@Model.商品編號productId" />
-            <div class="col-md-6">
-                @*<p>數量</p>
-                    <input type="number" name="count" value="1" />*@
-                <div class="mb-3 row">
-                    <label class="text-white" for="prdname" name="商品名稱productName" value="@Model.商品名稱productName">商品名稱&nbsp;&nbsp;&nbsp;&nbsp;@Model.商品名稱productName</label>
-                    <label class="text-white" for="prdname" name="商品名稱productName" value="@Model.商品介紹introduce">商品描述&nbsp;&nbsp;&nbsp;&nbsp;@Model.商品介紹introduce</label>
-                </div>
-                <div class="mb-3 row">
-
-                    <label for="count" class="col-sm-2 col-form-label">數量</label>
-
-                    @*<div class="col-sm-10">*@
-                    <div class="col-2">
-                        <button type="button" id="btnMinus" class="btn btn-secondary">-</button>
+        <div class="container">
+            <div class="row justify-content-center">
+               
+                <div class="card bg-white text-dark" style="width:22rem;">
+                    <img class="card-img-top p-4" src="~/images/WenProduct/@Model.商品圖片路徑imagePath" />
+                    <input type="hidden" name="商品編號productId" value="@Model.商品編號productId" />
+                    <h4>請選擇加入數量</h4>
+                    <div class="card-body">
+                        <h4 class="card-title">@Model.商品名稱productName</h4>
+                        <p class="card-text">@Model.商品介紹introduce</p>
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-2"><button type="button" id="btnMinus" class="btn btn-secondary">-</button></div>
+                                <div class="col-8"> <input type="number" name="count" value="1" class="form-control" id="count"></div>
+                                <div class="col-2"> <button type="button" id="btnPlus" class="btn btn-secondary">+</button></div>
+                            </div>
+                        </div>
+                        <div style="display:block;height:20px;"></div>
+                        <input type="submit" value="加入" class="btn btn-outline-success" />
                     </div>
-                    <div class="col-4">
-                        <input type="number" name="count" value="1" class="form-control" id="count">
-                    </div>
-                    <div class="col-2">
-                        <button type="button" id="btnPlus" class="btn btn-secondary">+</button>
-                    </div>
-                    @*</div>*@
 
                 </div>
-
             </div>
         </div>
-
-        @* <div class="form-group">*@
-        <div class="col-6 row justify-content-start">
-            <input type="submit" value="加入" class="btn btn-outline-success" />
-        </div>
-        @*</div>*@
     </form>
 
     <div style="display:block;height:40px;"></div>
 
-   @* <a class="btn btn-outline-info" asp-action="Index">繼續購物</a>*@
-    <!--<form action="Index" method="post">
-        <div class=" col-3 row justify-content-end">-->
-    @*<a class="btn btn-outline-info" asp-action="Index">繼續購物</a>*@
-    <!--<input type="submit" value="繼續購物" class="btn btn-outline-info" />
-        </div>
-    </form>-->
-</div>
+
 
 }
 
