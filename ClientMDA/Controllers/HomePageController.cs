@@ -27,7 +27,32 @@ namespace ClientMDA.Controllers
         }
         public IActionResult QandA()
         {
-            return View();
+            MDAContext db = new MDAContext();
+            List<CQANDAViewModel> datas = null;
+            var a = db.一般資訊generaInformations;
+
+            datas = _MDA.問題總表questions.Select(p => new CQANDAViewModel
+            {
+                一般資訊GeneraInformation = a.ToList(),
+                會員問題Q = _MDA.問題總表questions.Where(p => p.問題總類questionTypeId == 2).Select(p => p).ToList(),
+
+            }) .ToList();
+
+            //MDAContext db = new MDAContext();
+            //List<CMemberViewModel> datas = null;
+            //var C = db.優惠總表coupons;
+            //var D = db.會員權限permissions;
+            //datas = db.會員members.Select
+            //(p => new CMemberViewModel
+            //{
+            //    member = p,
+            //    性別名稱genderName = p.性別genderNavigation.性別名稱genderName,
+            //    權限名稱permissionName = p.會員權限permissionNavigation.權限名稱permissionName,
+            //    優惠總表coupon = C.ToList(),
+            //    會員權限PermissionS = D.ToList()
+            //}).ToList();
+
+            return View(datas);
         }
         public IActionResult GeneraInfor()
         {
