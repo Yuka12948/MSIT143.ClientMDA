@@ -13,7 +13,7 @@
             else if (pmer>1){
         pmer = 0
                 help.style.display = "none"
-    helper.style.top = "98%"
+    helper.style.top = "95%"
 
             }
         })
