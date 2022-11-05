@@ -3,7 +3,7 @@
     ViewData["Title"] = "Default"; @*會員問題*@
 }
 
-<h1>2</h1>
+
 <div id="Qbox">
     <div class="accordion" id="accordionExample">
         @foreach (var q in Model.First().會員問題memQa)
@@ -16,7 +16,7 @@
                 </div>
 
                 <div id="collapse_@q.會員問題memQaId" class="collapse" aria-labelledby="heading_@q.會員問題memQaId" data-parent="#accordionExample">
-                    <div class="card-body">@q.答案answer</div>
+                    <div class="card-body">@Html.Raw(@q.答案answer)</div>
                 </div>
             </div>
         }

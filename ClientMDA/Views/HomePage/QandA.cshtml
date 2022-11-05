@@ -56,7 +56,13 @@
     <div id="頁面切換">
         @await Component.InvokeAsync("一般資訊", new { datas = Model })
     </div>
+    <div class="support-button text-center d-flex align-items-center justify-content-center mt-4 wow fadeInUp" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;" id="contenctus">
+        <i class="lni-emoji-sad"></i>
+        <p class="mb-0 px-2" style="font-size:1.25rem;">找不到你要的答案？</p>
+        <a href="mailto:ilovemdaofficial@gmail.com" style="color:palegreen;font-size:1.25rem;"> 聯絡我們</a>
+    </div>
 </div>
+
 
 @section Scripts{
     <script>
@@ -90,6 +96,8 @@
     $('#購物問題').click(function () {
         $('#頁面切換').load('@Url.Content("~/HomePage/shopQa")')
     })
+
+      
     </script>
 }
 
