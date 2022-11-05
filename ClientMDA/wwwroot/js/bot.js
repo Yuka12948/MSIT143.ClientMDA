@@ -3,11 +3,11 @@
     const help = document.querySelector(".小幫手")
     const helper = document.querySelector(".幫幫忙")
 
-    $("button").click(function () {
+    $(".hope").click(function () {
         pmer++
             if (pmer == 1) {
         help.style.display = "inline";
-    helper.style.top = "47%"
+    helper.style.top = "49%"
 
             }
             else if (pmer>1){
