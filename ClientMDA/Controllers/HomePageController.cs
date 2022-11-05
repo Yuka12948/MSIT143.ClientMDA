@@ -30,69 +30,150 @@ namespace ClientMDA.Controllers
             MDAContext db = new MDAContext();
             List<CQANDAViewModel> datas = null;
             var a = db.一般資訊generaInformations;
+            var b = db.會員問題memQas;
+            var c = db.評分問題rateQas;
+            var d = db.評論問題commentQas;
+            var e = db.加入片單addlistQas;
+            var f = db.訂票問題orderticketQas;
+            var g = db.取票問題taketicketQas;
+            var h = db.退票問題refundQas;
+            var i = db.優惠券couponQas;
+            var j = db.購物問題shopQas;
 
-            datas = _MDA.問題總表questions.Select(p => new CQANDAViewModel
+            datas = _MDA.一般資訊generaInformations.Select(p => new CQANDAViewModel
             {
                 一般資訊GeneraInformation = a.ToList(),
-                會員問題Q = _MDA.問題總表questions.Where(p => p.問題總類questionTypeId == 2).Select(p => p).ToList(),
+                會員問題memQa = b.ToList(),
+                評分問題rateQa = c.ToList(),
+                評論問題commentQa = d.ToList(),
+                加入片單addlistQa = e.ToList(),
+                訂票問題orderticketQa = f.ToList(),
+                取票問題taketicketQa =g.ToList(),
+                退票問題refundQa=h.ToList(),
+                優惠券couponQa=i.ToList(),
+                購物問題shopQa=j.ToList(),
+
+
 
             }) .ToList();
-
-            //MDAContext db = new MDAContext();
-            //List<CMemberViewModel> datas = null;
-            //var C = db.優惠總表coupons;
-            //var D = db.會員權限permissions;
-            //datas = db.會員members.Select
-            //(p => new CMemberViewModel
-            //{
-            //    member = p,
-            //    性別名稱genderName = p.性別genderNavigation.性別名稱genderName,
-            //    權限名稱permissionName = p.會員權限permissionNavigation.權限名稱permissionName,
-            //    優惠總表coupon = C.ToList(),
-            //    會員權限PermissionS = D.ToList()
-            //}).ToList();
-
             return View(datas);
         }
+
         public IActionResult GeneraInfor()
         {
-            return ViewComponent("一般資訊");
+            MDAContext db = new MDAContext();
+            List<CQANDAViewModel> datas = null;
+            var a = db.一般資訊generaInformations;
+            datas = _MDA.問題總表questions.Select(p => new CQANDAViewModel
+            {
+                一般資訊GeneraInformation = a.ToList(),   
+            }).ToList();
+
+            return ViewComponent("一般資訊",datas);
         }
+
         public IActionResult memQa()
         {
-            return ViewComponent("會員問題");
+            MDAContext db = new MDAContext();
+            List<CQANDAViewModel> datas = null;            
+            var b = db.會員問題memQas;
+            datas = _MDA.問題總表questions.Select(p => new CQANDAViewModel
+            {
+                會員問題memQa = b.ToList(),
+            }).ToList();
+            return ViewComponent("會員問題", datas);
         }
+
         public IActionResult rateQa()
         {
-            return ViewComponent("評分問題"); 
+            MDAContext db = new MDAContext();
+            List<CQANDAViewModel> datas = null;           
+            var c = db.評分問題rateQas;     
+            datas = _MDA.一般資訊generaInformations.Select(p => new CQANDAViewModel
+            {
+                評分問題rateQa = c.ToList(),                
+            }).ToList();
+            return ViewComponent("評分問題", datas); 
         }
+
         public IActionResult commentQa()
         {
-            return ViewComponent("評論問題"); 
+            MDAContext db = new MDAContext();
+            List<CQANDAViewModel> datas = null;
+            var d = db.評論問題commentQas;            
+            datas = _MDA.一般資訊generaInformations.Select(p => new CQANDAViewModel
+            {               
+                評論問題commentQa = d.ToList(),                
+            }).ToList();
+            return ViewComponent("評論問題", datas); 
         }
+
         public IActionResult addlistQa()
         {
-            return ViewComponent("加入片單");
+            MDAContext db = new MDAContext();
+            List<CQANDAViewModel> datas = null;            
+            var e = db.加入片單addlistQas;           
+            datas = _MDA.一般資訊generaInformations.Select(p => new CQANDAViewModel
+            {
+                加入片單addlistQa = e.ToList(),                
+            }).ToList();
+            return ViewComponent("加入片單", datas);
         }
         public IActionResult orderticketQa()
         {
-            return ViewComponent("訂票問題");
+            MDAContext db = new MDAContext();
+            List<CQANDAViewModel> datas = null;           
+            var f = db.訂票問題orderticketQas;           
+            datas = _MDA.一般資訊generaInformations.Select(p => new CQANDAViewModel
+            {
+                訂票問題orderticketQa = f.ToList(),                
+            }).ToList();
+            return ViewComponent("訂票問題", datas);
         }
         public IActionResult taketicketQa()
         {
-            return ViewComponent("取票問題");
+            MDAContext db = new MDAContext();
+            List<CQANDAViewModel> datas = null;            
+            var g = db.取票問題taketicketQas;    
+            datas = _MDA.一般資訊generaInformations.Select(p => new CQANDAViewModel
+            {
+                取票問題taketicketQa = g.ToList(),                
+            }).ToList();
+            return ViewComponent("取票問題", datas);
         }
         public IActionResult refundQa()
         {
-            return ViewComponent("退票問題");
+            MDAContext db = new MDAContext();
+            List<CQANDAViewModel> datas = null;
+            var h = db.退票問題refundQas;
+           
+            datas = _MDA.一般資訊generaInformations.Select(p => new CQANDAViewModel
+            {
+                退票問題refundQa = h.ToList(),                
+            }).ToList();
+            return ViewComponent("退票問題", datas);
         }
         public IActionResult couponQa()
         {
-            return ViewComponent("優惠券");
+            MDAContext db = new MDAContext();
+            List<CQANDAViewModel> datas = null;
+            var i = db.優惠券couponQas;
+            datas = _MDA.一般資訊generaInformations.Select(p => new CQANDAViewModel
+            {
+                優惠券couponQa = i.ToList(),               
+            }).ToList();
+            return ViewComponent("優惠券", datas);
         }
         public IActionResult shopQa()
         {
-            return ViewComponent("購物問題");
+            MDAContext db = new MDAContext();
+            List<CQANDAViewModel> datas = null;
+            var j = db.購物問題shopQas;
+            datas = _MDA.一般資訊generaInformations.Select(p => new CQANDAViewModel
+            {
+                購物問題shopQa = j.ToList(),
+            }).ToList();
+            return ViewComponent("購物問題", datas);
         }
         
 

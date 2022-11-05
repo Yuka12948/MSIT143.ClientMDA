@@ -55,7 +55,7 @@ namespace ClientMDA.Models
         public virtual DbSet<訂單明細orderDetail> 訂單明細orderDetails { get; set; }
         public virtual DbSet<訂單狀態orderStatus> 訂單狀態orderStatuses { get; set; }
         public virtual DbSet<訂單總表order> 訂單總表orders { get; set; }
-        public virtual DbSet<訂票問題orderticketQaId> 訂票問題orderticketQaIds { get; set; }
+        public virtual DbSet<訂票問題orderticketQa> 訂票問題orderticketQas { get; set; }
         public virtual DbSet<評分問題rateQa> 評分問題rateQas { get; set; }
         public virtual DbSet<評論問題commentQa> 評論問題commentQas { get; set; }
         public virtual DbSet<評論圖片明細commentImagesList> 評論圖片明細commentImagesLists { get; set; }
@@ -1010,17 +1010,17 @@ namespace ClientMDA.Models
                     .HasConstraintName("FK_訂單總表Orders_訂單狀態OrderStatus");
             });
 
-            modelBuilder.Entity<訂票問題orderticketQaId>(entity =>
+            modelBuilder.Entity<訂票問題orderticketQa>(entity =>
             {
                 entity.HasNoKey();
 
-                entity.ToTable("訂票問題orderticketQaID");
+                entity.ToTable("訂票問題orderticketQa");
 
                 entity.Property(e => e.問題question).HasColumnName("問題Question");
 
                 entity.Property(e => e.答案answer).HasColumnName("答案Answer");
 
-                entity.Property(e => e.訂票問題orderticketQaId1)
+                entity.Property(e => e.訂票問題orderticketQaId)
                     .ValueGeneratedOnAdd()
                     .HasColumnName("訂票問題orderticketQaID");
             });
