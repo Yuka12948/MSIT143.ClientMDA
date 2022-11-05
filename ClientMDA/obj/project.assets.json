@@ -7555,20 +7555,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\boboc\\.nuget\\packages\\": {}
+    "C:\\Users\\USER\\.nuget\\packages\\": {},
+    "F:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\C#\\03_iSpan資策會\\MSIT_143_智慧應用微軟C#工程師就業養成班\\06.專題_GitHub\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
+      "projectUniqueName": "C:\\Users\\USER\\Desktop\\MDA\\ClientMDA\\ClientMDA.csproj",
       "projectName": "ClientMDA",
-      "projectPath": "E:\\C#\\03_iSpan資策會\\MSIT_143_智慧應用微軟C#工程師就業養成班\\06.專題_GitHub\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
-      "packagesPath": "C:\\Users\\boboc\\.nuget\\packages\\",
-      "outputPath": "E:\\C#\\03_iSpan資策會\\MSIT_143_智慧應用微軟C#工程師就業養成班\\06.專題_GitHub\\MSIT143.ClientMDA\\ClientMDA\\obj\\",
+      "projectPath": "C:\\Users\\USER\\Desktop\\MDA\\ClientMDA\\ClientMDA.csproj",
+      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\USER\\Desktop\\MDA\\ClientMDA\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "F:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\boboc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -7648,7 +7656,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.412\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.409\\RuntimeIdentifierGraph.json"
       }
     }
   }
