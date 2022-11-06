@@ -25,6 +25,8 @@ namespace ClientMDA.Controllers
         {
             return View();
         }
+
+        //問題區
         public IActionResult QandA()
         {
             MDAContext db = new MDAContext();
@@ -119,6 +121,7 @@ namespace ClientMDA.Controllers
             }).ToList();
             return ViewComponent("加入片單", datas);
         }
+        
         public IActionResult orderticketQa()
         {
             MDAContext db = new MDAContext();
@@ -130,6 +133,7 @@ namespace ClientMDA.Controllers
             }).ToList();
             return ViewComponent("訂票問題", datas);
         }
+        
         public IActionResult taketicketQa()
         {
             MDAContext db = new MDAContext();
@@ -141,6 +145,7 @@ namespace ClientMDA.Controllers
             }).ToList();
             return ViewComponent("取票問題", datas);
         }
+        
         public IActionResult refundQa()
         {
             MDAContext db = new MDAContext();
@@ -153,6 +158,7 @@ namespace ClientMDA.Controllers
             }).ToList();
             return ViewComponent("退票問題", datas);
         }
+        
         public IActionResult couponQa()
         {
             MDAContext db = new MDAContext();
@@ -164,6 +170,7 @@ namespace ClientMDA.Controllers
             }).ToList();
             return ViewComponent("優惠券", datas);
         }
+       
         public IActionResult shopQa()
         {
             MDAContext db = new MDAContext();
