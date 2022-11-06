@@ -9,12 +9,14 @@ namespace ClientMDA.Models
     {
         public 問題總類questionType()
         {
-            問題總表questions = new HashSet<問題總表question>();
+            一般資訊generaInformations = new HashSet<一般資訊generaInformation>();
+            會員問題memQas = new HashSet<會員問題memQa>();
         }
 
         public int 問題總類編號questionTypeId { get; set; }
         public string 問題分類questionClassification { get; set; }
 
-        public virtual ICollection<問題總表question> 問題總表questions { get; set; }
+        public virtual ICollection<一般資訊generaInformation> 一般資訊generaInformations { get; set; }
+        public virtual ICollection<會員問題memQa> 會員問題memQas { get; set; }
     }
 }

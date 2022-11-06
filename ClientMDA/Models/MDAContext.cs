@@ -82,7 +82,7 @@ namespace ClientMDA.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=MDA;Integrated Security=True");
             }
         }
@@ -93,17 +93,23 @@ namespace ClientMDA.Models
 
             modelBuilder.Entity<一般資訊generaInformation>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("一般資訊GeneraInformation");
 
-                entity.Property(e => e.一般資訊generaInformationId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("一般資訊GeneraInformationID");
+                entity.Property(e => e.一般資訊generaInformationId).HasColumnName("一般資訊GeneraInformationID");
 
-                entity.Property(e => e.問題question).HasColumnName("問題Question");
+                entity.Property(e => e.問題question)
+                    .IsRequired()
+                    .HasColumnName("問題Question");
+
+                entity.Property(e => e.問題總類編號questionTypeId).HasColumnName("問題總類編號QuestionTypeID");
 
                 entity.Property(e => e.答案answer).HasColumnName("答案Answer");
+
+                entity.HasOne(d => d.問題總類編號questionType)
+                    .WithMany(p => p.一般資訊generaInformations)
+                    .HasForeignKey(d => d.問題總類編號questionTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_一般資訊GeneraInformation_問題總類QuestionType1");
             });
 
             modelBuilder.Entity<使用優惠明細usingCouponList>(entity =>
@@ -143,7 +149,9 @@ namespace ClientMDA.Models
                     .ValueGeneratedOnAdd()
                     .HasColumnName("優惠券couponQaID");
 
-                entity.Property(e => e.問題question).HasColumnName("問題Question");
+                entity.Property(e => e.問題question)
+                    .IsRequired()
+                    .HasColumnName("問題Question");
 
                 entity.Property(e => e.答案answer).HasColumnName("答案Answer");
             });
@@ -288,7 +296,9 @@ namespace ClientMDA.Models
                     .ValueGeneratedOnAdd()
                     .HasColumnName("加入片單addlistQaID");
 
-                entity.Property(e => e.問題question).HasColumnName("問題Question");
+                entity.Property(e => e.問題question)
+                    .IsRequired()
+                    .HasColumnName("問題Question");
 
                 entity.Property(e => e.答案answer).HasColumnName("答案Answer");
             });
@@ -303,7 +313,9 @@ namespace ClientMDA.Models
                     .ValueGeneratedOnAdd()
                     .HasColumnName("取票問題taketicketQaID");
 
-                entity.Property(e => e.問題question).HasColumnName("問題Question");
+                entity.Property(e => e.問題question)
+                    .IsRequired()
+                    .HasColumnName("問題Question");
 
                 entity.Property(e => e.答案answer).HasColumnName("答案Answer");
             });
@@ -357,16 +369,9 @@ namespace ClientMDA.Models
 
                 entity.Property(e => e.問題編號questionId).HasColumnName("問題編號QuestionID");
 
-                entity.Property(e => e.問題question).HasColumnName("問題Question");
-
                 entity.Property(e => e.問題總類questionTypeId).HasColumnName("問題總類QuestionTypeID");
 
                 entity.Property(e => e.答案answer).HasColumnName("答案Answer");
-
-                entity.HasOne(d => d.問題總類questionType)
-                    .WithMany(p => p.問題總表questions)
-                    .HasForeignKey(d => d.問題總類questionTypeId)
-                    .HasConstraintName("FK_問題總表Question_問題總類QuestionType");
             });
 
             modelBuilder.Entity<問題總類questionType>(entity =>
@@ -747,17 +752,23 @@ namespace ClientMDA.Models
 
             modelBuilder.Entity<會員問題memQa>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("會員問題memQa");
 
-                entity.Property(e => e.問題question).HasColumnName("問題Question");
+                entity.Property(e => e.會員問題memQaId).HasColumnName("會員問題memQaID");
 
-                entity.Property(e => e.會員問題memQaId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("會員問題memQaID");
+                entity.Property(e => e.問題question)
+                    .IsRequired()
+                    .HasColumnName("問題Question");
+
+                entity.Property(e => e.問題總類編號questionTypeId).HasColumnName("問題總類編號QuestionTypeID");
 
                 entity.Property(e => e.答案answer).HasColumnName("答案Answer");
+
+                entity.HasOne(d => d.問題總類編號questionType)
+                    .WithMany(p => p.會員問題memQas)
+                    .HasForeignKey(d => d.問題總類編號questionTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_會員問題memQa_問題總類QuestionType1");
             });
 
             modelBuilder.Entity<會員權限permission>(entity =>
@@ -1016,7 +1027,9 @@ namespace ClientMDA.Models
 
                 entity.ToTable("訂票問題orderticketQa");
 
-                entity.Property(e => e.問題question).HasColumnName("問題Question");
+                entity.Property(e => e.問題question)
+                    .IsRequired()
+                    .HasColumnName("問題Question");
 
                 entity.Property(e => e.答案answer).HasColumnName("答案Answer");
 
@@ -1031,7 +1044,9 @@ namespace ClientMDA.Models
 
                 entity.ToTable("評分問題rateQa");
 
-                entity.Property(e => e.問題question).HasColumnName("問題Question");
+                entity.Property(e => e.問題question)
+                    .IsRequired()
+                    .HasColumnName("問題Question");
 
                 entity.Property(e => e.答案answer).HasColumnName("答案Answer");
 
@@ -1046,7 +1061,9 @@ namespace ClientMDA.Models
 
                 entity.ToTable("評論問題commentQa");
 
-                entity.Property(e => e.問題question).HasColumnName("問題Question");
+                entity.Property(e => e.問題question)
+                    .IsRequired()
+                    .HasColumnName("問題Question");
 
                 entity.Property(e => e.答案answer).HasColumnName("答案Answer");
 
@@ -1159,7 +1176,9 @@ namespace ClientMDA.Models
 
                 entity.ToTable("退票問題refundQa");
 
-                entity.Property(e => e.問題question).HasColumnName("問題Question");
+                entity.Property(e => e.問題question)
+                    .IsRequired()
+                    .HasColumnName("問題Question");
 
                 entity.Property(e => e.答案answer).HasColumnName("答案Answer");
 
@@ -1404,6 +1423,8 @@ namespace ClientMDA.Models
                 entity.Property(e => e.累積票房boxOfficeGross)
                     .HasMaxLength(50)
                     .HasColumnName("累積票房BoxOffice_Gross");
+
+                entity.Property(e => e.統計時間).HasMaxLength(50);
 
                 entity.Property(e => e.電影movie)
                     .HasMaxLength(100)

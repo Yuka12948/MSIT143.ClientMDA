@@ -2990,10 +2990,7 @@ C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\Components\SelectMovi
 C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\Components\SelectScreen\Default.cshtml.g.cs
 C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\Components\SelectSeat\Default.cshtml.g.cs
 C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\Components\SelectTime\Default.cshtml.g.cs
-C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\MovieInfoIndex.cshtml.g.cs
 C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\MovieInfoIndex2.cshtml.g.cs
-C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\MovieInfoIndex3.cshtml.g.cs
-C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\MoviePartialView.cshtml.g.cs
 C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\OPayment.cshtml.g.cs
 C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\PaymentWeb.cshtml.g.cs
 C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\PaymentWeb2.cshtml.g.cs
@@ -3002,7 +2999,6 @@ C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\SeatMap.cshtml.g.cs
 C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\SelectByMovie.cshtml.g.cs
 C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\SelectByTheater.cshtml.g.cs
 C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\SelectMovie.cshtml.g.cs
-C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\SelectPartialView.cshtml.g.cs
 C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\SelectTicket.cshtml.g.cs
 C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\_MoviePartialView.cshtml.g.cs
 C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\_TheaterPartialView.cshtml.g.cs
@@ -3372,3 +3368,5 @@ C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\HomePage\QandA.cshtml.g.cs
 C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\Components\演員list\Default.cshtml.g.cs
 C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\Components\電影劇照牆list\Default.cshtml.g.cs
 C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\Activity.cshtml.g.cs
+C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\makeCinemaSeat.cshtml.g.cs
+C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\makeScreen.cshtml.g.cs
