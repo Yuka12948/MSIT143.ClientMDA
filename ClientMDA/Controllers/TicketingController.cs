@@ -49,22 +49,18 @@ namespace ClientMDA.Controllers
             _dbContext.演員總表actors.ToList();
             _dbContext.會員members.ToList();
 
-            _dbContext.商品資料products.ToList();
-            _dbContext.購買商品明細receipts.ToList();
         }
-
         #endregion
 
         #region 普通Action
         public IActionResult MovieInfoIndex()
         {
             return View();
+
         }
 
         public IActionResult SelectMovie()
         {
-            ViewBag.Lineflag = HttpContext.Session.GetInt32(CDictionary.SK_跑過該死的線);
-
             string user = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
             if (string.IsNullOrEmpty(user))
             {
@@ -95,7 +91,6 @@ namespace ClientMDA.Controllers
 
         public IActionResult SelectByMovie(int theaterID)
         {
-            HttpContext.Session.SetInt32(CDictionary.SK_跑過該死的線, 1);
             HttpContext.Session.SetInt32(CDictionary.SK_選擇的電影院ID, theaterID);
             int MovieID = (int)HttpContext.Session.GetInt32(CDictionary.SK_選擇的電影Code);
             CSelectByMovieViewModel view = new CSelectByMovieViewModel()
@@ -110,7 +105,6 @@ namespace ClientMDA.Controllers
 
         public IActionResult SelectByTheater(int theaterID)
         {
-            HttpContext.Session.SetInt32(CDictionary.SK_跑過該死的線, 1);
             HttpContext.Session.SetInt32(CDictionary.SK_選擇的電影院ID, theaterID);
 
             電影院theater theater = this._dbContext.電影院theaters.FirstOrDefault(t => t.電影院編號theaterId == theaterID);
@@ -149,6 +143,12 @@ namespace ClientMDA.Controllers
 
         public IActionResult SelectTicket(CGetInfoForTicketActionViewModel Info)
         {
+            //判斷時間
+            string screentime = this._dbContext.場次screenings.Where(s => s.場次編號screeningId == Info.screenID).FirstOrDefault().放映開始時間playTime;
+
+            string[] strarr = screentime.Split(':');
+            int starthour = Convert.ToInt32(strarr[0]);
+
             影城mainTheater currentMainTheater = this._dbContext.電影院theaters.Where(t => t.電影院編號theaterId == Info.theaterID).Select(t => t.影城編號mainTheater).FirstOrDefault();
             CSelectTicketViewModel ticketview = new CSelectTicketViewModel(Info);
             List<CTicketInfoViewModelcs> ALLticketInfo = new List<CTicketInfoViewModelcs>();
@@ -159,7 +159,22 @@ namespace ClientMDA.Controllers
                 ticketInfoitem.TicketID票價明細 = item.票價明細ticketId;
                 ticketInfoitem.TicketName票種名稱 = item.票種編號ticketType.票種名稱ticketTypeName;
                 ticketInfoitem.TicketPrice票價 = item.價格ticketPrice;
-                ALLticketInfo.Add(ticketInfoitem);
+                if (starthour < 9 && starthour > 5)
+                {
+                    if (ticketInfoitem.TicketName票種名稱.Contains('早'))
+                        ALLticketInfo.Add(ticketInfoitem);
+                }
+                else if (starthour > 22 || starthour < 5)
+                {
+                    if (ticketInfoitem.TicketName票種名稱.Contains('夜') || ticketInfoitem.TicketName票種名稱.Contains('晚'))
+                        ALLticketInfo.Add(ticketInfoitem);
+                }
+                else
+                {
+                    if (!ticketInfoitem.TicketName票種名稱.Contains('夜') && !ticketInfoitem.TicketName票種名稱.Contains('晚') && !ticketInfoitem.TicketName票種名稱.Contains('早'))
+                        ALLticketInfo.Add(ticketInfoitem);
+                }
+
             }
             ticketview.ALLticketInfo = ALLticketInfo;
             return View(ticketview);
@@ -365,7 +380,7 @@ namespace ClientMDA.Controllers
             int rannum = ran.Next(9999) + 1966728;
             HttpContext.Session.SetInt32(CDictionary.SK_購票驗證碼, rannum);
             builder.HtmlBody = $"<p>你好，你的驗證碼為{rannum}</p>" +
-                              $"<div style='border: 2px solid black;text-align: center;'>      </div>" +
+                              $"<div style='border: 2px solid black;text-align: center;'></div>" +
                               $"<p>當前時間:{DateTime.Now:yyyy-MM-dd HH:mm:ss}</p>";
 
             message.From.Add(new MailboxAddress("MDA訂票官網", "annlan08@outlook.com"));
@@ -404,15 +419,39 @@ namespace ClientMDA.Controllers
 
         public IActionResult refund(int orderID)
         {
-
+            fn_退票座位回歸可選(orderID);
             return View();
         }
 
         public void fn_退票座位回歸可選(int orderID)
         {
+            訂單總表order order = this._dbContext.訂單總表orders.Where(o => o.訂單編號orderId == orderID).FirstOrDefault();
+            List<string> seatInfo = this._dbContext.出售座位明細seatSolds
+                      .Where(s => s.訂單編號orderId == orderID)
+                      .Select(s => s.座位表編號seatId).ToList();
+            出售座位狀態seatStatus seatStatus = this._dbContext.出售座位狀態seatStatuses.Where(s => s.場次編號screeningId == order.場次編號screeningId).FirstOrDefault();
+            string[] strArr = seatStatus.出售座位資訊seatSoldInfo.Split('@');
+            for (int i = 0; i < strArr.Length; i++)
+            {
+                foreach (string item in seatInfo)
+                {
+                    if (strArr[i].Trim() == $"{item.Trim()}saled")
+                    {
+                        strArr[i] = item.Trim();
+                        break;
+                    }
+                }
+            }
+            string newdata = "";
+            for (int i = 0; i < strArr.Length; i++)
+            {
+                newdata += strArr[i];
+            }
+
+            seatStatus.出售座位資訊seatSoldInfo = newdata;
+            this._dbContext.SaveChanges();
 
         }
-
 
         #endregion
 
@@ -824,16 +863,6 @@ namespace ClientMDA.Controllers
             return nums;
         }
 
-
-        #endregion
-
-
-        #region 外來者
-
-        public IActionResult makeseat()
-        {
-            return View();
-        }
 
         #endregion
     }

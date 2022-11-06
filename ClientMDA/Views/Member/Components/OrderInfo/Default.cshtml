@@ -64,7 +64,10 @@
     </form>
 
     <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-        <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">關閉</button>
-        <button type="button" class="w3-button w3-red">退票</button>
+        <form method="get" action="~/Ticketing/refund">
+            <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">關閉</button>
+            <button type="button" class="w3-button w3-red" value="@Model.OrderId" name="refundbtn">取消訂票</button>
+            <input type="hidden" name="orderID" value="@Model.OrderId" />
+        </form>
     </div>
 </div>

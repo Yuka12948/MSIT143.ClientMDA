@@ -830,9 +830,39 @@ namespace ClientMDA.Controllers
                 return "";
             return Regex.Replace(input, "<[a-zA-Z/].*?>", String.Empty);
         }
+
+        #region refund
         public IActionResult GetfullOrderInfo(int orderId) //訂單詳情
         {
             return ViewComponent("OrderInfo", orderId);
         }
+
+        public IActionResult CheckCode(string code)
+        {
+            if (code == "1111")
+            {
+                return Json('T');
+            }
+            else
+            {
+                return Json('F');
+            }
+        }
+
+        public IActionResult PasswordCheck(string password, string code)
+        {
+            string piccode = HttpContext.Session.GetString(CDictionary.SK_PICTURECODE);
+
+            if (password == "1111" && code == piccode)
+            {
+                return Json('T');
+            }
+            else
+            {
+                return Json('F');
+            }
+        }
+
+        #endregion
     }
 }

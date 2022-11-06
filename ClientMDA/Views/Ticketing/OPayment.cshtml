@@ -1,13 +1,12 @@
-﻿@{
-
-}
-<div id="preloder">
-    <div class="loader"></div>
-</div>
-
-
+﻿<link href="~/css/OPayLoader.css" rel="stylesheet" />
+<style>
+    .loader2 {
+        position:absolute!important;
+        top:45%!important;
+        left:48%!important;
+    }
+</style>
 <form id="formCVS" method="post" accept-charset="UTF-8" action="https://payment-stage.opay.tw/Cashier/AioCheckOut/V5">
-
     <input type="hidden" name="MerchantID" value="2000132" />
     <input type="hidden" name="MerchantTradeNo" value="@ViewBag.tradeNo" />
     <input type="hidden" name="MerchantTradeDate" value="@ViewBag.timenow" />
@@ -24,17 +23,22 @@
     <input type="hidden" name="Redeem" value="" />
     <input type="hidden" name="EncryptType" value="1" />
     <input type="hidden" name="CheckMacValue" value="@ViewBag.checkMacValue" />
-
 </form>
+
+
+
+<div id="preloder">
+    <div class="loader2"></div>
+</div>
 
 <script>
     (function ($) {
         $(window).on('load', function () {
+            $('header').hide();
+            $('footer').hide();
             setTimeout(() => {
-                $(".loader").delay(100).fadeOut();
-                $("#preloder").delay(50).fadeOut("slow");
-            }, 2000)
-            $('#formCVS').submit();
+                $('#formCVS').submit();
+            },2000)
         });
     })(jQuery);
 </script>
