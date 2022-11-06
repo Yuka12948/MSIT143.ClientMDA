@@ -841,11 +841,14 @@ namespace ClientMDA.Controllers
         public IActionResult CheckCode(string code)
         {
             int? id = HttpContext.Session.GetInt32(CDictionary.SK_訂單詳情當前訂單);
-            int codevalue = (int)id + 19862211;
-            if (code == ("MDA" + codevalue.ToString()))
-                return Json('T');
-            else
+            int codevalue = (int)id;
+            if (code != (codevalue.ToString()))
                 return Json('F');
+            var order = this._MDAcontext.訂單總表orders.Where(o => o.訂單編號orderId == (int)id).FirstOrDefault();
+            var screen = this._MDAcontext.場次screenings.Where(s => s.場次編號screeningId == order.場次編號screeningId).FirstOrDefault();
+            if (screen.放映日期playDate < DateTime.Now.AddDays(2.0) || order.訂單狀態編號orderStatusId == 3)
+                return Json('O');
+            return Json('T');
         }
 
         public IActionResult PasswordCheck(string password, string code)
