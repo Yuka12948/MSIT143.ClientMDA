@@ -2454,8 +2454,11 @@
                 if (data2[i].length >= 9 && data2[i].length < 15) {
                     ranktitle[i].style.fontSize = "1.13rem";
                 }
-                else if (data2[i].length >= 15) {
+                else if (data2[i].length >= 15 && data[i].length < 20) {
                     ranktitle[i].style.fontSize = "0.98rem";
+                }
+                else if (data2[i].length >= 20) {
+                    ranktitle[i].style.fontSize = "0.77rem";
                 }
             }
             //判斷有沒有登錄，片單中的電影發亮+片單編號
@@ -2511,8 +2514,11 @@
                 if (data[i].length >= 9 && data[i].length < 15) {
                     newtitle[i].style.fontSize = "1.13rem";
                 }
-                else if (data[i].length >= 15) {
+                else if (data[i].length >= 15 && data[i].length<20) {
                     newtitle[i].style.fontSize = "0.98rem";
+                }
+                else if (data[i].length >= 20) {
+                    newtitle[i].style.fontSize = "0.77rem";
                 }
             }
             //海報
@@ -2583,8 +2589,11 @@
                 if (data[i].length >= 9 && data[i].length <15) {
                     exptitle[i].style.fontSize = "1.13rem";
                 }
-                else if (data[i].length >= 15) {
+                else if (data[i].length >= 15 && data[i].length < 20) {
                     exptitle[i].style.fontSize = "0.98rem";
+                }
+                else if (data[i].length >= 20) {
+                    exptitle[i].style.fontSize = "0.77rem";
                 }
             }
             //關掉評分按鈕+抓海報
@@ -2675,8 +2684,11 @@
                     if (data[i].length >= 9 && data[i].length < 15) {
                         listtitle[i].style.fontSize = "1.13rem";
                     }
-                    else if (data[i].length >= 15) {
+                    else if (data[i].length >= 15 && data[i].length < 20) {
                         listtitle[i].style.fontSize = "0.98rem";
+                    }
+                    else if (data[i].length >= 20) {
+                        listtitle[i].style.fontSize = "0.77rem";
                     }
                 }
             }
@@ -2752,9 +2764,22 @@
                 /* 確認登出後session有沒有清空，清空後還是跳書籤下面東西各寫一個迴圈*/
             }
             //我的片單顯示方式
+            mylistshow()
+            rankposter();
+            newmovie();
+            recommendposter();
+            disableBtn();
+            bannermovie();
+            expmovieall()
+            //console.log($(ranktitle)[0])
+        });
+
+        //顯示我的清單
+        async function mylistshow() {
             let getmylistmovie = await fetch('@Url.Content("~/api/bookmarkget")')
             let d = await getmylistmovie.json();
             if (d != 0) {
+                $("#mylist").remove();
                 $("#mylist").css('display', 'none');
                 $("#mylistdiv").css('display', 'block');
             }
@@ -2780,14 +2805,8 @@
                 $("#mylist").css('display', 'block');
                 $("mylistdiv").css('display', 'none');
             }
-            rankposter();
-            newmovie();
-            recommendposter();
-            disableBtn();
-            bannermovie();
-            expmovieall()
-            //console.log($(ranktitle)[0])
-        });
+        }
+
 
         //評分表單
         //評分表單的送出按鈕
@@ -2893,10 +2912,12 @@
             listmovie();
          })
 
-
-
         //亂源
         //書籤加入片單
+        let memberid = "";
+        let movieid = "";
+        let movielistid = "";
+        let listid = "";
         //banner書籤
         for (let i = 0; i < bookmarkpluss.length; i++) {
             bookmarkpluss[i].addEventListener('click', event => {
@@ -2906,24 +2927,62 @@
 
         //新片排行書籤
         for (let i = 0; i < rankbook.length; i++) {
-            rankbook[i].addEventListener('click', event => {
+            rankbook[i].addEventListener('click', async function a () {
                 if ($('#會員編號Member_IDbook').val() != 0) {
                     if (rankbook[i].textContent != '✓') {
-                        const p = ranktitle[i].getAttribute('data')
-                        document.getElementById('電影編號Movie_IDbook').value = p;
-                        $("#mylist").remove();
-                        $('#form3').submit()
+
+                        const p = ranktitle[i].getAttribute('data');
+                        memberid = $('#會員編號Member_ID').val();
+                        movielistid=$('#片單總表編號MovieList_ID').val();
+                        movieid = p;
+                        let url1 = "@Url.Content("~/api/bookSubmit")"
+                        let par = `?memberid=${memberid}&movieid=${movieid}&movielistid=${movielistid}`
+                        let res = await fetch(url1 + par);
+                        let data = await res.text();
+                        if (data == "1") {
+                            //closeModal(modal);
+                            rankposter();
+                            newmovie();
+                            listmovie()
+                            memberid.value = ""
+                            movielistid.value = ""
+                            movieid.value = ""                            
+                            mylistshow()
+                            a.preventDefault();
+                        }
+                        
+                        //const p = ranktitle[i].getAttribute('data')
+                        //document.getElementById('電影編號Movie_IDbook').value = p;
+                        //$("#mylist").remove();
+                        //$('#form3').submit()
                     }
                     else {
-                        const j = ranktitle[i].getAttribute('data-list')
-                        document.getElementById('我的片單MyMovieList_ID').value = j;
-                        $('#form4').submit()
+                        @*const j = ranktitle[i].getAttribute('data-list')                       
+                        listid = j;
+                        let url1 = "@Url.Content("~/api/bookdelete")"
+                        let par = `?listid=${listid}`
+                        let res = await fetch(url1 + par);
+                        let data = await res.text();
+                        if (data == "1") {
+                            //closeModal(modal);
+                            rankposter();
+                            newmovie();
+                            listmovie()
+                            listid.value = ""                                                     
+                            mylistshow()
+                            a.preventDefault();
+                        }*@
+
+                            const j = ranktitle[i].getAttribute('data-list')
+                            document.getElementById('我的片單MyMovieList_ID').value = j;
+                            $('#form4').submit()
+
                     }
                 }
                 else
                     $('#dataSubmit').submit();
             })
-            
+
         }
 
         //本周新片書籤

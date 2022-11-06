@@ -457,5 +457,36 @@ namespace ClientMDA.Controllers
             }
             return Content("0", "text/plain");
         }
+
+        public IActionResult bookSubmit(int memberid, int movieid, int movielistid)
+        {
+            string a = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+            if (a != null)
+            {
+                我的片單myMovieList l = new 我的片單myMovieList();
+                l.會員編號memberId = memberid;
+                l.片單總表編號movieListId = movielistid;
+                l.電影編號movieId = movieid;
+                _MDA.我的片單myMovieLists.Add(l);
+                _MDA.SaveChanges();
+                return Content("1", "text/plain");
+            }
+            return Content("0", "text/plain");
+        }
+
+        //不能用
+        public IActionResult bookdelete(int listid)
+        {
+            string a = HttpContext.Session.GetString(CDictionary.SK_USER_PHONE);
+            if (a != null)
+            {
+                我的片單myMovieList l = new 我的片單myMovieList();
+                l.我的片單myMovieListId = listid;
+                _MDA.我的片單myMovieLists.Remove(l);
+                _MDA.SaveChanges();                
+                return Content("1", "text/plain");
+            }
+            return Content("0", "text/plain");
+        }
     }
 }
