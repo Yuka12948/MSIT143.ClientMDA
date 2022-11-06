@@ -29,7 +29,7 @@ namespace ClientMDA.ViewComponents
             if (flag == 1)
             {
                 list = await this._dbContext.場次screenings
-                             .Where(s => s.影廳編號cinema.電影院編號theaterId == theaterID)
+                             .Where(s => s.影廳編號cinema.電影院編號theaterId == theaterID && s.放映日期playDate >= DateTime.Now.Date)
                              .Select(s => s.放映日期playDate).Distinct().ToListAsync();
             }
 

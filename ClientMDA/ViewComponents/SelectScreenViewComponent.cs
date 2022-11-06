@@ -24,12 +24,13 @@ namespace ClientMDA.ViewComponents
 
         public IViewComponentResult Invoke(DateTime time)
         {
+            int? theaterid = HttpContext.Session.GetInt32(CDictionary.SK_選擇的電影院ID);
             List<CAjaxCinemaTypeViewModel> list = new List<CAjaxCinemaTypeViewModel>();
             int? Code = HttpContext.Session.GetInt32(CDictionary.SK_選擇的電影Code);
             if (Code != null)
             {
                 list = this._dbContext.場次screenings.AsEnumerable()
-                        .Where(s => s.電影代碼movieCode == (int)Code && s.放映日期playDate.Date == time.Date)
+                        .Where(s => s.電影代碼movieCode == (int)Code && s.放映日期playDate.Date == time.Date && s.影廳編號cinema.電影院編號theaterId==theaterid)
                         .GroupBy(s => s.影廳編號cinema.廳種名稱cinemaClsName)
                         .Select(s => new CAjaxCinemaTypeViewModel
                         {
