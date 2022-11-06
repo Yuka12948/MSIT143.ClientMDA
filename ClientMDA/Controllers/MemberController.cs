@@ -236,7 +236,7 @@ namespace ClientMDA.Controllers
             using (SmtpClient client = new SmtpClient())
             {
                 client.Connect("smtp.outlook.com", 587, MailKit.Security.SecureSocketOptions.StartTls); //587 TLS
-                client.Authenticate("jo3wait@outlook.com", "Car710451");
+                client.Authenticate("jo3wait@outlook.com", "msit143group3");
                 client.Send(message);
                 client.Disconnect(true);
             }

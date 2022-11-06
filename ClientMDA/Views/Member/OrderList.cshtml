@@ -139,7 +139,7 @@
                                 <td class="" id="orderId"><a>@order.orderId</a></td>
                                 <td class="">@order.status</td>
                                 <td class="">@order.total</td>
-                                <td class="w3-button w3-green w3-large" value="@order.orderId"><a>訂單詳情</a></td>
+                                <td class="wbtn btn-secondary btn-sm" value="@order.orderId"><a>訂單詳情</a></td>
                             </tr>
                         }
 
@@ -164,7 +164,7 @@
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        $('.w3-green').click(function () {
+        $('.btn-sm').click(function () {
                 let id = this.getAttribute('value')
                 console.log(id);
                 $('#id01').css('display', 'block');

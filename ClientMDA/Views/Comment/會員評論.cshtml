@@ -10,7 +10,7 @@
         a = Accessor.HttpContext.Session.GetString(ClientMDA.Models.CDictionary.SK_LOGINED_USER);
         mem = JsonSerializer.Deserialize<會員member>(a);
     }
-
+    var connectId = Html.ViewContext.RouteData.Values["id"];
 }
 @{
     ViewData["Title"] = "會員評論";
@@ -64,48 +64,71 @@
             <span class="text-white-50 mb-0">此用戶觀看過N部電影</span>*@
         <span class="text-white-50 mb-0">@*@mem.電影評論movieComments.Count*@ @Model.commentCount 則評論 ‧ @Model.memberfollow 人追蹤</span><br />
         <div class="membtn">
-            @Html.ActionLink("追蹤會員", "follow會員", new { followMid = 1 }, new { @class = "btn btn-info btn-sm", id = "followMem" })
-            @Html.ActionLink("取消追蹤", "unfollow會員", new { followMid = 1 }, new { @class = "btn btn-info btn-sm", id = "followMem" })
-            @*<button class="btn btn-info btn-sm" id="follow">追蹤會員</button>*@
-            <button type="button" id="btnReport" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#reportModal">檢舉</button>
+            <!--weiting begin-->
             @{
                 if (mem != null)
                 {
-                    <!-- Modal -->
-                    <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            @using (Html.BeginForm("Report檢舉", "Comment"))
-                            {
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle" style="color:black">檢舉</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body" style="color:black">
-                                        <!--modal content start-->
-                                        <input type="hidden" name="會員編號Member_ID" value="@mem.會員編號memberId" />
-                                        <input type="hidden" name="對象Target_ID" value="1" />
-                                        <input type="hidden" name="追讚倒編號ActionType_ID" value="3" />
-                                        <input type="hidden" name="連接編號Connect_ID" value="1" />
-                                        <input type="hidden" name="" value="" />
-                                        <div><label>檢舉人</label><input type="text" readonly value="@mem.會員電話cellphone" /></div>
-                                        <div><label>檢舉對象</label><input type="text" readonly value="Yuka" /></div>
-                                        <div><label>檢舉理由</label><textarea cols="50" name="檢舉理由ReportReason"></textarea></div>
-                                        <!--modal content end-->
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                                        <button type="submit" class="btn btn-primary" id="submitAddList">確定</button>
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                    </div>
-                    <!--modal end-->
+                    <span><input class="btn btn-info btn-sm" type="button" id="followMem" status="y" value="追蹤會員" onclick="setFollow(event)"></span>
+                }
+                else
+                {
+                    <span>@Html.ActionLink("追蹤會員", "checkLogin", new { page = "會員評論", id = connectId }, new { type = "button", @class = "btn btn-info btn-sm" })</span>
                 }
             }
+
+            @*<input class="btn btn-info btn-sm" type="button" id="followMem" status="n" value="取消追蹤">*@
+            <!-- Button trigger modal -->
+            @{
+
+                if (mem != null)
+                {
+                    <span><button type="button" id="btnReport" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#reportModal">檢舉</button></span>
+                }
+                else
+                {
+                    <span>@Html.ActionLink("檢舉", "checkLogin", new { page = "會員評論", id = connectId }, new { type = "button", @class = "btn btn-danger btn-sm" })</span>
+                }
+            }
+            <!-- Modal -->
+            <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    @using (Html.BeginForm("Report檢舉", "Comment"))
+                    {
+
+
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle" style="color:black">檢舉</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" style="color:black;text-align:left">
+                                <!--modal content start-->
+                                @{ if (mem != null)
+                                    { <input type="hidden" name="會員編號memberId" value="@mem.會員編號memberId" />
+
+                                        <input type="hidden" name="對象targetId" value="1" />
+                                        <input type="hidden" name="追讚倒編號actionTypeId" value="3" />
+                                        <input type="hidden" name="連接編號connectId" value="@connectId" />
+                                        <input type="hidden" name="" value="" />
+                                        <div><label>檢舉人</label><input type="text" readonly value="@mem.會員電話cellphone" /></div>
+                                        <div><label>檢舉對象</label><input type="text" readonly value="@Model.暱稱nickName" /></div>
+                                        <div><label>檢舉理由</label><textarea cols="100" name="檢舉理由reportReason" required></textarea></div>
+                                    }}<!--modal content end-->
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                <button type="submit" class="btn btn-primary" id="submitReport">確定</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <!--modal end-->
+            <!--weiting end-->
+
+
         </div>
     </div>
 </div>
@@ -161,6 +184,81 @@
                 }
             }
     </script>
+
+    @*weiting beging*@
+    <script>
+
+
+    window.onload = async function () {
+        const btnfollow = document.querySelector('#followMem')
+        @*if ('@mem' == null||'@mem'=='') {
+            btnfollow.setAttribute('value','追蹤會員')
+        }*@
+        '@{int login = 0;
+            int? memid = null;
+            if (mem != null)
+            {
+                login = 1;
+                memid = mem.會員編號memberId;
+            }
+                }'
+        console.log('@login')
+        console.log('@mem')
+        if ('@login' ==1) {
+            let memid = '@memid'
+                let followid = '@connectId'
+                let target = 1
+
+                const url = '@Url.Content("~/comment/checkFollow")'
+                const params = `?memid=${memid}&followid=${followid}&target=${target}`
+                let response = await fetch(url + params)
+            let data = await response.text()
+            if (data == "y")
+                btnfollow.setAttribute('value', '取消追蹤')
+        }
+        else
+            await btnfollow.setAttribute('value', '追蹤會員')
+
+                // checkFollow(int memid, int followid, int target)
+            }
+    </script>
+    <script>
+    async function setFollow(event){
+        let follomid = '@connectId'
+                const url = '@Url.Content("~/comment/followMem")'
+                const params = `?followMid=${follomid}`
+                let response = await fetch(url + params)
+                let data = await response.text()
+        if (data == "add") {
+            event.target.setAttribute('value', '取消追蹤')
+        }
+        else {
+            event.target.setAttribute('value', '追蹤會員')
+        }
+            }
+
+    </script>
+
+    <script>
+    const submitReport = document.querySelector("#submitReport")
+    const a = '@ViewBag.txtSuccess'
+    submitReport.addEventListener('click', () => {
+        if (a == "s") {
+        window.onload = myToastFunction()
+    }
+    })
+            function myToastFunction() {
+                // Get the snackbar DIV
+                var x = document.getElementById("snackbar");
+                // Add the "show" class to DIV
+                x.className = "show";
+                // After 3 seconds, remove the show class from DIV
+                setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+            }
+
+    </script>
+
+    @*weiting end*@
 
 }
 
