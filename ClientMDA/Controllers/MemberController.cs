@@ -834,33 +834,78 @@ namespace ClientMDA.Controllers
         #region refund
         public IActionResult GetfullOrderInfo(int orderId) //訂單詳情
         {
+            HttpContext.Session.SetInt32(CDictionary.SK_訂單詳情當前訂單, orderId);
             return ViewComponent("OrderInfo", orderId);
         }
 
         public IActionResult CheckCode(string code)
         {
-            if (code == "1111")
-            {
+            int? id = HttpContext.Session.GetInt32(CDictionary.SK_訂單詳情當前訂單);
+            int codevalue = (int)id + 19862211;
+            if (code == ("MDA" + codevalue.ToString()))
                 return Json('T');
-            }
             else
-            {
                 return Json('F');
-            }
         }
 
         public IActionResult PasswordCheck(string password, string code)
         {
             string piccode = HttpContext.Session.GetString(CDictionary.SK_PICTURECODE);
+            string Mjson = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            會員member member = JsonSerializer.Deserialize<會員member>(Mjson);
+            if (password == member.密碼password && code == piccode)
+                return Json('T');
+            else
+                return Json('F');
+        }
 
-            if (password == "1111" && code == piccode)
+        public IActionResult Ajaxrefund()
+        {
+            int? id = HttpContext.Session.GetInt32(CDictionary.SK_訂單詳情當前訂單);
+            int orderID = (int)id;
+            try
             {
+                fn_退票(orderID);
+                fn_退票座位回歸可選(orderID);
                 return Json('T');
             }
-            else
+            catch
             {
                 return Json('F');
+            }          
+        }
+
+        public void fn_退票(int orderID)
+        {
+            訂單總表order order = this._MDAcontext.訂單總表orders.Where(o => o.訂單編號orderId == orderID).FirstOrDefault();
+            order.訂單狀態編號orderStatusId = 3;
+            this._MDAcontext.SaveChanges();
+        }
+        public void fn_退票座位回歸可選(int orderID)
+        {
+            訂單總表order order = this._MDAcontext.訂單總表orders.Where(o => o.訂單編號orderId == orderID).FirstOrDefault();
+            List<string> seatInfo = this._MDAcontext.出售座位明細seatSolds
+                      .Where(s => s.訂單編號orderId == orderID)
+                      .Select(s => s.座位表編號seatId).ToList();
+            出售座位狀態seatStatus seatStatus = this._MDAcontext.出售座位狀態seatStatuses.Where(s => s.場次編號screeningId == order.場次編號screeningId).FirstOrDefault();
+            string[] strArr = seatStatus.出售座位資訊seatSoldInfo.Split('@');
+            for (int i = 0; i < strArr.Length; i++)
+            {
+                foreach (string item in seatInfo)
+                {
+                    if (strArr[i].Trim() == $"{item.Trim()}saled")
+                    {
+                        strArr[i] = item.Trim();
+                    }
+                }
             }
+            string newdata = "";
+            for (int i = 0; i < strArr.Length; i++)
+            {
+                newdata += strArr[i]+'@';
+            }
+            seatStatus.出售座位資訊seatSoldInfo = newdata;
+            this._MDAcontext.SaveChanges();
         }
 
         #endregion

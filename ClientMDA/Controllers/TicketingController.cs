@@ -415,46 +415,6 @@ namespace ClientMDA.Controllers
 
         #endregion
 
-        #region 退票
-
-        public IActionResult refund(int orderID)
-        {
-            fn_退票座位回歸可選(orderID);
-            return View();
-        }
-
-        public void fn_退票座位回歸可選(int orderID)
-        {
-            訂單總表order order = this._dbContext.訂單總表orders.Where(o => o.訂單編號orderId == orderID).FirstOrDefault();
-            List<string> seatInfo = this._dbContext.出售座位明細seatSolds
-                      .Where(s => s.訂單編號orderId == orderID)
-                      .Select(s => s.座位表編號seatId).ToList();
-            出售座位狀態seatStatus seatStatus = this._dbContext.出售座位狀態seatStatuses.Where(s => s.場次編號screeningId == order.場次編號screeningId).FirstOrDefault();
-            string[] strArr = seatStatus.出售座位資訊seatSoldInfo.Split('@');
-            for (int i = 0; i < strArr.Length; i++)
-            {
-                foreach (string item in seatInfo)
-                {
-                    if (strArr[i].Trim() == $"{item.Trim()}saled")
-                    {
-                        strArr[i] = item.Trim();
-                        break;
-                    }
-                }
-            }
-            string newdata = "";
-            for (int i = 0; i < strArr.Length; i++)
-            {
-                newdata += strArr[i];
-            }
-
-            seatStatus.出售座位資訊seatSoldInfo = newdata;
-            this._dbContext.SaveChanges();
-
-        }
-
-        #endregion
-
         #region 內建方法區
 
         [NonAction]
