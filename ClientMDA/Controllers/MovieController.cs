@@ -141,7 +141,6 @@ namespace ClientMDA.Controllers
             return View();
         }
 
-
         public FileResult ShowPhoto(int id)
         {
             電影分級movieRating rating = _MDAcontext.電影分級movieRatings.Find(id);

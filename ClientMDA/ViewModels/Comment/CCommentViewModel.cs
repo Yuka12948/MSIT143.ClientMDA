@@ -14,6 +14,10 @@ namespace ClientMDA.ViewModels
         private 回覆樓數floor _floor;
         private 標籤明細hashtagsList _hashtagsList;
         private 評論圖片明細commentImagesList _commentImgList;
+        private 電影movie _movie;
+        private 電影圖片movieIimagesList _mIimagesList;
+        private 會員member _member;
+        private 我的追蹤清單myFollowList _myFollowList;
 
         public 電影評論movieComment comment
         {
@@ -35,13 +39,37 @@ namespace ClientMDA.ViewModels
             get { return _commentImgList; }
             set { _commentImgList = value; }
         }
+        public 電影movie movie
+        {
+            get { return _movie; }
+            set { _movie = value; }
+        }
+        public 電影圖片movieIimagesList mIimagesList
+        {
+            get { return _mIimagesList; }
+            set { _mIimagesList = value; }
+        }
+        public 會員member member
+        {
+            get { return _member; }
+            set { _member = value; }
+        }
+        public 我的追蹤清單myFollowList myFollowList
+        {
+            get { return _myFollowList; }
+            set { _myFollowList = value; }
+        }
 
-        public CCommentViewModel()
+        public CCommentViewModel()  //每做一個就建一個
         {
             _comment = new 電影評論movieComment();
             _floor = new 回覆樓數floor();
             _hashtagsList = new 標籤明細hashtagsList();
             _commentImgList = new 評論圖片明細commentImagesList();
+            _movie = new 電影movie();
+            _mIimagesList = new 電影圖片movieIimagesList();
+            _member = new 會員member();
+            _myFollowList = new 我的追蹤清單myFollowList();
         }
 
         //---------------------------電影評論---------------------------//
@@ -94,7 +122,6 @@ namespace ClientMDA.ViewModels
             get { return _comment.評論內容comments; }
             set { _comment.評論內容comments = value; }
         }
-
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm}")]
         [DisplayName("發佈時間")]
         public DateTime 發佈時間commentTime
@@ -153,12 +180,13 @@ namespace ClientMDA.ViewModels
         //---------------------------會員---------------------------//
         public string 暱稱nickName { get; set; }
         public string 會員照片image { get; set; }
+        public DateTime 建立時間createdTime { get; set; }
 
         //public virtual 會員member 會員編號member { get; set; }
 
         //---------------------------回覆---------------------------//
 
-        //public int 樓數編號floorId { get; set; }
+        public int 樓數編號floorId { get; set; }
         public string 回覆內容floors { get; set; }
         public DateTime 發佈時間floorTime { get; set; }
         public int? 被按讚次數thumbsUp { get; set; }
@@ -188,5 +216,23 @@ namespace ClientMDA.ViewModels
         //public virtual 評論圖片總表commentImage 評論圖庫編號commentImage { get; set; }
 
         public List<string> cImgFrList { get; set; }
+
+        //---------------------------電影圖片---------------------------//
+
+
+
+        //---------------------------我的追蹤清單---------------------------//
+        public int 我的追蹤清單編號cfId { get; set; }
+        //public int 會員編號memberId { get; set; }
+        public int 對象targetId { get; set; }
+        public int 追讚倒編號actionTypeId { get; set; }
+        public int 連接編號connectId { get; set; }
+        public string 檢舉理由reportReason { get; set; }
+        public int? 處理狀態status { get; set; }
+        //public virtual ICollection<我的追蹤清單myFollowList> 我的追蹤清單myFollowLists { get; set; }
+
+
+        public List<CFloorViewModel> cFloorList { get; set; }
+        public int floorCount { get; set; }
     }
 }

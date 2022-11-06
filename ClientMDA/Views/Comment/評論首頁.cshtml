@@ -1,8 +1,21 @@
 ﻿@model List<ClientMDA.ViewModels.CCommentViewModel>
+<!-- #region 會員session -->
+@using Microsoft.AspNetCore.Http
+@using System.Text.Json;
+@inject IHttpContextAccessor Accessor
+@{
+    會員member mem = null;
+    if (Accessor.HttpContext.Session.Keys.Contains(ClientMDA.Models.CDictionary.SK_LOGINED_USER))
+    {
+        var a = Accessor.HttpContext.Session.GetString(ClientMDA.Models.CDictionary.SK_LOGINED_USER);
+        mem = JsonSerializer.Deserialize<會員member>(a);
+    }
+}
+<!-- #endregion 會員session -->
 
 @section Styles{
     <style>
-        .owl-stage-outer {
+        .owl-stage-outer { /*輪播框*/
             margin-top: 25px;
             margin-bottom: 25px;
         }
@@ -102,22 +115,33 @@
             background-size: cover;
             background-position: top center;
         }
-        .corComm {
+
+        .corComm { /*header樣式*/
             background-color: #00b0f0 !important;
             color: white !important;
             font-size: 16px !important;
             transition: opacity .5s ease-in-out !important;
         }
     </style>
+    <link href="~/css/Comment/評論首頁.css" rel="stylesheet" />
+    <link href="~/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/css/Comment/style.css" rel="stylesheet" />
 }
-<link href="~/css/Comment/評論首頁.css" rel="stylesheet" />
-<link href="~/css/owl.carousel.min.css" rel="stylesheet" />
-<link href="~/css/Comment/style.css" rel="stylesheet" />
+
 
 <body class="text-white">
     <hr />
-    <div class="section-title">
-        <h5>熱門評論</h5>
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <div class="section-title">
+                <h5>熱門評論</h5>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="btn__all">
+                <a href="/Comment/熱門評論list" class="primary-btn">View All <span class="arrow_right"></span></a>
+            </div>
+        </div>
     </div>
 
     <!--#region 評論輪播 Start-->
@@ -131,8 +155,17 @@
     <!--#endregion 評論輪播 End-->
 
     <hr />
-    <div class="section-title">
-        <h5>最新評論</h5>
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <div class="section-title">
+                <h5>最新評論</h5>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="btn__all">
+                <a href="/Comment/最新評論list" class="primary-btn">View All <span class="arrow_right"></span></a>
+            </div>
+        </div>
     </div>
 
     <!-- #region 最新評論 -->
@@ -144,16 +177,40 @@
     <!-- #endregion 最新評論 -->
 
     <hr />
-    <div class="section-title">
-        <h5>關注評論</h5>
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <div class="section-title">
+                <h5>關注評論</h5>
+            </div>
+        </div>
+        @if (mem == null) { }
+        else
+        {
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="btn__all">
+                    <a href="/Comment/最新評論list" class="primary-btn">View All <span class="arrow_right"></span></a>
+                </div>
+            </div>
+        }
     </div>
 
     <!-- #region 關注評論 -->
-    <div class="card-columns">
 
-        @await Component.InvokeAsync("關注評論", new { datas = Model })
+    @if (mem == null)
+    {
+        <a href="/Member/Login"><h4 style="text-align:center">快來登入看看你追蹤的最新評論!</h4></a>
+        <br />
+        <br />
+    }
+    else
+    {
+        <div class="card-columns">
 
-    </div>
+            @await Component.InvokeAsync("關注評論", new { datas = Model })
+
+        </div>
+    }
+
     <!-- #endregion 關注評論 -->
 
 </body>

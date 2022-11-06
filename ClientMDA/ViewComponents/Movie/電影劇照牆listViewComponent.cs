@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ClientMDA.Models;
 
-namespace prj_MDA.ViewConponents
+namespace ClientMDA.ViewConponents
 {
     public class 電影劇照牆listViewComponent : ViewComponent //須繼承ViewComponent
     {
@@ -15,8 +15,6 @@ namespace prj_MDA.ViewConponents
         public 電影劇照牆listViewComponent(MDAContext MDAcontext)  //相依性注入
         {
             _MDAcontext = MDAcontext;
-            _MDAcontext.評論圖片明細commentImagesLists.ToList();
-            _MDAcontext.評論圖片總表commentImages.ToList();
         }
         //用這個 async Task<IViewComponentResult> InvokeAsync
         public async Task<IViewComponentResult> InvokeAsync(List<CMovieImagesListViewModel> datas, int? id)

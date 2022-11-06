@@ -11,7 +11,7 @@
             color: #ffc107 !important;
         }
 
-        .divFlip {
+        .divFlip { /*篩選器*/
             margin: 20px 0 0 -15px;
         }
 
@@ -71,25 +71,22 @@
             .dropdown-menu li a {
                 color: black;
             }
-        .corRank {
+        .corRank { /*header樣式*/
             background-color: #00b0f0 !important;
             color: white !important;
             font-size: 16px !important;
             transition: opacity .5s ease-in-out !important;
         }
     </style>
+    <!-- #region CSS樣式 -->
+    <link href="~/css/Movie/排行.css" rel="stylesheet" />
+    <link href="~/css/Movie/排行-關注清單.css" rel="stylesheet" />
+    <link href="~/css/Movie/排行-篩選器上收合.css" rel="stylesheet" />
+    <link href="~/css/Movie/排行-Btn.css" rel="stylesheet" />
+    <link href="~/css/Movie/排行-Rate.css" rel="stylesheet" />
+    @*<link href="https://sweetalert2.github.io/styles/styles.css" rel="stylesheet" />*@ @*響應式demo*@
+    <!-- #endregion CSS樣式 -->
 }
-
-<!-- #region CSS樣式 -->
-<link href="~/css/Movie/排行.css" rel="stylesheet" />
-<link href="~/css/Movie/排行-關注清單.css" rel="stylesheet" />
-<link href="~/css/Movie/排行-篩選器上收合.css" rel="stylesheet" />
-<link href="~/css/Movie/排行-Btn.css" rel="stylesheet" />
-<link href="~/css/Movie/排行-Rate.css" rel="stylesheet" />
-
-@*<link href="https://sweetalert2.github.io/styles/styles.css" rel="stylesheet" />*@ @*響應式demo*@
-<!-- #endregion CSS樣式 -->
-
 
 <br />
 <span style="font-size:33px">@ViewData["Title"] </span><span style="font-size:25px"> TOP 50 Movies</span>
@@ -254,6 +251,7 @@
                                 <label class="btn btn-outline-rank" for="sbtn5b12">其他</label>
                             </div><br /><br />
                             <!-- #endregion 複選按鈕 -->
+                            <button class="btn btn-warning" style="float:right; margin-right:480px; height:30px;padding-top:3px">確認篩選</button>
                         </div>
                     </div>
                 </div>
@@ -366,70 +364,71 @@
 </body>
 
 @section Scripts{
-
-    <!-- #region 篩選器click -->
-    <script>
-        $("#sbtn2b1").click(function () {
-                $(this).removeClass("checked").siblings().removeClass("checked").end().addClass("checked");
-            $("#篩選切換").load("@Url.Content("~/Movie/電影排行")")
-        })
-        $("#sbtn2b2").click(function () {
-                $(this).removeClass("checked").siblings().removeClass("checked").end().addClass("checked");
-            $("#篩選切換").load("@Url.Content("~/Movie/電影排行新片")")
-        })
-    </script>
-    <!-- #endregion 篩選器click -->
-    <!-- #region 篩選器篩選 -->
-    <script>
-        $('.category').click(function () {
-            $(this).toggleClass('active');
-        });
-    </script>
-    <!-- #endregion 篩選器篩選 -->
-    <!-- #region 篩選器收合 -->
-    <script>
-        $(function () {
-            $(".divFlip").click(function () {
-                $(".divPanel").slideToggle("fast");
-            });
-        });
-    </script>
-    <!-- #endregion 篩選器收合 -->
-    <!-- #region 響應式元件(撰寫評論) -->
-    <script>
-        $('#rate').click(function () {
-            Swal.fire({
-                title: '請為此部電影評分',
-                text: $(document).add(`<i class="far fa-star" style="padding-right:5px;color:#ffc107"></i>`),
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: '評分',
-                denyButtonText: `撰寫評論`,
-                CancelButtonText: '取消',
-            }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
-                if (result.isConfirmed) {
-                    Swal.fire('評分成功!', '', 'success')
-                } else if (result.isDenied) {
-                    Swal.fire('撰寫評論', 'link', 'info')
-                }
-            })
-        });
-    </script>
-    <script src="~/js/Movie/排行-Rate.js"></script>
-    <!-- #endregion 響應式元件 -->
-    <!-- #region 響應式元件js/css/cdn -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="sweetalert2.min.css">
-    <!-- #endregion 備註 -->
-    <!-- #region 下拉篩選js -->
+    <!-- #region 頂部篩選器js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
-    <!-- #endregion 下拉篩選js -->
+    <!-- #endregion 頂部篩選器js -->
     <!-- #region 評分視窗cdn/js -->
-    @*<script src="~/js/Movie/排行-Rate.js"></script>*@
+    <script src="~/js/Movie/排行-Rate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <!-- #endregion 評分視窗cdn -->
+    <!-- #region 關掉的 -->
+    <!-- #region 頂部篩選器click -->
+    @*<script>
+            $("#sbtn2b1").click(function () {
+                    $(this).removeClass("checked").siblings().removeClass("checked").end().addClass("checked");
+                $("#篩選切換").load("@Url.Content("~/Movie/電影排行")")
+            })
+            $("#sbtn2b2").click(function () {
+                    $(this).removeClass("checked").siblings().removeClass("checked").end().addClass("checked");
+                $("#篩選切換").load("@Url.Content("~/Movie/電影排行新片")")
+            })
+        </script>*@
+    <!-- #endregion 頂部篩選器click -->
+    <!-- #region 篩選器篩選 -->
+    @*<script>
+            $('.category').click(function () {
+                $(this).toggleClass('active');
+            });
+        </script>*@
+    <!-- #endregion 篩選器篩選 -->
+    <!-- #region 篩選器收合 -->
+    @*<script>
+            $(function () {
+                $(".divFlip").click(function () {
+                    $(".divPanel").slideToggle("fast");
+                });
+            });
+        </script>*@
+    <!-- #endregion 篩選器收合 -->
+    <!-- #region 響應式元件(撰寫評論) -->
+    @*<script>
+            $('#rate').click(function () {
+                Swal.fire({
+                    title: '請為此部電影評分',
+                    text: $(document).add(`<i class="far fa-star" style="padding-right:5px;color:#ffc107"></i>`),
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: '評分',
+                    denyButtonText: `撰寫評論`,
+                    CancelButtonText: '取消',
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        Swal.fire('評分成功!', '', 'success')
+                    } else if (result.isDenied) {
+                        Swal.fire('撰寫評論', 'link', 'info')
+                    }
+                })
+            });
+        </script>
+        <script src="~/js/Movie/排行-Rate.js"></script>*@
+    <!-- #endregion 響應式元件 -->
+    <!-- #region 響應式元件js/css/cdn -->
+    @*<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="sweetalert2.min.js"></script>
+        <link rel="stylesheet" href="sweetalert2.min.css">*@
+    <!-- #endregion 備註 -->
+    <!-- #endregion 關掉的 -->
 
 }
 

@@ -1,4 +1,18 @@
 ﻿@model ClientMDA.ViewModels.CCommentViewModel
+<!-- #region 會員Session-->
+@using Microsoft.AspNetCore.Http
+@using System.Text.Json;
+@inject IHttpContextAccessor Accessor
+@{
+    var a = "";
+    會員member mem = null;
+    if (Accessor.HttpContext.Session.Keys.Contains(ClientMDA.Models.CDictionary.SK_LOGINED_USER))
+    {
+        a = Accessor.HttpContext.Session.GetString(ClientMDA.Models.CDictionary.SK_LOGINED_USER);
+        mem = JsonSerializer.Deserialize<會員member>(a);
+    }
+}
+<!-- #endregion 會員Session-->
 
 @{
     ViewData["Title"] = "電影評論";
@@ -55,17 +69,19 @@
         <div class="row d-flex justify-content-center">
             <div class="col-lg-8">
                 <div class="blog__details__title">
-                    @*電影標題*@
+
+                    <!-- #region 電影評論 -->
+                    <!-- 電影標題 -->
                     <div class="anime__details__title">
                         <a href="@Url.Action("電影介紹","Movie", new {id= Model.電影編號movieId})">
                             <h3><i class="fa-solid fa-film"></i> @Model.中文標題titleCht</h3>
                         </a>
                     </div>
-                    @*評論標題*@
+                    <!-- 評論標題 -->
                     <h4>@Model.評論標題commentTitle</h4><hr class="mem_line" />
                     <h6>
                         <span class="mem_info">
-                            @*會員頭貼*@
+                            <!-- 會員頭貼 -->
                             <span style="color:white">
                                 @if (Model.會員照片image != null)
                                 {
@@ -75,10 +91,10 @@
                                 {
                                     <img class="img-fluid rounded-circle" src="~/images/Member/MEMBER.png" alt="">
                                 }
-                                @*會員暱稱*@
+                                <!-- 會員暱稱 -->
                                 <a href="@Url.Action("會員評論","Comment", new {id= Model.會員編號memberId})">@Model.暱稱nickName</a>
                             </span>
-                            @*觀影方式/觀影日期*@
+                            <!-- 觀影方式/觀影日期 -->
                             @if (Model.觀影方式source != null)
                             {
                                 <span> - @Html.DisplayFor(modelItem => Model.觀影日期viewingTime) 於<span style="color:white"> @Model.觀影方式source</span> 觀看</span>
@@ -88,45 +104,101 @@
                                 <span> - @Html.DisplayFor(modelItem => Model.觀影日期viewingTime) 觀看</span>
                             }
                         </span>
+                        <!-- 會員評分 -->
                         <span class="mem_rate" style="color: #ffc107;">
                             <i class="fa fa-star"></i> @Model.評分rate
                         </span>
                     </h6>
                 </div>
             </div>
-            @*評論圖片*@
+            <!-- 評論圖片 -->
             @*<div class="col-lg-8">
                     <div class="blog__details__pic">
                         <img src="https://localhost:44381/images/Comment/@Model.cImgFrList" alt="">
                         @Model.cImgFrList
                     </div>
                 </div>*@
-            @*評論內容*@
+            <!-- 評論內容 -->
             <div class="col-lg-8">
                 <div class="blog__details__content">
                     <div class="blog__details__text">
                         <p>
-                            @*@Model.評論內容comments*@
                             @Html.Raw(Model.評論內容comments)
                         </p>
                     </div>
 
-
                     <div class="blog__details__tags">
-                        @*評論標籤*@
+                        <!-- 評論標籤 -->
                         <a href="#">#神片</a>
                         <a href="#">#主角好帥</a>
                         <a href="#">#IMAX</a>
 
-                        @*評論按鈕*@
-                    <div class="blog__details__comment__item__text" style="float:right">
-                        <a class="Like" href="#">Like <i class="fas fa-thumbs-up"></i></a>
-                        <a class="unLike" href="#">UnLike <i class="fas fa-thumbs-down"></i></a>
-                        <a class="follow" href="#">追蹤</a>
-                        <a class="report" href="#">檢舉</a>
+                        <!-- 評論按鈕 -->
+                        <div class="blog__details__comment__item__text" style="float:right">
+                            @*<a class="Like" href="#">Like <i class="fas fa-thumbs-up"></i></a>*@
+                            @*<a class="unLike" href="#">UnLike <i class="fas fa-thumbs-down"></i></a>*@
+                            @*<a class="follow" href="#">追蹤</a>*@
+                            @*<button type="button" id="btnCommentReport" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#commentReportModal">檢舉</button>*@
+
+                            @if (mem != null) //會員
+                            {
+                                if (mem.會員編號memberId == Model.會員編號memberId) //會員==自己
+                                {
+                                    <a class="follow" href="#">追蹤</a>
+                                    <a class="report" id="" data-toggle="" data-target="" disabled="disabled">檢舉</a>
+                                }
+                                else //會員!=自己
+                                {
+                                }
+                            }
+                            else //非會員 檢舉須登入
+                            {
+                                <a class="follow" href="/Member/Login">追蹤</a>
+                                <a class="report" href="/Member/Login" type="button" id="btnCommentReport" data-toggle="modal" data-target="#commentReportModal">檢舉</a>
+                            }
+                        </div>
+
+                        @{ //評論檢舉
+                            if (mem != null)
+                            {
+                                <!-- Modal -->
+                                <div class="modal fade" id="commentReportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        @using (Html.BeginForm("Report檢舉", "Comment"))
+                                        {
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle" style="color:black">檢舉</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body" style="color:black">
+                                                    <!--modal content start-->
+                                                    <input type="hidden" name="會員編號Member_ID" value="@mem.會員編號memberId" />
+                                                    <input type="hidden" name="對象Target_ID" value="2" />
+                                                    <input type="hidden" name="追讚倒編號ActionType_ID" value="3" />
+                                                    <input type="hidden" name="連接編號Connect_ID" value="@Model.評論編號commentId" />
+                                                    <input type="hidden" name="" value="" />
+                                                    <div><label>檢舉人</label><input type="text" readonly value="@mem.暱稱nickName" /></div>
+                                                    <div><label>檢舉對象</label><input type="text" readonly value="@Model.暱稱nickName" /></div>
+                                                    <div><label>檢舉理由</label><textarea cols="50" name="檢舉理由ReportReason"></textarea></div>
+                                                    <!--modal content end-->
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                                    <button type="submit" class="btn btn-primary" id="submitAddList">確定</button>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <!--modal end-->
+                            }
+                        }
+
                     </div>
-                    </div>
-                    @*發佈時間*@
+                    <!-- 發佈時間 -->
                     <div style="margin: 10px 0 10px 0; border: solid 1px rgba(0,0,0,0)">
                         <span class="mem_info">
                             <span style="color:white">發佈時間</span>
@@ -135,12 +207,13 @@
                     </div>
 
 
-                    @*上/下一篇評論*@
+                    <!-- 上/下一篇評論 -->
                     <div class="blog__details__btns">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="blog__details__btns__item">
                                     <h5>
+                                        <!-- 抓同會員id的上一篇 / 同電影id的上一篇 -->
                                         <a href="@Url.Action("電影評論", "Comment", new { id = Model.評論編號commentId})">
                                             <span class="arrow_left"></span> 上一篇評論
                                         </a>
@@ -150,6 +223,7 @@
                             <div class="col-lg-6">
                                 <div class="blog__details__btns__item next__btn">
                                     <h5>
+                                        <!-- 抓同會員id的下一篇 / 同電影id的下一篇 -->
                                         <a href="#">下一篇評論 <span class="arrow_right"></span></a>
                                     </h5>
                                 </div>
@@ -157,82 +231,103 @@
                         </div>
                     </div>
 
-                    @*分享*@
+                    <!-- 分享 -->
                     <div class="blog__details__social" style="float:right">
-                        <a href="#" class="facebook"><i class="fa fa-facebook-square"></i> Facebook</a>
-                        <a href="#" class="pinterest"><i class="fa fa-pinterest"></i> Pinterest</a>
-                        <a href="#" class="linkedin"><i class="fa fa-linkedin-square"></i> Linkedin</a>
-                        <a href="#" class="twitter"><i class="fa fa-twitter-square"></i> Twitter</a>
+                        <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=138&layout=button&action=like&size=large&share=true&height=65&appId=106674369441068"
+                                width="110" height="30" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                        <div data-url="https://developers.line.biz/zh-hant/docs/line-social-plugins/install-guide/using-line-share-buttons/"
+                             class="line-it-button" data-lang="zh_Hant" data-type="share-b" data-env="REAL" data-color="default" data-size="small" data-count="false" data-ver="3" style="display: none;"></div>
+                        <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+                        @*<a href="#" class="facebook"><i class="fa fa-facebook-square"></i> Facebook</a>*@
+                        @*<a href="#" class="pinterest"><i class="fa fa-pinterest"></i> Pinterest</a>*@
+                        @*<a href="#" class="linkedin"><i class="fa fa-linkedin-square"></i> Linkedin</a>*@
+                        @*<a href="#" class="twitter"><i class="fa fa-twitter-square"></i> Twitter</a>*@
                     </div><hr />
-
-                    @*會員留言*@
-                    <div class="blog__details__comment">
-                        <h4>3則留言</h4>
-                        <div class="blog__details__comment__item">
-                            <div class="blog__details__comment__item__pic">
-                                <img src="img/blog/details/comment-1.png" alt="">
-                            </div>
-                            <div class="blog__details__comment__item__text">
-                                <span>Sep 08, 2020</span>
-                                <h5>John Smith</h5>
-                                <p>
-                                    你寫的評論真棒!
-                                </p>
-                                <a href="#">Like <i class="fas fa-thumbs-up"></i></a>
-                                <a class="unLike" href="#">UnLike <i class="fas fa-thumbs-down"></i></a>
-                                <a class="report" href="#">檢舉</a>
-                            </div>
-                        </div>
-                        <div class="blog__details__comment__item blog__details__comment__item--reply">
-                            <div class="blog__details__comment__item__pic">
-                                <img src="img/blog/details/comment-2.png" alt="">
-                            </div>
-                            <div class="blog__details__comment__item__text">
-                                <span>Sep 08, 2020</span>
-                                <h5>佩佩</h5>
-                                <p>
-                                    推薦4DX 效果真D讚 必看一次
-                                </p>
-                                <a href="#">Like <i class="fas fa-thumbs-up"></i></a>
-                                <a class="unLike" href="#">UnLike <i class="fas fa-thumbs-down"></i></a>
-                                <a class="report" href="#">檢舉</a>
-                            </div>
-                        </div>
-                        <div class="blog__details__comment__item">
-                            <div class="blog__details__comment__item__pic">
-                                <img src="img/blog/details/comment-3.png" alt="">
-                            </div>
-                            <div class="blog__details__comment__item__text">
-                                <span>Sep 08, 2020</span>
-                                <h5>Adrian Coleman</h5>
-                                <p>
-                                    我三刷了!!! 內牛滿麵
-                                </p>
-                                <a href="#">Like <i class="fas fa-thumbs-up"></i></a>
-                                <a class="unLike" href="#">UnLike <i class="fas fa-thumbs-down"></i></a>
-                                <a class="report" href="#">檢舉</a>
-                            </div>
-                        </div>
-                    </div>
-                    @*你的留言*@
+                    <!-- #endregion 電影評論 -->
+                    <!-- #region 留言 -->
+                    <!-- 你的留言 -->
                     <div class="blog__details__form">
                         <div class="section-title">
-                            <h4>你的留言</h4>
+                            <h5>你的留言</h5>
                         </div>
                         <form action="#">
                             <div class="row">
                                 <div class="col-lg-12 col-md-6 col-sm-6">
-                                    <input type="text" placeholder="Name">
+                                    @if (@mem == null)
+                                    {
+                                        <input type="text" placeholder="Name" readonly="readonly" style="margin-bottom:10px;">
+                                    }
+                                    else
+                                    {
+                                        <input type="text" placeholder="Name" readonly="readonly" style="margin-bottom:10px;" value="@mem.暱稱nickName">
+                                    }
                                 </div>
-                                <div class="col-lg-12">
-                                    <textarea placeholder="Message"></textarea>
-                                    <button type="submit" class="site-btn">送出</button>
+                                <div class="col-lg-12" style="margin-bottom:50px;">
+                                    @if (@mem == null)
+                                    {
+                                        <textarea placeholder="Message" readonly="readonly" style="margin-bottom:10px;"></textarea>
+                                        @Html.ActionLink("登入留言", "login", "Member", new { id = Model.會員編號memberId }, new { @class = "btn btn-info btn-sm", @style = "float:right" })
+
+                                    }
+                                    else
+                                    {
+                                        <textarea placeholder="Message" style="margin-bottom:10px;"></textarea>
+                                        <a class="btn btn-info btn-sm" style="float:right">送出留言</a>
+                                    }
+
+
                                 </div>
                             </div>
                         </form>
                     </div>
+                    <!-- 會員留言 -->
+                    <div class="blog__details__comment">
+                        <div class="section-title">
+                            <h5>共 @Model.floorCount 則 留言</h5>
+                        </div>
+
+                        @await Component.InvokeAsync("評論留言list", new { id = Model.評論編號commentId })
+
+                        @if (@Model.floorCount == 0)
+                        {
+                            <h4></h4>
+                            <a href="/Member/Login"><h4 style="text-align:center;font-weight:400">目前沒有留言 快來留下你的想法~</h4></a>
+                        }
+                        else
+                        {
+
+                        }
+                    </div>
+                    <!-- #endregion 留言 -->
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+                window.onload=function () { //評論檢舉
+                if ('@a' == "") {
+                    document.querySelector("#btnFloorReport").addEventListener('click', () => {
+                        @{Accessor.HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, "~/Comment/電影評論/2");} //抓電影評論id
+                        window.location = '@Url.Content("~/member/login")'
+                    })
+                }
+    }
+            window.onload=function () { //留言檢舉
+                if ('@a' == "") {
+                    document.querySelector("#btnCommentReport").addEventListener('click', () => {
+                        @{Accessor.HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, "~/Comment/電影評論/2");} //抓電影評論id
+                        window.location = '@Url.Content("~/member/login")'
+                    })
+                }
+    }
+
+    function appendJS(src) {
+        var script = document.createElement("script");
+        script.src = src;
+        document.head.appendChild(script);
+    }
+    appendJS('https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js');
+    appendJS('https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v3.0');
+</script>

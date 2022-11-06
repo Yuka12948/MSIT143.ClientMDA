@@ -14,19 +14,17 @@
     @*電影icon樣式*@
 }
 
+
 <br />
-<span style="font-size:33px">@ViewData["Title"] </span><span style="font-size:25px"> Photo Gallery</span>
+<span style="font-size:33px"><i class="fa-solid fa-image"></i> @ViewData["Title"] </span><span style="font-size:25px"> Photo Gallery</span>
 <br />
 <a href="@Url.Action("電影介紹", "Movie", new { id = Model.電影編號movieId })">
-    <span style="font-size:20px">@Model.中文標題titleCht (@Model.上映年份releaseYear)</span>
+    <span style="font-size:20px;margin-top:5px;margin-left:45px">@Model.中文標題titleCht (@Model.上映年份releaseYear)</span>
 </a>
 <br />
 <br />
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <input type="hidden" asp-for="電影編號movieId" />
-@*<a href="@Url.Action("電影介紹", "Movie", new { id = Model[0].電影編號movieId })">
-        <span style="font-size:20px">@Model[0].中文標題titleCht (@Model[0].上映年份releaseYear)</span>
-    </a>*@
 <br />
 <br />
 

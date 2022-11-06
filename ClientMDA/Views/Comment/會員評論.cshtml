@@ -39,9 +39,8 @@
             word-break: break-all;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="~/css/Comment/jquery.eeyellow.Timeline.css" /> @*我的評論時間軸*@
 }
-
-<link rel="stylesheet" type="text/css" href="~/css/Comment/jquery.eeyellow.Timeline.css" /> @*我的評論時間軸*@
 
 @*會員header*@
 <div id="memBgImg" class="py-1 bg-image-full">
@@ -62,7 +61,7 @@
         <h4 class="text-white fs-3 fw-bolder">@Model.暱稱nickName</h4>
         @*<span class="text-white-50 mb-0">@@帳號</span><br />
             <span class="text-white-50 mb-0">此用戶觀看過N部電影</span>*@
-        <span class="text-white-50 mb-0">@*@mem.電影評論movieComments.Count*@ @Model.commentCount 則評論 ‧ @Model.memberfollow 人追蹤</span><br />
+        <span class="text-white-50 mb-0">@Model.commentCount 則評論 ‧ @Model.memberfollow 人追蹤</span><br />
         <div class="membtn">
             <!--weiting begin-->
             @{
@@ -94,8 +93,6 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     @using (Html.BeginForm("Report檢舉", "Comment"))
                     {
-
-
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLongTitle" style="color:black">檢舉</h5>

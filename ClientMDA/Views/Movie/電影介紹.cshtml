@@ -1,4 +1,17 @@
 ﻿@model ClientMDA.ViewModels.CMovieViewModel
+<!-- #region 會員session -->
+@using Microsoft.AspNetCore.Http
+@using System.Text.Json;
+@inject IHttpContextAccessor Accessor
+@{
+    會員member mem = null;
+    if (Accessor.HttpContext.Session.Keys.Contains(ClientMDA.Models.CDictionary.SK_LOGINED_USER))
+    {
+        var a = Accessor.HttpContext.Session.GetString(ClientMDA.Models.CDictionary.SK_LOGINED_USER);
+        mem = JsonSerializer.Deserialize<會員member>(a);
+    }
+}
+<!-- #endregion 會員session -->
 
 @{
     ViewData["Title"] = "電影介紹";
@@ -87,15 +100,13 @@
                 opacity: 1;
                 transition: opacity .5s ease-in-out;
             }
-
     </style>
+    <link href="~/css/fontawesome-free-6.2.0-web/all.css" rel="stylesheet" />
+    @*電影icon樣式*@
+    <script src="~/js/fontawesome-free-6.2.0-web/all.js"></script>
+    @*電影icon樣式*@
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
 }
-<link href="~/css/fontawesome-free-6.2.0-web/all.css" rel="stylesheet" />
-@*電影icon樣式*@
-<script src="~/js/fontawesome-free-6.2.0-web/all.js"></script>
-@*電影icon樣式*@
-<link href="~/css/font-awesome.min.css" rel="stylesheet" />
-
 <form asp-action="List" enctype="multipart/form-data">
 
     <!-- Page Preloder -->
@@ -188,8 +199,8 @@
                             @*@Html.ActionLink("追蹤會員", "follow會員", new { followMid = 1 }, new { @class = "btn btn-info btn-sm" })*@
                             @Html.ActionLink("訂票去", "快定頁面測試", "Theater", new { id = Model.電影編號movieId }, new { @class = "btn btn-info btn-sm", id = "ticketing" })
                             @Html.ActionLink("加入片單", "加入片單", "Member", new { id = Model.電影編號movieId }, new { @class = "btn btn-info btn-sm", id = "myList" })
-                            @Html.ActionLink("評分", "評分", "Member", new { id = Model.電影編號movieId }, new { @class = "btn btn-warning btn-sm", id = "myList" })
-                            @Html.ActionLink("撰寫評論", "評論", "Member", new { id = Model.電影編號movieId }, new { @class = "btn btn-warning btn-sm", id = "myList" })
+                            @Html.ActionLink("評分", "評分", "Member", new { id = Model.電影編號movieId }, new { @class = "btn btn-warning btn-sm", id = "toRate" })
+                            @Html.ActionLink("撰寫評論", "WriteComment", "Member", new { id = Model.電影編號movieId }, new { @class = "btn btn-warning btn-sm", id = "WriteComment" })
                         </div>
                     </div>
                     <!--#endregion 電影介紹-->
@@ -201,12 +212,48 @@
             <div class="row">
                 <div class="col-lg-8 col-md-8">
 
-                    @*@await Component.InvokeAsync("演員list", new { id = Model.電影編號movieId })*@
+                    @await Component.InvokeAsync("演員list", new { id = Model.電影編號movieId })
                     <br />
                     @await Component.InvokeAsync("電影評論list", new { id = Model.電影編號movieId })
 
-                </div>
+                    <div class="col-lg-11 col-md-8">
+                        <!-- #region 你的評論 -->
+                        <div class="blog__details__form">
+                            <div class="section-title">
+                                <h5>你的評論</h5>
+                            </div>
+                            @*<form action="#">*@
+                            @*<div class="row">*@
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                @if (mem == null)
+                                {
+                                    <input type="text" placeholder="Name" value="" readonly="readonly">
+                                }
+                                else
+                                {
+                                    <input type="text" placeholder="Name" value="@mem.暱稱nickName" readonly="readonly">
+                                }
+                            </div>
+                            <div class="col-lg-12">
+                                @if (mem == null)
+                                {
+                                    <textarea placeholder="Message" readonly="readonly"></textarea>
+                                    @*<button type="submit" class="site-btn" style="float:right">送出</button>*@<br />
+                                    @Html.ActionLink("撰寫評論", "WriteComment", "Member", new { id = Model.電影編號movieId }, new { @class = "btn btn-warning btn-sm", id = "WriteComment" })
 
+                                }
+                                else
+                                {
+                                    <input type="text" placeholder="Name" value="@mem.暱稱nickName" readonly="readonly">
+                                }
+
+                            </div>
+                            @*</div>*@
+                            @*</form>*@
+                        </div>
+                        <!-- #endregion 你的評論 -->
+                    </div>
+                </div>
                 <!-- #region 電影資訊 -->
                 <div class="col-lg-4 col-md-4">
                     <div class="anime__details__sidebar">
@@ -235,8 +282,8 @@
                                             <span>演　　員:</span>
                                             <!-- #region 控制演員顯示數量 -->
                                             @*@for (int i = 0; i < 10; i++)
-                                        {<label>@Model.mActorList[i].ActorChtName (@Model.mActorList[i].ActorEngName)</label>}
-                                        <img class="" height="20" src="https://localhost:44381/images/Actor/@item.ActorImg" alt="">*@
+                                                {<label>@Model.mActorList[i].ActorChtName (@Model.mActorList[i].ActorEngName)</label>}
+                                                <img class="" height="20" src="https://localhost:44381/images/Actor/@item.ActorImg" alt="">*@
                                             <!-- #endregion 控制演員顯示數量 -->
                                             <!-- #region 演員全部列出 -->
                                             @foreach (var item in Model.mActorList)

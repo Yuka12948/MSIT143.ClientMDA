@@ -9,22 +9,22 @@ using System.Threading.Tasks;
 
 namespace ClientMDA.ViewConponents
 {
-    public class 關注評論ViewComponent : ViewComponent //須繼承ViewComponent
+    public class 評論輪播ViewComponent : ViewComponent //須繼承ViewComponent
     {
         private readonly MDAContext _MDAcontext;
 
-        public 關注評論ViewComponent(MDAContext MDAcontext)  //相依性注入
+        public 評論輪播ViewComponent(MDAContext MDAcontext)  //相依性注入
         {
             _MDAcontext = MDAcontext;
             _MDAcontext.評論圖片明細commentImagesLists.ToList();
             _MDAcontext.評論圖片總表commentImages.ToList();
         }
-
         //用這個 async Task<IViewComponentResult> InvokeAsync
         public async Task<IViewComponentResult> InvokeAsync(List<CCommentViewModel> datas)
         {
             var mPoster = _MDAcontext.評論圖片明細commentImagesLists.Select(i => i);
-            datas = _MDAcontext.電影評論movieComments.OrderByDescending(c => c.會員編號memberId).Select
+            datas = _MDAcontext.電影評論movieComments.Where(c => c.公開等級編號publicId != 2 || c.屏蔽invisible == 0) //2不公開 0正常
+                                                     .OrderByDescending(c => c.回覆樓數floors.Count).Select //最多回覆
                     (c => new CCommentViewModel
                     {
                         comment = c,
@@ -35,6 +35,8 @@ namespace ClientMDA.ViewConponents
                     }).Take(6).ToList();
             return View(datas);
         }
+
+
         public static string StripHTML(string input)
         {
             if (input == null)
