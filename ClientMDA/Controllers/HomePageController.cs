@@ -232,7 +232,7 @@ namespace ClientMDA.Controllers
                          周末票房BoxOffice_Weekend = b.周末票房boxOfficeWeekend,
                          累積票房BoxOffice_Gross=b.累積票房boxOfficeGross,
                          周次Weeks=b.周次weeks,
-                         統計時間=b.統計時間,
+                         統計時間=b.統計時間,                        
 
                      }).ToList();
             return View(s);
