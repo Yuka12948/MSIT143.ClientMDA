@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="~/css/style.css" type="text/css">
     <link rel="stylesheet" href="~/css/elegant-icons.css" type="text/css"> @*Header+body icon樣式*@
     <link href="~/css/Header-特效.css" rel="stylesheet" />
+    <link href="~/css/dropdown.css" rel="stylesheet" />
     <script src="~/js/jquery-3.4.1.min.js"></script>
     @*<link href="~/css/BOT/BOT.css" rel="stylesheet" />*@
     @await RenderSectionAsync("Styles", required: false)
@@ -97,11 +98,23 @@
                         @{
                             if (mem == null)
                             {
-                                <a href="/Member/Login"><span class="icon_profile"></span></a>
+                                <a href="~/Member/Login"><span class="icon_profile" title="登入"></span></a>
                             }
                             else
                             {
-                                <a href="/Member/MemberMain"><span class="icon_profile"></span></a>
+                                string img = "noPerson.jpg";
+                                string title = "簡易會員";
+                                if (!string.IsNullOrEmpty(mem.會員照片image)) { img = mem.會員照片image; }
+                                if (!string.IsNullOrEmpty(mem.暱稱nickName)) { title = mem.暱稱nickName; }
+                                <div class="dropdown">
+                                    <a href="~/Member/MemberMain" class="dropbtn">
+                                        <img class="memImg" src="~/images/Member/@img" title="@title">
+                                    </a>
+                                    <div class="dropdown-content">
+                                        <a asp-area="" asp-controller="Member" asp-action="MemberMain">會員管理</a>
+                                        <a asp-area="" asp-controller="Member" asp-action="Logout">登出</a>
+                                    </div>
+                                </div>
                             }
                         }
                     </div>
