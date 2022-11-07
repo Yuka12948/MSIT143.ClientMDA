@@ -65,5 +65,7 @@ namespace ClientMDA.ViewModels
 
         //photo
         public IFormFile photo { get; set; }
-    }
+        public string movieImage { get; set; }
+        public string movieIMDB { get; set; }
+}
 }

@@ -115,6 +115,7 @@ namespace ClientMDA.ViewModels
         //public virtual ICollection<我的追蹤清單myFollowList> 我的追蹤清單myFollowLists { get; set; }  
 
         public List<string> fNickName { get; set; }
-        
+        public List<string> fMemImg { get; set; }
+
     }
 }

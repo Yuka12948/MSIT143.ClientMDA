@@ -23,7 +23,7 @@ namespace ClientMDA.ViewConponents
         //用這個 async Task<IViewComponentResult> InvokeAsync
         public async Task<IViewComponentResult> InvokeAsync(List<CCommentViewModel> datas)
         {
-            var mPoster = _MDAcontext.評論圖片明細commentImagesLists.Select(i => i);
+            var cPoster = _MDAcontext.評論圖片明細commentImagesLists.Select(i => i);
             datas = _MDAcontext.電影評論movieComments.Where(c => c.公開等級編號publicId != 2 || c.屏蔽invisible == 0) //2不公開 0正常
                                                      .OrderByDescending(c => c.發佈時間commentTime).Select //最新發佈
                     (c => new CCommentViewModel
@@ -31,10 +31,17 @@ namespace ClientMDA.ViewConponents
                         comment = c,
                         評論內容comments = StripHTML(c.評論內容comments),
                         暱稱nickName = c.會員編號member.暱稱nickName,
+                        會員照片image = c.會員編號member.會員照片image,
                         cImgFrList = _MDAcontext.評論圖片明細commentImagesLists.Where(i => i.評論編號commentId == c.評論編號commentId)
-                        .Select(c => c.評論圖庫編號commentImage.圖片image).ToList()
+                        .Select(c => c.評論圖庫編號commentImage.圖片image).ToList(),
+                        mPoster = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == c.電影編號movieId).Select
+                        (i => new CMovieImagesListViewModel
+                        {
+                            movieIMDB = i.圖片編號image.圖片雲端imageImdb,
+                            movieImage = i.圖片編號image.圖片image,
+                        }
+                        ).ToList(),
                     }).Take(6).ToList();
-
             return View(datas);
         }
         public static string StripHTML(string input)

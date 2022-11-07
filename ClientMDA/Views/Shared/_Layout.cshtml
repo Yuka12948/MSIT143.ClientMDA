@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="~/css/elegant-icons.css" type="text/css"> @*Header+body icon樣式*@
     <link href="~/css/Header-特效.css" rel="stylesheet" />
     <script src="~/js/jquery-3.4.1.min.js"></script>
-
+    @*<link href="~/css/BOT/BOT.css" rel="stylesheet" />*@
     @await RenderSectionAsync("Styles", required: false)
 </head>
 
@@ -224,10 +224,16 @@
     </footer>
     <!-- footer End -->
 
-    <figure class="幫幫忙" style="float:right; position: fixed;right: 0;top:95%;width:600px;margin-top: -2.5em;border-block: initial;list-style-type: none;z-index:999;">
-        <div style="width: 90px; float: right; margin-right: 5px; "><img class="hope" style="border-radius:45px" height="90" width="90" src="~/images/cat.png" /></div>
-        <iframe class="小幫手" src='https://webchat.botframework.com/embed/mist143mda-bot?s=YPZzm2dE_QU.nWqDzj-7VllSaxQSGpjeUPjIFHQNaDZbJAoj3nu8OVI' style='display:none; min-width: 200px; width: 600px; min-height: 500px;'></iframe>
+    <figure class="幫幫忙" style=" float: right; position: fixed; right: 10px; width: 360px; margin-bottom: 5px; bottom: 10px; list-style-type: none; z-index: 999;">
+        <div style="width: 160px; float: right; margin-right: 5px; ">
+        <img class="hope" style="border-radius:45px" height="90" width="160" src="~/images/BOT.gif" /></div>
+        <iframe class="小幫手" src='https://webchat.botframework.com/embed/mist143mda-bot?s=YPZzm2dE_QU.nWqDzj-7VllSaxQSGpjeUPjIFHQNaDZbJAoj3nu8OVI' style='display:none; min-width: 200px; width: 360px; min-height: 450px;'></iframe>
     </figure>
+
+    @*<figure class="幫幫忙" style="float:right; position: fixed;right: 0;top:95%;width:600px;margin-top: -2.5em;border-block: initial;list-style-type: none;z-index:999;">
+            <div style="width: 90px; float: right; margin-right: 5px; "><img class="hope" style="border-radius:45px" height="90" width="90" src="~/images/cat.png" /></div>
+            <iframe class="小幫手" src='https://webchat.botframework.com/embed/mist143mda-bot?s=YPZzm2dE_QU.nWqDzj-7VllSaxQSGpjeUPjIFHQNaDZbJAoj3nu8OVI' style='display:none; min-width: 200px; width: 600px; min-height: 500px;'></iframe>
+        </figure>*@
     <script src="~/js/bot.js"></script>
 
     <script src="~/js/bootstrap.min.js"></script>
