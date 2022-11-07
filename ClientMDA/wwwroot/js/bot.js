@@ -7,13 +7,13 @@
         pmer++
             if (pmer == 1) {
         help.style.display = "inline";
-    helper.style.top = "45%"
+    helper.style.top = "41%"
 
             }
             else if (pmer>1){
         pmer = 0
                 help.style.display = "none"
-    helper.style.top = "95%"
+    helper.style.top = "90%"
 
             }
         })

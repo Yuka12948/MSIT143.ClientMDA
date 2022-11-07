@@ -1,51 +1,81 @@
 ﻿@model List<ClientMDA.ViewModels.CCommentViewModel>
+@using Microsoft.AspNetCore.Http
+@using System.Text.Json;
+@inject IHttpContextAccessor Accessor
+
+@{
+    會員member mem = null;
+    if (Accessor.HttpContext.Session.Keys.Contains(ClientMDA.Models.CDictionary.SK_LOGINED_USER))
+    {
+        var a = Accessor.HttpContext.Session.GetString(ClientMDA.Models.CDictionary.SK_LOGINED_USER);
+        mem = JsonSerializer.Deserialize<會員member>(a);
+    }
+}
+
 @{
     ViewData["Title"] = "Default"; @*關注評論*@
 }
 
 @{
-    for (var i = 0; i < Model.Count; i++)
+    if (Accessor.HttpContext.Session.Keys.Contains(CDictionary.SK_LOGINED_USER))
     {
-        string urlpic = "";
-        if (Model[i].cImgFrList.Count() > 0)
+        for (var i = 0; i < Model.Count; i++)
         {
-            //urlpic = Model[i].cImgFrList[0];
-            urlpic = "https://localhost:44381/images/Comment/" + Model[i].cImgFrList[0];
-        }
-        <div class="card mb-3" style="max-width: 540px;">
-            @*overflow:hidden*@
-            <div class="row g-0">
-                <div class="col-md-4 set-bg" data-setbg="@urlpic" style="background-image:src('@urlpic');height:220px">
-                    @*<img src="@urlpic" class="img-fluid rounded-start" alt="...">*@
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">@Html.DisplayFor(modelItem => Model[i].評論標題commentTitle)</h5>
-                        <span class="mem_info">
-                            <span>
-                                @if (Model[i].會員照片image != null)
-                                {
-                                    <img class="memImg" src="https://localhost:44381/images/Member/@Model[i].會員照片image" alt="">
-                                }
-                                else
-                                {
-                                    <img class="memImg" src="~/images/Member/MEMBER.png" alt="">
-                                    @*會員預設大頭貼 https://dummyimage.com/150x150/6c757d/dee2e6.jpg *@
-                                }
-                                <a href=@Url.Action("會員評論","Comment", new {id= Model[i].會員編號memberId})>@Html.DisplayFor(modelItem => Model[i].暱稱nickName)</a>
+            string urlpic = "";
+            if (Model[i].cImgFrList.Count() > 0)
+            {
+                //urlpic = Model[i].cImgFrList[0];
+                urlpic = "https://localhost:44381/images/Comment/" + Model[i].cImgFrList[0];
+            }
+            <div class="card mb-3" style="max-width: 540px;">
+                @*overflow:hidden*@
+                <div class="row g-0">
+                    <div class="col-md-4 set-bg" data-setbg="@urlpic" style="background-image:src('@urlpic');height:220px">
+                        @{
+                            if (@Model[i].mPoster[0] == null)
+                            {
+                                <img src="~/images/Movie/poster_none1.png" />
+                            }
+                            else if (@Model[i].mPoster[0] != null)
+                            {
+                                <img src="https://localhost:44381/images/MovieImage/@Model[i].mPoster[0].movieImage" class="img-fluid rounded-start" alt="...">
+                            }
+                            else
+                            {
+                                <img src="@Model[i].mPoster[0].movieIMDB" class="img-fluid rounded-start" alt="...">
+                            }
+                        }
+                        @*<img src="@urlpic" class="img-fluid rounded-start" alt="...">*@
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => Model[i].評論標題commentTitle)</h5>
+                            <span class="mem_info">
+                                <span>
+                                    @if (Model[i].會員照片image != null)
+                                    {
+                                        <img class="memImg" src="https://localhost:44381/images/Member/@Model[i].會員照片image" alt="">
+                                    }
+                                    else
+                                    {
+                                        <img class="memImg" src="~/images/Member/MEMBER.png" alt="">
+                                        @*會員預設大頭貼 https://dummyimage.com/150x150/6c757d/dee2e6.jpg *@
+                                    }
+                                    <a href=@Url.Action("會員評論","Comment", new {id= Model[i].會員編號memberId})>@Html.DisplayFor(modelItem => Model[i].暱稱nickName)</a>
+                                </span>
+                                <span>
+                                    - @Html.DisplayFor(modelItem => Model[i].發佈時間commentTime) <span style="color:white"></span>
+                                </span><hr />
+                                <p class="card-text">
+                                    @Html.DisplayFor(modelItem => Model[i].評論內容comments)
+                                </p>
+                                <a href=@Url.Action("電影評論","Comment", new {id= Model[i].評論編號commentId})><p class="card-text"><small class="text-muted">繼續閱讀 >> </small></p></a>
                             </span>
-                            <span>
-                                - @Html.DisplayFor(modelItem => Model[i].發佈時間commentTime) <span style="color:white"></span>
-                            </span><hr />
-                            <p class="card-text">
-                                @Html.DisplayFor(modelItem => Model[i].評論內容comments)
-                            </p>
-                            <a href=@Url.Action("電影評論","Comment", new {id= Model[i].評論編號commentId})><p class="card-text"><small class="text-muted">繼續閱讀 >> </small></p></a>
-                        </span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
     }
 }
 

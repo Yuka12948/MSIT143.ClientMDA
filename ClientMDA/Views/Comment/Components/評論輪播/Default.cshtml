@@ -3,13 +3,34 @@
     ViewData["Title"] = "Default"; @*評論輪播*@
 }
 
+<style>
+    .set-bg {
+        background-position: center,-500px;
+    }
+</style>
+
+
 @{
 
     @foreach (var item in Model)
     {
         var t = item.發佈時間commentTime;
+        var BGsrc = "";
 
-        <div class="hero__items set-bg" data-setbg="https://im.marieclaire.com.tw/m800c533h100b0/assets/mc/202205/628C963D8F7801653380669.jpeg">
+        @if (item.mPoster[0] == null)
+        {
+            BGsrc = "~/images/Movie/poster_none1.png";
+        }
+        else if (item.mPoster[0] != null)
+        {
+            BGsrc = "https://localhost:44381/images/MovieImage/" + @item.mPoster[0].movieImage;
+        }
+        else
+        {
+            BGsrc = @item.mPoster[0].movieIMDB;
+        }
+
+        <div class="hero__items set-bg" data-setbg="@BGsrc">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="hero__text">
@@ -19,7 +40,6 @@
                                     @if (item.會員照片image != null)
                                     {
                                         <img class="memImg" src="https://localhost:44381/images/Member/@item.會員照片image" alt="">
-
                                     }
                                     else
                                     {
@@ -44,8 +64,6 @@
             </div>
         </div>
     }
-
 }
-
 <script>
 </script>

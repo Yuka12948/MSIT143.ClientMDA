@@ -16,8 +16,10 @@ namespace ClientMDA.ViewModels
         private 評論圖片明細commentImagesList _commentImgList;
         private 電影movie _movie;
         private 電影圖片movieIimagesList _mIimagesList;
+        private 電影圖片總表movieImage _movieImage;
         private 會員member _member;
         private 我的追蹤清單myFollowList _myFollowList;
+
 
         public 電影評論movieComment comment
         {
@@ -49,6 +51,11 @@ namespace ClientMDA.ViewModels
             get { return _mIimagesList; }
             set { _mIimagesList = value; }
         }
+        public 電影圖片總表movieImage movieImage
+        {
+            get { return _movieImage; }
+            set { _movieImage = value; }
+        }
         public 會員member member
         {
             get { return _member; }
@@ -68,12 +75,14 @@ namespace ClientMDA.ViewModels
             _commentImgList = new 評論圖片明細commentImagesList();
             _movie = new 電影movie();
             _mIimagesList = new 電影圖片movieIimagesList();
+            _movieImage = new 電影圖片總表movieImage();
             _member = new 會員member();
             _myFollowList = new 我的追蹤清單myFollowList();
         }
 
         //---------------------------電影評論---------------------------//
 
+        #region
         [DisplayName("評論編號")]
         public int 評論編號commentId
         {
@@ -170,6 +179,7 @@ namespace ClientMDA.ViewModels
         }
 
         //public virtual 公開等級編號publicId 公開等級編號public { get; set; }
+        #endregion
 
         //---------------------------電影---------------------------//
 
@@ -211,14 +221,26 @@ namespace ClientMDA.ViewModels
 
         //評論圖片總表commentImage
         //public int 評論圖庫編號commentImageId { get; set; }
-        public string 圖片image { get; set; }
+        //public string 圖片image { get; set; }
         //public int 屏蔽invisible { get; set; }
         //public virtual 評論圖片總表commentImage 評論圖庫編號commentImage { get; set; }
-
+        
         public List<string> cImgFrList { get; set; }
 
         //---------------------------電影圖片---------------------------//
 
+        public int 電影圖片編號miId { get; set; }
+        //public int 電影編號movieId { get; set; }
+        public int 圖片編號imageId { get; set; }
+
+        //---------------------------圖片總表---------------------------//
+
+        //public int 圖片編號imageId { get; set; }
+        public string 圖片image { get; set; }
+        public string 圖片雲端imageImdb { get; set; }
+        public string 圖片類型imageType { get; set; }
+        public string 電影名稱movieName { get; set; }
+        //public int? 屏蔽invisible { get; set; }
 
 
         //---------------------------我的追蹤清單---------------------------//
@@ -233,6 +255,7 @@ namespace ClientMDA.ViewModels
 
 
         public List<CFloorViewModel> cFloorList { get; set; }
+        public List<CMovieImagesListViewModel> mPoster { get; set; }
         public int floorCount { get; set; }
     }
 }

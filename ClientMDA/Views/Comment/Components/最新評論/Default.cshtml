@@ -1,4 +1,5 @@
 ﻿@model List<ClientMDA.ViewModels.CCommentViewModel>
+
 @{
     ViewData["Title"] = "Default"; @*最新評論*@
 }
@@ -16,6 +17,20 @@
             @*overflow:hidden*@
             <div class="row g-0">
                 <div class="col-md-4 set-bg" data-setbg="@urlpic" style="background-image:url('@urlpic');height:220px">
+                    @{
+                        if (@Model[i].mPoster[0] == null)
+                        {
+                            <img src="~/images/Movie/poster_none1.png" />
+                        }
+                        else if (@Model[i].mPoster[0] != null)
+                        {
+                            <img src="https://localhost:44381/images/MovieImage/@Model[i].mPoster[0].movieImage" class="img-fluid rounded-start" alt="...">
+                        }
+                        else
+                        {
+                            <img src="@Model[i].mPoster[0].movieIMDB" class="img-fluid rounded-start" alt="...">
+                        }
+                    }
                     @*<img src="@urlpic" class="img-fluid rounded-start" alt="...">*@
                 </div>
                 <div class="col-md-8">
