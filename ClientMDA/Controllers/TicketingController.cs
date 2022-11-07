@@ -48,6 +48,8 @@ namespace ClientMDA.Controllers
             _dbContext.電影導演movieDirectors.ToList();
             _dbContext.演員總表actors.ToList();
             _dbContext.會員members.ToList();
+            _dbContext.電影圖片movieIimagesLists.ToList();
+            _dbContext.電影圖片總表movieImages.ToList();
 
         }
         #endregion
@@ -78,14 +80,28 @@ namespace ClientMDA.Controllers
 
         public IActionResult MoviePartialView()
         {
-            List<電影代碼movieCode> movies = this._dbContext.電影代碼movieCodes.ToList();
+            List<電影代碼movieCode> movies = this._dbContext.訂單總表orders.AsEnumerable().GroupBy(o => o.場次編號screening.電影代碼movieCodeNavigation)
+                      .OrderByDescending(o => o.Select(t => t.訂單明細orderDetails.Select(d => d.張數count).Sum()).Sum())
+                      .Select(o => o.Key).ToList();
+            foreach(var item in this._dbContext.電影代碼movieCodes)
+            {
+                if (!movies.Contains(item))
+                    movies.Add(item);
+            }
+            string picurls = "";
+            for (int i = 0; i < 9; i++)
+            {
+                int movieid = this._dbContext.電影代碼movieCodes.Where(m => m.電影編號movieId == movies[i].電影編號movieId).Select(m => m.電影編號movieId).FirstOrDefault();
+                picurls += this._dbContext.電影圖片movieIimagesLists.Where(p => p.電影編號movieId == movieid).Select(p => p.圖片編號image.圖片image).FirstOrDefault() + '#';
+            }
+            ViewBag.str = picurls;
             return PartialView($"~/Views/Ticketing/_MoviePartialView.cshtml", movies);
         }
 
         public IActionResult MovieInfoIndex2(int id)
         {
             HttpContext.Session.SetInt32(CDictionary.SK_選擇的電影Code, id);
-            List<電影院theater> theater = this._dbContext.場次screenings.Where(s => s.電影代碼movieCode == id).Select(s => s.影廳編號cinema.電影院編號theater).Distinct().ToList();
+            List<電影院theater> theater = this._dbContext.場次screenings.Where(s => s.電影代碼movieCode == id && s.放映日期playDate > DateTime.Now.AddDays(1)).Select(s => s.影廳編號cinema.電影院編號theater).Distinct().ToList();
             return View(theater);
         }
 

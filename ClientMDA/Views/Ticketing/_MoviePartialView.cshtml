@@ -2,7 +2,8 @@
 @model List<電影代碼movieCode>
 
 @{
-        
+    string str = ViewBag.str;
+    string[] arr = str.Split('#');
 }
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 <style>
@@ -65,19 +66,18 @@
 
 <section>
     <div class="align-content-xl-start pt-3">
-        <h2 class="text-bg-primary fa-space-awesome" style="padding-bottom:2%;color:whitesmoke">現正熱門</h2>
+        <h2 class="text-bg-primary fa-space-awesome" style="padding-bottom:2%;color:whitesmoke">本站熱門</h2>
     </div>
     <div class="swiper mySwiper" style="width:95%">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="~/images/Ticketing/1.jpg" /></div>
-            <div class="swiper-slide"><img src="~/images/Ticketing/2.jpg" /></div>
-            <div class="swiper-slide"><img src="~/images/Ticketing/3.jpg" /></div>
-            <div class="swiper-slide"><img src="~/images/Ticketing/4.jpg" /></div>
-            <div class="swiper-slide"><img src="~/images/Ticketing/5.jpg" /></div>
-            <div class="swiper-slide"><img src="~/images/Ticketing/6.jpg" /></div>
-            <div class="swiper-slide"><img src="~/images/Ticketing/1.jpg" /></div>
-            <div class="swiper-slide"><img src="~/images/Ticketing/2.jpg" /></div>
-            <div class="swiper-slide"><img src="~/images/Ticketing/3.jpg" /></div>
+            @{
+                string _picurl = "";
+                for (int i = 0; i < 9; i++)
+                {
+                    _picurl = "https://localhost:44381/images/MovieImage/" + arr[i].Trim();
+                    <a class="swiper-slide" asp-route-id="@Model[i].電影代碼編號movieCodeId" asp-controller="Ticketing" asp-action="MovieInfoIndex2" ><img src="@_picurl"/></a>
+                }
+            }
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
@@ -92,7 +92,7 @@
     <div class="row gy-4 gx-lg-5">
 
         @{
-            List<電影代碼movieCode> datas = Model.ToList();
+            List<電影代碼movieCode> datas = Model.Skip(9).ToList();
             foreach (var item in datas)
             {
                 string name = $"{item.電影編號movie.中文標題titleCht}({item.語言編號language.語言名稱languageName}版)";
