@@ -467,8 +467,9 @@ namespace ClientMDA.Controllers
             {
                 if (q.優惠所需紅利bonusCost <= mem.紅利點數bonus)
                 {
-                    mem.紅利點數bonus = mem.紅利點數bonus - q.優惠所需紅利bonusCost;
-                    string jsonUser = JsonSerializer.Serialize(mem);
+                    var m = _MDAcontext.會員members.Where(i => i.會員編號memberId == mem.會員編號memberId).FirstOrDefault();
+                    m.紅利點數bonus = m.紅利點數bonus - q.優惠所需紅利bonusCost;
+                    string jsonUser = JsonSerializer.Serialize(m);
                     HttpContext.Session.SetString(CDictionary.SK_LOGINED_USER, jsonUser);
 
                     優惠明細couponList coupon = new 優惠明細couponList

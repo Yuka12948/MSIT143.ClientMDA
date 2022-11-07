@@ -57,6 +57,7 @@ namespace ClientMDA.Controllers
             }).FirstOrDefault();
             return View(datas);
         }
+
         #region follow report
         public IActionResult checkLogin(string page, int? id)
         {
