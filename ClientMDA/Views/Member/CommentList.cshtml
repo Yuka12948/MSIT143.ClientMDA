@@ -108,7 +108,11 @@
                         foreach (var comm in Model)
                         {
                             count++;
-                            if (comm.評論標題commentTitle == null) { continue; }
+                            if (comm.評論標題commentTitle == null)
+                            {
+                                //continue;
+                                comm.評論標題commentTitle = "無標題";
+                            }
 
                             <tr>
                                 <th scope="row" class="">@count</th>

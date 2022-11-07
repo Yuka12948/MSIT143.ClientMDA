@@ -106,18 +106,18 @@
                                                         @{
                                                             foreach (CWriteCommentViewModel s in item.comments)
                                                             {
+                                                                if (string.IsNullOrEmpty(s.comTitle))
+                                                                {
+                                                                    s.comTitle = "無標題";
+                                                                }
                                                                 <a href='@Url.Content($"~/comment/電影評論/{s.CommentId}")'>@s.comTitle</a><br />
                                                             }
                                                         }
                                                     </td>
                                                 </tr>
                                             }
-
                                         }
-
-                                    }
-
-                                
+                                    }                               
 
                                 </tbody>
                             </table>
@@ -146,6 +146,10 @@
                                             if (item.targetId == 2) //評論
                                             {
                                                 count2++;
+                                                if (string.IsNullOrEmpty(item.followComTitle))
+                                                {
+                                                    item.followComTitle = "無標題";
+                                                }
                                                 <tr scope="row">
 
                                                     <th scope="row" class="">@count2</th>

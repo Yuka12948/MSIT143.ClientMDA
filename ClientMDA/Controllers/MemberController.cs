@@ -736,7 +736,14 @@ namespace ClientMDA.Controllers
                 return View(datas);
             }
         }
+        public IActionResult CommentDelete(int? id)
+        {
+            var q = _MDAcontext.電影評論movieComments.First(c => c.評論編號commentId == id);
+            _MDAcontext.電影評論movieComments.Remove(q);
+            _MDAcontext.SaveChanges();
 
+            return RedirectToAction("CommentList");
+        }
         public IActionResult CommentEdit(int? id)
         {
             if (id == null)

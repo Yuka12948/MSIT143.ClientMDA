@@ -68,23 +68,11 @@
                 if (mem != null)
                 {
                     <span><input class="btn btn-info btn-sm" type="button" id="followMem" status="y" value="追蹤會員" onclick="setFollow(event)"></span>
-                }
-                else
-                {
-                    <span>@Html.ActionLink("追蹤會員", "checkLogin", new { page = "會員評論", id = connectId }, new { type = "button", @class = "btn btn-info btn-sm" })</span>
-                }
-            }
-
-            @*<input class="btn btn-info btn-sm" type="button" id="followMem" status="n" value="取消追蹤">*@
-            <!-- Button trigger modal -->
-            @{
-
-                if (mem != null)
-                {
                     <span><button type="button" id="btnReport" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#reportModal">檢舉</button></span>
                 }
                 else
                 {
+                    <span>@Html.ActionLink("追蹤會員", "checkLogin", new { page = "會員評論", id = connectId }, new { type = "button", @class = "btn btn-info btn-sm" })</span>
                     <span>@Html.ActionLink("檢舉", "checkLogin", new { page = "會員評論", id = connectId }, new { type = "button", @class = "btn btn-danger btn-sm" })</span>
                 }
             }
@@ -222,8 +210,8 @@
     <script>
     async function setFollow(event){
         let follomid = '@connectId'
-                const url = '@Url.Content("~/comment/followMem")'
-                const params = `?followMid=${follomid}`
+                const url = '@Url.Content("~/comment/follow")'
+        const params = `?connectid=${follomid}&target=1`
                 let response = await fetch(url + params)
                 let data = await response.text()
         if (data == "add") {
@@ -236,24 +224,6 @@
 
     </script>
 
-    <script>
-    const submitReport = document.querySelector("#submitReport")
-    const a = '@ViewBag.txtSuccess'
-    submitReport.addEventListener('click', () => {
-        if (a == "s") {
-        window.onload = myToastFunction()
-    }
-    })
-            function myToastFunction() {
-                // Get the snackbar DIV
-                var x = document.getElementById("snackbar");
-                // Add the "show" class to DIV
-                x.className = "show";
-                // After 3 seconds, remove the show class from DIV
-                setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
-            }
-
-    </script>
 
     @*weiting end*@
 
