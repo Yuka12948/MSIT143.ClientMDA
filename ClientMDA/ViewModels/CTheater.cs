@@ -209,7 +209,7 @@ namespace ClientMDA.ViewModels
         }
         //-------------------------------------
 
-
+        public List<decimal?> 會員評分 { get; set; }
         public IFormFile photo { get; set; }
         public List<string> MPimg{get ; set;}
     }
