@@ -1,6 +1,7 @@
 ﻿@using ClientMDA.ViewModels
 @model CPaymentAndMovieInfoViewModel
 @{
+    double 手續費 = 20 * Model.count人數;
     string title = $"{Model.MovieName電影名稱}({Model.MovieVersion電影版本})";
     string[] arr = Model.seatInfo座位資訊.Split('#');
     string Seatstring = "";
@@ -91,7 +92,8 @@
                             <li>@item.TicketName<span>@PriceInfo</span></li>
                         }
                     }
-                    <li><span>需付價錢(未折扣) : @totalPrice.ToString("0.0#")</span></li>
+                    <li><span>商品價格 : @totalPrice.ToString("0.0#")  (另含手續費 : @手續費.ToString("0.0") )</span></li>
+
                 </ul>
             </div>
         </div>

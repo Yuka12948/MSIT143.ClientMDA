@@ -182,6 +182,7 @@ namespace ClientMDA.Controllers
 
         public IActionResult PaymentWeb(CPaymentweb1ViewModel payment1) // 回傳字串 id:count#id:count#  id=票價明細 count=數量
         {
+            HttpContext.Session.SetInt32(CDictionary.SK_當前手續費, payment1.count * 20);
             CPaymentAndMovieInfoViewModel payview = new CPaymentAndMovieInfoViewModel(payment1);
             payview.theaterName電影院名稱 = this._dbContext.電影院theaters.FirstOrDefault(t => t.電影院編號theaterId == payment1.theaterID).電影院名稱theaterName;
             payview.Movieimage電影照片 = this._dbContext.電影圖片movieIimagesLists.Where(m => m.電影編號movieId == payment1.MovieID).Select(p => p.圖片編號image.圖片image).FirstOrDefault();
@@ -198,6 +199,10 @@ namespace ClientMDA.Controllers
 
         public IActionResult PaymentWeb2(CInfoForMakeNewOrderViewModel infoview)
         {
+            ViewBag.fee = 0;
+            int? fee = HttpContext.Session.GetInt32(CDictionary.SK_當前手續費);
+            if (fee != null)
+                ViewBag.fee = (int)fee;
             infoview.Alltciket = fn_票種字串轉換List(infoview.TicketInfo);
             return View(infoview);
         }
@@ -215,6 +220,7 @@ namespace ClientMDA.Controllers
             fn_建立新出售座位明細(NewOrderID, order.ScreenID, order.SeatInfo);
             string MemberName = this._dbContext.會員members.Where(m => m.會員編號memberId == member.會員編號memberId).Select(n => (n.姓氏lName + n.名字fName)).FirstOrDefault();
             fn_寄送郵件("annlan08@gmail.com", MemberName, order.fullPrice);
+            fn_會員購票送紅利(member.會員編號memberId, (int)order.fullPrice);
 
             HttpContext.Session.SetString(CDictionary.SK_ORDER_INFO, "");
 
@@ -416,6 +422,19 @@ namespace ClientMDA.Controllers
         #endregion
 
         #region 內建方法區
+        [NonAction]
+        public void fn_會員購票送紅利(int memberID,int fullprice)
+        {
+            會員member member = this._dbContext.會員members.Where(m => m.會員編號memberId == memberID).FirstOrDefault();
+            int bouns = fullprice / 10;
+            member.紅利點數bonus += bouns;
+            this._dbContext.SaveChanges();
+            string json = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            會員member memberSession = JsonSerializer.Deserialize<會員member>(json);
+            memberSession.紅利點數bonus += bouns;
+            json = JsonSerializer.Serialize<會員member>(memberSession);
+            HttpContext.Session.SetString(CDictionary.SK_LOGINED_USER, json);
+        }
 
         [NonAction]
         public List<CTicketItemViewModel> fn_票種字串轉換List(string ticketString) //==>將  (回傳字串 id:count#id:count#  id=票價明細 count=數量) 轉成 一個 List<CTicketItemViewModel>

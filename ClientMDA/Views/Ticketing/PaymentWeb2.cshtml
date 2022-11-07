@@ -8,142 +8,145 @@
     foreach (var item in Model.Alltciket)
     {
         totalPrice += (item.TicketPrice) * (item.TicketCount);
+        totalPrice += ViewBag.fee;
     }
 }
+@section Styles{
+    <link rel="stylesheet" href="~/cyborg/css/fontawesome.css">
+    <link href="form-validation.css" rel="stylesheet">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
 
-<link rel="stylesheet" href="~/cyborg/css/fontawesome.css">
-<link href="form-validation.css" rel="stylesheet">
-<style>
-    .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-    }
+        .b-example-divider {
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
 
-    .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-    }
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
 
-    .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-    }
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
 
-    .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-    }
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
 
-    .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-    }
+            .nav-scroller .nav {
+                display: flex;
+                flex-wrap: nowrap;
+                padding-bottom: 1rem;
+                margin-top: -1px;
+                overflow-x: auto;
+                text-align: center;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
 
-        .nav-scroller .nav {
+        .form-label {
+            color: whitesmoke;
+        }
+
+        .form-check-label {
+            color: whitesmoke;
+        }
+
+        .mb-3 {
+            color: whitesmoke;
+        }
+
+        body {
+            --bs-bg-opacity: 1;
+        }
+
+        .needs-validation .label-text {
+            color: whitesmoke;
+        }
+
+        .my-0 {
+            color: black !important;
+        }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        .paypal {
+        }
+
+        .credit {
+        }
+
+        .opayment {
+        }
+
+        .box {
             display: flex;
-            flex-wrap: nowrap;
-            padding-bottom: 1rem;
-            margin-top: -1px;
-            overflow-x: auto;
-            text-align: center;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
         }
 
-    .form-label {
-        color: whitesmoke;
-    }
-
-    .form-check-label {
-        color: whitesmoke;
-    }
-
-    .mb-3 {
-        color: whitesmoke;
-    }
-
-    body {
-        --bs-bg-opacity: 1;
-    }
-
-    .needs-validation .label-text {
-        color: whitesmoke;
-    }
-
-    .my-0 {
-        color: black !important;
-    }
-
-    .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        padding-top: 100px; /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    }
-
-    /* Modal Content */
-    .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-    }
-
-    /* The Close Button */
-    .close {
-        color: #aaaaaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
+        img.hope {
+            height: 90px;
+            width: 90px !important;
         }
+    </style>
+}
 
-    .paypal {
-    }
-
-    .credit {
-    }
-
-    .opayment {
-    }
-
-    .box {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100vh;
-    }
-
-    img.hope{
-        height:90px;
-        width:90px !important;
-    }
-</style>
 <figure style="float:left; position: fixed;left: 40px;top:50%;width:600px;margin-top: -2.5em;border-block: initial;list-style-type: none;z-index:999;">
     <img height="200" src="~/images/unknown.png" />
 </figure>
@@ -174,6 +177,13 @@
                                 <span class="text-muted">$@price.ToString("0.00")</span>
                             </li>
                         }
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h6 class="my-0">手續費</h6>
+                                <small id="coupontype">每張票加收20手續費</small>
+                            </div>
+                            <span class="text-muted" id="discount">@ViewBag.fee</span>
+                        </li>
                         <li class="list-group-item d-flex justify-content-between bg-light">
                             <div class="text-success">
                                 <h6 class="my-0">優惠折扣</h6>
