@@ -140,21 +140,18 @@
                             @*<a class="follow" href="#">追蹤</a>*@
                             @*<button type="button" id="btnCommentReport" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#commentReportModal">檢舉</button>*@
 
-                            @if (mem != null) //會員
-                            {
-                                if (mem.會員編號memberId == Model.會員編號memberId) //會員==自己
+                            <!--weiting begin-->
+                            @{
+                                if (mem != null)
                                 {
-                                    <a class="follow" href="#">追蹤</a>
-                                    <a class="report" id="" data-toggle="" data-target="" disabled="disabled">檢舉</a>
+                                    <a class="follow" id="followMem" onclick="setFollow(event)" style="cursor: pointer; ">追蹤評論</a>
+                                    <a class="report" style="cursor: pointer; " data-toggle="modal" data-target="#ReportModal">檢舉</a>
                                 }
-                                else //會員!=自己
+                                else
                                 {
+                                    @Html.ActionLink("追蹤評論", "checkLogin", new { page = "電影評論", id = Model.評論編號commentId }, new { type = "button", @class = "follow" })
+                                    @Html.ActionLink("檢舉", "checkLogin", new { page = "電影評論", id = Model.評論編號commentId }, new { type = "button", @class = "report" })
                                 }
-                            }
-                            else //非會員 檢舉須登入
-                            {
-                                <a class="follow" href="/Member/Login">追蹤</a>
-                                <a class="report" href="/Member/Login" type="button" id="btnCommentReport" data-toggle="modal" data-target="#commentReportModal">檢舉</a>
                             }
                         </div>
 
@@ -162,7 +159,7 @@
                             if (mem != null)
                             {
                                 <!-- Modal -->
-                                <div class="modal fade" id="commentReportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal fade" id="ReportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         @using (Html.BeginForm("Report檢舉", "Comment"))
                                         {
@@ -175,16 +172,25 @@
                                                 </div>
                                                 <div class="modal-body" style="color:black">
                                                     <!--modal content start-->
-                                                    <input type="hidden" name="會員編號Member_ID" value="@mem.會員編號memberId" />
-                                                    <input type="hidden" name="對象Target_ID" value="2" />
-                                                    <input type="hidden" name="追讚倒編號ActionType_ID" value="3" />
-                                                    <input type="hidden" name="連接編號Connect_ID" value="@Model.評論編號commentId" />
-                                                    <input type="hidden" name="" value="" />
+                                                    <input type="hidden" name="會員編號memberId" value="@mem.會員編號memberId" />
+                                                    <input type="hidden" name="對象targetId" value="2" />
+                                                    <input type="hidden" name="追讚倒編號actionTypeId" value="3" />
+                                                    <input type="hidden" name="連接編號connectId" value="@Model.comment.評論編號commentId" />
                                                     <div><label>檢舉人</label><input type="text" readonly value="@mem.暱稱nickName" /></div>
                                                     <div><label>檢舉對象</label><input type="text" readonly value="@Model.暱稱nickName" /></div>
-                                                    <div><label>檢舉理由</label><textarea cols="50" name="檢舉理由ReportReason"></textarea></div>
+                                                    @{string content = Model.評論標題commentTitle;
+                                                        if (string.IsNullOrEmpty(Model.評論標題commentTitle))
+                                                        {
+                                                            content = "無標題";
+                                                        }
+                                                    }
+                                                    <div><label>評論標題</label><input type="text" readonly value="@content " /></div>
+                                                    <div><label>檢舉理由</label><textarea cols="50" name="檢舉理由reportReason"></textarea></div>
+
                                                     <!--modal content end-->
+
                                                 </div>
+
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
                                                     <button type="submit" class="btn btn-primary" id="submitAddList">確定</button>
@@ -196,6 +202,7 @@
                                 <!--modal end-->
                             }
                         }
+                        <!--weiting end-->
 
                     </div>
                     <!-- 發佈時間 -->
@@ -305,8 +312,9 @@
     </div>
 </section>
 
-<script>
-                window.onload=function () { //評論檢舉
+@section Scripts{
+    <script>
+                @*window.onload=function () { //評論檢舉
                 if ('@a' == "") {
                     document.querySelector("#btnFloorReport").addEventListener('click', () => {
                         @{Accessor.HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, "~/Comment/電影評論/2");} //抓電影評論id
@@ -321,7 +329,7 @@
                         window.location = '@Url.Content("~/member/login")'
                     })
                 }
-    }
+    }*@
 
     function appendJS(src) {
         var script = document.createElement("script");
@@ -330,4 +338,61 @@
     }
     appendJS('https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js');
     appendJS('https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v3.0');
-</script>
+    </script>
+
+    @*weiting beging*@
+    <script>
+
+    window.onload = async function () {
+        const btnfollow = document.querySelector('#followMem')
+        @*if ('@mem' == null||'@mem'=='') {
+            btnfollow.innerHTML = '追蹤評論'//.setAttribute('value','追蹤會員')
+        }*@
+        '@{int login = 0;
+            int? memid = null;
+            if (mem != null)
+            {
+                login = 1;
+                memid = mem.會員編號memberId;
+            }
+                }'
+        console.log('@login')
+        console.log('@mem')
+        if ('@login' ==1) {
+            let memid = '@memid'
+            let followid = '@Model.評論編號commentId'
+                let target = 2
+
+                const url = '@Url.Content("~/comment/checkFollow")'
+                const params = `?memid=${memid}&followid=${followid}&target=${target}`
+                let response = await fetch(url + params)
+            let data = await response.text()
+            if (data == "y")
+                btnfollow.innerHTML = '取消追蹤'//.setAttribute('value', '取消追蹤')
+        }
+        else
+            btnfollow.innerHTML = '追蹤評論'//.setAttribute('value', '追蹤評論')
+
+                // checkFollow(int memid, int followid, int target)
+            }
+    </script>
+    <script>
+    async function setFollow(event){
+        let followcom = '@Model.評論編號commentId'
+                const url = '@Url.Content("~/comment/follow")'
+        const params = `?connectid=${followcom}&target=2`
+                let response = await fetch(url + params)
+                let data = await response.text()
+        if (data == "add") {
+            event.target.innerHTML='取消追蹤'
+        }
+        else {
+            event.target.innerHTML = '追蹤評論'
+        }
+            }
+
+    </script>
+
+
+    @*weiting end*@
+}
