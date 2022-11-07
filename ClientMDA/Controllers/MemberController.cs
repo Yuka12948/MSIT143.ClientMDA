@@ -35,6 +35,10 @@ namespace ClientMDA.Controllers
         [HttpPost]
         public IActionResult Login(CLoginViewModel vModel)
         {
+            if(string.IsNullOrEmpty(vModel.txtphone))
+            {
+                vModel.txtphone = "";
+            }
             HttpContext.Session.SetString(CDictionary.SK_USER_PHONE, vModel.txtphone);
 
             bool isExist = _MDAcontext.會員members.Any(m => m.會員電話cellphone == vModel.txtphone);

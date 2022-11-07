@@ -7,7 +7,7 @@
         pmer++
             if (pmer == 1) {
         help.style.display = "inline";
-    helper.style.top = "49%"
+    helper.style.top = "45%"
 
             }
             else if (pmer>1){
