@@ -16,27 +16,30 @@
             </div>
 
             <div class="events">
-                <div class="events-header">@Model[i].評論標題commentTitle</div><!--填入標題-->
+                <div class="events-header"><h5>@Model[i].評論標題commentTitle</h5></div><!--填入標題-->
                 <div class="events-body">
                     <div @*class="row"*@>
                         <div class="pull-left">
                             <img class="events-object img-responsive img-rounded" src="" /><!--填入圖片網址-->
                         </div>
+                        <br />
                         <div class="events-desc">
                             @Html.Raw(Model[i].評論內容comments)
                         </div>
+                        <br />
+
                         <!--填入描述-->
                     </div>
                 </div>
-                <div class="events-footer">
-                    <a href="@Url.Action("電影評論", "Comment", new { id = Model[i].評論編號commentId })">
-                        繼續閱讀
+                <div class="events-footer" style="padding:5px 5px 4px 0;float:right">
+                    <a style="padding-right:10px;" href="@Url.Action("電影評論", "Comment", new { id = Model[i].評論編號commentId })">
+                        繼續閱讀 >>
                     </a>
                 </div><!--可填底部標題 或刪除-->
             </div>
         </dd>
         <!--#endregion 左側文章 end-->
-        <!--#region 右側文章 start-->
+        <!-- #region 右側文章 start -->
         @*<dd class="pos-right clearfix">
                 <div class="circ"></div>
                 <div class="time">Feb 13</div>

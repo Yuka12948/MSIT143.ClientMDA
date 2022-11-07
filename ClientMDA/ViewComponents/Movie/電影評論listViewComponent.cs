@@ -29,6 +29,7 @@ namespace ClientMDA.ViewConponents
                         comment = c,
                         評論內容comments = StripHTML(c.評論內容comments),
                         暱稱nickName = c.會員編號member.暱稱nickName,
+                        會員照片image = c.會員編號member.會員照片image,
                         cImgFrList = _MDAcontext.評論圖片明細commentImagesLists.Where(i => i.評論編號commentId == c.評論編號commentId)
                             .Select(c => c.評論圖庫編號commentImage.圖片image).ToList()
                     }).Take(5).ToList();

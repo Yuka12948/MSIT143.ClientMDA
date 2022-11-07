@@ -28,6 +28,7 @@ namespace ClientMDA.Controllers
                         (m => new CMovieViewModel
                         {
                             movie = m,
+                            mRateList = m.電影評論movieComments.Select(r => r.評分rate).ToList(),
                             mImgFrList = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId)
                             .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
                         }).Take(50).ToList();
@@ -37,6 +38,7 @@ namespace ClientMDA.Controllers
                         (m => new CMovieViewModel
                         {
                             movie = m,
+                            mRateList = m.電影評論movieComments.Select(r => r.評分rate).ToList(),
                             mImgFrList = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId)
                             .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
                         }).ToList();

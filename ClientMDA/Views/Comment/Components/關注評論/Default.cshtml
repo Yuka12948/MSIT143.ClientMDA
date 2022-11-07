@@ -30,19 +30,19 @@
             <div class="card mb-3" style="max-width: 540px;">
                 @*overflow:hidden*@
                 <div class="row g-0">
-                    <div class="col-md-4 set-bg" data-setbg="@urlpic" style="background-image:src('@urlpic');height:220px">
+                    <div class="col-md-4 set-comImg-bg" data-setbg="@urlpic" style="background-image:url('@urlpic');height:220px;">
                         @{
                             if (@Model[i].mPoster[0] == null)
                             {
-                                <img src="~/images/Movie/poster_none1.png" />
+                                <div><img src="~/images/Movie/poster_none1.png" /></div>
                             }
                             else if (@Model[i].mPoster[0] != null)
                             {
-                                <img src="https://localhost:44381/images/MovieImage/@Model[i].mPoster[0].movieImage" class="img-fluid rounded-start" alt="...">
+                                <div><img src="https://localhost:44381/images/MovieImage/@Model[i].mPoster[0].movieImage" class="img-fluid rounded-start" alt="..."></div>
                             }
                             else
                             {
-                                <img src="@Model[i].mPoster[0].movieIMDB" class="img-fluid rounded-start" alt="...">
+                                <div><img src="@Model[i].mPoster[0].movieIMDB" class="img-fluid rounded-start" alt="..."></div>
                             }
                         }
                         @*<img src="@urlpic" class="img-fluid rounded-start" alt="...">*@

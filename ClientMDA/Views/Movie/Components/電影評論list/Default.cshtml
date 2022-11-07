@@ -15,7 +15,15 @@
             {
                 <div class="anime__review__item">
                     <div class="anime__review__item__pic">
-                        <img src="~/images/Comment/mem01.png" alt="">
+                        @if (Model[i].會員照片image != null)
+                        {
+                            <img class="memImg-Circle" src="https://localhost:44381/images/Member/@Model[i].會員照片image" alt="" />
+                        }
+                        else
+                        {
+                            <img class="memImg-Circle" src="~/images/Member/MEMBER.png" alt="" />
+                            @*會員預設大頭貼 https://dummyimage.com/150x150/6c757d/dee2e6.jpg *@
+                        }
                     </div>
                     <div class="anime__review__item__text">
                         <h6>
@@ -26,27 +34,27 @@
                             </span>
                         </h6>
                         <h5>@Model[i].評論標題commentTitle</h5><br />
-                        <p class="mComment-text">@Model[i].評論內容comments</p>
-                        <a href="@Url.Action("電影評論", "Comment", new { id = Model[i].評論編號commentId})"><span class="see-more">詳全文 >></span></a>
+                        <p class="mComment-text">@Model[i].評論內容comments</p><br />
+                        <a href="@Url.Action("電影評論", "Comment", new { id = Model[i].評論編號commentId})"><span class="see-more">繼續閱讀 >> </span></a>
                     </div>
                 </div>
             }
             <!-- #region 評論分頁 -->
             @*<nav aria-label="...">
-            <ul class="pagination justify-content-end">
-                <li class="page-item disabled">
-                    <span class="page-link">Previous</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active" aria-current="page">
-                    <span class="page-link">2</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>*@
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item disabled">
+                            <span class="page-link">Previous</span>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active" aria-current="page">
+                            <span class="page-link">2</span>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>*@
             <!-- #endregion 評論分頁 -->
         </div>
         <!-- #endregion 電影資訊 -->

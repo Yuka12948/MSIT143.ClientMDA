@@ -39,7 +39,28 @@ namespace ClientMDA.Controllers
             return View(datas);
         }
 
-        public IActionResult 會員評論(int id) //會員個別評論頁面
+        [HttpPost]
+        public IActionResult 電影評論(CCommentViewModel cVM)
+        {
+            var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            會員member mem = JsonSerializer.Deserialize<會員member>(a);
+
+            回覆樓數floor f = new 回覆樓數floor()
+            {
+                評論編號commentId = cVM.評論編號commentId,
+                會員編號memberId = mem.會員編號memberId,
+                回覆內容floors = cVM.回覆內容floors,
+                發佈時間floorTime = DateTime.Now,
+                被按讚次數thumbsUp = 0,
+                被倒讚次數thumbsDown = 0,
+                屏蔽invisible = 0
+            };
+            _MDAcontext.回覆樓數floors.Add(f);
+            _MDAcontext.SaveChanges();
+            return RedirectToAction("電影評論", "Comment", new { id = cVM.評論編號commentId });
+        }
+
+        public IActionResult 會員評論(int id) //會員評論時間軸
         {
             CMemberCommentViewModel datas = null;
             //var c = _MDAcontext.電影評論movieComments.Select(c => c);
