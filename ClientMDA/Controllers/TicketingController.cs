@@ -431,7 +431,7 @@ namespace ClientMDA.Controllers
             this._dbContext.SaveChanges();
             string json = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
             會員member memberSession = JsonSerializer.Deserialize<會員member>(json);
-            memberSession.紅利點數bonus += bouns;
+            memberSession.紅利點數bonus = member.紅利點數bonus;
             json = JsonSerializer.Serialize<會員member>(memberSession);
             HttpContext.Session.SetString(CDictionary.SK_LOGINED_USER, json);
         }

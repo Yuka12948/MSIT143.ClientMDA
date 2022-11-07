@@ -5,255 +5,258 @@
     DateTime today = DateTime.Now.Date;
 }
 
-
-<link rel="stylesheet" href="~/cyborg/css/fontawesome.css">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-<style>
-    .swiper {
-        width: 100%;
-        height: 100%;
-    }
-
-    .swiper-slide {
-        text-align: center;
-        font-size: 15px;
-        background: #0b0c2a;
-        color: grey;
-        display: inline;
-        width: 100%;
-        /*height: 100%;*/
-        align-items: center;
-        border-radius: 50%;
-        border: 1px solid #0b0c2a;
-    }
-
-    .date:hover {
-        background: #FF359A;
-        color: whitesmoke;
-    }
-
-    .swiper-slide img {
-        display: block;
-        width: 100%;
-    }
-
-        .swiper-slide img:hover {
-            border-width: 5px;
-            border-color: royalblue;
+@section Styles{
+    <link rel="stylesheet" href="~/cyborg/css/fontawesome.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <link href="~/css/TicketLoader.css" rel="stylesheet" />
+    <style>
+        .loader2 {
+            position: absolute !important;
+            top: 58% !important;
+            left: 48% !important;
         }
 
-    .round {
-        background: #6C6C6C;
-        border-radius: 50%;
-        border-width: 2px;
-        border-color: #FF359A;
-        cursor: pointer;
-    }
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
 
-    .select {
-        background: #FF359A;
-        border-radius: 50%;
-        border-width: 2px;
-        border-color: #FF359A;
-        cursor: pointer;
-    }
+        .swiper-slide {
+            text-align: center;
+            font-size: 15px;
+            background: #0b0c2a;
+            color: grey;
+            display: inline;
+            width: 100%;
+            /*height: 100%;*/
+            align-items: center;
+            border-radius: 50%;
+            border: 1px solid #0b0c2a;
+        }
 
-    .round .num {
-        font-size: 110%;
-        color: whitesmoke;
-        align-items: center;
-    }
+        .date:hover {
+            background: #FF359A;
+            color: whitesmoke;
+        }
 
-    .MovieInfoBox {
-        display: none;
-    }
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+        }
 
-    .showMovieInfoBox {
-        display: block;
-    }
+            .swiper-slide img:hover {
+                border-width: 5px;
+                border-color: royalblue;
+            }
 
-    .MovieInfoBox .grade {
-        text-align: center;
-        width: 50px;
-        height: 20px;
-        color: rgb(158, 158, 158);
-        margin: 20px auto 20px;
-        font-size: 0.75rem;
-        line-height: 20px;
-        border: 1px solid rgb(158, 158, 158);
-        border-radius: 120px;
-    }
-
-    .MovieInfoBox .datebox {
-        min-height: 30px;
-        width: 100%;
-        text-align: center;
-    }
-
-    .MovieInfoBox .staff {
-        color: rgb(255, 255, 255);
-        height: 30px;
-        font-size: 0.8rem;
-    }
-
-    .MovieInfoBox .Infotext {
-        color: rgb(255, 255, 255);
-        line-height: 2;
-        letter-spacing: 1px;
-        font-size: 0.8rem;
-        margin-top: 12px;
-        text-align: left;
-        padding: 8px;
-    }
-
-    .bigline {
-        border: 1px solid #5B5B5B;
-    }
-
-    .versionList {
-        display: block;
-    }
-
-        .versionList .version {
-            display: inline-block;
-            margin: 0px auto 20px;
-            width: 150px;
-            height: 60px;
-            color: rgb(100, 100, 100);
-            border-bottom: 1px solid rgb(43, 43, 43);
-            line-height: 60px;
-            font-size: 1.1rem;
+        .round {
+            background: #6C6C6C;
+            border-radius: 50%;
+            border-width: 2px;
+            border-color: #FF359A;
             cursor: pointer;
         }
 
-    .addselect {
-        color: rgb(255, 255, 255) !important;
-    }
-
-    .versionList .linebox {
-        width: 300px;
-        margin-top: -23px;
-        margin-bottom: 40px;
-        z-index: 300;
-    }
-
-        .versionList .linebox .line {
-            width: 150px;
-            height: 6px;
-            background-color: #005AB5;
-            z-index: 300;
-            transition: all 0.3s ease 0s;
-            transform: translateX(0%);
+        .select {
+            background: #FF359A;
+            border-radius: 50%;
+            border-width: 2px;
+            border-color: #FF359A;
+            cursor: pointer;
         }
 
-    .screen {
-        width: 90px;
-        height: 90px;
-        border-radius: 50%;
-        cursor: pointer;
-        margin: 10px 15px;
-        background-color: transparent;
-        color: rgb(255, 255, 255);
-        border: 1px solid transparent;
-        display:none;
-    }
+        .round .num {
+            font-size: 110%;
+            color: whitesmoke;
+            align-items: center;
+        }
 
-    .showscreen {
-        display: inline-block;
-    }
+        .MovieInfoBox {
+            display: none;
+        }
 
-    .screen:hover {
-        width: 90px;
-        height: 90px;
-        border-radius: 50%;
-        cursor: pointer;
-        display: inline-block;
-        margin: 10px 15px;
-        background-color: transparent;
-        color: rgb(255, 255, 255);
-        border: 1px solid #005AB5;
-        background: #005AB8;
-    }
+        .showMovieInfoBox {
+            display: block;
+        }
 
-    .DateTimePicker {
-    }
+        .MovieInfoBox .grade {
+            text-align: center;
+            width: 50px;
+            height: 20px;
+            color: rgb(158, 158, 158);
+            margin: 20px auto 20px;
+            font-size: 0.75rem;
+            line-height: 20px;
+            border: 1px solid rgb(158, 158, 158);
+            border-radius: 120px;
+        }
 
-    .MoviePicker {
-    }
+        .MovieInfoBox .datebox {
+            min-height: 30px;
+            width: 100%;
+            text-align: center;
+        }
 
-    .VersionPicker {
-    }
+        .MovieInfoBox .staff {
+            color: rgb(255, 255, 255);
+            height: 30px;
+            font-size: 0.8rem;
+        }
 
-    .ScreenPicker {
-    }
+        .MovieInfoBox .Infotext {
+            color: rgb(255, 255, 255);
+            line-height: 2;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            margin-top: 12px;
+            text-align: left;
+            padding: 8px;
+        }
 
-    .ManCount {
-    }
+        .bigline {
+            border: 1px solid #5B5B5B;
+        }
 
-    .DateItemSelect {
-        background: #FF359A;
-        border-color: #FF359A;
-        cursor: pointer;
-        color: white !important;
-    }
+        .versionList {
+            display: block;
+        }
 
-    .MovieItemSelect {
-        background-color: #2894FF;
-        border-radius: 0 !important;
-        border-color: #005AB8;
-        cursor: pointer;
-        filter: contrast(155%);
-        padding: 0 !important;
-        border-width: 3px;
-    }
+            .versionList .version {
+                display: inline-block;
+                margin: 0px auto 20px;
+                width: 150px;
+                height: 60px;
+                color: rgb(100, 100, 100);
+                border-bottom: 1px solid rgb(43, 43, 43);
+                line-height: 60px;
+                font-size: 1.1rem;
+                cursor: pointer;
+            }
 
-    .ScreenItemSelect {
-        background: #005AB8;
-        border-color: #005AB8;
-        cursor: pointer;
-        color: white !important;
-    }
+        .addselect {
+            color: rgb(255, 255, 255) !important;
+        }
 
+        .versionList .linebox {
+            width: 300px;
+            margin-top: -23px;
+            margin-bottom: 40px;
+            z-index: 300;
+        }
 
-</style>
+            .versionList .linebox .line {
+                width: 150px;
+                height: 6px;
+                background-color: #005AB5;
+                z-index: 300;
+                transition: all 0.3s ease 0s;
+                transform: translateX(0%);
+            }
+
+        .screen {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            cursor: pointer;
+            margin: 10px 15px;
+            background-color: transparent;
+            color: rgb(255, 255, 255);
+            border: 1px solid transparent;
+            display: none;
+        }
+
+        .showscreen {
+            display: inline-block;
+        }
+
+        .screen:hover {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: inline-block;
+            margin: 10px 15px;
+            background-color: transparent;
+            color: rgb(255, 255, 255);
+            border: 1px solid #005AB5;
+            background: #005AB8;
+        }
+
+        .DateTimePicker {
+        }
+
+        .MoviePicker {
+        }
+
+        .VersionPicker {
+        }
+
+        .ScreenPicker {
+        }
+
+        .ManCount {
+        }
+
+        .DateItemSelect {
+            background: #FF359A;
+            border-color: #FF359A;
+            cursor: pointer;
+            color: white !important;
+        }
+
+        .MovieItemSelect {
+            background-color: #2894FF;
+            border-radius: 0 !important;
+            border-color: #005AB8;
+            cursor: pointer;
+            filter: contrast(155%);
+            padding: 0 !important;
+            border-width: 3px;
+        }
+
+        .ScreenItemSelect {
+            background: #005AB8;
+            border-color: #005AB8;
+            cursor: pointer;
+            color: white !important;
+        }
+    </style>
+}
+
 
 <div id="preloder">
     <div class="loader"></div>
 </div>
+<div class="container" id="mainbox">
+    <section class="container pt-5 pb-2">
+        <div class="text-center pt-2"><h2>@Model.theaterName</h2></div>
+        <div class="row pt-2">
+            <div class="col-2"></div>
+            <div class="col-8 text-center">電話 : <span>@Model.phone</span> || 地址 : <span>@Model.address</span></div>
+            <div class="col-2"></div>
+        </div>
+    </section>
 
-<section class="container pt-5 pb-2">
-    <div class="text-center pt-2"><h2>@Model.theaterName</h2></div>
-    <div class="row pt-2">
-        <div class="col-2"></div>
-        <div class="col-8 text-center">電話 : <span>@Model.phone</span> || 地址 : <span>@Model.address</span></div>
-        <div class="col-2"></div>
+    <br />
+    <div class="bigline"></div>
+    <br />
+    <div id="DatePicker">
+        @await Component.InvokeAsync("SelectDate", 1)
     </div>
-</section>
-
-<br />
-<div class="bigline"></div>
-<br />
-
-<div id="DatePicker">
-    @await Component.InvokeAsync("SelectDate", 1)
-</div>
+    <div id="mobiebox">
+        <div id="MoviePicker" style="min-height:30vh"></div>
+        <div id="ScreenPicker"></div>
+        <div id="SeatCountPicker">
+            @await Component.InvokeAsync("SelectSeat")
+        </div>
+    </div>
 
 
-<div id="MoviePicker">
-    @*@await Component.InvokeAsync("SelectMovie")*@
-</div>
 
-<div id="ScreenPicker">
-    @*@await Component.InvokeAsync("SelectScreen")*@
-</div>
 
-<div id="SeatCountPicker">
-    @await Component.InvokeAsync("SelectSeat")
-</div>
-
-<div class="row justify-content-center pt-4 pb-5">
-    <button type="button" class="btn btn-primary" id="okbtn">選擇座位</button>
+    <div class="row justify-content-center pt-4 pb-5">
+        <button type="button" class="btn btn-primary" id="okbtn">選擇座位</button>
+    </div>
 </div>
 
 <form method="post" action="~/Ticketing/SeatMap" id="Sumbitform">
@@ -261,12 +264,17 @@
     <input type="hidden" id="Count" name="Count" value="-1" />
 </form>
 
+<div id="loader">
+    <div class="loader2"></div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <script>
     (function ($) {
         $(window).on('load', function () {
             $(".loader").fadeOut();
             $("#preloder").delay(20).fadeOut("slow");
+            $('#loader').hide();
         });
     })(jQuery);
 
@@ -336,13 +344,16 @@
     /*選擇日期*/
     $('.DateTimePicker').click(function () {
         let dataValue = event.currentTarget.getAttribute('data');
+        hidebody('mobiebox','loader');
         findMovie(dataValue);
+        showbody('mobiebox','loader');
+        
     });
 
     /*選擇人數*/
     $('.ManCount').click(function () {
         let count = event.currentTarget.getAttribute('value')
-        $('#Count').val(count) 
+        $('#Count').val(count)
     })
 
 
@@ -373,7 +384,6 @@
                         AddClickEvent(moviePicker, "MovieItemSelect");
                         $('.MoviePicker').click(function () {
                             let MovieValue = event.currentTarget.getAttribute('data')
-                            console.log(MovieValue);
                             findScreen(MovieValue)
                         })
 
@@ -465,7 +475,6 @@
         findMovie(datePicker[0].getAttribute('data'));
         datePicker[0].classList.add('DateItemSelect');
     }
-
     /*方法 click改變CSS樣式*/
     function AddClickEvent(group, classname) {
         for (let item of group) {
@@ -488,5 +497,17 @@
             $('#Sumbitform').submit();
         }
     })
+
+    function hidebody(bodyname,loadname) {
+        $(`#${bodyname}`).css('visibility', 'hidden');
+        $(`#${loadname}`).show();
+
+    }
+    function showbody(bodyname, loadname) {
+        $(`#${loadname}`).delay(800).fadeOut('slow');
+        setTimeout(() => {
+            $(`#${bodyname}`).css('visibility', 'visible');
+        }, 800)     
+    }
 
 </script>
