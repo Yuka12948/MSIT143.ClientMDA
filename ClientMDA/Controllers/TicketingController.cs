@@ -262,6 +262,11 @@ namespace ClientMDA.Controllers
             return RedirectToAction("PaymentWeb3", order);
         }
 
+        public IActionResult TicketError()
+        {
+            return View();
+        }
+
         #endregion
 
         #region 歐付寶
