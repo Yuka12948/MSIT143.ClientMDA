@@ -82,7 +82,7 @@ namespace ClientMDA.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=MDA;Integrated Security=True");
             }
         }
@@ -101,15 +101,7 @@ namespace ClientMDA.Models
                     .IsRequired()
                     .HasColumnName("問題Question");
 
-                entity.Property(e => e.問題總類編號questionTypeId).HasColumnName("問題總類編號QuestionTypeID");
-
                 entity.Property(e => e.答案answer).HasColumnName("答案Answer");
-
-                entity.HasOne(d => d.問題總類編號questionType)
-                    .WithMany(p => p.一般資訊generaInformations)
-                    .HasForeignKey(d => d.問題總類編號questionTypeId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_一般資訊GeneraInformation_問題總類QuestionType1");
             });
 
             modelBuilder.Entity<使用優惠明細usingCouponList>(entity =>
@@ -760,15 +752,7 @@ namespace ClientMDA.Models
                     .IsRequired()
                     .HasColumnName("問題Question");
 
-                entity.Property(e => e.問題總類編號questionTypeId).HasColumnName("問題總類編號QuestionTypeID");
-
                 entity.Property(e => e.答案answer).HasColumnName("答案Answer");
-
-                entity.HasOne(d => d.問題總類編號questionType)
-                    .WithMany(p => p.會員問題memQas)
-                    .HasForeignKey(d => d.問題總類編號questionTypeId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_會員問題memQa_問題總類QuestionType1");
             });
 
             modelBuilder.Entity<會員權限permission>(entity =>

@@ -50,14 +50,14 @@ namespace ClientMDA.Controllers
                 評論問題commentQa = d.ToList(),
                 加入片單addlistQa = e.ToList(),
                 訂票問題orderticketQa = f.ToList(),
-                取票問題taketicketQa =g.ToList(),
-                退票問題refundQa=h.ToList(),
-                優惠券couponQa=i.ToList(),
-                購物問題shopQa=j.ToList(),
+                取票問題taketicketQa = g.ToList(),
+                退票問題refundQa = h.ToList(),
+                優惠券couponQa = i.ToList(),
+                購物問題shopQa = j.ToList(),
 
 
 
-            }) .ToList();
+            }).ToList();
             return View(datas);
         }
 
@@ -68,16 +68,16 @@ namespace ClientMDA.Controllers
             var a = db.一般資訊generaInformations;
             datas = _MDA.問題總表questions.Select(p => new CQANDAViewModel
             {
-                一般資訊GeneraInformation = a.ToList(),   
+                一般資訊GeneraInformation = a.ToList(),
             }).ToList();
 
-            return ViewComponent("一般資訊",datas);
+            return ViewComponent("一般資訊", datas);
         }
 
         public IActionResult memQa()
         {
             MDAContext db = new MDAContext();
-            List<CQANDAViewModel> datas = null;            
+            List<CQANDAViewModel> datas = null;
             var b = db.會員問題memQas;
             datas = _MDA.問題總表questions.Select(p => new CQANDAViewModel
             {
@@ -89,76 +89,76 @@ namespace ClientMDA.Controllers
         public IActionResult rateQa()
         {
             MDAContext db = new MDAContext();
-            List<CQANDAViewModel> datas = null;           
-            var c = db.評分問題rateQas;     
+            List<CQANDAViewModel> datas = null;
+            var c = db.評分問題rateQas;
             datas = _MDA.一般資訊generaInformations.Select(p => new CQANDAViewModel
             {
-                評分問題rateQa = c.ToList(),                
+                評分問題rateQa = c.ToList(),
             }).ToList();
-            return ViewComponent("評分問題", datas); 
+            return ViewComponent("評分問題", datas);
         }
 
         public IActionResult commentQa()
         {
             MDAContext db = new MDAContext();
             List<CQANDAViewModel> datas = null;
-            var d = db.評論問題commentQas;            
+            var d = db.評論問題commentQas;
             datas = _MDA.一般資訊generaInformations.Select(p => new CQANDAViewModel
-            {               
-                評論問題commentQa = d.ToList(),                
+            {
+                評論問題commentQa = d.ToList(),
             }).ToList();
-            return ViewComponent("評論問題", datas); 
+            return ViewComponent("評論問題", datas);
         }
 
         public IActionResult addlistQa()
         {
             MDAContext db = new MDAContext();
-            List<CQANDAViewModel> datas = null;            
-            var e = db.加入片單addlistQas;           
+            List<CQANDAViewModel> datas = null;
+            var e = db.加入片單addlistQas;
             datas = _MDA.一般資訊generaInformations.Select(p => new CQANDAViewModel
             {
-                加入片單addlistQa = e.ToList(),                
+                加入片單addlistQa = e.ToList(),
             }).ToList();
             return ViewComponent("加入片單", datas);
         }
-        
+
         public IActionResult orderticketQa()
         {
             MDAContext db = new MDAContext();
-            List<CQANDAViewModel> datas = null;           
-            var f = db.訂票問題orderticketQas;           
+            List<CQANDAViewModel> datas = null;
+            var f = db.訂票問題orderticketQas;
             datas = _MDA.一般資訊generaInformations.Select(p => new CQANDAViewModel
             {
-                訂票問題orderticketQa = f.ToList(),                
+                訂票問題orderticketQa = f.ToList(),
             }).ToList();
             return ViewComponent("訂票問題", datas);
         }
-        
+
         public IActionResult taketicketQa()
         {
             MDAContext db = new MDAContext();
-            List<CQANDAViewModel> datas = null;            
-            var g = db.取票問題taketicketQas;    
+            List<CQANDAViewModel> datas = null;
+            var g = db.取票問題taketicketQas;
             datas = _MDA.一般資訊generaInformations.Select(p => new CQANDAViewModel
             {
-                取票問題taketicketQa = g.ToList(),                
+                取票問題taketicketQa = g.ToList(),
             }).ToList();
             return ViewComponent("取票問題", datas);
         }
-        
+
         public IActionResult refundQa()
         {
             MDAContext db = new MDAContext();
             List<CQANDAViewModel> datas = null;
             var h = db.退票問題refundQas;
-           
+
             datas = _MDA.一般資訊generaInformations.Select(p => new CQANDAViewModel
             {
-                退票問題refundQa = h.ToList(),                
+                退票問題refundQa = h.ToList(),
             }).ToList();
             return ViewComponent("退票問題", datas);
         }
-        
+
         public IActionResult couponQa()
         {
             MDAContext db = new MDAContext();
@@ -166,11 +166,11 @@ namespace ClientMDA.Controllers
             var i = db.優惠券couponQas;
             datas = _MDA.一般資訊generaInformations.Select(p => new CQANDAViewModel
             {
-                優惠券couponQa = i.ToList(),               
+                優惠券couponQa = i.ToList(),
             }).ToList();
             return ViewComponent("優惠券", datas);
         }
-       
+
         public IActionResult shopQa()
         {
             MDAContext db = new MDAContext();
@@ -182,7 +182,7 @@ namespace ClientMDA.Controllers
             }).ToList();
             return ViewComponent("購物問題", datas);
         }
-        
+
 
         [HttpPost]
         public IActionResult Index(CHomepageViewModel p)
@@ -220,7 +220,7 @@ namespace ClientMDA.Controllers
         {
             var s = (from a in _MDA.電影圖片movieIimagesLists
                      join b in _MDA.電影排行movieRanks on a.圖片編號image.電影名稱movieName equals b.電影movie
-                     where a.圖片編號image.電影名稱movieName == b.電影movie
+                     where a.圖片編號image.電影名稱movieName == b.電影movie && a.圖片編號image.圖片類型imageType == "海報"
                      orderby b.排行編號rankId ascending
                      select new CHomePageRankViewModel
                      {
@@ -230,9 +230,10 @@ namespace ClientMDA.Controllers
                          電影英Movie_En = a.電影編號movie.英文標題titleEng,
                          電影排名Movie_Rank = b.電影排名movieRank,
                          周末票房BoxOffice_Weekend = b.周末票房boxOfficeWeekend,
-                         累積票房BoxOffice_Gross=b.累積票房boxOfficeGross,
-                         周次Weeks=b.周次weeks,
-                         統計時間=b.統計時間,                        
+                         累積票房BoxOffice_Gross = b.累積票房boxOfficeGross,
+                         周次Weeks = b.周次weeks,
+                         統計時間 = b.統計時間,
+                         期待度anticipation = a.電影編號movie.期待度anticipation,
 
                      }).ToList();
             return View(s);

@@ -16,6 +16,7 @@ namespace ClientMDA.ViewModels
         public string 累積票房BoxOffice_Gross { get; set; }
         public string 周次Weeks { get; set; }
         public string 統計時間 { get; set; }
+        public decimal? 期待度anticipation { get; set; }
 
 
         public int 會員編號Member_IDbook { get; set; }
