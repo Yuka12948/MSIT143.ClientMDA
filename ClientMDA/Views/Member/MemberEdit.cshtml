@@ -94,7 +94,7 @@
                             <div class="card text-white bg mb-3">
                                 <div class="card-body">
                                     <label asp-for="暱稱nickName" class="control-label">暱稱</label>
-                                    <input type="text" name="暱稱nickName" class="form-control" value="@mem.暱稱nickName" />
+                                    <input type="text" id="nickname" name="暱稱nickName" class="form-control" value="@mem.暱稱nickName" />
                                     <input type="hidden" name="會員編號memberId" value="@mem.會員編號memberId" />
                                 </div>
                             </div>
@@ -103,7 +103,7 @@
                             <div class="card text-white bg mb-3">
                                 <div class="card-body">
                                     <label asp-for="姓氏lName" class="control-label">姓</label>
-                                    <input type="text" name="姓氏lName" class="form-control" value="@mem.姓氏lName" />
+                                    <input type="text" id="lName" name="姓氏lName" class="form-control" value="@mem.姓氏lName" />
                                 </div>
                             </div>
 
@@ -122,7 +122,7 @@
                             <div class="card text-white bg mb-3">
                                 <div class="card-body">
                                     <label asp-for="名字fName" class="control-label">名</label>
-                                    <input type="text" name="名字fName" class="form-control" value="@mem.名字fName" />
+                                    <input type="text" id="fName" name="名字fName" class="form-control" value="@mem.名字fName" />
                                 </div>
                             </div>
                         </div>
@@ -248,6 +248,7 @@
                 </div>
                 <div class="form-row justify-content-center">
                     <input type="submit" value="儲存變更" class="site-btn mr-1" />
+                    <button type="button" class="site-btn" id="demo1">demo_1</button>
                     @*<input type="submit" value="取消" class="site-btn mr-1" style="background-color:#6c757d" />*@
                 </div>
 
@@ -342,7 +343,20 @@
             })
         })*@
     </script>
-
+    <script>
+        const demo1 = document.querySelector("#demo1")
+        const nick = document.querySelector("#nickname")
+        const lName = document.querySelector("#lName")
+        const fName = document.querySelector("#fName")
+        demo1.addEventListener("click", () => {
+            nick.value = "小二"
+            lName.value = "陳"
+            fName.value = "二"
+            genders.selectedIndex = 3
+            bdSelect.value = '2000-11-08'
+            selCity.selectedIndex=7
+        })
+    </script>
 
 
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>

@@ -79,6 +79,9 @@
                     <span class="icon_lock"></span><small id="pwdHelp" class="form-text text-muted"></small>
                 </div>
                 <input type="submit" id="buttonSubmit" class="site-btn" value="註冊" />
+                <div>
+                    <button type="button" class="site-btn" id="demo1">demo_2</button>
+                </div>
             </form>
         </div>
     </div>
@@ -146,7 +149,14 @@
         })
 
     </script>
-
+    <script>
+        const demo1 = document.querySelector("#demo1")
+        
+        demo1.addEventListener("click", () => {
+            inputEmail.value = "0902@outlook.com"
+            inputPwd.value = "0000"
+        })
+    </script>
 
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 }
