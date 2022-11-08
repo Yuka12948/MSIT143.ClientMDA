@@ -40,7 +40,7 @@ namespace ClientMDA.Controllers
         }
 
         [HttpPost]
-        public IActionResult 電影評論(CCommentViewModel cVM)
+        public IActionResult 電影評論(CCommentViewModel cVM) //回傳評論留言
         {
             var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
             會員member mem = JsonSerializer.Deserialize<會員member>(a);
@@ -60,6 +60,7 @@ namespace ClientMDA.Controllers
             return RedirectToAction("電影評論", "Comment", new { id = cVM.評論編號commentId });
         }
 
+
         public IActionResult 會員評論(int id) //會員評論時間軸
         {
             CMemberCommentViewModel datas = null;
@@ -73,7 +74,7 @@ namespace ClientMDA.Controllers
                 會員照片image = m.會員照片image,
                 建立時間createdTime = m.建立時間createdTime,
                 commentCount = m.電影評論movieComments.Where(c => c.會員編號memberId == id).Count(),
-                memberfollow = m.我的追蹤清單myFollowLists.Where(f => f.對象targetId == 1 || f.追讚倒編號actionTypeId == 0 || f.連接編號connectId == id)
+                memberfollow = m.我的追蹤清單myFollowLists.Where(f => f.對象targetId == 1 || f.追讚倒編號actionTypeId == 0 || f.連接編號connectId == m.會員編號memberId)
                 .Count(),
             }).FirstOrDefault();
             return View(datas);

@@ -258,40 +258,49 @@
                     <!-- #endregion 電影評論 -->
                     <!-- #region 留言 -->
                     <!-- 你的留言 -->
-                    <div class="blog__details__form">
-                        <div class="section-title">
-                            <h5>你的留言</h5>
-                        </div>
-                        <form action="#">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-6 col-sm-6">
-                                    @if (@mem == null)
-                                    {
-                                        <input type="text" placeholder="Name" readonly="readonly" style="margin-bottom:10px;">
-                                    }
-                                    else
-                                    {
-                                        <input type="text" placeholder="Name" readonly="readonly" style="margin-bottom:10px;" value="@mem.暱稱nickName">
-                                    }
-                                </div>
-                                <div class="col-lg-12" style="margin-bottom:50px;">
-                                    @if (@mem == null)
-                                    {
-                                        <textarea placeholder="Message" readonly="readonly" style="margin-bottom:10px;"></textarea>
-                                        @Html.ActionLink("登入留言", "login", "Member", new { id = Model.會員編號memberId }, new { @class = "btn btn-info btn-sm", @style = "float:right" })
 
-                                    }
-                                    else
-                                    {
-                                        <textarea placeholder="Message" style="margin-bottom:10px;"></textarea>
-                                        <a class="btn btn-info btn-sm" style="float:right">送出留言</a>
-                                    }
+                    <form asp-action="電影評論">
 
-
-                                </div>
+                        <div class="blog__details__form">
+                            <div class="section-title">
+                                <h5>你的留言</h5>
                             </div>
-                        </form>
-                    </div>
+                            <form action="#">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-6 col-sm-6">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <input type="hidden" class="form-control" name="評論編號commentId" value="@Model.評論編號commentId" />
+
+                                        @if (@mem == null) /*非會員*/
+                                        {
+                                            <input type="text" placeholder="Name" readonly="readonly" style="margin-bottom:10px;"> /*不能輸入*/
+                                        }
+                                        else /*會員*/
+                                        {
+                                            <input type="hidden" class="form-control" name="會員編號memberId" value="@mem.會員編號memberId" required />
+                                            <input type="text" placeholder="Name" readonly="readonly" style="margin-bottom:10px;" name="暱稱nickName" value="@mem.暱稱nickName" required>/*顯示會員暱稱不能修改*/
+                                        }
+                                    </div>
+                                    <div class="col-lg-12" style="margin-bottom:50px;">
+                                        @if (@mem == null)
+                                        {
+                                            <textarea placeholder="Message" readonly="readonly" style="margin-bottom:10px;"></textarea>
+                                            @Html.ActionLink("登入留言", "login", "Member", new { id = Model.會員編號memberId }, new { @class = "btn btn-info btn-sm", @style = "float:right" })
+                                        }
+                                        else
+                                        {
+                                            <textarea placeholder="Message" style="margin-bottom:10px;" name="回覆內容floors" value="" required></textarea>
+                                            <button type="submit" style="float:right" class="btn btn-info btn-sm" id="save">送出留言</button>
+                                            <button type="button" style="float:right; margin-right:5px" class="btn btn-secondary btn-sm" id="demo">DEMO</button>
+                                        }
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </form>
+
                     <!-- 會員留言 -->
                     <div class="blog__details__comment">
                         <div class="section-title">
@@ -335,6 +344,16 @@
                     })
                 }
     }*@
+
+
+
+<script>
+    const demo = document.querySelector("#demo")
+    demo.addEventListener('click', () => {
+        document.querySelector('[name="回覆內容floors"]').value = "巨石的片真的幾乎都是看的當下覺得還不錯，走出戲院會突然有種我剛剛到底看了什麼，但又不會覺得浪費錢的奇妙感覺。"
+    })
+    </script>
+
 
     function appendJS(src) {
         var script = document.createElement("script");
