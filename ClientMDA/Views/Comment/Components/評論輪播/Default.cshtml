@@ -16,14 +16,13 @@
     {
         var t = item.發佈時間commentTime;
         var BGsrc = "";
-
-        @if (item.mPoster[0] == null)
-        {
+        var q = item.mPoster[0];
+        @if (item.mPoster.Count() <= 0) {
             BGsrc = "~/images/Movie/poster_none1.png";
         }
-        else if (item.mPoster[0] != null)
+        else if (item.mPoster.Count() > 0) 
         {
-            BGsrc = "https://localhost:44381/images/MovieImage/" + @item.mPoster[1].movieImage;
+            BGsrc = "https://localhost:44381/images/MovieImage/" + @item.mPoster[0].movieImage;
         }
         else
         {

@@ -18,11 +18,11 @@
             <div class="row g-0">
                 <div class="col-md-4 set-comImg-bg" data-setbg="@urlpic" style="background-image:url('@urlpic');height:220px;">
                     @{
-                        if (@Model[i].mPoster[0] == null)
+                        if (@Model[i].mPoster.Count() <= 0)
                         {
                             <div><img src="~/images/Movie/poster_none1.png" /></div>
                         }
-                        else if (@Model[i].mPoster[0] != null)
+                        else if (@Model[i].mPoster.Count() > 0) 
                         {
                             <div><img src="https://localhost:44381/images/MovieImage/@Model[i].mPoster[0].movieImage" class="img-fluid rounded-start" alt="..."></div>
                         }
