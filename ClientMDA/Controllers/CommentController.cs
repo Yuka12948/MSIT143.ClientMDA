@@ -65,6 +65,7 @@ namespace ClientMDA.Controllers
         {
             CMemberCommentViewModel datas = null;
             //var c = _MDAcontext.電影評論movieComments.Select(c => c);
+            //var a = _MDAcontext.我的追蹤清單myFollowLists.Where(f => f.對象targetId == 1 && f.追讚倒編號actionTypeId == 0 && f.連接編號connectId == id);
             datas = _MDAcontext.會員members.Where(m => m.會員編號memberId == id).Select
             (m => new CMemberCommentViewModel
             {
@@ -74,7 +75,7 @@ namespace ClientMDA.Controllers
                 會員照片image = m.會員照片image,
                 建立時間createdTime = m.建立時間createdTime,
                 commentCount = m.電影評論movieComments.Where(c => c.會員編號memberId == id).Count(),
-                memberfollow = m.我的追蹤清單myFollowLists.Where(f => f.對象targetId == 1 || f.追讚倒編號actionTypeId == 0 || f.連接編號connectId == m.會員編號memberId)
+                memberfollow = _MDAcontext.我的追蹤清單myFollowLists.Where(f => f.對象targetId ==1 && f.追讚倒編號actionTypeId == 0 && f.連接編號connectId == id)
                 .Count(),
             }).FirstOrDefault();
             return View(datas);
