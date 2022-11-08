@@ -40,7 +40,7 @@ namespace ClientMDA.ViewConponents
                             movieImage = i.圖片編號image.圖片image,
                         }
                         ).ToList(),
-                    }).Skip(0).Take(10).ToList();
+                    }).Skip(0).Take(6).ToList();
             return View(datas);
         }
 

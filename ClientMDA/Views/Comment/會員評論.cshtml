@@ -38,6 +38,10 @@
             -webkit-box-orient: vertical; /*垂直排列*/
             word-break: break-all;
         }
+
+        .memImg-Circle { /*會員大頭貼*/
+            clip-path: circle(45% at 50% 50%);
+        }
     </style>
     <link rel="stylesheet" type="text/css" href="~/css/Comment/jquery.eeyellow.Timeline.css" /> @*我的評論時間軸*@
 }
@@ -48,19 +52,20 @@
     <div class="text-center my-5">
 
         @if (@Model.會員照片image != null)
-        {
-            <img style="width: 100%+733px !important;" class="img-fluid rounded-circle mb-4" width="150" alt="..."
-                 src="https://localhost:44381/images/Member/@Model.會員照片image">
+        {<div>
+                <img class="memImg-Circle" height="170" alt="..."
+                     src="https://localhost:44381/images/Member/@Model.會員照片image">
+            </div>
         }
         else
         {
-            <img style="width: 100%+733px !important;" class="img-fluid rounded-circle mb-4" width="150" alt="..."
+            <img class="memImg-Circle" height="170" alt="..."
                  src="~/images/Member/MEMBER.png">
             @*會員預設大頭貼 https://dummyimage.com/150x150/6c757d/dee2e6.jpg *@
         }
         <h4 class="text-white fs-3 fw-bolder">@Model.暱稱nickName</h4>
         @*<span class="text-white-50 mb-0">@@帳號</span><br />
-            <span class="text-white-50 mb-0">此用戶觀看過N部電影</span>*@
+        <span class="text-white-50 mb-0">此用戶觀看過N部電影</span>*@
         <span class="text-white-50 mb-0">@Model.commentCount 則評論 ‧ @Model.memberfollow 人追蹤</span><br />
         <div class="membtn">
             <!--weiting begin-->

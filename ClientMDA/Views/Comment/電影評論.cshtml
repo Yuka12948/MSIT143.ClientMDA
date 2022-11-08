@@ -57,6 +57,11 @@
         .blog__details__btns {
             margin-bottom: 10px;
         }
+        .memComImg-Circle { /*會員大頭貼*/
+            clip-path: circle(45% at 50% 50%);
+            height: 30px;
+            margin-right: 3px;
+        }
     </style>
     <link href="~/css/fontawesome-free-6.2.0-web/all.css" rel="stylesheet" />
     @*電影icon樣式*@
@@ -85,11 +90,11 @@
                             <span style="color:white">
                                 @if (Model.會員照片image != null)
                                 {
-                                    <img class="img-fluid rounded-circle" src="https://localhost:44381/images/Member/@Model.會員照片image" alt="">
+                                    <img class="memComImg-Circle" src="https://localhost:44381/images/Member/@Model.會員照片image" alt="">
                                 }
                                 else
                                 {
-                                    <img class="img-fluid rounded-circle" src="~/images/Member/MEMBER.png" alt="">
+                                    <img class="memComImg-Circle" src="~/images/Member/MEMBER.png" alt="">
                                 }
                                 <!-- 會員暱稱 -->
                                 <a href="@Url.Action("會員評論","Comment", new {id= Model.會員編號memberId})">@Model.暱稱nickName</a>
@@ -390,9 +395,6 @@
             event.target.innerHTML = '追蹤評論'
         }
             }
-
     </script>
-
-
     @*weiting end*@
 }

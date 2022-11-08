@@ -17,13 +17,18 @@
     ViewData["Title"] = "Default"; @*評論留言list*@
 }
 <style>
-    btnfloorReport {
+    btnfloorReport { /*留言檢舉按紐*/
         height: 20px;
         width: 60px;
         font-size: 9px;
         margin: 0;
         margin-bottom: 11px;
         padding: 0;
+    }
+    .memImg-Circle { /*會員大頭貼*/
+        clip-path: circle(45% at 50% 50%);
+        height: 55px;
+        width: 55px;
     }
 </style>
 @{
@@ -40,11 +45,11 @@
             <div class="blog__details__comment__item__pic" style="margin-right:20px">
                 @if (Model[i].fMemImg != null)
                 {
-                    <img src="https://localhost:44381/images/Member/@Model[i].fMemImg[0]" alt="" height="55" style="border-radius:25px" />
+                    <img class="memImg-Circle" src="https://localhost:44381/images/Member/@Model[i].fMemImg[0]" alt="" />
                 }
                 else
                 {
-                    <img src="~/images/Member/MEMBER.png" alt="" height="55" style="border-radius:25px" />
+                    <img class="memImg-Circle" src="~/images/Member/MEMBER.png" alt="" />
                     @*會員預設大頭貼 https://dummyimage.com/150x150/6c757d/dee2e6.jpg *@
                 }
             </div>
