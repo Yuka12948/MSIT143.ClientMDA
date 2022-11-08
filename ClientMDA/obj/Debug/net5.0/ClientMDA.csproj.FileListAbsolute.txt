@@ -3477,3 +3477,5 @@ C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\回�
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\Components\ShowCoupon\Default.cshtml.g.cs
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\TicketError.cshtml.g.cs
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\MyMap.cshtml.g.cs
+D:\新增資料夾 (2)\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\Components\ShowCoupon\Default.cshtml.g.cs
+D:\新增資料夾 (2)\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\WenWenMap.cshtml.g.cs

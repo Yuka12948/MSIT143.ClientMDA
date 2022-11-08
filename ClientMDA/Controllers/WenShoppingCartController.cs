@@ -91,35 +91,23 @@ namespace ClientMDA.Controllers
                 list = JsonSerializer.Deserialize<List<WenCAddToCartItem>>(jsonCart);
             }
             var 電影院名稱theaterName = _context.電影院theaters.Where(x => x.電影院編號theaterId == prod.電影院編號theaterId).Select(i => i.電影院名稱theaterName).First();
-            //var index = list.FindIndex(m => m.商品編號productId == vModel.商品編號productId);
-            //foreach (var x in list)
+
+            var index = list.FindIndex(m => m.商品編號productId == vModel.商品編號productId);
+            bool del = true;
+            //int c = 0;
+            //if (list.Count > 1)
             //{
-            //    if (x.商品編號productId == vModel.商品編號productId)
-            //    {
-            //        int c;
-            //        c = x.count += vModel.count;
+            foreach (var x in list)
+            {
+                if (x.商品編號productId == vModel.商品編號productId)
+                {
+                    vModel.count += x.count;
+                    //x.count += vModel.count;
+                    //x.count = c;
+                    del = false;
 
-            //        WenCAddToCartItem i = new WenCAddToCartItem()
-            //        {
-            //            count = c,
-            //            商品價格productPrice = (decimal)prod.商品價格productPrice,
-            //            商品名稱productName = prod.商品名稱productName,
-            //            電影院名稱theaterName = 電影院名稱theaterName,
-            //            電影院編號theaterId = prod.電影院編號theaterId,
-            //            商品編號productId = vModel.商品編號productId,
-            //            商品介紹introduce = prod.商品介紹introduce,
-            //            商品圖片路徑imagePath = prod.商品圖片路徑imagePath,
-            //            product = prod
-            //        };
-            //        list.Add(i);
-            //    }
-            //}
-            //jsonCart = JsonSerializer.Serialize(list);
-            //HttpContext.Session.SetString(WenCDictionary.SK_PURCHASED_PRODUCTS, jsonCart);
-            //return RedirectToAction("CartView");
-            //var 商品編號 = _context.商品資料products.Where(x => x.商品編號productId == prod.商品編號productId).Select(i => i.商品編號productId).First();
-
-          
+                }
+            }
             WenCAddToCartItem item = new WenCAddToCartItem()
             {
                 count = vModel.count,
@@ -134,25 +122,36 @@ namespace ClientMDA.Controllers
                 product = prod
             };
             list.Add(item);
-            var info = (from m in list
+            if (del == false)
+            {
+                list.RemoveAt(index);
+            }
 
-                         select new
-                         {
-                             商品編號productId = m.商品編號productId,
-                             商品名稱productName = m.商品名稱productName,
-                             count=m.count,
-                             商品價格productPrice=m.商品價格productPrice,
-                             電影院名稱theaterName=m.電影院名稱theaterName,
-                             電影院編號theaterId=m.電影院編號theaterId,
-                             商品介紹introduce = m.商品介紹introduce,
-                             商品圖片路徑imagePath = m.商品圖片路徑imagePath,
-                             product = prod
-                         }
-                ).Distinct().ToList();
-            jsonCart = JsonSerializer.Serialize(info);
+
+            jsonCart = JsonSerializer.Serialize(list);
             HttpContext.Session.SetString(WenCDictionary.SK_PURCHASED_PRODUCTS, jsonCart);
             return RedirectToAction("CartView");
+            //var 商品編號 = _context.商品資料products.Where(x => x.商品編號productId == prod.商品編號productId).Select(i => i.商品編號productId).First();
+
+            //var info = (from m in list
+            //             select new
+            //             {
+            //                 商品編號productId = m.商品編號productId,
+            //                 商品名稱productName = m.商品名稱productName,
+            //                 count=m.count,
+            //                 商品價格productPrice=m.商品價格productPrice,
+            //                 電影院名稱theaterName=m.電影院名稱theaterName,
+            //                 電影院編號theaterId=m.電影院編號theaterId,
+            //                 商品介紹introduce = m.商品介紹introduce,
+            //                 商品圖片路徑imagePath = m.商品圖片路徑imagePath,
+            //                 product = prod
+            //             }
+            //    ).Distinct().ToList();
+            //jsonCart = JsonSerializer.Serialize(info);
+            //HttpContext.Session.SetString(WenCDictionary.SK_PURCHASED_PRODUCTS, jsonCart);
+            //return RedirectToAction("CartView");
         }
+
         List<WenCAddToCartItem> cart = null;
 
         public IActionResult CartView()
@@ -172,7 +171,7 @@ namespace ClientMDA.Controllers
             }
         }       
 
-        [HttpPost]
+        //[HttpPost]
         //public ActionResult creditcardsubmit(IFormFile file1)
         //{
         //    //結合路徑及檔案名稱            
@@ -183,14 +182,17 @@ namespace ClientMDA.Controllers
         //        file1.CopyTo(fileStream);
         //        var ocr = new TesseractEngine(@"~/tessdata", "chi_tra", EngineMode.Default);
         //        var bit = new Bitmap(Image.FromFile(fileStream.ToString()));
+        //        using (var pix=PixConverter)
         //        //bit = PreprocesImage(bit);//進行影象處理,如果識別率低可試試               
-        //        //Page page = ocr.Process(bit);
-        //        //string str = page.GetText();//識別後的內容
+        //        Page page = ocr.Process(bit);
+        //        string str = page.GetText();//識別後的內容
         //        return View("CartView");
         //    }
 
         //}
-        public ActionResult MyMap()
+
+
+        public IActionResult WenWenMap()
         {
             return View();
         }
