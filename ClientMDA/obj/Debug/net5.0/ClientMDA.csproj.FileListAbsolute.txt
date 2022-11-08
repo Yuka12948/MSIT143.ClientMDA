@@ -3422,3 +3422,4 @@ C:\Users\Student\Documents\MDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppin
 C:\Users\Student\Documents\MDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\List.cshtml.g.cs
 C:\Users\Student\Documents\MDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\Optiontheater.cshtml.g.cs
 C:\Users\Student\Documents\MDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\ThankU.cshtml.g.cs
+C:\MDA143\ClientMDA\obj\Debug\net5.0\Razor\Views\Comment\Components\評論留言list\Default.cshtml.g.cs
