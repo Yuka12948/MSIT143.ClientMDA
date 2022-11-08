@@ -247,7 +247,7 @@ namespace ClientMDA.Controllers
             {
                 優惠總表coupon coupon = JsonSerializer.Deserialize<優惠總表coupon>(jsoncoupon);
                 優惠明細couponList couponlist = this._dbContext.優惠明細couponLists
-                                                  .Where(c => c.會員編號memberId == member.會員編號memberId && c.優惠編號couponId == coupon.優惠編號couponId)
+                                                  .Where(c => c.會員編號memberId == member.會員編號memberId && c.優惠編號couponId == coupon.優惠編號couponId && c.是否使用優惠oxCouponUsing == false)
                                                   .FirstOrDefault();
                 couponlist.是否使用優惠oxCouponUsing = true;
                 this._dbContext.SaveChanges();
