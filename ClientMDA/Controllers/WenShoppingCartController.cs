@@ -13,17 +13,23 @@ using Microsoft.AspNetCore.Http;
 using System.Text.Json;
 using MailKit.Net.Smtp;
 using MimeKit;
-
+//using Tesseract;
+using Microsoft.AspNetCore.Hosting;
+using System.Drawing;
+//using Magnum.FileSystem;
+using System.IO;
 
 namespace ClientMDA.Controllers
 {
     public class WenShoppingCartController : Controller
     {
         private readonly MDAContext _context;
+        private IWebHostEnvironment _enviro;
 
-        public WenShoppingCartController(MDAContext context)
+        public WenShoppingCartController(MDAContext context, IWebHostEnvironment p)
         {
             _context = context;
+            _enviro = p;
         }
         public IActionResult List()
         {
@@ -85,6 +91,35 @@ namespace ClientMDA.Controllers
                 list = JsonSerializer.Deserialize<List<WenCAddToCartItem>>(jsonCart);
             }
             var 電影院名稱theaterName = _context.電影院theaters.Where(x => x.電影院編號theaterId == prod.電影院編號theaterId).Select(i => i.電影院名稱theaterName).First();
+            //var index = list.FindIndex(m => m.商品編號productId == vModel.商品編號productId);
+            //foreach (var x in list)
+            //{
+            //    if (x.商品編號productId == vModel.商品編號productId)
+            //    {
+            //        int c;
+            //        c = x.count += vModel.count;
+
+            //        WenCAddToCartItem i = new WenCAddToCartItem()
+            //        {
+            //            count = c,
+            //            商品價格productPrice = (decimal)prod.商品價格productPrice,
+            //            商品名稱productName = prod.商品名稱productName,
+            //            電影院名稱theaterName = 電影院名稱theaterName,
+            //            電影院編號theaterId = prod.電影院編號theaterId,
+            //            商品編號productId = vModel.商品編號productId,
+            //            商品介紹introduce = prod.商品介紹introduce,
+            //            商品圖片路徑imagePath = prod.商品圖片路徑imagePath,
+            //            product = prod
+            //        };
+            //        list.Add(i);
+            //    }
+            //}
+            //jsonCart = JsonSerializer.Serialize(list);
+            //HttpContext.Session.SetString(WenCDictionary.SK_PURCHASED_PRODUCTS, jsonCart);
+            //return RedirectToAction("CartView");
+            //var 商品編號 = _context.商品資料products.Where(x => x.商品編號productId == prod.商品編號productId).Select(i => i.商品編號productId).First();
+
+          
             WenCAddToCartItem item = new WenCAddToCartItem()
             {
                 count = vModel.count,
@@ -93,12 +128,28 @@ namespace ClientMDA.Controllers
                 電影院名稱theaterName = 電影院名稱theaterName,
                 電影院編號theaterId = prod.電影院編號theaterId,
                 商品編號productId = vModel.商品編號productId,
+                //商品編號productId = 商品編號,
                 商品介紹introduce = prod.商品介紹introduce,
                 商品圖片路徑imagePath = prod.商品圖片路徑imagePath,
                 product = prod
             };
             list.Add(item);
-            jsonCart = JsonSerializer.Serialize(list);
+            var info = (from m in list
+
+                         select new
+                         {
+                             商品編號productId = m.商品編號productId,
+                             商品名稱productName = m.商品名稱productName,
+                             count=m.count,
+                             商品價格productPrice=m.商品價格productPrice,
+                             電影院名稱theaterName=m.電影院名稱theaterName,
+                             電影院編號theaterId=m.電影院編號theaterId,
+                             商品介紹introduce = m.商品介紹introduce,
+                             商品圖片路徑imagePath = m.商品圖片路徑imagePath,
+                             product = prod
+                         }
+                ).Distinct().ToList();
+            jsonCart = JsonSerializer.Serialize(info);
             HttpContext.Session.SetString(WenCDictionary.SK_PURCHASED_PRODUCTS, jsonCart);
             return RedirectToAction("CartView");
         }
@@ -110,14 +161,40 @@ namespace ClientMDA.Controllers
             {
                 string jsonCart = HttpContext.Session.GetString(WenCDictionary.SK_PURCHASED_PRODUCTS);
                 cart = JsonSerializer.Deserialize<List<WenCAddToCartItem>>(jsonCart);
+
+                //int index = cart.FindIndex(m => m.商品編號productId == vModel.商品編號productId);
+                //list.RemoveAt(index);
                 return View(cart);
             }
             else
             {
                 return RedirectToAction("Index");
             }
+        }       
+
+        [HttpPost]
+        //public ActionResult creditcardsubmit(IFormFile file1)
+        //{
+        //    //結合路徑及檔案名稱            
+        //    string filePath = Path.Combine(_enviro.WebRootPath, "images/WenProduct", file1.FileName);
+        //    //將檔案存到資料夾中
+        //    using (var fileStream = new FileStream(filePath, FileMode.Create))
+        //    {
+        //        file1.CopyTo(fileStream);
+        //        var ocr = new TesseractEngine(@"~/tessdata", "chi_tra", EngineMode.Default);
+        //        var bit = new Bitmap(Image.FromFile(fileStream.ToString()));
+        //        //bit = PreprocesImage(bit);//進行影象處理,如果識別率低可試試               
+        //        //Page page = ocr.Process(bit);
+        //        //string str = page.GetText();//識別後的內容
+        //        return View("CartView");
+        //    }
+
+        //}
+        public ActionResult MyMap()
+        {
+            return View();
         }
-        //delete編輯中
+
         public IActionResult ProductDelete(int id)
         {
             if (HttpContext.Session.Keys.Contains(WenCDictionary.SK_PURCHASED_PRODUCTS))
@@ -149,7 +226,7 @@ namespace ClientMDA.Controllers
                 {
                     商品數量qty = v[i].count,
                     商品編號productId = v[i].商品編號productId,
-                    訂單編號orderId = 4,                   
+                    訂單編號orderId = 4,
                 };
                 CRList.Add(item);
                 _context.購買商品明細receipts.Add(item);
@@ -167,7 +244,7 @@ namespace ClientMDA.Controllers
             message.From.Add(new MailboxAddress("M.D.A.購物商城", "rainbow_kapok@hotmail.com"));
             message.To.Add(new MailboxAddress("Wennie", "rainbow.wenwen@gmail.com"));
             //string orderid = "";
-           
+
             //foreach (var item in CRList)
             //{
             //    orderid += item.購買商品明細編號receiptId+",";               
@@ -187,10 +264,10 @@ namespace ClientMDA.Controllers
             int c = v.Count;
             string a = $"<table style='border:3px solid #7B7B7B;width:500px;'><thead style='border:1px solid gray;'><tr><th>商品明細編號</th><th>商品名稱</th><th>數量</th><th>電影院名稱</th></tr></thead><tbody style='text-align:center;'>";
             var q = (from p in _context.購買商品明細receipts
-                    orderby p.購買商品明細編號receiptId descending
-                    select p).Take(c).ToList();
+                     orderby p.購買商品明細編號receiptId descending
+                     select p).Take(c).ToList();
 
-            for (int i =0; i < c; i++)
+            for (int i = 0; i < c; i++)
             {
                 a += $"<tr style='border-bottom: 3px dashed #bebebe;'><td>{q[i].購買商品明細編號receiptId}</td><td>{list[i].商品名稱productName}</td><td>{list[i].count}</td>{list[i].電影院名稱theaterName}<td></td></tr>";
             }
@@ -207,12 +284,12 @@ namespace ClientMDA.Controllers
             a += "</tbody></table>";
             builder.HtmlBody += a;
 
-             //$"<div style='border: 1px solid black;text-align: left;'>" +
-             //$"<h3>訂單明細</h3>" +
-             //$"<p>商品明細編號: {orderid}</p>" +
-             //$"<p>商品名稱: {name}</p>" +
-             //$"<p>數量: {amount}</p>" +                   
-             //$"</div>";
+            //$"<div style='border: 1px solid black;text-align: left;'>" +
+            //$"<h3>訂單明細</h3>" +
+            //$"<p>商品明細編號: {orderid}</p>" +
+            //$"<p>商品名稱: {name}</p>" +
+            //$"<p>數量: {amount}</p>" +                   
+            //$"</div>";
             message.Subject = "您好，訂單已成立"; //==>標題          
             message.Body = builder.ToMessageBody();
             using (SmtpClient client = new SmtpClient())
@@ -227,7 +304,7 @@ namespace ClientMDA.Controllers
                 client.Disconnect(true);
             }
 
-           
+
             list.Clear();
             jsonCart = JsonSerializer.Serialize(list);
             HttpContext.Session.SetString(WenCDictionary.SK_PURCHASED_PRODUCTS, jsonCart);
@@ -290,8 +367,8 @@ namespace ClientMDA.Controllers
                     };
                     return Json(T);
 
-                }              
-                
+                }
+
             }
             catch (Exception)
             {
@@ -300,7 +377,7 @@ namespace ClientMDA.Controllers
             }
             //if (HttpContext.Session.Keys.Contains(WenCDictionary.SK_PURCHASED_PRODUCTS))//session有東西
             //{
-               
+
             //    string jsonCart = HttpContext.Session.GetString(WenCDictionary.SK_PURCHASED_PRODUCTS);
             //    cart = JsonSerializer.Deserialize<List<WenCAddToCartItem>>(jsonCart);
             //    //string last =(cart.Last().電影院編號theaterId).ToString();
