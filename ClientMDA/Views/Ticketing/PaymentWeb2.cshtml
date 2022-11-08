@@ -13,8 +13,13 @@
 }
 @section Styles{
     <link rel="stylesheet" href="~/cyborg/css/fontawesome.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="form-validation.css" rel="stylesheet">
     <style>
+        .swal2-top-end h2 {
+            color: greenyellow !important;
+        }
+
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
@@ -203,6 +208,11 @@
                             <button type="button" class="btn btn-secondary" id="couponbtn">輸入優惠碼</button>
                         </div>
                     </div>
+                    <div class="card p-2 mt-2">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary" id="checkcoupon">查看我的優惠</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-7 col-lg-8">
                     <h4 class="mb-3">帳單地址</h4>
@@ -363,7 +373,15 @@
     </div>
 </div>
 
+<div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-animate-bottom w3-card-4">
+        <div class="w3-container" id="div01">
+        </div>
+    </div>
+</div>
+
 @section Scripts{
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         let total =@totalPrice;
             (function ($) {
@@ -372,7 +390,7 @@
                 $("#preloder").delay(20).fadeOut("slow");
             });
         })(jQuery);
-
+        $('figure').hide();
         const modal = document.getElementById("myModal");
         const close = document.getElementById("closeModal");
         const code = document.getElementById("ckeckcode");
@@ -516,9 +534,53 @@
                             let t = parseInt(total) - parseInt(result['優惠折扣couponDiscount']);
                             $('#totalprice').text(`$${t}.00`);
                             $('#fullPrice').val(t);
+
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 3500,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                }
+                            })
+
+                            Toast.fire({
+                                icon: 'success',
+                                title: '優惠券使用成功'
+                            })
                         }
                     }});}
 
+
+        $('#checkcoupon').click(function () {
+            document.getElementById('id01').style.display = 'block'
+            FindAjaxCoupon();
+        })
+
+        async function FindAjaxCoupon() {
+            let _url = '@Url.Action("ShowCoupon", "Ticketing")';
+            $.ajax({
+                type: "GET",
+                url: _url,
+                success: function (result) {
+                    $('#div01').empty();
+                    $('#div01').html(result);
+                    copyInput();
+                }
+            })
+        }
+
+        function copyInput() {
+            $('div[name="clickcopy"]').click(function () {
+                let copyText = $('#coupontext').val(this.getAttribute('data'));
+                copyText.select();
+                document.execCommand("copy");
+                alert("以複製優惠代碼");
+            })        
+        }
     </script>
 }
 

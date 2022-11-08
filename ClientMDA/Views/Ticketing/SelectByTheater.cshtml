@@ -245,10 +245,10 @@
     </div>
     <div id="mobiebox">
         <div id="MoviePicker" style="min-height:30vh"></div>
-        <div id="ScreenPicker"></div>
-        <div id="SeatCountPicker">
-            @await Component.InvokeAsync("SelectSeat")
-        </div>
+        <div id="ScreenPicker" style="min-height:20vh"></div>
+    </div>
+    <div id="SeatCountPicker">
+        @await Component.InvokeAsync("SelectSeat")
     </div>
 
 
@@ -347,7 +347,7 @@
         hidebody('mobiebox','loader');
         findMovie(dataValue);
         showbody('mobiebox','loader');
-        
+
     });
 
     /*選擇人數*/
@@ -507,7 +507,7 @@
         $(`#${loadname}`).delay(800).fadeOut('slow');
         setTimeout(() => {
             $(`#${bodyname}`).css('visibility', 'visible');
-        }, 800)     
+        }, 800)
     }
 
 </script>

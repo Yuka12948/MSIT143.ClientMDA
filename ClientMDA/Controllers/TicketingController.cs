@@ -50,6 +50,8 @@ namespace ClientMDA.Controllers
             _dbContext.會員members.ToList();
             _dbContext.電影圖片movieIimagesLists.ToList();
             _dbContext.電影圖片總表movieImages.ToList();
+            _dbContext.優惠明細couponLists.ToList();
+            _dbContext.優惠總表coupons.ToList();
 
         }
         #endregion
@@ -83,7 +85,7 @@ namespace ClientMDA.Controllers
             List<電影代碼movieCode> movies = this._dbContext.訂單總表orders.AsEnumerable().GroupBy(o => o.場次編號screening.電影代碼movieCodeNavigation)
                       .OrderByDescending(o => o.Select(t => t.訂單明細orderDetails.Select(d => d.張數count).Sum()).Sum())
                       .Select(o => o.Key).ToList();
-            foreach(var item in this._dbContext.電影代碼movieCodes)
+            foreach (var item in this._dbContext.電影代碼movieCodes)
             {
                 if (!movies.Contains(item))
                     movies.Add(item);
@@ -175,7 +177,7 @@ namespace ClientMDA.Controllers
                 ticketInfoitem.TicketID票價明細 = item.票價明細ticketId;
                 ticketInfoitem.TicketName票種名稱 = item.票種編號ticketType.票種名稱ticketTypeName;
                 ticketInfoitem.TicketPrice票價 = item.價格ticketPrice;
-                if (starthour < 9 && starthour > 5)
+                if (starthour < 10 && starthour > 5)
                 {
                     if (ticketInfoitem.TicketName票種名稱.Contains('早'))
                         ALLticketInfo.Add(ticketInfoitem);
@@ -386,13 +388,29 @@ namespace ClientMDA.Controllers
                                       .Select(c => c.優惠編號coupon).FirstOrDefault();
             if (coupon != null)
             {
-                string json_coupon = JsonSerializer.Serialize(coupon);
+                優惠總表coupon coupon2 = new 優惠總表coupon()
+                {
+                    優惠代碼couponCode = coupon.優惠代碼couponCode,
+                    優惠名稱couponName = coupon.優惠名稱couponName,
+                    優惠編號couponId = coupon.優惠編號couponId,
+                    優惠折扣couponDiscount = coupon.優惠折扣couponDiscount,
+                };
+                string json_coupon = JsonSerializer.Serialize(coupon2);
                 HttpContext.Session.SetString(CDictionary.SK_使用的優惠券, json_coupon);
-                return Json(coupon);
+                return Json(coupon2);
             }
             return Json('F');
         }
 
+        public IActionResult ShowCoupon()
+        {
+            string json = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            會員member member = JsonSerializer.Deserialize<會員member>(json);
+            List<優惠明細couponList> coupons = this._dbContext.優惠明細couponLists
+                           .Where(c => c.會員編號memberId == member.會員編號memberId && c.是否使用優惠oxCouponUsing == false)
+                           .ToList();
+            return ViewComponent("ShowCoupon", coupons);
+        }
 
         #endregion
 
@@ -444,7 +462,7 @@ namespace ClientMDA.Controllers
 
         #region 內建方法區
         [NonAction]
-        public void fn_會員購票送紅利(int memberID,int fullprice)
+        public void fn_會員購票送紅利(int memberID, int fullprice)
         {
             會員member member = this._dbContext.會員members.Where(m => m.會員編號memberId == memberID).FirstOrDefault();
             int bouns = fullprice / 10;
