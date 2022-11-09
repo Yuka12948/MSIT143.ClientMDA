@@ -1,5 +1,6 @@
 ﻿using ClientMDA.Models;
 using ClientMDA.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -66,6 +67,7 @@ namespace ClientMDA.Controllers
         } //完工
         public IActionResult 快定頁面測試(int id)
         {
+            HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, $"~/Theater/快定頁面測試/{id}");
             CTheater datas = null;
             datas = _MDA.電影movies.Where(p => p.電影編號movieId == id).Select
                 (p => new CTheater

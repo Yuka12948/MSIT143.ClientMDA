@@ -143,6 +143,13 @@ namespace ClientMDA.Controllers
 
         public IActionResult SeatMap(CScreenIDAndCountViewModel info)
         {
+            string user = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+            if (string.IsNullOrEmpty(user))
+            {
+                return Redirect("~/Member/Login");
+            }
+
+
             出售座位狀態seatStatus seatStaus = this._dbContext.出售座位狀態seatStatuses.Where(ss => ss.場次編號screeningId == info.ScreenID).FirstOrDefault();
             場次screening screening = this._dbContext.場次screenings.Where(s => s.場次編號screeningId == info.ScreenID).FirstOrDefault();
             CSeatMaoViewModels seatview = new CSeatMaoViewModels(seatStaus);
