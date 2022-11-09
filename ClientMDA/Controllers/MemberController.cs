@@ -858,7 +858,7 @@ namespace ClientMDA.Controllers
                 return Json('F');
             var order = this._MDAcontext.訂單總表orders.Where(o => o.訂單編號orderId == (int)id).FirstOrDefault();
             var screen = this._MDAcontext.場次screenings.Where(s => s.場次編號screeningId == order.場次編號screeningId).FirstOrDefault();
-            if (screen.放映日期playDate < DateTime.Now.AddDays(2.0) || order.訂單狀態編號orderStatusId == 3)
+            if (screen.放映日期playDate < DateTime.Now.AddDays(1.0) || order.訂單狀態編號orderStatusId == 3)
                 return Json('O');
             return Json('T');
         }
