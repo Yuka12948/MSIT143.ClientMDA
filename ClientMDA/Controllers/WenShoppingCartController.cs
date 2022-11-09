@@ -244,7 +244,7 @@ namespace ClientMDA.Controllers
             //=>內容
 
             message.From.Add(new MailboxAddress("M.D.A.購物商城", "rainbow_kapok@hotmail.com"));
-            message.To.Add(new MailboxAddress("Wennie", "rainbow.wenwen@gmail.com"));
+            message.To.Add(new MailboxAddress("Wennie", "ilovemdaofficial@gmail.com"));
             //string orderid = "";
 
             //foreach (var item in CRList)
