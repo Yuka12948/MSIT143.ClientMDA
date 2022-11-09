@@ -46,11 +46,23 @@ namespace ClientMDA.ViewModels
 
         //---------------------------回覆---------------------------//
 
+
         public int 樓數編號floorId
         {
             get { return _floor.樓數編號floorId; }
             set { _floor.樓數編號floorId = value; }
         }
+        public int 評論編號commentId
+        {
+            get { return _floor.評論編號commentId; }
+            set { _floor.評論編號commentId = value; }
+        }
+        public int 會員編號memberId
+        {
+            get { return _floor.會員編號memberId; }
+            set { _floor.會員編號memberId = value; }
+        }
+
         public string 回覆內容floors
         {
             get { return _floor.回覆內容floors; }
@@ -83,8 +95,6 @@ namespace ClientMDA.ViewModels
 
         //---------------------------電影評論---------------------------//
 
-        public int 評論編號commentId { get; set; }
-        public int 會員編號memberId { get; set; }
         public int 電影編號movieId { get; set; }
         public decimal? 評分rate { get; set; }
         public decimal? 期待度anticipation { get; set; }

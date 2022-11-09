@@ -57,6 +57,7 @@
         .blog__details__btns {
             margin-bottom: 10px;
         }
+
         .memComImg-Circle { /*會員大頭貼*/
             clip-path: circle(45% at 50% 50%);
             height: 30px;
@@ -215,11 +216,11 @@
                     </div>
                     <!-- 發佈時間 -->
                     @*<div style="margin: 10px 0 10px 0; border: solid 1px rgba(0,0,0,0)">
-                        <span class="mem_info">
-                            <span style="color:white">發佈時間</span>
-                            <span> - @Html.DisplayFor(modelItem => Model.發佈時間commentTime)</span>
-                        </span>
-                    </div>*@
+                            <span class="mem_info">
+                                <span style="color:white">發佈時間</span>
+                                <span> - @Html.DisplayFor(modelItem => Model.發佈時間commentTime)</span>
+                            </span>
+                        </div>*@
 
 
                     <!-- 上/下一篇評論 -->
@@ -270,10 +271,9 @@
                             </div>
                             <form action="#">
                                 <div class="row">
-                                    <div class="col-lg-12 col-md-6 col-sm-6">
+                                    <div class="col-12">
                                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                         <input type="hidden" class="form-control" name="評論編號commentId" value="@Model.評論編號commentId" />
-
                                         @if (@mem == null) /*非會員*/
                                         {
                                             <input type="text" placeholder="Name" readonly="readonly" style="margin-bottom:10px;"> /*不能輸入*/
@@ -296,12 +296,10 @@
                                             <button type="submit" style="float:right" class="btn btn-info btn-sm" id="save">送出留言</button>
                                             <button type="button" style="float:right; margin-right:5px" class="btn btn-secondary btn-sm" id="demo">DEMO</button>
                                         }
-
                                     </div>
                                 </div>
                             </form>
                         </div>
-
                     </form>
 
                     <!-- 會員留言 -->
@@ -330,44 +328,29 @@
 </section>
 
 @section Scripts{
+
     <script>
-                @*window.onload=function () { //評論檢舉
-                if ('@a' == "") {
-                    document.querySelector("#btnFloorReport").addEventListener('click', () => {
-                        @{Accessor.HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, "~/Comment/電影評論/2");} //抓電影評論id
-                        window.location = '@Url.Content("~/member/login")'
-                    })
-                }
-    }
-            window.onload=function () { //留言檢舉
-                if ('@a' == "") {
-                    document.querySelector("#btnCommentReport").addEventListener('click', () => {
-                        @{Accessor.HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, "~/Comment/電影評論/2");} //抓電影評論id
-                        window.location = '@Url.Content("~/member/login")'
-                    })
-                }
-    }*@
+        //留言DEMO
 
-
-
-<script>
-    const demo = document.querySelector("#demo")
-    demo.addEventListener('click', () => {
-        document.querySelector('[name="回覆內容floors"]').value = "巨石的片真的幾乎都是看的當下覺得還不錯，走出戲院會突然有種我剛剛到底看了什麼，但又不會覺得浪費錢的奇妙感覺。"
-    })
+        const demo = document.querySelector("#demo")
+        demo.addEventListener('click', () => {
+            document.querySelector('[name="回覆內容floors"]').value = "巨石的片真的幾乎都是看的當下覺得還不錯，走出戲院會突然有種我剛剛到底看了什麼，但又不會覺得浪費錢的奇妙感覺。"
+        })
     </script>
 
+    <script>
+        //分享
 
-    function appendJS(src) {
-        var script = document.createElement("script");
-        script.src = src;
-        document.head.appendChild(script);
-    }
-    appendJS('https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js');
-    appendJS('https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v3.0');
+        function appendJS(src) {
+            var script = document.createElement("script");
+            script.src = src;
+            document.head.appendChild(script);
+        }
+        appendJS('https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js');
+        appendJS('https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v3.0');
     </script>
 
-    @*weiting beging*@
+    <!-- #region weiting beging -->
     <script>
 
     window.onload = async function () {
@@ -418,5 +401,6 @@
         }
             }
     </script>
-    @*weiting end*@
+    <!-- #endregion weiting end -->
+
 }

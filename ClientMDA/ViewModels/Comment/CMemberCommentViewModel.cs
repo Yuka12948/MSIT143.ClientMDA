@@ -44,6 +44,7 @@ namespace ClientMDA.ViewModels
 
         //--------------評論--------------
         public int 評論編號commentId { get; set; }
+        public string 評論標題commentTitle { get; set; }
         //public int? 公開等級編號publicId { get; set; }
         //public bool? 是否開放討論串oxFloor { get; set; }
         //public int 屏蔽invisible { get; set; }
@@ -56,7 +57,7 @@ namespace ClientMDA.ViewModels
         public int 電影編號movieId { get; set; }
         public decimal? 評分rate { get; set; }
         public decimal? 期待度anticipation { get; set; }
-        public string 評論標題commentTitle { get; set; }
+        //public string 評論標題commentTitle { get; set; }
         public string 評論內容comments { get; set; }
         public DateTime 發佈時間commentTime { get; set; }
         public DateTime? 觀影日期viewingTime { get; set; }
@@ -69,5 +70,10 @@ namespace ClientMDA.ViewModels
 
         public int commentCount { get; set; } //會員評論數
         public int memberfollow { get; set; } //會員被追蹤人數
+
+        public List<string> commentList { get; set; }
+        public List<string> memFollowList { get; set; }
+        public List<int> memFollowIdList { get; set; }
+        
     }
 }

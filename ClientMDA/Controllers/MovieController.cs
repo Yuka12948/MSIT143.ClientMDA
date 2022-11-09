@@ -1,5 +1,6 @@
 ﻿using ClientMDA.Models;
 using ClientMDA.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -141,6 +142,12 @@ namespace ClientMDA.Controllers
         public IActionResult 電影劇照()
         {
             return View();
+        }
+
+        public IActionResult checkLogin(string page, int? id)
+        {
+            HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, $"~/Movie/{page}/{id}");
+            return Redirect("~/Member/Login");
         }
 
         public FileResult ShowPhoto(int id)

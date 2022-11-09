@@ -66,7 +66,74 @@
         <h4 class="text-white fs-3 fw-bolder">@Model.暱稱nickName</h4>
         @*<span class="text-white-50 mb-0">@@帳號</span><br />
         <span class="text-white-50 mb-0">此用戶觀看過N部電影</span>*@
-        <span class="text-white-50 mb-0">@Model.commentCount 則評論 ‧ @Model.memberfollow 人追蹤</span><br />
+        <span class="text-white-50 mb-0">
+            <span type="button" data-toggle="modal" data-target="#commentCountModal">
+                @Model.commentCount
+            </span> 則評論 ‧
+            <span type="button" data-toggle="modal" data-target="#memberFollowModal">
+                @Model.memberfollow
+            </span> 人追蹤
+        </span><br />
+        <!-- #region 評論Modal -->
+        <div class="modal fade" id="commentCountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle" style="color:black">評論清單</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="color:black">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="color:black !important;text-align:left">
+                        <!--modal content start-->
+                        @{
+                            var cCount = 0;
+                            for (int i = 0; i < Model.commentCount; i++)
+                            {
+                                cCount++;
+                                <div><a style="color:black" href="#comment_@cCount">#@cCount @Model.commentList</a></div> //抓不到評論標題
+                            }
+                        }
+                        <!--modal content end-->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">確定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--#endregion 評論Modal end-->
+        <!-- #region 追蹤會員Modal -->
+        <div class="modal fade" id="memberFollowModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle" style="color:black">追蹤會員清單</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="color:black">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="color:black;text-align:left">
+                        <!--modal content start-->
+                        @{
+                            var fCount = 0;
+                            for (int i = 0; i < Model.memFollowIdList.Count; i++)
+                            {
+                                fCount++;
+                                <div><a style="color:black" href="Comment/會員評論/@Model.memFollowIdList ">#@fCount @Model.memFollowList</a></div> //抓不到評論標題
+                            }
+                        }
+                        @*<a href="@Url.Action("電影評論", "Comment", new { id = Model.評論編號commentId })"><span class="see-more">@Model.評論標題commentTitle </span></a>*@
+                        <!--modal content end-->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">確定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--#endregion 追蹤會員Modal end-->
+
         <div class="membtn">
             <!--weiting begin-->
             @{
@@ -96,8 +163,8 @@
                             <div class="modal-body" style="color:black;text-align:left">
                                 <!--modal content start-->
                                 @{ if (mem != null)
-                                    { <input type="hidden" name="會員編號memberId" value="@mem.會員編號memberId" />
-
+                                    {
+                                        <input type="hidden" name="會員編號memberId" value="@mem.會員編號memberId" />
                                         <input type="hidden" name="對象targetId" value="1" />
                                         <input type="hidden" name="追讚倒編號actionTypeId" value="3" />
                                         <input type="hidden" name="連接編號connectId" value="@connectId" />

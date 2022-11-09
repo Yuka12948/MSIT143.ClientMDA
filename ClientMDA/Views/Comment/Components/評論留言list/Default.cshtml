@@ -1,5 +1,5 @@
 ﻿@model List<ClientMDA.ViewModels.CFloorViewModel>
-@*@model ClientMDA.ViewModels.CMemberCommentViewModel*@
+<!-- #region 會員Session-->
 @using Microsoft.AspNetCore.Http
 @using System.Text.Json;
 @inject IHttpContextAccessor Accessor
@@ -11,6 +11,8 @@
         a = Accessor.HttpContext.Session.GetString(ClientMDA.Models.CDictionary.SK_LOGINED_USER);
         mem = JsonSerializer.Deserialize<會員member>(a);
     }
+    var connectId = Html.ViewContext.RouteData.Values["id"];
+    <!-- #endregion 會員Session-->
 }
 
 @{
@@ -25,6 +27,7 @@
         margin-bottom: 11px;
         padding: 0;
     }
+
     .memImg-Circle { /*會員大頭貼*/
         clip-path: circle(45% at 50% 50%);
         height: 55px;
@@ -39,7 +42,7 @@
         string NickName = "";
         if (Model[i].fNickName.Count() > 0)
         {
-            NickName = Model[i].fNickName[0];
+            NickName = Model[i].fNickName[0];            
         }
         <div class="blog__details__comment__item">
             <div class="blog__details__comment__item__pic" style="margin-right:20px">
@@ -63,12 +66,21 @@
                     @*<iframe src='' scrolling='no' frameborder='0' style='width:60px; height:20px;' allowTransparency='true' onload='this.src="//www.facebook.com/plugins/like.php?locale=zh_TW&amp;href="+location.protocol+"//"+location.hostname + location.pathname + "&amp;layout=button_count&amp;action=like&amp;colorscheme=light&amp;share=false"; this.onload="";'></iframe>*@
                     <a href="#">Like @Model[i].被按讚次數thumbsUp <i class="fas fa-thumbs-up"></i></a>
                     <a class="unLike" href="#">UnLike @Model[i].被倒讚次數thumbsDown <i class="fas fa-thumbs-down"></i></a>
-                    <a class="report" href="#" type="button" id="btnReport" data-toggle="modal" data-target="#floorReportModal">檢舉</a>
+                    @{
+                        if (mem != null)
+                        {
+
+                            <a class="report" href="#" type="button" id="btnReport" data-toggle="modal" data-target="#floorReportModal">檢舉</a>
+                        }
+                        else
+                        {
+                            @Html.ActionLink("檢舉", "checkLogin", new { page = "電影評論", id = Model[i].評論編號commentId }, new { type = "button", @class = "report" })
+                        }
+                    }
                     @*<button type="button" id="btnfloorReport" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#floorReportModal">檢舉</button>*@
                 </div>
-
-                @{ //留言檢舉
-                    if (mem != null)
+                <!-- #region 留言檢舉 -->
+                    @if (mem != null)
                     {
                         <!-- Modal -->
                         <div class="modal fade" id="floorReportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -84,14 +96,14 @@
                                         </div>
                                         <div class="modal-body" style="color:black">
                                             <!--modal content start-->
-                                            <input type="hidden" name="會員編號Member_ID" value="@mem.會員編號memberId" />
-                                            <input type="hidden" name="對象Target_ID" value="0" />
-                                            <input type="hidden" name="追讚倒編號ActionType_ID" value="3" />
-                                            <input type="hidden" name="連接編號Connect_ID" value="@Model[i].樓數編號floorId" />
-                                            <input type="hidden" name="" value="" />
-                                            <div><label>檢舉人</label><input type="text" readonly value="@mem.暱稱nickName" /></div>
-                                            <div><label>檢舉對象</label><input type="text" readonly value="@NickName" /></div>
-                                            <div><label>檢舉理由</label><textarea cols="50" name="檢舉理由ReportReason"></textarea></div>
+                                            <input type="hidden" name="會員編號memberId" value="@mem.會員編號memberId" />
+                                            <input type="hidden" name="對象targetId" value="0" />
+                                            <input type="hidden" name="追讚倒編號actionTypeId" value="3" />
+                                            <input type="hidden" name="連接編號connectId" value="@Model[i].樓數編號floorId" /> @*只抓到1樓*@
+                                            <input type="hidden" name="評論編號commentId" value="@Model[i].評論編號commentId" /> 
+                                            <div><label style="width:80px">檢舉人:</label><input style="width:300px" type="text" readonly value="@mem.暱稱nickName" /></div>
+                                            <div><label style="width:80px">檢舉對象:</label><input style="width:300px" type="text" readonly value="@NickName" /></div> @*只抓到1樓*@
+                                            <div><label style="width:80px;vertical-align:top">檢舉理由:</label><textarea style="width:300px" cols="50" name="檢舉理由ReportReason"></textarea></div>
                                             <!--modal content end-->
                                         </div>
                                         <div class="modal-footer">
@@ -104,10 +116,58 @@
                         </div>
                         <!--modal end-->
                     }
-                }
+                <!-- #endregion 留言檢舉 -->
             </div>
         </div>
     }
+
+    <!-- #region 留言檢舉 -->
+    @*@for (var i = 0; i < @Model.Count; i++)
+    {
+        string NickName = "";
+        if (Model[i].fNickName.Count() > 0)
+        {
+            NickName = Model[i].fNickName[0];
+        }
+        @if (mem != null)
+        {
+             Modal 
+            <div class="modal fade" id="floorReportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    @using (Html.BeginForm("Report檢舉", "Comment"))
+                    {
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle" style="color:black">檢舉</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" style="color:black">
+                                modal content start
+                                <input type="hidden" name="會員編號memberId" value="@mem.會員編號memberId" />
+                                <input type="hidden" name="對象targetId" value="0" />
+                                <input type="hidden" name="追讚倒編號actionTypeId" value="3" />
+                                <input type="hidden" name="連接編號connectId" value="@Model[i].樓數編號floorId" />
+                                <input type="hidden" name="評論編號commentId" value="@Model[i].評論編號commentId" />
+                                <div><label style="width:80px">檢舉人:</label><input style="width:300px" type="text" readonly value="@mem.暱稱nickName" /></div>
+                                <div><label style="width:80px">檢舉對象:</label><input style="width:300px" type="text" readonly value="@NickName" /></div>
+                                <div><label style="width:80px;vertical-align:top">檢舉理由:</label><textarea style="width:300px" cols="50" name="檢舉理由ReportReason"></textarea></div>
+                                modal content end
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                <button type="submit" class="btn btn-primary" id="submitAddList">確定</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            modal end
+        }
+    }*@
+    <!-- #endregion 留言檢舉 -->
+}
 }
 
 

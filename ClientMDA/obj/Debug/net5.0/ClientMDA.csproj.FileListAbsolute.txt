@@ -4038,3 +4038,6 @@ C:\Users\Student\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Vi
 C:\Users\Student\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\MyMap.cshtml.g.cs
 C:\Users\Student\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\WenWenMap.cshtml.g.cs
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\WenWenMap.cshtml.g.cs
+E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\Components\ShowCoupon\Default.cshtml.g.cs
+E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\MyMap.cshtml.g.cs
+E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\WenWenMap.cshtml.g.cs
