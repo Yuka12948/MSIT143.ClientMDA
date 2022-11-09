@@ -19,7 +19,8 @@ namespace ClientMDA.ViewComponents
             _dbContext.電影圖片movieIimagesLists.ToList();
             _dbContext.票種ticketTypes.ToList();
             _dbContext.票價資訊ticketPrices.ToList();
-
+            _dbContext.商品資料products.ToList();
+            _dbContext.購買商品明細receipts.ToList();
         }
 
         public IViewComponentResult Invoke(int orderID)
@@ -34,22 +35,24 @@ namespace ClientMDA.ViewComponents
             int screenID = this._dbContext.訂單總表orders.Where(o => o.訂單編號orderId == orderID).Select(o => o.場次編號screeningId).FirstOrDefault();
             string seatInfo = fn_顯示座位圖(orderID);
             List<string> TicketInfo = fn_顯示每張票買幾張(orderID);
+            List<string> ProductInfo = fn_顯示每個產品買幾個(orderID);
             int fullprice = fn_計算總價(orderID);
             _movieinfo Info = fn_取得電影相關資訊(screenID);
 
             COrderInfoViewModel info = new COrderInfoViewModel()
             {
-                fullprice=fullprice,
-                TicketInfo=TicketInfo,
-                MovieName=Info.MovieName,
-                MoviePicture=Info.MoviePicture,
-                MovieVersion=Info.MovieVersion,
-                OrderId=orderID,
-                StartDate=Info.StartDate,
-                StartTime=Info.StartTime,
-                TheaterAddress=Info.TheaterAddress,
-                TheaterName=Info.TheaterName,
-                SelectSeatInfo= seatInfo,               
+                fullprice = fullprice,
+                TicketInfo = TicketInfo,
+                MovieName = Info.MovieName,
+                MoviePicture = Info.MoviePicture,
+                MovieVersion = Info.MovieVersion,
+                OrderId = orderID,
+                StartDate = Info.StartDate,
+                StartTime = Info.StartTime,
+                TheaterAddress = Info.TheaterAddress,
+                TheaterName = Info.TheaterName,
+                SelectSeatInfo = seatInfo,
+                ProductInfo = ProductInfo,
             };
 
             return info;
@@ -70,13 +73,13 @@ namespace ClientMDA.ViewComponents
             _movieinfo Info = new _movieinfo();
             Info = this._dbContext.場次screenings
                         .Where(s => s.場次編號screeningId == screenID)
-                        .Select(s =>new  _movieinfo
+                        .Select(s => new _movieinfo
                         {
                             MovieName = s.電影代碼movieCodeNavigation.電影編號movie.中文標題titleCht,
                             MoviePicture = s.電影代碼movieCodeNavigation.電影編號movie.電影圖片movieIimagesLists.FirstOrDefault().圖片編號image.圖片雲端imageImdb,
                             MovieVersion = s.影廳編號cinema.廳種名稱cinemaClsName,
                             StartTime = s.放映開始時間playTime,
-                            StartDate = s.放映日期playDate.ToString("yyyy/MMMdd"+"日"),
+                            StartDate = s.放映日期playDate.ToString("yyyy/MMMdd" + "日"),
                             TheaterAddress = s.影廳編號cinema.電影院編號theater.地址address,
                             TheaterName = s.影廳編號cinema.電影院編號theater.電影院名稱theaterName,
                         }).FirstOrDefault();
@@ -93,6 +96,13 @@ namespace ClientMDA.ViewComponents
             {
                 price += (int)item;
             }
+            var productList = this._dbContext.購買商品明細receipts.AsEnumerable()
+                                  .Where(o => o.訂單編號orderId == orderID)
+                                  .Select(o => o.商品數量qty * o.商品編號product.商品價格productPrice).ToList();
+            foreach (decimal item in productList)
+            {
+                price += (int)item;
+            }
 
             return price;
         }
@@ -104,11 +114,19 @@ namespace ClientMDA.ViewComponents
 
         }
 
+        public List<string> fn_顯示每個產品買幾個(int orderID)
+        {
+            return this._dbContext.購買商品明細receipts.AsEnumerable()
+                      .Where(o => o.訂單編號orderId == orderID)
+                      .Select(o => $"{o.商品編號product.商品名稱productName}X{o.商品數量qty}").ToList();
+
+        }
+
         public string fn_顯示座位圖(int orderID)
         {
             string seatInfo = this._dbContext.訂單總表orders
-                                  .Where(o=>o.訂單編號orderId==orderID)
-                                  .Select(o=>o.場次編號screening.影廳編號cinema.座位資訊seatInfo).FirstOrDefault();
+                                  .Where(o => o.訂單編號orderId == orderID)
+                                  .Select(o => o.場次編號screening.影廳編號cinema.座位資訊seatInfo).FirstOrDefault();
             List<string> selectSeat = this._dbContext.出售座位明細seatSolds
                                         .Where(s => s.訂單編號orderId == orderID)
                                         .Select(s => s.座位表編號seatId).ToList();

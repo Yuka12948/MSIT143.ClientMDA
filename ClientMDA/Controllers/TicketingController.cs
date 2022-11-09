@@ -247,7 +247,7 @@ namespace ClientMDA.Controllers
             string MemberName = this._dbContext.會員members.Where(m => m.會員編號memberId == member.會員編號memberId).Select(n => (n.姓氏lName + n.名字fName)).FirstOrDefault();
             fn_寄送郵件("annlan08@gmail.com", MemberName, order.fullPrice);
             fn_會員購票送紅利(member.會員編號memberId, (int)order.fullPrice);
-
+            fn_新增購買商品明細(NewOrderID);
             HttpContext.Session.SetString(CDictionary.SK_ORDER_INFO, "");
 
             string jsoncoupon = HttpContext.Session.GetString(CDictionary.SK_使用的優惠券);
@@ -618,15 +618,34 @@ namespace ClientMDA.Controllers
         [NonAction]
         public void fn_寄送郵件(string email, string name, decimal fullPrice)
         {
+            訂單總表order order = this._dbContext.訂單總表orders.OrderBy(o => o.訂單編號orderId).LastOrDefault();
             MimeMessage message = new MimeMessage();
             BodyBuilder builder = new BodyBuilder();
-            //var image = builder.LinkedResources.Add("C:\\Users\\Student\\Documents\\123\\ClientMDA\\wwwroot\\images\\Ticketing\\3.jpg");
+            var image = builder.LinkedResources.Add($"{_host.WebRootPath}\\images\\Ticketing\\qrcode.jpg");
+            string _price = fullPrice.ToString("0.00");
+            int _id = order.訂單編號orderId;
+            string[] _date = order.場次編號screening.放映日期playDate.Date.ToString().Split(' ');
+            string _time = order.場次編號screening.放映開始時間playTime;
+            string _theater = order.場次編號screening.影廳編號cinema.電影院編號theater.電影院名稱theaterName;
+            string _movie = order.場次編號screening.電影代碼movieCodeNavigation.電影編號movie.中文標題titleCht;
 
-            builder.HtmlBody = $"<p>親愛的{name}你好 ，已收到你的付款</p>" +
-                              $"<p>價錢一共是{fullPrice.ToString("0.00")}NT$</p>" +
-                              $"<div style='border: 1px solid black;text-align: center;'>一個大框框</div>" +
-                              $"<p>當前時間:{DateTime.Now:yyyy-MM-dd HH:mm:ss}</p>" +
-                              $"<p>如對此訂單有任何問題，歡迎與我們聯絡!</p>";
+            builder.HtmlBody = $"<div><h2 style='color:red'>MDA訂票網付款成功通知</h2></div>" +
+                               $"<div>" +
+                               $"<p>親愛的{name}你好 ，已收到你的付款(總價錢價錢:{_price}NT$)</p>" +
+                               $"<div style='border: 1px solid black; text-align:center; width: 25vw'>" +
+                               $"<h3 style='color: blue'>訂單內容</h3>" +
+                               $"<h5>訂單編號:{_id}</h5>" +
+                               $"<p>電影院名稱:{_theater}</p>" +
+                               $"<p>電影名稱:{_movie}</p>" +
+                               $"<p>放映日期:{_date[0]}</p>" +
+                               $"<p>放映時間:{_time}</p>" +
+                               $"<p>放映影廳:白金廳</p>" +
+                               $"</div>" +
+                               $"<p>當前時間:{DateTime.Now}</p>" +
+                               $"<p>如對此訂單有任何問題，歡迎與我們聯絡!</p>" +
+                               $"<p>感謝您對於本網站的支持</p>" +
+                               $"<p>歡迎您再度光臨</p>" +
+                               $"</div>";
 
             message.From.Add(new MailboxAddress("MDA訂票官網", "annlan08@outlook.com"));
             message.To.Add(new MailboxAddress(name, email));
@@ -668,16 +687,38 @@ namespace ClientMDA.Controllers
         }
 
         [NonAction]
-        public void fn_新增使用優惠明細()
+        public void fn_新增購買商品明細(int orderID)
         {
-
+            string jsonprd = HttpContext.Session.GetString(CDictionary.SK_加購的商品);
+            string[] product = jsonprd.Split('#');
+            List<int> productcount = new List<int>()
+             {
+                   Convert.ToInt32(product[0]),
+                   Convert.ToInt32(product[1]),
+                   Convert.ToInt32(product[2]),
+                   Convert.ToInt32(product[3]),
+             };
+            List<int> productid = new List<int>()
+             {
+                  13,14,15,16
+             };
+            for (int i = 0; i < productcount.Count(); i++)
+            {
+                if (productcount[i] != 0)
+                {
+                    購買商品明細receipt receipt = new 購買商品明細receipt()
+                    {
+                        商品編號productId = productid[i],
+                        訂單編號orderId = orderID,
+                        商品數量qty = productcount[i],
+                    };
+                    this._dbContext.購買商品明細receipts.Add(receipt);
+                }
+            }
+            this._dbContext.SaveChanges();
         }
 
-        [NonAction]
-        public void fn_修改優惠明細()
-        {
 
-        }
         #endregion
 
         #region 地圖
