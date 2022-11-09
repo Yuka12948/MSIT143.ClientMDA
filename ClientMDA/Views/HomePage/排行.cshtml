@@ -84,6 +84,9 @@
 }
 
 <!-- #region CSS樣式 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="~/css/Movie/排行.css" rel="stylesheet" />
 <link href="~/css/Movie/排行-關注清單.css" rel="stylesheet" />
 <link href="~/css/Movie/排行-篩選器上收合.css" rel="stylesheet" />
@@ -92,6 +95,7 @@
 <link href="~/css/Theater/電影院用改.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="~/css/HomePage/viewcom1.css" rel="stylesheet" />
+<link href="~/css/HomePage/Rate.css" rel="stylesheet" />
 
 <body style="overflow: visible !important">
     <div class="commonStyled__WrapperSampleNoContent-sc-kt5vy-9 MovieInfoContentWrapper--1tebbv1 exLSHN gYprgf" id="title" style="  overflow: auto">
@@ -199,6 +203,46 @@
     </div>
 
 
+    @*評分*@
+    <div class="modalst " id="modal">
+        <div class="fa fa-star " id="fafastarrate">
+            <span id="rate-number">?</span>
+        </div>
+        <div class="modal-rating-header">
+            <div class="modal-rating-header-btn">
+                <button class="modal-close-btn" id="closebtn" data-close-button>&times;</button>
+            </div>
+        </div>
+        <div class="modal-rating-body" id="modal-rating-body">
+            <div id="rating-title">
+                <span id="rating-it">評分它</span>
+                <div id="in-rating-movie">
+                    <span id="rating-movie-header"></span>
+                </div>
+            </div>
+            <div class="rating">
+                <input type="radio" name="rating" value="5" id="5" class="inputstar"><label for="5" id="label">☆</label>
+                <input type="radio" name="rating" value="4" id="4" class="inputstar"><label for="4" id="label">☆</label>
+                <input type="radio" name="rating" value="3" id="3" class="inputstar"><label for="3" id="label">☆</label>
+                <input type="radio" name="rating" value="2" id="2" class="inputstar"><label for="2" id="label">☆</label>
+                <input type="radio" name="rating" value="1" id="1" class="inputstar"><label for="1" id="label">☆</label>
+            </div>
+            <div style="display:none">
+
+                <input type="text" id="movienum" value="" />
+                <input type="text" id="memrankid" value="" />
+                <input type="text" id="scorenumber" value="" />
+            </div>
+            <div id="summitbox">
+                <button class="sumitstarBtn" id="submit">送出 </button>
+                <button class="sumitstarBtn1" id="deletestar" style="border: 0; border-radius: 10px; background-color: dimgrey; color: whitesmoke; width: 180px; height: 40px; font-size: 1.25rem; ">移除評分 </button>
+            </div>
+        </div>
+    </div>
+    <div id="overlay" class="overlay" data-close-layout></div>
+
+
+
 
     <form method="post" action="~/Api/checklogin2" id="dataSubmit" style="display:none">
     </form>
@@ -214,7 +258,6 @@
     </form>
 
 </body>
-
 
 @section Scripts{
     <script>
@@ -343,7 +386,7 @@
     </script>
 }
 
-
+<script src="~/js/HomePage/排行.js"></script>
 
 
 

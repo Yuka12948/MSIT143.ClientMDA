@@ -80,6 +80,9 @@
 }
 
 <!-- #region CSS樣式 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="~/css/Movie/排行.css" rel="stylesheet" />
 <link href="~/css/Movie/排行-關注清單.css" rel="stylesheet" />
 <link href="~/css/Movie/排行-篩選器上收合.css" rel="stylesheet" />
@@ -88,6 +91,7 @@
 <link href="~/css/Theater/電影院用改.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="~/css/HomePage/viewcom1.css" rel="stylesheet" />
+<link href="~/css/HomePage/Rate.css" rel="stylesheet" />
 
 <body style="overflow: visible !important">
     <div class="commonStyled__WrapperSampleNoContent-sc-kt5vy-9 MovieInfoContentWrapper--1tebbv1 exLSHN gYprgf" id="title" style="  overflow: auto">
@@ -148,7 +152,7 @@
                                                         </button>
                                                     </span>
                                                     <span class="charts-list-span" id="ii2">@Model[i].上映日期Release_Date.Value.ToString("D")</span>
-                                                    <span class="charts-list-span" id="iii"><i class='fa fa-star checked' id="ToRE"></i> &nbsp; @Model[i].期待度anticipation </span>
+                                                    <span class="charts-list-span" id="iii2"><i class='fa fa-star checked' id="ToRE"></i> &nbsp; @Model[i].期待度anticipation </span>
                                                     <div class="charts-list-span" id="iiii">
                                                         <div class="ipc-watchlist-ribbon ipc-focusable ipc-watchlist-ribbon--m ipc-watchlist-ribbon--baseAlt ipc-watchlist-ribbon--onImage ipc-poster__watchlist-ribbon poster-card-watchlist-ribbon" aria-label="add to watchlist" role="button" tabindex="0" id="bookmarkboard">
                                                             <svg class="ipc-watchlist-ribbon__bg" @*width="500px" height="500px*@ color="red" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" role="presentation" id="BOOOKmarkboard">
@@ -172,9 +176,6 @@
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     </div>
     <div id="頁面切換3" class="box-wrapper" style="display:none;">
@@ -189,6 +190,41 @@
             @await Component.InvokeAsync("本周新片", new { datas = Model })
         </div>*@
 
+
+    @*評分*@
+    <div class="modalstE " id="modalstE">
+        <div class="fa fa-star " id="fafastarrateE">
+            <span id="rate-numberE">?</span>
+        </div>
+        <div class="modal-rating-headerE">
+            <div class="modal-rating-header-btnE">
+                <button class="modal-close-btnE" id="closebtnE">&times;</button>
+            </div>
+        </div>
+        <div class="modal-rating-bodyE" id="modal-rating-bodyE">
+            <div id="rating-titleE">
+                <span id="rating-itE">你有多期待</span>
+                <div id="in-rating-movieE">
+                    <span id="rating-movie-headerE"></span>
+                </div>
+            </div>
+            <div class="ratingE">
+                <input type="radio" name="rating1" value="5" id="5"><label for="5">☆</label>
+                <input type="radio" name="rating1" value="4" id="4"><label for="4">☆</label>
+                <input type="radio" name="rating1" value="3" id="3"><label for="3">☆</label>
+                <input type="radio" name="rating1" value="2" id="2"><label for="2">☆</label>
+                <input type="radio" name="rating1" value="1" id="1"><label for="1">☆</label>
+            </div>
+            <div style="visibility:hidden">
+
+                <input type="text" id="movienumE" value="" />
+            </div>
+            <div id="summitboxE">
+                <button class="sumitstarBtnE" id="summit">送出 </button>
+            </div>
+        </div>
+    </div>
+    <div id="overlayE" class="overlay"></div>
 
     <form method="post" action="~/Api/checklogin4" id="dataSubmit" style="display:none">
     </form>
@@ -322,8 +358,63 @@
                 $("#頁面切換").load("@Url.Content("~/HomePage/期待")")
             })
 
+
+        //modal2
+        const openModalButtons2 = document.querySelectorAll('#iii2')
+        const closeModalButtons2 = document.querySelector('#closebtnE')
+        const overlay2 = document.querySelector('#overlayE')
+        const headerofstar2 = document.getElementById("in-rating-movieE");
+        //const movienum = document.getElementById('movienum');
+
+        //function disableBtn() {
+        //    document.getElementById("submit").style.backgroundColor = "dimgrey";
+        //    document.getElementById("submit").disabled = true;
+        //}
+
+        function openModal2(modal2) {
+            if (modal2 == null) return
+            modal2.classList.add('active')
+            overlay2.classList.add('active')
+        }
+
+        function closeModal2(modal2) {
+            if (modal2 == null) return
+            modal2.classList.remove('active')
+            overlay2.classList.remove('active')
+
+            //disableBtn();
+            //$("#1").prop('checked', false);
+            //$("#2").prop('checked', false);
+            //$("#3").prop('checked', false);
+            //$("#4").prop('checked', false);
+            //$("#5").prop('checked', false);
+        }
+
+        for (let i = 0; i < openModalButtons2.length; i++) {
+            openModalButtons2[i].addEventListener('click', en => {
+                const modal2 = document.querySelector("#modalstE")
+                openModal2(modal2)
+                const f = $(event.currentTarget).parents(".box").find("h5")[0].textContent
+                headerofstar2.textContent = f
+                //const o = $(event.currentTarget).parents(".box").find("a")[1].getAttribute('data')
+                //document.getElementById('movienumE').value = o;
+            })
+        }
+
+        overlay2.addEventListener('click', () => {
+            const modals2 = document.querySelector('.modalstE.active')
+            closeModal2(modals2)
+        })
+
+        closeModalButtons2.addEventListener('click', () => {
+            const modals2 = document.querySelector('.modalstE.active')
+            closeModal2(modals2)
+        })
+
+
     </script>
 }
+<script src="~/js/HomePage/排行.js"></script>
 
 
 

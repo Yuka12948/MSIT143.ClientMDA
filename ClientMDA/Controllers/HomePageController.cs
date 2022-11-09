@@ -284,7 +284,7 @@ namespace ClientMDA.Controllers
         {
             var d = (from a in _MDA.電影movies
                      join b in _MDA.電影圖片總表movieImages on a.中文標題titleCht equals b.電影名稱movieName
-                     where a.上映日期releaseDate >= DateTime.Now.AddDays(-7) && a.上映日期releaseDate <= DateTime.Now.AddDays(7)
+                     where a.上映日期releaseDate >= DateTime.Now.AddDays(-7) && a.上映日期releaseDate <= DateTime.Now.AddDays(7) &&b.圖片類型imageType=="海報"
                      orderby a.上映日期releaseDate
                      select new CHomePageNewViewModel
                      {
@@ -322,7 +322,7 @@ namespace ClientMDA.Controllers
         {
             var d = (from a in _MDA.電影movies
                      join b in _MDA.電影圖片總表movieImages on a.中文標題titleCht equals b.電影名稱movieName
-                     where (a.上映日期releaseDate >= DateTime.Now.AddDays(30) && a.期待度anticipation != null)
+                     where (a.上映日期releaseDate >= DateTime.Now.AddDays(30) && a.期待度anticipation != null &&b.圖片類型imageType=="海報")
 
                      orderby a.期待度anticipation descending
 
