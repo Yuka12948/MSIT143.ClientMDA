@@ -259,7 +259,7 @@
     <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-8">
             <div class="section-title">
-                <h4>新片排行</h4>
+                <h4>現正熱映</h4>
             </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4">
@@ -2591,17 +2591,14 @@
                 exptrailer[i].setAttribute('href', '/Theater/快定頁面測試/' + `${data3[i]}`)
                 expintro[i].setAttribute("onclick", `location.href='/Movie/電影介紹/${data3[i]}'`)
                 expbuy[i].setAttribute("onclick", `location.href='/Theater/快定頁面測試/${data3[i]}'`)
-                if (data[i].length >= 9 && data[i].length <15) {
+                if (data[i].length >= 9 && data[i].length < 15) {
                     exptitle[i].style.fontSize = "1.13rem";
                 }
                 else if (data[i].length >= 15 && data[i].length < 20) {
                     exptitle[i].style.fontSize = "0.98rem";
                 }
-                else if (data[i].length >= 20 && data[i].length < 25) {
-                    newtitle[i].style.fontSize = "0.77rem";
-                }
-                else if (data[i].length >= 25) {
-                    exptitle[i].style.fontSize = "0.5rem";
+                else if (data[i].length >= 20) {
+                    exptitle[i].style.fontSize = "2pt";
                 }
             }
             //關掉評分按鈕+抓海報
