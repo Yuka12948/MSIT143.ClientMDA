@@ -222,6 +222,7 @@ namespace ClientMDA.Controllers
             if (fee != null)
                 ViewBag.fee = (int)fee;
             infoview.Alltciket = fn_票種字串轉換List(infoview.TicketInfo);
+            HttpContext.Session.SetString(CDictionary.SK_加購的商品, infoview.ProductInfo);
             return View(infoview);
         }
 
@@ -274,6 +275,29 @@ namespace ClientMDA.Controllers
         #region 歐付寶
         public IActionResult OPayment(CCreateOrderViewModel order)
         {
+            string jsonprd = HttpContext.Session.GetString(CDictionary.SK_加購的商品);
+
+            string[] product = jsonprd.Split('#');
+
+            List<int> productcount = new List<int>()
+             {
+                   Convert.ToInt32(product[0]),
+                   Convert.ToInt32(product[1]),
+                   Convert.ToInt32(product[2]),
+                   Convert.ToInt32(product[3]),
+             };
+
+            List<int> productprice = new List<int>()
+            {
+                    120,200,80,100
+            };
+
+            List<string> productname = new List<string>()
+            {
+                 "超值套餐","豪華套餐","爆米花","造型飲料杯"
+            };
+
+
             string jsonstr = JsonSerializer.Serialize(order);
             HttpContext.Session.SetString(CDictionary.SK_ORDER_INFO, jsonstr);
 
@@ -298,6 +322,13 @@ namespace ClientMDA.Controllers
                 ItemName += $"{filename}-{ticketname}({ticketprice}元)X{item.TicketCount}#";
             }
             ItemName = ItemName.Substring(0, ItemName.Length - 1);
+            for (int i = 0; i < productcount.Count(); i++)
+            {
+                if (productcount[i] > 0)
+                {
+                    ItemName += $"#{productname[i]}({productprice[i]}元)X{productcount[i]}";
+                }
+            }
             ViewBag.Total = total;
             ViewBag.ItemName = ItemName;
             NameValueCollection parameters = HttpUtility.ParseQueryString(string.Empty);
@@ -584,11 +615,11 @@ namespace ClientMDA.Controllers
             BodyBuilder builder = new BodyBuilder();
             //var image = builder.LinkedResources.Add("C:\\Users\\Student\\Documents\\123\\ClientMDA\\wwwroot\\images\\Ticketing\\3.jpg");
 
-            builder.HtmlBody = $"<p>{name}你好 ，不能退票</p>" +
-                              $"<p>價錢一共是{fullPrice.ToString("0.00")}</p>" +
+            builder.HtmlBody = $"<p>親愛的{name}你好 ，已收到你的付款</p>" +
+                              $"<p>價錢一共是{fullPrice.ToString("0.00")}NT$</p>" +
                               $"<div style='border: 1px solid black;text-align: center;'>一個大框框</div>" +
                               $"<p>當前時間:{DateTime.Now:yyyy-MM-dd HH:mm:ss}</p>" +
-                              $"<p>哈哈{name} 嫩</p>";
+                              $"<p>如對此訂單有任何問題，歡迎與我們聯絡!</p>";
 
             message.From.Add(new MailboxAddress("MDA訂票官網", "annlan08@outlook.com"));
             message.To.Add(new MailboxAddress(name, email));

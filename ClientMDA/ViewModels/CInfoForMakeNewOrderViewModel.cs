@@ -10,6 +10,7 @@ namespace ClientMDA.ViewModels
         public string TicketInfo { get; set; }
         public string SeatInfo { get; set; }
         public int ScreenID { get; set; }
+        public string ProductInfo { get; set; }
         public List<CTicketItemViewModel> Alltciket { get; set; }
     }
 }
