@@ -111,6 +111,16 @@ namespace ClientMDA.Controllers
             string jsonUser = JsonSerializer.Serialize(m);
             HttpContext.Session.SetString(CDictionary.SK_LOGINED_USER, jsonUser);
 
+            優惠明細couponList coupon = new 優惠明細couponList()
+            {
+                會員編號memberId = this._MDAcontext.會員members.OrderBy(m => m.會員編號memberId).LastOrDefault().會員編號memberId,
+                優惠編號couponId=1,
+                是否使用優惠oxCouponUsing=false,
+                訂單編號orderId=0,
+            };
+
+            this._MDAcontext.優惠明細couponLists.Add(coupon);
+            this._MDAcontext.SaveChanges();
             string page = HttpContext.Session.GetString(CDictionary.SK登後要前往的頁面);
             if (!string.IsNullOrEmpty(page))
             {
