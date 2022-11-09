@@ -184,7 +184,7 @@ namespace ClientMDA.Controllers
                 ticketInfoitem.TicketID票價明細 = item.票價明細ticketId;
                 ticketInfoitem.TicketName票種名稱 = item.票種編號ticketType.票種名稱ticketTypeName;
                 ticketInfoitem.TicketPrice票價 = item.價格ticketPrice;
-                if (starthour < 10 && starthour > 5)
+                if (starthour < 9 && starthour > 5)
                 {
                     if (ticketInfoitem.TicketName票種名稱.Contains('早'))
                         ALLticketInfo.Add(ticketInfoitem);
