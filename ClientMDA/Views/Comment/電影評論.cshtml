@@ -134,14 +134,17 @@
 
                     <div class="blog__details__tags">
                         <!-- 評論標籤 -->
-                        <a href="#">#神片</a>
-                        <a href="#">#主角好帥</a>
-                        <a href="#">#IMAX</a>
+                        @*<a href="#">#神片</a>*@
+                        @*<a href="#">#主角好帥</a>*@
+                        <a href="#">
+                            <span style="color:white">發佈時間</span>
+                            <span> - @Html.DisplayFor(modelItem => Model.發佈時間commentTime)</span>
+                        </a>
 
                         <!-- 評論按鈕 -->
                         <div class="blog__details__comment__item__text" style="float:right">
-                            @*<a class="Like" href="#">Like <i class="fas fa-thumbs-up"></i></a>*@
-                            @*<a class="unLike" href="#">UnLike <i class="fas fa-thumbs-down"></i></a>*@
+                            <a class="Like" href="#">Like <i class="fas fa-thumbs-up"></i></a>
+                            <a class="unLike" href="#">UnLike <i class="fas fa-thumbs-down"></i></a>
                             @*<a class="follow" href="#">追蹤</a>*@
                             @*<button type="button" id="btnCommentReport" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#commentReportModal">檢舉</button>*@
 
@@ -211,12 +214,12 @@
 
                     </div>
                     <!-- 發佈時間 -->
-                    <div style="margin: 10px 0 10px 0; border: solid 1px rgba(0,0,0,0)">
+                    @*<div style="margin: 10px 0 10px 0; border: solid 1px rgba(0,0,0,0)">
                         <span class="mem_info">
                             <span style="color:white">發佈時間</span>
                             <span> - @Html.DisplayFor(modelItem => Model.發佈時間commentTime)</span>
                         </span>
-                    </div>
+                    </div>*@
 
 
                     <!-- 上/下一篇評論 -->
@@ -285,7 +288,7 @@
                                         @if (@mem == null)
                                         {
                                             <textarea placeholder="Message" readonly="readonly" style="margin-bottom:10px;"></textarea>
-                                            @Html.ActionLink("登入留言", "login", "Member", new { id = Model.會員編號memberId }, new { @class = "btn btn-info btn-sm", @style = "float:right" })
+                                            @Html.ActionLink("登入留言", "checkLogin", new { page = "電影評論", id = Model.評論編號commentId }, new { @class = "btn btn-info btn-sm", @style = "float:right" })
                                         }
                                         else
                                         {

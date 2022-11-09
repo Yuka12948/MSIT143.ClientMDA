@@ -4037,3 +4037,4 @@ C:\Users\Student\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Vi
 C:\Users\Student\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\Activity.cshtml.g.cs
 C:\Users\Student\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\MyMap.cshtml.g.cs
 C:\Users\Student\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\WenWenMap.cshtml.g.cs
+C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\WenWenMap.cshtml.g.cs

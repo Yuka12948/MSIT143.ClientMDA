@@ -35,6 +35,7 @@ namespace ClientMDA.Controllers
                 中文標題titleCht = c.電影編號movie.中文標題titleCht,
                 暱稱nickName = c.會員編號member.暱稱nickName,
                 會員照片image = c.會員編號member.會員照片image,
+                floorCount = c.回覆樓數floors.Where(f => f.評論編號commentId == id).Count(),
             }).FirstOrDefault();
             return View(datas);
         }
