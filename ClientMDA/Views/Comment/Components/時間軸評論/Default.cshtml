@@ -4,9 +4,11 @@
 }
 
 @{
-    for (var i = 0; i < Model.Count; i++)
-    {
-        <!--#region 左側文章 start-->
+
+        for (var i = 0; i < Model.Count; i++)
+        {
+            int c = i + 1;
+        <!-- #region 左側文章 start-->
         <dd class="pos-left clearfix">
             @*<dd class="pos-right clearfix">*@
             <div class="circ"></div>
@@ -15,7 +17,7 @@
                 @Model[i].發佈時間commentTime.ToString("yyyy") <br /> @Model[i].發佈時間commentTime.ToString("MMMM", new System.Globalization.CultureInfo("en-us")).Substring(0, 3) @Model[i].發佈時間commentTime.ToString("dd")
             </div>
 
-            <div class="events">
+            <div class="events"id="comment_@c">
                 <div class="events-header"><h5>@Model[i].評論標題commentTitle</h5></div><!--填入標題-->
                 <div class="events-body">
                     <div @*class="row"*@>

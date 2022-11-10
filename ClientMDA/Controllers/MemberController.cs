@@ -98,10 +98,10 @@ namespace ClientMDA.Controllers
             m.電子信箱email = vModel.txtEmail;
             m.密碼password = vModel.txtPassword;
             m.會員權限permission = 0;
+            m.紅利點數bonus = 0;
             m.正式會員formal = false;
             _MDAcontext.會員members.Add(m);
             _MDAcontext.SaveChanges();
-
             片單總表movieList l = new 片單總表movieList();
             l.片單總表名稱listName = "我的片單(預設)";
             l.會員編號memberId = _MDAcontext.會員members.Where(m => m.會員電話cellphone == vModel.txtPhone).Select(m => m.會員編號memberId).FirstOrDefault();

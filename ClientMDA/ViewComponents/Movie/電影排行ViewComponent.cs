@@ -12,6 +12,7 @@ namespace ClientMDA.ViewConponents
         //用這個 async Task<IViewComponentResult> InvokeAsync
         public async Task<IViewComponentResult> InvokeAsync(List<CMovieViewModel> datas)
         {
+
             return View(datas);
         }
     }

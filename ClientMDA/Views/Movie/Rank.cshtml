@@ -134,8 +134,6 @@
                                 <input type="radio" class="btn-check" name="sltBtn2" id="sbtn2b2" autocomplete="off">
                                 <label class="btn btn-outline-rank" for="sbtn2b2">依評分</label>
 
-                                <input type="radio" class="btn-check" name="sltBtn2" id="sbtn2b3" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="sbtn2b3">依評分總數</label>
                             </div><br /><br />
                             <!-- #endregion 單選按鈕 -->
                             <!--  #region 複選按鈕 -->
@@ -250,8 +248,9 @@
                                 <input type="radio" class="btn-check" name="sltBtn5" id="sbtn5b12" autocomplete="off">
                                 <label class="btn btn-outline-rank" for="sbtn5b12">其他</label>
                             </div><br /><br />
+
                             <!-- #endregion 複選按鈕 -->
-                            <button class="btn btn-warning" style="float:right; margin-right:480px; height:30px;padding-top:3px">確認篩選</button>
+                            <button id="save" class="btn btn-warning" style="float:right; margin-right:480px; height:30px;padding-top:3px">確認篩選</button>
                         </div>
                     </div>
                 </div>
@@ -279,9 +278,7 @@
                         <span class="charts-list-addList"> 加入片單 </span>
                     </li>
 
-                    <div id="篩選切換">
-                        @await Component.InvokeAsync("電影排行", new { datas = Model })
-                    </div>
+                    @await Component.InvokeAsync("電影排行", new { datas = Model })
 
                 </ul>
                 <!-- #endregion 排行榜body -->
@@ -429,7 +426,36 @@
         <link rel="stylesheet" href="sweetalert2.min.css">*@
     <!-- #endregion 備註 -->
     <!-- #endregion 關掉的 -->
+<script>
+        let save = $("#save");
+        save.on("click", function () {
+            let sbtn2b1 = document.getElementById("sbtn2b1");
+            let sbtn2b2 = document.getElementById("sbtn2b2");
+            let sbtn2 =0;
+            if (sbtn2b1.checked)//依票房 
+            {
+                sbtn2 = 1;
+            }
+            else//依評分
+            {
+                sbtn2 = 2;
+            }
 
+            let sbtn4b1 = document.getElementById("sbtn4b1");
+            let sbtn4b2 = document.getElementById("sbtn4b2");
+            let sbtn4 = 0;
+            if (sbtn4b1.checked)//全部
+            {
+                sbtn4 = 1;
+            }
+            else//新片
+            {
+            sbtn4 = 2;
+            }
+            let href = "@Url.Content("~/Movie/Rank")"+`?box=${sbtn2}&year=${sbtn4}`
+            window.location.href = href
+        })
+</script>
 }
 
 

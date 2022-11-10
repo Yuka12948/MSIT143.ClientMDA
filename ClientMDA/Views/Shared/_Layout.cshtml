@@ -1,4 +1,5 @@
-﻿@using Microsoft.AspNetCore.Http
+﻿<!-- #region 會員Session -->
+@using Microsoft.AspNetCore.Http
 @using System.Text.Json;
 @inject IHttpContextAccessor Accessor
 @{
@@ -8,8 +9,9 @@
         var a = Accessor.HttpContext.Session.GetString(ClientMDA.Models.CDictionary.SK_LOGINED_USER);
         mem = JsonSerializer.Deserialize<會員member>(a);
     }
-
 }
+<!-- #endregion 會員Session -->
+
 <!DOCTYPE html>
 
 <html lang="zh-hant-TW">
@@ -24,11 +26,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- Google Font -->
+    <!-- #region Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- Css Styles -->
+    <!-- #endregion Google Font -->
+    <!-- #region Css Styles -->
     <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="~/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="~/css/plyr.css" type="text/css">
@@ -41,12 +43,15 @@
     <link href="~/css/dropdown.css" rel="stylesheet" />
     <script src="~/js/jquery-3.4.1.min.js"></script>
     @*<link href="~/css/BOT/BOT.css" rel="stylesheet" />*@
+    <!-- #endregion Css Styles -->
+
     @await RenderSectionAsync("Styles", required: false)
+
 </head>
 
 <body class="text-white">
 
-    <!-- header Start -->
+    <!-- #region header Start -->
     <header class="header">
         <div class="container">
             <div class="row">
@@ -68,23 +73,14 @@
                                     <a class="aBorder corTick" asp-area="" asp-controller="Ticketing" asp-action="SelectMovie">快速訂票</a>
                                 </li>
                                 <li>
-                                    <a class="aBorder corThea" text-white fs-2" asp-area="" asp-controller="Theater" asp-action="測試業面">電影時刻@*<span class="arrow_carrot-down"></span>*@</a>
-                                    @*<ul class="dropdown">
-                                            <li><a asp-area="" asp-controller="Theater" asp-action="Index">上映中</a></li>
-                                            <li><a asp-area="" asp-controller="Theater" asp-action="即將上映page1">即將上映</a></li>
-                                            <li><a href="./blog-details.html">歷年電影</a></li>
-                                            <li><a href="./blog-details.html">電影排行</a></li>
-                                        </ul>*@
+                                    <a class="aBorder corThea" text-white fs-2" asp-area="" asp-controller="Theater" asp-action="測試業面">電影時刻</a>
                                 </li>
                                 <li>
-                                    <a class="aBorder corRank" asp-area="" asp-controller="Movie" asp-action="排行首頁">電影排行</a>
+                                    <a class="aBorder corRank" asp-area="" asp-controller="Movie" asp-action="Rank">電影排行</a>
                                 </li>
                                 <li>
-                                    <a class="aBorder corComm" asp-area="" asp-controller="Comment" asp-action="評論首頁">電影評論@*<span class="arrow_carrot-down"></span>*@</a>
-                                    @*<ul class="dropdown">
-                                            <li><a asp-area="" asp-controller="Comment" asp-action="我的評論">我的評論</a></li>
-                                        </ul>*@
-                                </li>  <!--./blog.html-->
+                                    <a class="aBorder corComm" asp-area="" asp-controller="Comment" asp-action="評論首頁">電影評論</a>
+                                </li>
                                 <li>
                                     <a class="aBorder corCart" asp-area="" asp-controller="WenShoppingCart" asp-action="Index">商城</a>
                                 </li>
@@ -121,7 +117,7 @@
                 </div>
             </div>
 
-            <!-- menu Start -->
+            <!--#region menu Start -->
             <div id="mobile-menu-wrap">
                 <div class="slicknav_menu">
                     <a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed"><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
@@ -147,52 +143,20 @@
                     </nav>
                 </div>
             </div>
-            <!-- menu End -->
+            <!--#endregion menu End -->
+
         </div>
     </header>
-    <!-- header End -->
-    <!-- Body Start -->
+    <!-- #endregion header End -->
+    <!-- #region Body Start -->
     <div class="container body-content">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
         <hr />
     </div>
-    <!-- Body End -->
-    <!-- footer Start -->
-    <!--<footer class="footer" style="clear:both">
-        <div class="page-up">
-            <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="footer__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="footer__nav">
-                        <ul>
-                            <li class="active"><a href="./index.html">Homepage</a></li>
-                            <li><a href="./categories.html">Categories</a></li>
-                            <li><a href="./blog.html">Our Blog</a></li>
-                            <li><a href="#">Contacts</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-     <p>-->
-    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-    <!--Copyright &copy; M.D.A. Co., Ltd.<br />All rights reserved.<br />
-    <a href="https://colorlib.com" target="_blank">M.D.A.觀享時刻</a>-->
-    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-    <!--</p>
-                </div>
-            </div>
-        </div>
-    </footer>-->
-
+    <!-- #endregion Body End -->
+    <!-- #region footer Start -->
     <footer class="footer text-center text-white" style="background-color: #070720">
         <div class="page-up">
             <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
@@ -202,25 +166,25 @@
             <!-- Section: Social media -->
             <section class="mb-4">
                 <!-- Facebook -->
-                <a class="btn btn-outline-light btn-floating m-1" href="https://i.imgur.com/GOWpr54.png" role="button">
+                <a class="btn btn-outline-light btn-floating m-1" href="https://i.ibb.co/Xpt3rfC/GOWpr54.png" role="button">
                     <i class="fab fa-facebook-f"></i>
                 </a>
                 <!-- Twitter -->
-                <a class="btn btn-outline-light btn-floating m-1" href="https://i.imgur.com/Wj9ytuc.png" role="button">
+                <a class="btn btn-outline-light btn-floating m-1" href="https://i.ibb.co/t4P59ny/Wj9ytuc.png" role="button">
                     <i class="fab fa-twitter"></i>
                 </a>
                 <!-- Google -->
                 @*<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-            <i class="fab fa-google"></i>
-        </a>*@
+                        <i class="fab fa-google"></i>
+                    </a>*@
                 <!-- Instagram -->
-                <a class="btn btn-outline-light btn-floating m-1" href="https://i.imgur.com/fTphyFV.png" role="button">
+                <a class="btn btn-outline-light btn-floating m-1" href="https://i.ibb.co/JxRzvkB/fTphyFV.png" role="button">
                     <i class="fab fa-instagram"></i>
                 </a>
                 <!-- Linkedin -->
                 @*<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-            <i class="fab fa-linkedin-in"></i>
-        </a>*@
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>*@
                 <!-- Github -->
                 <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/Yuka12948/MSIT143.ClientMDA" role="button">
                     <i class="fab fa-github"></i>
@@ -239,24 +203,34 @@
         </div>
         <!-- Copyright -->
     </footer>
-    <!-- footer End -->
-
+    <!-- #endregion footer End -->
+    <!-- #region 小幫手 -->
     <figure class="幫幫忙" style=" float: right; position: fixed; right: 10px; width: 360px; margin-bottom: 5px; bottom: 10px; list-style-type: none; z-index: 999;">
         <div style="width: 160px; float: right; margin-right: 5px; ">
+<<<<<<< HEAD
         <img class="hope" style="border-radius:45px" height="90" width="160" src="~/images/BOT.gif" /></div>
         <iframe class="小幫手" src='https://webchat.botframework.com/embed/mist143mda-bottest?s=IS5hhTwmb_M.z226WJMkd-d6O_AA3fBzg-F2RQKKSFb9fvIMk-BNveE' style='display:none; min-width: 200px; width: 360px; min-height: 450px; '></iframe>
 
                             </figure>
 
+=======
+            <img class="hope" style="border-radius:45px" height="90" width="160" src="~/images/BOT.gif" />
+        </div>
+        <iframe class="小幫手" src='https://webchat.botframework.com/embed/mist143mda-bot?s=YPZzm2dE_QU.nWqDzj-7VllSaxQSGpjeUPjIFHQNaDZbJAoj3nu8OVI' style='display:none; min-width: 200px; width: 360px; min-height: 450px;'></iframe>
+    </figure>
+>>>>>>> feature/#Yuka-1109教室
     @*<figure class="幫幫忙" style="float:right; position: fixed;right: 0;top:95%;width:600px;margin-top: -2.5em;border-block: initial;list-style-type: none;z-index:999;">
             <div style="width: 90px; float: right; margin-right: 5px; "><img class="hope" style="border-radius:45px" height="90" width="90" src="~/images/cat.png" /></div>
             <iframe class="小幫手" src='https://webchat.botframework.com/embed/mist143mda-bottest?s=IS5hhTwmb_M.1HyvDvgAgNub3nFY5ULIfazgk3OL18_wTC1Xwls2JKU'  style='display:none; min-width: 200px; width: 600px; min-height: 500px;'></iframe>
         </figure>*@
+    <!-- #endregion 小幫手 -->
+    <!-- #region JS樣式 -->
     <script src="~/js/bot.js"></script>
-
     <script src="~/js/bootstrap.min.js"></script>
     <script src="~/js/jquery-3.4.1.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> @*footer樣式*@
+    <!-- #endregion JS樣式 -->
+
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>

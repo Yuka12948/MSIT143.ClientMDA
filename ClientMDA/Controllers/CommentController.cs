@@ -35,6 +35,7 @@ namespace ClientMDA.Controllers
                 中文標題titleCht = c.電影編號movie.中文標題titleCht,
                 暱稱nickName = c.會員編號member.暱稱nickName,
                 會員照片image = c.會員編號member.會員照片image,
+                floorCount = c.回覆樓數floors.Where(f => f.評論編號commentId == id).Count(),
             }).FirstOrDefault();
             return View(datas);
         }
@@ -75,8 +76,10 @@ namespace ClientMDA.Controllers
                 會員照片image = m.會員照片image,
                 建立時間createdTime = m.建立時間createdTime,
                 commentCount = m.電影評論movieComments.Where(c => c.會員編號memberId == id).Count(),
-                memberfollow = _MDAcontext.我的追蹤清單myFollowLists.Where(f => f.對象targetId ==1 && f.追讚倒編號actionTypeId == 0 && f.連接編號connectId == id)
-                .Count(),
+                commentList = m.電影評論movieComments.Where(c => c.會員編號memberId == id).Select(c => c.評論標題commentTitle).ToList(),
+                memberfollow = _MDAcontext.我的追蹤清單myFollowLists.Where(f => f.對象targetId == 1 && f.追讚倒編號actionTypeId == 0 && f.連接編號connectId == id).Count(),
+                memFollowList = _MDAcontext.我的追蹤清單myFollowLists.Where(f => f.對象targetId == 1 && f.追讚倒編號actionTypeId == 0 && f.連接編號connectId == id).Select(f=>f.會員編號member.暱稱nickName).ToList(),
+                memFollowIdList = _MDAcontext.我的追蹤清單myFollowLists.Where(f => f.對象targetId == 1 && f.追讚倒編號actionTypeId == 0 && f.連接編號connectId == id).Select(f => f.會員編號memberId).ToList(),
             }).FirstOrDefault();
             return View(datas);
         }
@@ -88,7 +91,7 @@ namespace ClientMDA.Controllers
             return Redirect("~/Member/Login");
         }
         [HttpPost]
-        public IActionResult Report檢舉(CReportViewModel vm)
+        public IActionResult Report檢舉(CReportViewModel vm )
         {
             string user = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
             會員member mem = JsonSerializer.Deserialize<會員member>(user);
@@ -97,7 +100,6 @@ namespace ClientMDA.Controllers
             //    HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, $"~/Comment/電影評論/{vm.連接編號connectId}");
             //    return Redirect("~/Member/Login");
             //}
-
             我的追蹤清單myFollowList follow = new 我的追蹤清單myFollowList()
             {
                 會員編號memberId = mem.會員編號memberId,
@@ -118,7 +120,7 @@ namespace ClientMDA.Controllers
             else
             {
                 page = "電影評論";
-                //id=
+                id = vm.評論編號commentId;
             }
             return RedirectToAction(page, new { id = id });
         }
