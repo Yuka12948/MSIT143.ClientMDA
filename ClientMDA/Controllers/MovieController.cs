@@ -23,17 +23,17 @@ namespace ClientMDA.Controllers
 
         public ActionResult Rank(CKeywordViewModel model,int? box ,int? year)
         {
-            box ??= 2;year ??= 2;//??= >> if null
+            box ??= 1;year ??= 1;//??= >> if null
             電影movie K = new();
             List<CMovieViewModel> datas = null;
             var mPoster = _MDAcontext.電影圖片movieIimagesLists.Select(i => i);
             if (string.IsNullOrEmpty(model.txtKeyword))
             {
-                if (box == 1)//依評分
+                if (box == 1)//依票房
                 {
-                    if (year == 1)//新片
+                    if (year == 1)//全部
                     {
-                        datas = _MDAcontext.電影movies.OrderByDescending(m => m.評分rate).Where(i => (DateTime.Now.Year - i.上映年份releaseYear) <= 1).Select
+                        datas = _MDAcontext.電影movies.OrderByDescending(m => m.票房boxOffice).Select
                                 (m => new CMovieViewModel
                                 {
                                     movie = m,
@@ -42,21 +42,7 @@ namespace ClientMDA.Controllers
                                     .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
                                 }).Take(50).ToList();
                     }
-                    else//全部
-                    {
-                        datas = _MDAcontext.電影movies.OrderByDescending(m => m.評分rate).Select
-                                (m => new CMovieViewModel
-                                {
-                                    movie = m,
-                                    mRateList = m.電影評論movieComments.Select(r => r.評分rate).ToList(),
-                                    mImgFrList = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId)
-                                    .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
-                                }).Take(50).ToList();
-                    }
-                }
-                else//依票房
-                {
-                    if (year == 1)//新片
+                    else//新片
                     {
                         datas = _MDAcontext.電影movies.OrderByDescending(m => m.票房boxOffice).Where(i => (DateTime.Now.Year - i.上映年份releaseYear) <= 1).Select
                                 (m => new CMovieViewModel
@@ -67,9 +53,23 @@ namespace ClientMDA.Controllers
                                     .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
                                 }).Take(50).ToList();
                     }
-                    else//全部
+                }
+                else//依評分
+                {
+                    if (year == 1)//全部
                     {
-                        datas = _MDAcontext.電影movies.OrderByDescending(m => m.票房boxOffice).Select
+                        datas = _MDAcontext.電影movies.OrderByDescending(m => m.評分rate).Select
+                                (m => new CMovieViewModel
+                                {
+                                    movie = m,
+                                    mRateList = m.電影評論movieComments.Select(r => r.評分rate).ToList(),
+                                    mImgFrList = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId)
+                                    .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
+                                }).Take(50).ToList();
+                    }
+                    else//新片
+                    {
+                        datas = _MDAcontext.電影movies.OrderByDescending(m => m.評分rate).Where(i => (DateTime.Now.Year - i.上映年份releaseYear) <= 1).Select
                                 (m => new CMovieViewModel
                                 {
                                     movie = m,
