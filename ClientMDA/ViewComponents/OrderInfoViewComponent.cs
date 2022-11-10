@@ -21,6 +21,8 @@ namespace ClientMDA.ViewComponents
             _dbContext.票價資訊ticketPrices.ToList();
             _dbContext.商品資料products.ToList();
             _dbContext.購買商品明細receipts.ToList();
+            _dbContext.優惠明細couponLists.ToList();
+            _dbContext.優惠總表coupons.ToList();
         }
 
         public IViewComponentResult Invoke(int orderID)
@@ -103,6 +105,13 @@ namespace ClientMDA.ViewComponents
             {
                 price += (int)item;
             }
+
+            var discount = this._dbContext.使用優惠明細usingCouponLists.AsEnumerable()
+                                        .Where(c => c.訂單編號orderId == orderID)
+                                        .Select(c => c.優惠明細編號couponList.優惠編號coupon).FirstOrDefault();
+
+            if (discount != null)
+                price -= (int)(discount.優惠折扣couponDiscount);
 
             return price;
         }

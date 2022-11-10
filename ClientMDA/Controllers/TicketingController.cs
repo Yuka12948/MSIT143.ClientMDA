@@ -258,6 +258,12 @@ namespace ClientMDA.Controllers
                                                   .Where(c => c.會員編號memberId == member.會員編號memberId && c.優惠編號couponId == coupon.優惠編號couponId && c.是否使用優惠oxCouponUsing == false)
                                                   .FirstOrDefault();
                 couponlist.是否使用優惠oxCouponUsing = true;
+                使用優惠明細usingCouponList usingcoupon = new 使用優惠明細usingCouponList()
+                {
+                    優惠明細編號couponListId = couponlist.優惠明細編號couponListId,
+                    訂單編號orderId=NewOrderID,
+                };
+                this._dbContext.使用優惠明細usingCouponLists.Add(usingcoupon);
                 this._dbContext.SaveChanges();
                 HttpContext.Session.SetString(CDictionary.SK_使用的優惠券, "");
             }
