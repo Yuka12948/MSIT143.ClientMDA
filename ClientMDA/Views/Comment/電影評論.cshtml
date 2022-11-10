@@ -57,6 +57,7 @@
         .blog__details__btns {
             margin-bottom: 10px;
         }
+
         .memComImg-Circle { /*會員大頭貼*/
             clip-path: circle(45% at 50% 50%);
             height: 30px;
@@ -344,7 +345,7 @@
                     })
                 }
     }*@
-
+    </script>
 
 
 <script>
@@ -354,14 +355,14 @@
     })
     </script>
 
-
-    function appendJS(src) {
+    <script>
+        function appendJS(src) {
         var script = document.createElement("script");
         script.src = src;
         document.head.appendChild(script);
     }
-    appendJS('https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js');
-    appendJS('https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v3.0');
+        appendJS('https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js');
+        appendJS('https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v3.0');
     </script>
 
     @*weiting beging*@

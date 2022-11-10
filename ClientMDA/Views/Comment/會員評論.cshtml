@@ -165,14 +165,14 @@
         //})
     </script>
     <script>
-            window.onload=function () {
+            @*window.onload=function () {
                 if ('@a' == "") {
                     document.querySelector("#btnReport").addEventListener('click', () => {
                         @{Accessor.HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, "~/Comment/會員評論/1");}
                         window.location = '@Url.Content("~/member/login")'
                     })
                 }
-            }
+            }*@
     </script>
 
     @*weiting beging*@

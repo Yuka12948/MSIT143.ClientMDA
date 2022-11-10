@@ -102,13 +102,13 @@
                             }
                             else
                             {
-                                string img = "noPerson.jpg";
+                                string img = "~/images/Member/noPerson.jpg";
                                 string title = "簡易會員";
-                                if (!string.IsNullOrEmpty(mem.會員照片image)) { img = mem.會員照片image; }
+                                if (!string.IsNullOrEmpty(mem.會員照片image)) { img = "https://localhost:44381/images/Member/"+@mem.會員照片image; }
                                 if (!string.IsNullOrEmpty(mem.暱稱nickName)) { title = mem.暱稱nickName; }
                                 <div class="dropdown">
                                     <a href="~/Member/MemberMain" class="dropbtn">
-                                        <img class="memImg" src="~/images/Member/@img" title="@title">
+                                        <img class="memImg" src="@img" title="@title">
                                     </a>
                                     <div class="dropdown-content">
                                         <a asp-area="" asp-controller="Member" asp-action="MemberMain">會員管理</a>
