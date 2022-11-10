@@ -91,7 +91,7 @@
                             for (int i = 0; i < Model.commentCount; i++)
                             {
                                 cCount++;
-                                <div><a style="color:black" href="#comment_@cCount">#@cCount @Model.commentList</a></div> //抓不到評論標題
+                                <div><a style="color:black" href="#comment_@cCount">#@cCount @Model.commentList[i]</a></div>
                             }
                         }
                         <!--modal content end-->
@@ -117,10 +117,10 @@
                         <!--modal content start-->
                         @{
                             var fCount = 0;
-                            for (int i = 0; i < Model.memFollowIdList.Count; i++)
+                            for (int i = 0; i < Model.memberfollow; i++)
                             {
                                 fCount++;
-                                <div><a style="color:black" href="Comment/會員評論/@Model.memFollowIdList ">#@fCount @Model.memFollowList</a></div> //抓不到評論標題
+                                <div><a style="color:black" href="@Model.memFollowIdList[i]">#@fCount @Model.memFollowList[i]</a></div>
                             }
                         }
                         @*<a href="@Url.Action("電影評論", "Comment", new { id = Model.評論編號commentId })"><span class="see-more">@Model.評論標題commentTitle </span></a>*@

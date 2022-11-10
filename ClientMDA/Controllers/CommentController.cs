@@ -76,10 +76,10 @@ namespace ClientMDA.Controllers
                 會員照片image = m.會員照片image,
                 建立時間createdTime = m.建立時間createdTime,
                 commentCount = m.電影評論movieComments.Where(c => c.會員編號memberId == id).Count(),
+                commentList = m.電影評論movieComments.Where(c => c.會員編號memberId == id).Select(c => c.評論標題commentTitle).ToList(),
                 memberfollow = _MDAcontext.我的追蹤清單myFollowLists.Where(f => f.對象targetId == 1 && f.追讚倒編號actionTypeId == 0 && f.連接編號connectId == id).Count(),
-                commentList = m.電影評論movieComments.Where(c => c.會員編號memberId == id).Select(c=>c.評論標題commentTitle).ToList(),
-                memFollowList = m.我的追蹤清單myFollowLists.Where(f => f.對象targetId == 1 && f.追讚倒編號actionTypeId == 0 && f.連接編號connectId == id).Select(f=>f.會員編號member.暱稱nickName).ToList(),
-                memFollowIdList = m.我的追蹤清單myFollowLists.Where(f => f.對象targetId == 1 && f.追讚倒編號actionTypeId == 0 && f.連接編號connectId == id).Select(f => f.會員編號memberId).ToList(),
+                memFollowList = _MDAcontext.我的追蹤清單myFollowLists.Where(f => f.對象targetId == 1 && f.追讚倒編號actionTypeId == 0 && f.連接編號connectId == id).Select(f=>f.會員編號member.暱稱nickName).ToList(),
+                memFollowIdList = _MDAcontext.我的追蹤清單myFollowLists.Where(f => f.對象targetId == 1 && f.追讚倒編號actionTypeId == 0 && f.連接編號connectId == id).Select(f => f.會員編號memberId).ToList(),
             }).FirstOrDefault();
             return View(datas);
         }

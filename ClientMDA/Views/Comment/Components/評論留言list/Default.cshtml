@@ -70,7 +70,7 @@
                         if (mem != null)
                         {
 
-                            <a class="report" href="#" type="button" id="btnReport" data-toggle="modal" data-target="#floorReportModal">檢舉</a>
+                            <a class="report" href="#" type="button" name="@Model[i].樓數編號floorId/@NickName" id="btnReport" data-toggle="modal" data-target="#floorReportModal">檢舉</a>
                         }
                         else
                         {
@@ -99,10 +99,10 @@
                                             <input type="hidden" name="會員編號memberId" value="@mem.會員編號memberId" />
                                             <input type="hidden" name="對象targetId" value="0" />
                                             <input type="hidden" name="追讚倒編號actionTypeId" value="3" />
-                                            <input type="hidden" name="連接編號connectId" value="@Model[i].樓數編號floorId" /> @*只抓到1樓*@
+                                            <input type="hidden" name="連接編號connectId" class="連接編號connectId" />
                                             <input type="hidden" name="評論編號commentId" value="@Model[i].評論編號commentId" /> 
                                             <div><label style="width:80px">檢舉人:</label><input style="width:300px" type="text" readonly value="@mem.暱稱nickName" /></div>
-                                            <div><label style="width:80px">檢舉對象:</label><input style="width:300px" type="text" readonly value="@NickName" /></div> @*只抓到1樓*@
+                                            <div><label style="width:80px">檢舉對象:</label><input style="width:300px" type="text" readonly class="NickName" /></div>
                                             <div><label style="width:80px;vertical-align:top">檢舉理由:</label><textarea style="width:300px" cols="50" name="檢舉理由ReportReason"></textarea></div>
                                             <!--modal content end-->
                                         </div>
@@ -169,4 +169,23 @@
     <!-- #endregion 留言檢舉 -->
 }
 
+
+
+<script>
+        let btnclick = document.getElementsByClassName("report")
+        for (let btn of btnclick) {
+
+            btn.addEventListener("click", function () {
+                let cId = btn.name;
+                let connectId = document.querySelector(".連接編號connectId");
+                let NickName = document.querySelector(".NickName")
+                connectId.value = cId.split("/")[0];
+                NickName.value = cId.split("/")[1];
+                console.log(NickName.value);
+                console.log(cId);
+                console.log(connectId.value);
+                
+            })
+        }
+</script>
 
