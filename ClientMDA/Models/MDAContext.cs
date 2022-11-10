@@ -82,7 +82,7 @@ namespace ClientMDA.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=MDA;Integrated Security=True");
             }
         }
@@ -110,9 +110,7 @@ namespace ClientMDA.Models
 
                 entity.ToTable("使用優惠明細UsingCouponLists");
 
-                entity.Property(e => e.使用優惠明細編號usingCouponListId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("使用優惠明細編號UsingCouponList_ID");
+                entity.Property(e => e.使用優惠明細編號usingCouponListId).HasColumnName("使用優惠明細編號UsingCouponList_ID");
 
                 entity.Property(e => e.優惠明細編號couponListId).HasColumnName("優惠明細編號CouponList_ID");
 

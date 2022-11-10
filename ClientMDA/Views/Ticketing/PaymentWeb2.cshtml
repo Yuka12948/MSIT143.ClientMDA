@@ -378,7 +378,7 @@
                         <input type="hidden" name="SeatInfo" id="SeatInfo" value="@Model.SeatInfo" />
                         <input type="hidden" name="TicketInfo" id="TicketInfo" value="@Model.TicketInfo" />
                         <button class="w-75 btn btn-primary btn-lg credit" type="submit">確認付款</button>
-                        <button class="w-75 btn btn-primary btn-lg bi-paypal paypal" type="button">PAYPAL</button>
+                        <button class="w-75 btn btn-primary btn-lg bi-paypal paypal" type="button" id="paypalbtn">PAYPAL</button>
                         <button class="w-75 btn btn-primary btn-lg opayment" type="button" id="opayment">前往歐付寶頁面</button>
                         <button class="ml-3 btn btn-dark btn-lg credit" type="button" id="Demo">Demo</button>
                     </form>
@@ -501,6 +501,11 @@
             let checkemail = email.value
             let url = "/Ticketing/sendmail" + `?email=${checkemail}`;
             CallAjax(url);
+        })
+
+        $('#paypalbtn').click(() => {
+            event.preventDefault();
+            form.submit();
         })
 
         $('#modalOK').click(() => {
