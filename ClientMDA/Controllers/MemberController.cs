@@ -134,6 +134,9 @@ namespace ClientMDA.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Remove(CDictionary.SK_LOGINED_USER);
+            HttpContext.Session.Remove(CDictionary.SK_USER_PHONE);
+            HttpContext.Session.Remove(CDictionary.SK_FORGETPASSWORD);
+            HttpContext.Session.Remove(CDictionary.SK登後要前往的頁面);
             return View();
         }
 
@@ -242,8 +245,8 @@ namespace ClientMDA.Controllers
                               $"<hr/>" +
                               $"<p>當前時間:{DateTime.Now:yyyy-MM-dd HH:mm:ss}</p>";
 
-            message.From.Add(new MailboxAddress("MDA官網", "jo3wait@outlook.com"));
-            message.To.Add(new MailboxAddress("親愛的顧客", "jo3wait@outlook.com"));//email
+            message.From.Add(new MailboxAddress("MDA官網", "ilovemdaofficial@gmail.com"));
+            message.To.Add(new MailboxAddress("親愛的顧客", "ilovemdaofficial@gmail.com"));//email
             message.Subject = "MDA重設密碼驗證信";
             message.Body = builder.ToMessageBody();
 
@@ -798,19 +801,28 @@ namespace ClientMDA.Controllers
 
             return RedirectToAction("電影評論", "Comment", new { id = vm.CommentId });
         }
-        public IActionResult WriteComment()
+        public IActionResult WriteComment(int? id)
         {
             if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)
                 return RedirectToAction("Login");
             else
             {
-                var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
-                會員member mem = JsonSerializer.Deserialize<會員member>(a);
-                if (mem.正式會員formal == false)
+                if (id != null)
                 {
-                    return RedirectToAction("NotFormal");
+                    CWriteCommentViewModel vm = new CWriteCommentViewModel();
+                    vm.movieName = _MDAcontext.電影movies.Where(m => m.電影編號movieId == id).Select(m => m.中文標題titleCht).FirstOrDefault();
+                    return View(vm);
                 }
-                return View();
+                else
+                {
+                    var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
+                    會員member mem = JsonSerializer.Deserialize<會員member>(a);
+                    if (mem.正式會員formal == false)
+                    {
+                        return RedirectToAction("NotFormal");
+                    }
+                    return View();
+                }
             }
         }
         [HttpPost]
