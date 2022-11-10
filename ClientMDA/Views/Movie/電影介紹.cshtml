@@ -233,7 +233,7 @@
                 <div class="col-lg-8 col-md-8">
 
                     @*@await Component.InvokeAsync("演員list", new { id = Model.電影編號movieId })
-                    <br />*@
+        <br />*@
 
                     <!-- #region 評論 -->
                     <!-- 你的評論 -->
@@ -246,49 +246,66 @@
                                 </div>
                                 @*<form action="#">*@
                                 @*<div class="row">*@
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                <input type="hidden" class="form-control" name="電影編號movieId" value="@Model.電影編號movieId" />
-                                @*會員編號評分評論標題評論內容發布內容*@
-                                @if (mem == null) /*非會員*/
-                                {
-                                    <input type="text" placeholder="Name" readonly="readonly" class="form-control" style="margin-bottom:10px;width:305px">
-                                    <input type="number" placeholder="評分" readonly="readonly" class="form-control" style="margin-bottom:10px;width:305px">
-                                    <input type="text" placeholder="Title" readonly="readonly" class="form-control" style="margin-bottom:10px;width:624px">
-                                }
-                                else /*會員*/
-                                {
-                                    <input type="hidden" class="form-control" name="會員編號memberId" value="@mem.會員編號memberId" required />
-                                    <input type="text" placeholder="Name" readonly="readonly" class="form-control" style="margin-bottom:10px;width:305px"
-                                           name="暱稱nickName" value="@mem.暱稱nickName" required />
-                                    <input type="number" placeholder="評分" class="form-control" style="margin-bottom:10px;width:305px"
-                                           min="1" max="5" id="" value="" name="rate" required>
-                                    <input type="text" placeholder="Title" class="form-control" style="margin-bottom:10px;width:624px"
-                                           id="" value="" name="comTitle" required>
-                                }
-                            </div>
-                            <div class="col-lg-12">
-                                @if (mem == null) /*非會員*/
-                                {
-                                    <textarea placeholder="Message" readonly="readonly" class="form-control" style="margin-bottom:10px;width:624px"></textarea>
-                                    @Html.ActionLink("登入評論", "checkLogin", new { page = "電影介紹", id = Model.電影編號movieId }, new { @class = "btn btn-info btn-sm", @style = "float:right;margin-right:-15px" })
-                                }
-                                else /*會員*/
-                                {
-                                    <textarea placeholder="Message" class="form-control" style="margin-bottom:10px;width:624px"
-                                              name="" value="" required></textarea>
-                                    <button type="submit" style="float:right;margin-right:-15px" class="btn btn-info btn-sm" id="save">送出</button>
-                                    <button type="button" style="float:right; margin-right:5px" class="btn btn-secondary btn-sm" id="demo">DEMO</button>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <input type="hidden" class="form-control" name="電影編號movieId" value="@Model.電影編號movieId" />
+                                    @*會員編號評分評論標題評論內容發布內容*@
+                                    @if (mem == null) /*非會員*/
+                                    {
+                                        <div class="d-flex flex-row">
+                                            <div>
+                                                <input type="text" placeholder="Name" readonly="readonly" class="form-control" style="margin-bottom:10px;width:308px">
+                                            </div>
+                                            <div class="ml-2">
+                                                <input type="number" placeholder="評分" readonly="readonly" class="form-control" style="margin-bottom:10px;width:308px">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <input type="text" placeholder="Title" readonly="readonly" class="form-control" style="margin-bottom:10px;width:624px">
+                                        </div>
+                                    }
+                                    else /*會員*/
+                                    {
+                                        <div class="d-flex flex-row">
+                                            <div>
+                                                <input type="hidden" class="form-control" name="會員編號memberId" value="@mem.會員編號memberId" required />
+                                                <input type="hidden" class="form-control" name="電影編號movieId" value="@Model.電影編號movieId" required />
+                                                <input type="text" placeholder="Name" readonly="readonly" class="form-control" style="margin-bottom:10px;width:308px"
+                                                       name="暱稱nickName" value="@mem.暱稱nickName"/>
+                                            </div>
+                                            <div class="ml-2">
+                                                <input type="number" placeholder="評分" class="form-control" style="margin-bottom:10px;width:308px"
+                                                       min="1" max="5" id="" value="" name="評分rate" required>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <input type="text" placeholder="Title" class="form-control" style="margin-bottom:10px;width:624px"
+                                                   id="" value="" name="評論標題commentTitle" required>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="col-lg-12">
+                                    @if (mem == null) /*非會員*/
+                                    {
+                                        <textarea placeholder="Message" readonly="readonly" class="form-control" style="margin-bottom:10px;width:624px"></textarea>
+                                        @Html.ActionLink("登入評論", "checkLogin", new { page = "電影介紹", id = Model.電影編號movieId }, new { @class = "btn btn-info btn-sm", @style = "float:right;margin-right:-15px" })
+                                    }
+                                    else /*會員*/
+                                    {
+                                        <textarea placeholder="Message" class="form-control" style="margin-bottom:10px;width:624px"
+                                                  name="評論內容comments" value="" required></textarea>
+                                        <button type="submit" style="float:right;margin-right:-15px" class="btn btn-info btn-sm" id="save">送出</button>
+                                        <button type="button" style="float:right; margin-right:5px" class="btn btn-secondary btn-sm" id="demo">DEMO</button>
 
-                                }
-                            </div>
+                                    }
+                                </div>
                                 @*</div>*@
                                 @*</form>*@
                             </div>
                             <!-- #endregion 你的評論 -->
                         </form>
                     </div>
-                    <br /><br />
+                    <br /><br /><br /><br />
                     <!-- 會員評論 -->
 
                     @await Component.InvokeAsync("電影評論list", new { id = Model.電影編號movieId })
@@ -365,5 +382,17 @@
     </section>
     <!-- #endregion 電影介紹 -->
     <!-- #region Js 樣式 -->
+@section Scripts{ 
+<script>
+    //短評DEMO
+
+    const demo = document.querySelector("#demo")
+    demo.addEventListener('click', () => {
+        document.querySelector('[name="評論標題commentTitle"]').value = "終局之戰後的漫威電影"
+        document.querySelector('[name="評分rate"]').value = 4
+        document.querySelector('[name="評論內容comments"]').value = "復仇者聯盟：無限之戰+終局之戰這兩部電影應該算是漫威系列電影的高峰，哥那時候也跟風去看了，但是啊! 看過那兩部大場面的漫威電影之後，突然對後面的系列電影都興趣缺缺，尤其最近有一部上氣不接下氣的，大家還會繼續看這系列的電影嗎？ "
+    })
+</script>
+}
     <!-- #endregion Js 樣式 -->
 @*</form>*@
