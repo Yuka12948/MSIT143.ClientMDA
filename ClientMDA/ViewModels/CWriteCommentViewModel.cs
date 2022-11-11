@@ -11,8 +11,10 @@ namespace ClientMDA.ViewModels
         public int MemberId { get; set; }
         public string nick { get; set; }
         public string comTitle { get; set; }
+        public int Comment { get; set; }
         public string movieName { get; set; }
         public string watchDate { get; set; }
+        public string commentDate { get; set; }
         public string way { get; set; }
         public decimal rate { get; set; }
         public decimal anti { get; set; }

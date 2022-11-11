@@ -111,6 +111,7 @@
                     <div class="selectDIV">
                         <div class="offcanvas-body">
                             <!-- #region 單選按鈕 -->
+                            <!-- #region 排行榜 -->
                             <div class="btn-group" role="group" aria-label="First group">
                                 <span class="category-title"> 排行榜</span>
                                 <input type="radio" class="btn-check" name="sltBtn1" id="sbtn1b1" autocomplete="off" checked>
@@ -125,7 +126,8 @@
                                 <input type="radio" class="btn-check" name="sltBtn1" id="sbtn1b4" autocomplete="off">
                                 <label class="btn btn-outline-rank" for="sbtn1b4">年榜</label>
                             </div><br /><br />
-
+                            <!-- #endregion 排行榜 -->
+                            <!-- #region 排序 -->
                             <div class="btn-group">
                                 <span class="category-title"> 排　序</span>
                                 <input type="radio" class="btn-check" name="sltBtn2" id="sbtn2b1" autocomplete="off" checked>
@@ -133,10 +135,11 @@
 
                                 <input type="radio" class="btn-check" name="sltBtn2" id="sbtn2b2" autocomplete="off">
                                 <label class="btn btn-outline-rank" for="sbtn2b2">依評分</label>
-
                             </div><br /><br />
+                            <!-- #endregion 排序 -->
                             <!-- #endregion 單選按鈕 -->
                             <!--  #region 複選按鈕 -->
+                            <!-- #region 地區 -->
                             <div class="btn-group">
                                 <span class="category-title"> 地　區</span>
                                 <input type="radio" class="btn-check btnCk1" name="sltBtn3" id="sbtn3b1" autocomplete="off" checked
@@ -173,7 +176,8 @@
                                 <input type="radio" class="btn-check btnCk1" name="sltBtn3" id="sbtn3b11" autocomplete="off">
                                 <label class="btn btn-outline-rank" for="sbtn3b11">其他</label>
                             </div><br /><br />
-
+                            <!-- #endregion 地區 -->
+                            <!-- #region 年份 -->
                             <div class="btn-group">
                                 <span class="category-title"> 年　份</span>
                                 <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b1" autocomplete="off" checked>
@@ -209,7 +213,8 @@
                                 <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b11" autocomplete="off">
                                 <label class="btn btn-outline-rank" for="sbtn4b11">更早</label>
                             </div><br /><br />
-
+                            <!-- #endregion 年份 -->
+                            <!-- #region 片種 -->
                             <div class="btn-group">
                                 <span class="category-title"> 片　種</span>
                                 <input type="radio" class="btn-check" name="sltBtn5" id="sbtn5b1" autocomplete="off" checked>
@@ -248,7 +253,7 @@
                                 <input type="radio" class="btn-check" name="sltBtn5" id="sbtn5b12" autocomplete="off">
                                 <label class="btn btn-outline-rank" for="sbtn5b12">其他</label>
                             </div><br /><br />
-
+                            <!-- #endregion 片種 -->
                             <!-- #endregion 複選按鈕 -->
                             <button id="save" class="btn btn-warning" style="float:right; margin-right:480px; height:30px;padding-top:3px">確認篩選</button>
                         </div>
@@ -266,6 +271,7 @@
                         <input class="btn btn-dark" type="submit" value="搜尋電影" />
                     }
                 </div>
+                <!-- 排行榜 header -->
                 <ul class="charts-list">
                     <li class="charts-list-row--header d-none d-md-flex">
                         <span class="charts-list-rank">排行</span>
@@ -314,25 +320,19 @@
                                             <div class="ipc-starbar__touch"></div>
                                             <div class="ipc-starbar__rating">
                                                 <button aria-label="Rate 1" class="ipc-starbar__rating__button" role="button" tabindex="0">
-                                                    <svg class="ipc-icon ipc-icon--star ipc-starbar__star ipc-starbar__star--active" height="24" id="iconContext-star" role="presentation" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72 3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z"></path>
-                                                    </svg>
-                                                </button><button aria-label="Rate 2" class="ipc-starbar__rating__button" role="button" tabindex="0">
-                                                    <svg class="ipc-icon ipc-icon--star ipc-starbar__star ipc-starbar__star--active" height="24" id="iconContext-star" role="presentation" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72 3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z"></path>
-                                                    </svg>
-                                                </button><button aria-label="Rate 3" class="ipc-starbar__rating__button" role="button" tabindex="0">
-                                                    <svg class="ipc-icon ipc-icon--star ipc-starbar__star ipc-starbar__star--active" height="24" id="iconContext-star" role="presentation" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72 3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z"></path>
-                                                    </svg>
-                                                </button><button aria-label="Rate 4" class="ipc-starbar__rating__button" role="button" tabindex="0">
-                                                    <svg class="ipc-icon ipc-icon--star ipc-starbar__star ipc-starbar__star--active" height="24" id="iconContext-star" role="presentation" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72 3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z"></path>
-                                                    </svg>
-                                                </button><button aria-label="Rate 5" class="ipc-starbar__rating__button" role="button" tabindex="0">
-                                                    <svg class="ipc-icon ipc-icon--star ipc-starbar__star ipc-starbar__star--active" height="24" id="iconContext-star" role="presentation" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72 3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z"></path>
-                                                    </svg>
+                                                    <i class="far fa-star" style="padding-right:5px;color:#ffc107;font-size:25px" aria-hidden="true"></i>
+                                                </button>
+                                                <button aria-label="Rate 2" class="ipc-starbar__rating__button" role="button" tabindex="0">
+                                                    <i class="far fa-star" style="padding-right: 5px; color: #ffc107; font-size: 25px" aria-hidden="true"></i>
+                                                </button>
+                                                <button aria-label="Rate 3" class="ipc-starbar__rating__button" role="button" tabindex="0">
+                                                    <i class="far fa-star" style="padding-right: 5px; color: #ffc107; font-size: 25px" aria-hidden="true"></i>
+                                                </button>
+                                                <button aria-label="Rate 4" class="ipc-starbar__rating__button" role="button" tabindex="0">
+                                                    <i class="far fa-star" style="padding-right: 5px; color: #ffc107; font-size: 25px" aria-hidden="true"></i>
+                                                </button>
+                                                <button aria-label="Rate 5" class="ipc-starbar__rating__button" role="button" tabindex="0">
+                                                    <i class="far fa-star" style="padding-right: 5px; color: #ffc107; font-size: 25px" aria-hidden="true"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -341,6 +341,7 @@
                                                 評分
                                             </div>
                                         </button>
+                                        @*@Html.ActionLink("撰寫評論", "checkLogin", new { page = "Rank", id = Model[i].電影編號movieId }, new { type = "button", @class = "report" })*@
                                         <a href="@Url.Action("WriteComment","member",new { id= @Html.ViewContext.RouteData.Values["id"]})"
                                            class="ipc-button ipc-button--single-padding ipc-button--center-align-content ipc-button--default-height ipc-button--core-accent1 ipc-button--theme-baseAlt ipc-rating-prompt__rate-button" role="button" tabindex="1" type="button">
                                             <div class="ipc-button__text">

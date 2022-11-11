@@ -187,8 +187,8 @@
                 <h5>關注評論</h5>
             </div>
         </div>
-        @if (mem == null) { }
-        else
+        @if (mem == null) { } //非會員
+        else //會員
         {
             <div class="col-lg-4 col-md-4 col-sm-4">
                 <div class="btn__all">
@@ -198,21 +198,21 @@
         }
     </div>
 
-    <!-- #region 關注評論 -->
-
-    @if (mem == null)
+    @if (mem == null) //非會員
     {
-        <a href="/Member/Login"><h4 style="text-align:center">快來登入看看你追蹤的最新評論!</h4></a>
+        <h4 style="text-align:center">@Html.ActionLink("快來登入看看你追蹤的最新評論!", "checkLogin", new { page = "評論首頁" })</h4>
+
         <br />
         <br />
     }
-    else
+    else //會員
     {
         <div class="card-columns">
 
-            @await Component.InvokeAsync("關注評論", new { datas = Model })
+            @await Component.InvokeAsync("關注評論", new { id = mem.會員編號memberId })
 
         </div>
+        <!-- #region 關注評論 -->
     }
 
     <!-- #endregion 關注評論 -->
