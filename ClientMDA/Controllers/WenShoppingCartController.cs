@@ -13,10 +13,8 @@ using Microsoft.AspNetCore.Http;
 using System.Text.Json;
 using MailKit.Net.Smtp;
 using MimeKit;
-//using Tesseract;
 using Microsoft.AspNetCore.Hosting;
 using System.Drawing;
-//using Magnum.FileSystem;
 using System.IO;
 
 namespace ClientMDA.Controllers
@@ -244,7 +242,7 @@ namespace ClientMDA.Controllers
             //=>內容
 
             message.From.Add(new MailboxAddress("M.D.A.購物商城", "rainbow_kapok@hotmail.com"));
-            message.To.Add(new MailboxAddress("Wennie", "ilovemdaofficial@gmail.com"));
+            message.To.Add(new MailboxAddress("親愛的顧客Wennie，你好", "ilovemdaofficialok@gmail.com"));
             //string orderid = "";
 
             //foreach (var item in CRList)
