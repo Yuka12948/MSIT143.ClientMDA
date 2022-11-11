@@ -258,5 +258,7 @@ namespace ClientMDA.ViewModels
         public List<CMovieImagesListViewModel> mPoster { get; set; }
         public int floorCount { get; set; }
         public string followMemName { get; set; }
+        public string followComTitle { get; set; }
+        
     }
 }

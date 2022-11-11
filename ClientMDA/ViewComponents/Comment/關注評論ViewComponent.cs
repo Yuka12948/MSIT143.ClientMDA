@@ -67,16 +67,15 @@ namespace ClientMDA.ViewConponents
                         評論編號commentId = c.評論編號commentId,
                         評論標題commentTitle = c.評論標題commentTitle,
                         評論內容comments = c.評論內容comments,
-                        cFloorList =
+                        mPoster = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == c.電影編號movieId).Select
+                        (i => new CMovieImagesListViewModel
+                        {
+                            movieIMDB = i.圖片編號image.圖片雲端imageImdb,
+                            movieImage = i.圖片編號image.圖片image,
+                        }
+                        ).ToList(),
                     })
                     .Take(3).ToList(),
-                    followComTitle = _MDAcontext.電影評論movieComments.Where(c => c.評論編號commentId == f.連接編號connectId).Select
-                (c => c.評論標題commentTitle).FirstOrDefault(),
-                    replies = _MDAcontext.回覆樓數floors
-                    .Where(c => c.評論編號commentId == f.連接編號connectId)
-                    .OrderByDescending(r => r.發佈時間floorTime)
-                    .Select(r => r.回覆內容floors)
-                    .Take(3).ToList()
                 }).ToList();
 
             return View(q);
