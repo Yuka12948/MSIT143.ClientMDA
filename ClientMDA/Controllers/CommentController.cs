@@ -19,7 +19,7 @@ namespace ClientMDA.Controllers
             _MDAcontext = MDAcontext;
         }
 
-        public IActionResult 評論首頁() //最新/熱門/關注評論
+        public IActionResult 評論首頁() //熱門vc/最新vc/關注評論vc
         {
             return View();
         }
@@ -62,11 +62,9 @@ namespace ClientMDA.Controllers
         }
 
 
-        public IActionResult 會員評論(int id) //會員評論時間軸
+        public IActionResult 會員評論(int id) //時間軸vc
         {
             CMemberCommentViewModel datas = null;
-            //var c = _MDAcontext.電影評論movieComments.Select(c => c);
-            //var a = _MDAcontext.我的追蹤清單myFollowLists.Where(f => f.對象targetId == 1 && f.追讚倒編號actionTypeId == 0 && f.連接編號connectId == id);
             datas = _MDAcontext.會員members.Where(m => m.會員編號memberId == id).Select
             (m => new CMemberCommentViewModel
             {
@@ -75,10 +73,15 @@ namespace ClientMDA.Controllers
                 暱稱nickName = m.暱稱nickName,
                 會員照片image = m.會員照片image,
                 建立時間createdTime = m.建立時間createdTime,
+                //會員 評論數
                 commentCount = m.電影評論movieComments.Where(c => c.會員編號memberId == id).Count(),
+                //會員 評論清單
                 commentList = m.電影評論movieComments.Where(c => c.會員編號memberId == id).Select(c => c.評論標題commentTitle).ToList(),
+                //會員 被追蹤數
                 memberfollow = _MDAcontext.我的追蹤清單myFollowLists.Where(f => f.對象targetId == 1 && f.追讚倒編號actionTypeId == 0 && f.連接編號connectId == id).Count(),
+                //會員 被追蹤會員(粉絲)清單
                 memFollowList = _MDAcontext.我的追蹤清單myFollowLists.Where(f => f.對象targetId == 1 && f.追讚倒編號actionTypeId == 0 && f.連接編號connectId == id).Select(f=>f.會員編號member.暱稱nickName).ToList(),
+                //會員 被追蹤會員(粉絲)編號
                 memFollowIdList = _MDAcontext.我的追蹤清單myFollowLists.Where(f => f.對象targetId == 1 && f.追讚倒編號actionTypeId == 0 && f.連接編號connectId == id).Select(f => f.會員編號memberId).ToList(),
             }).FirstOrDefault();
             return View(datas);

@@ -24,7 +24,7 @@ namespace ClientMDA.ViewConponents
         public async Task<IViewComponentResult> InvokeAsync(List<CCommentViewModel> datas,int? id)
         {
             var mPoster = _MDAcontext.評論圖片明細commentImagesLists.Select(i => i);
-            datas = _MDAcontext.電影評論movieComments.Where(c => c.會員編號memberId == id).OrderByDescending(c => c.會員編號memberId).Select
+            datas = _MDAcontext.電影評論movieComments.Where(c => c.會員編號memberId == id).OrderByDescending(c => c.發佈時間commentTime).Select
                     (c => new CCommentViewModel
                     {
                         comment = c,

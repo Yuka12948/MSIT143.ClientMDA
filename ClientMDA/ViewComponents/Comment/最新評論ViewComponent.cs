@@ -23,7 +23,6 @@ namespace ClientMDA.ViewConponents
         //用這個 async Task<IViewComponentResult> InvokeAsync
         public async Task<IViewComponentResult> InvokeAsync(List<CCommentViewModel> datas)
         {
-            var cPoster = _MDAcontext.評論圖片明細commentImagesLists.Select(i => i);
             datas = _MDAcontext.電影評論movieComments.Where(c => c.公開等級編號publicId != 2 || c.屏蔽invisible == 0) //2不公開 0正常
                                                      .OrderByDescending(c => c.發佈時間commentTime).Select //最新發佈
                     (c => new CCommentViewModel

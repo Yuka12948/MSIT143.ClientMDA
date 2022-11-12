@@ -253,9 +253,12 @@ namespace ClientMDA.ViewModels
         public int? 處理狀態status { get; set; }
         //public virtual ICollection<我的追蹤清單myFollowList> 我的追蹤清單myFollowLists { get; set; }
 
-
+        public List<CCommentViewModel> comments { get; set; }
         public List<CFloorViewModel> cFloorList { get; set; }
         public List<CMovieImagesListViewModel> mPoster { get; set; }
         public int floorCount { get; set; }
+        public string followMemName { get; set; }
+        public string followComTitle { get; set; }
+        
     }
 }

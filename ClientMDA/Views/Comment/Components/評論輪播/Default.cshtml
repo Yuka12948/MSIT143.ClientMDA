@@ -17,14 +17,18 @@
         var t = item.發佈時間commentTime;
         var BGsrc = "";
         var q = item.mPoster[0];
-        @if (item.mPoster.Count() <= 0) {
+        @if (item.mPoster.Count() <= 0) { //沒有海報
             BGsrc = "~/images/Movie/poster_none1.png";
         }
-        else if (item.mPoster.Count() > 0) 
+        else if (item.mPoster.Count() > 1) //兩張以上 >> 選第二張
         {
             BGsrc = "https://localhost:44381/images/MovieImage/" + @item.mPoster[1].movieImage;
         }
-        else
+        else if (item.mPoster.Count() > 0) //一張以上 >> 選第一張
+        {
+            BGsrc = "https://localhost:44381/images/MovieImage/" + @item.mPoster[1].movieImage;
+        }
+        else //萬不得已 >> 吃雲端圖片
         {
             BGsrc = @item.mPoster[0].movieIMDB;
         }

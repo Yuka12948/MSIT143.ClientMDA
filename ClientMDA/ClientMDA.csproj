@@ -5,6 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Movie\Components\電影排行新片\**" />
+    <Content Remove="Views\Movie\Components\電影排行新片\**" />
+    <EmbeddedResource Remove="Views\Movie\Components\電影排行新片\**" />
+    <None Remove="Views\Movie\Components\電影排行新片\**" />
+    <TypeScriptCompile Remove="Views\Movie\Components\電影排行新片\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="images\Comment\poster_none1.png" />
     <None Remove="images\Theater\common\caret-up.svg" />
     <None Remove="images\Theater\common\changepage-icon.svg" />
@@ -99,7 +107,6 @@
     <None Include="Views\Movie\Components\演員list\Default.cshtml" />
     <None Include="Views\Movie\Components\電影劇照牆list\Default.cshtml" />
     <None Include="Views\Movie\Components\電影排行\Default.cshtml" />
-    <None Include="Views\Movie\Components\電影排行新片\Default.cshtml" />
     <None Include="Views\Movie\Components\電影評論list\Default.cshtml" />
     <None Include="Views\Theater\Components\即將上映\Default.cshtml" />
     <None Include="Views\Theater\Components\快速訂票\Default.cshtml" />

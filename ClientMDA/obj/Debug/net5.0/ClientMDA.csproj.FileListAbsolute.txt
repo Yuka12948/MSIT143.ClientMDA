@@ -1729,11 +1729,9 @@ E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\WishList.cshtml.g.cs
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\WriteComment.cshtml.g.cs
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\Components\電影排行\Default.cshtml.g.cs
-E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\Components\電影排行新片\Default.cshtml.g.cs
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\Temp\排行首頁(No-vc).cshtml.g.cs
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\Temp\排行首頁(UI).cshtml.g.cs
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\Temp\電影劇照牆(UI).cshtml.g.cs
-E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\排行首頁.cshtml.g.cs
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\電影介紹.cshtml.g.cs
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\電影劇照牆.cshtml.g.cs
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
@@ -4041,6 +4039,7 @@ C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Vi
 C:\Users\jo3wait\Documents\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\WenWenMap.cshtml.g.cs
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\Rank.cshtml.g.cs
 C:\shared\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\WenWenMap.cshtml.g.cs
+<<<<<<< HEAD
 D:\新增資料夾 (2)\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\Rank.cshtml.g.cs
 C:\Users\yikis\OneDrive\文件\MSIT143.ClientMDA\ClientMDA\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\yikis\OneDrive\文件\MSIT143.ClientMDA\ClientMDA\bin\Debug\net5.0\appsettings.json
@@ -4311,3 +4310,9 @@ C:\Users\yikis\OneDrive\文件\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Clie
 C:\Users\yikis\OneDrive\文件\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\ref\ClientMDA.dll
 C:\Users\yikis\OneDrive\文件\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\ClientMDA.pdb
 C:\Users\yikis\OneDrive\文件\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\ClientMDA.genruntimeconfig.cache
+=======
+E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\Rank.cshtml.g.cs
+E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Ticketing\Components\ShowCoupon\Default.cshtml.g.cs
+E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\MyMap.cshtml.g.cs
+E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\WenShoppingCart\WenWenMap.cshtml.g.cs
+>>>>>>> feature/#Yuka-1110Home

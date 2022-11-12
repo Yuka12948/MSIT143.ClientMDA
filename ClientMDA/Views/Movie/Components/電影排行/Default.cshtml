@@ -30,12 +30,15 @@
         <!--#endregion 電影評分-->
 
         count++;
-        string urlpic = "";
-        if (Model[i].mImgFrList.Count() > 0)
+        string urlpic = "",urlIMDB ="";
+        if (Model[i].mPoster.Count() > 0) //localhost後台
         {
-            urlpic = Model[i].mImgFrList[0];
+            urlpic = "https://localhost:44381/images/MovieImage/" + Model[i].mPoster[0].movieImage;
         }
-
+        if (Model[i].mImgFrList.Count() > 0) //IMDB
+        {
+            urlIMDB = Model[i].mImgFrList[0];
+        }
         <li class="charts-list-row">
             <div class="divRow">
                 <span class="charts-list-rank">@count</span>@* //todo 電影編號*@
@@ -48,6 +51,12 @@
                                 <img title="@Html.DisplayFor(modelItem => Model[i].中文標題titleCht)"
                                      class="charts-list-cover" id="poster" alt=""
                                      src="@urlpic">
+                            }
+                            else if (@urlIMDB != "")
+                            {
+                                <img title="@Html.DisplayFor(modelItem => Model[i].中文標題titleCht)"
+                                     class="charts-list-cover" id="poster" alt=""
+                                     src="@urlIMDB">
                             }
                             else
                             {
