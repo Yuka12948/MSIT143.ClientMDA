@@ -109,6 +109,9 @@
         input, select, textarea { /*留言版型跑版*/
             max-width: none !important;
         }
+        .btn-warning { /*撰寫評論文字顏色*/
+            color: #212529 !important;
+        }
     </style>
     <link href="~/css/fontawesome-free-6.2.0-web/all.css" rel="stylesheet" />
     @*電影icon樣式*@
@@ -213,9 +216,11 @@
                             @if (mem == null) /*非會員*/
                             {
                                 @Html.ActionLink("訂票去", "快定頁面測試", "Theater", new { id = Model.電影編號movieId }, new { @class = "btn btn-info btn-sm", id = "ticketing", @style = "margin-right:10px" })
-                                @Html.ActionLink("加入片單", "checkLogin", new { id = Model.電影編號movieId }, new { @class = "btn btn-info btn-sm", id = "myList", @style = "margin-right:10px" })
-                                @Html.ActionLink("評分", "checkLogin", new { id = Model.電影編號movieId }, new { @class = "btn btn-warning btn-sm", id = "toRate", @style = "margin-right:10px" })
-                                @Html.ActionLink("撰寫評論", "checkLogin", new { page = "電影介紹", id = Model.電影編號movieId }, new { @class = "btn btn-warning btn-sm", id = "WriteComment" })
+                                <button class="btn btn-info btn-sm" id="myList" style="margin-right:10px">加入片單</button>
+                                @*@Html.ActionLink("加入片單", "checkLogin", new { id = Model.電影編號movieId }, new { @class = "btn btn-info btn-sm", id = "myList", @style = "margin-right:10px" })*@
+                                <button class="btn btn-warning btn-sm" id="toRate" style="margin-right:10px">評分</button>
+                                @*@Html.ActionLink("評分", "checkLogin", new { id = Model.電影編號movieId }, new { @class = "btn btn-warning btn-sm", id = "toRate", @style = "margin-right:10px" })*@
+                                @Html.ActionLink("撰寫評論", "checkLogin", new { page = "電影介紹", id = Model.電影編號movieId }, new { @class = "btn btn-warning btn-sm", id = "WriteComment"})
 
                             }
                             else /*會員*/

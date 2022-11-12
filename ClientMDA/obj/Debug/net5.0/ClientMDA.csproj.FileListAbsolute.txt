@@ -1729,7 +1729,6 @@ E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\WishList.cshtml.g.cs
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\WriteComment.cshtml.g.cs
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\Components\電影排行\Default.cshtml.g.cs
-E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\Components\電影排行新片\Default.cshtml.g.cs
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\Temp\排行首頁(No-vc).cshtml.g.cs
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\Temp\排行首頁(UI).cshtml.g.cs
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Movie\Temp\電影劇照牆(UI).cshtml.g.cs

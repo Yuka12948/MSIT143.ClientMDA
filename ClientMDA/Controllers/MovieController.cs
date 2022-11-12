@@ -23,7 +23,7 @@ namespace ClientMDA.Controllers
 
         public ActionResult Rank(CKeywordViewModel model,int? box ,int? year)
         {
-            box ??= 1;year ??= 1;//??= >> if null
+            box ??= 2;year ??= 2;//??= >> if null
             電影movie K = new();
             List<CMovieViewModel> datas = null;
             var mPoster = _MDAcontext.電影圖片movieIimagesLists.Select(i => i);
@@ -39,7 +39,13 @@ namespace ClientMDA.Controllers
                                     movie = m,
                                     mRateList = m.電影評論movieComments.Select(r => r.評分rate).ToList(),
                                     mImgFrList = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId)
-                                    .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
+                                    .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList(),
+                                    mPoster = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId).Select
+                                    (i => new CMovieImagesListViewModel
+                                    {
+                                        movieIMDB = i.圖片編號image.圖片雲端imageImdb,
+                                        movieImage = i.圖片編號image.圖片image,
+                                    }).ToList(),
                                 }).Take(50).ToList();
                     }
                     else//新片
@@ -50,7 +56,13 @@ namespace ClientMDA.Controllers
                                     movie = m,
                                     mRateList = m.電影評論movieComments.Select(r => r.評分rate).ToList(),
                                     mImgFrList = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId)
-                                    .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
+                                    .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList(),
+                                    mPoster = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId).Select
+                                    (i => new CMovieImagesListViewModel
+                                    {
+                                        movieIMDB = i.圖片編號image.圖片雲端imageImdb,
+                                        movieImage = i.圖片編號image.圖片image,
+                                    }).ToList(),
                                 }).Take(50).ToList();
                     }
                 }
@@ -64,7 +76,13 @@ namespace ClientMDA.Controllers
                                     movie = m,
                                     mRateList = m.電影評論movieComments.Select(r => r.評分rate).ToList(),
                                     mImgFrList = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId)
-                                    .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
+                                    .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList(),
+                                    mPoster = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId).Select
+                                    (i => new CMovieImagesListViewModel
+                                    {
+                                        movieIMDB = i.圖片編號image.圖片雲端imageImdb,
+                                        movieImage = i.圖片編號image.圖片image,
+                                    }).ToList(),
                                 }).Take(50).ToList();
                     }
                     else//新片
@@ -75,12 +93,17 @@ namespace ClientMDA.Controllers
                                     movie = m,
                                     mRateList = m.電影評論movieComments.Select(r => r.評分rate).ToList(),
                                     mImgFrList = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId)
-                                    .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
+                                    .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList(),
+                                    mPoster = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId).Select
+                                    (i => new CMovieImagesListViewModel
+                                    {
+                                        movieIMDB = i.圖片編號image.圖片雲端imageImdb,
+                                        movieImage = i.圖片編號image.圖片image,
+                                    }).ToList(),
                                 }).Take(50).ToList();
                     }
                 }
             }
-
             else
             {
                 datas = _MDAcontext.電影movies.Where(m => m.中文標題titleCht.Contains(model.txtKeyword) ||
@@ -90,37 +113,16 @@ namespace ClientMDA.Controllers
                              movie = m,
                              mRateList = m.電影評論movieComments.Select(r => r.評分rate).ToList(),
                              mImgFrList = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId)
-                             .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
+                             .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList(),
+                             mPoster = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId).Select
+                                    (i => new CMovieImagesListViewModel
+                                    {
+                                        movieIMDB = i.圖片編號image.圖片雲端imageImdb,
+                                        movieImage = i.圖片編號image.圖片image,
+                                    }).ToList(),
                          }).ToList();
             }
-                
-
             return View(datas);
-        }
-
-        public ActionResult 電影排行新片(CKeywordViewModel model) //電影排行新片
-        {
-            List<CMovieViewModel> datas = null;
-            var mPoster = _MDAcontext.電影圖片movieIimagesLists.Select(i => i);
-            if (string.IsNullOrEmpty(model.txtKeyword))
-                datas = _MDAcontext.電影movies.OrderByDescending(m => m.上映日期releaseDate).Select
-                        (m => new CMovieViewModel
-                        {
-                            movie = m,
-                            mImgFrList = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId)
-                            .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
-                        }).Take(50).ToList();
-            else
-                datas = _MDAcontext.電影movies.Where(m => m.中文標題titleCht.Contains(model.txtKeyword) ||
-                                                          m.英文標題titleEng.Contains(model.txtKeyword)).Select
-                        (m => new CMovieViewModel
-                        {
-                            movie = m,
-                            mImgFrList = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == m.電影編號movieId)
-                            .Select(c => c.圖片編號image.圖片雲端imageImdb).ToList()
-                        }).ToList();
-
-            return ViewComponent("電影排行新片", datas);
         }
 
         public IActionResult 電影介紹(int? id) //電影資訊/電影評論
@@ -187,7 +189,7 @@ namespace ClientMDA.Controllers
         }
 
         [HttpPost]
-        public IActionResult 電影介紹(CCommentViewModel cVM) //回傳電影評論
+        public IActionResult 電影介紹(CCommentViewModel cVM) //回傳電影簡易評論
         {
             var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
             會員member mem = JsonSerializer.Deserialize<會員member>(a);
@@ -209,8 +211,6 @@ namespace ClientMDA.Controllers
             return RedirectToAction("電影介紹", "Movie", new { id = cVM.電影編號movieId });
         }
 
-
-
         public IActionResult 電影劇照牆(int? id)
         {
             CMovieViewModel datas = null;
@@ -222,22 +222,17 @@ namespace ClientMDA.Controllers
             return View(datas);
         }
 
-        public IActionResult 電影劇照()
-        {
-            return View();
-        }
-
-        public IActionResult checkLogin(string page, int? id)
+        public IActionResult checkLogin(string page, int? id) //登入後跳轉的頁面
         {
             HttpContext.Session.SetString(CDictionary.SK登後要前往的頁面, $"~/Movie/{page}/{id}");
             return Redirect("~/Member/Login");
         }
 
-        public FileResult ShowPhoto(int id)
+        public FileResult ShowPhoto(int id) //電影分級img
         {
             電影分級movieRating rating = _MDAcontext.電影分級movieRatings.Find(id);
             byte[] context = rating.分級圖片ratingImage;
             return File(context, "image/jpeg");
-        } //電影分級img
+        } 
     }
 }

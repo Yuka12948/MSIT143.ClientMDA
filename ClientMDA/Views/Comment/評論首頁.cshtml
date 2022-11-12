@@ -212,7 +212,7 @@
     {
         <div class="card-columns">
 
-            @await Component.InvokeAsync("關注評論", new { id = mem.會員編號memberId })
+            @await Component.InvokeAsync("關注評論", new { datas = Model @*id = mem.會員編號memberId*@ })
 
         </div>
         <!-- #region 關注評論 -->
