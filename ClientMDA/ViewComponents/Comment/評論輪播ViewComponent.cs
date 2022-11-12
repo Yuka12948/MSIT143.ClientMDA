@@ -19,10 +19,10 @@ namespace ClientMDA.ViewConponents
             _MDAcontext.評論圖片明細commentImagesLists.ToList();
             _MDAcontext.評論圖片總表commentImages.ToList();
         }
+
         //用這個 async Task<IViewComponentResult> InvokeAsync
         public async Task<IViewComponentResult> InvokeAsync(List<CCommentViewModel> datas)
         {
-            var mPoster = _MDAcontext.評論圖片明細commentImagesLists.Select(i => i);
             datas = _MDAcontext.電影評論movieComments.Where(c => c.公開等級編號publicId != 2 || c.屏蔽invisible == 0) //2不公開 0正常
                                                      .OrderByDescending(c => c.回覆樓數floors.Count).Select //最多回覆
                     (c => new CCommentViewModel

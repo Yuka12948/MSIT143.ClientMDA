@@ -21,12 +21,12 @@
     {
         for (var i = 0; i < Model.Count; i++)
         {
-            //string urlpic = "";
-            //if (Model[i].cImgFrList[0]==null)
+            string urlpic = "";
+            if (Model[i].cImgFrList[0] == null)
             {
-                //    //urlpic = Model[i].cImgFrList[0];
-                //    urlpic = "https://localhost:44381/images/Comment/" + Model[i].cImgFrList[0];
-                //}
+                //urlpic = Model[i].cImgFrList[0];
+                urlpic = "https://localhost:44381/images/Comment/" + Model[i].cImgFrList[0];
+            }
             <div class="card mb-3" style="max-width: 540px;">
                 @*overflow:hidden*@
 
