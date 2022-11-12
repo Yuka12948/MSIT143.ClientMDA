@@ -2938,7 +2938,7 @@
                 if ($('#會員編號Member_IDbook').val() != 0) {
                     if (rankbook[i].textContent != '✓') {
 
-                        const p = ranktitle[i].getAttribute('data');
+                        @*const p = ranktitle[i].getAttribute('data');
                         memberid = $('#會員編號Member_ID').val();
                         movielistid=$('#片單總表編號MovieList_ID').val();
                         movieid = p;
@@ -2956,12 +2956,12 @@
                             movieid.value = ""
                             mylistshow()
                             a.preventDefault();
-                        }
+                        }*@
 
-                        //const p = ranktitle[i].getAttribute('data')
-                        //document.getElementById('電影編號Movie_IDbook').value = p;
-                        //$("#mylist").remove();
-                        //$('#form3').submit()
+                        const p = ranktitle[i].getAttribute('data')
+                        document.getElementById('電影編號Movie_IDbook').value = p;
+                        $("#mylist").remove();
+                        $('#form3').submit()
                     }
                     else {
                         @*const j = ranktitle[i].getAttribute('data-list')
