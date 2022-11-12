@@ -130,10 +130,10 @@
                             <!-- #region 排序 -->
                             <div class="btn-group">
                                 <span class="category-title"> 排　序</span>
-                                <input type="radio" class="btn-check" name="sltBtn2" id="sbtn2b1" autocomplete="off" checked>
+                                <input type="radio" class="btn-check" name="sltBtn2" id="sbtn2b1" autocomplete="off">
                                 <label class="btn btn-outline-rank" for="sbtn2b1">依票房</label>
 
-                                <input type="radio" class="btn-check" name="sltBtn2" id="sbtn2b2" autocomplete="off">
+                                <input type="radio" class="btn-check" name="sltBtn2" id="sbtn2b2" autocomplete="off" checked>
                                 <label class="btn btn-outline-rank" for="sbtn2b2">依評分</label>
                             </div><br /><br />
                             <!-- #endregion 排序 -->
@@ -180,10 +180,10 @@
                             <!-- #region 年份 -->
                             <div class="btn-group">
                                 <span class="category-title"> 年　份</span>
-                                <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b1" autocomplete="off" checked>
+                                <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b1" autocomplete="off">
                                 <label class="btn btn-outline-rank" for="sbtn4b1">全部</label>
 
-                                <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b2" autocomplete="off">
+                                <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b2" autocomplete="off" checked>
                                 <label class="btn btn-outline-rank" for="sbtn4b2">新片</label>
 
                                 <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b3" autocomplete="off">
@@ -255,7 +255,7 @@
                             </div><br /><br />
                             <!-- #endregion 片種 -->
                             <!-- #endregion 複選按鈕 -->
-                            <button id="save" class="btn btn-warning" style="float:right; margin-right:480px; height:30px;padding-top:3px">確認篩選</button>
+                            <button id="save" class="btn btn-warning" style="float:right; margin-right:370px; height:30px;padding-top:3px">確認篩選</button>
                         </div>
                     </div>
                 </div>
@@ -267,9 +267,10 @@
                 <div class="u-datepicker-box">
                     @using (Html.BeginForm())
                     {
-                        @Html.TextBox("txtKeyword", "", new { @class = "datepicker" })
-                        <input class="btn btn-dark" type="submit" value="搜尋電影" />
+                        @Html.TextBox("txtKeyword", "", new { @class = "datepicker"})
+                        <input class="btn btn-dark" type="submit"  value="搜尋電影" />
                     }
+                    <button type="button" style="float:right;" class="btn btn-secondary btn-sm" id="demo">DEMO</button>
                 </div>
                 <!-- 排行榜 header -->
                 <ul class="charts-list">
@@ -456,6 +457,14 @@
             let href = "@Url.Content("~/Movie/Rank")"+`?box=${sbtn2}&year=${sbtn4}`
             window.location.href = href
         })
+</script>
+<script>
+    //搜尋DEMO
+
+    const demo = document.querySelector("#demo")
+    demo.addEventListener('click', () => {
+        document.querySelector('[name="txtKeyword"]').value = "復仇者聯盟"
+    })
 </script>
 }
 

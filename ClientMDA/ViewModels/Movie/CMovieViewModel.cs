@@ -318,7 +318,7 @@ namespace ClientMDA.ViewModels
         public List<CMovieDirectorViewModel> mDirectorList { get; set; }
         public List<CMovieActorViewModel> mActorList { get; set; }
         public List<CMovieTypeViewModel> mTypeList { get; set; }
-
+        public List<CMovieImagesListViewModel> mPoster { get; set; } 
         public List<decimal?> mRateList { get; set; }
     }
 }

@@ -132,13 +132,17 @@
                 <div class="row">
                     <div class="col-lg-4">
 
-                        @{
-                            //電影分級圖片
+                        @{                        
                             string urlpic = "";
-                            urlpic = Model.mImgFrList[0];
+
+                            //電影分級圖片
+
+                            urlpic = "https://localhost:44381/images/MovieImage/" + @Model.mPoster[0].movieImage; /*Model.mImgFrList[0] //IMDB路徑*/
+
+
                         }
 
-                        <!-- 電影劇照牆  -->
+                        <!-- 電影劇照牆  --> 
                         <a href="@Url.Action("電影劇照牆", "Movie", new { id = Model.電影編號movieId })">
 
                             <!-- 電影海報  -->
@@ -388,9 +392,9 @@
 
     const demo = document.querySelector("#demo")
     demo.addEventListener('click', () => {
-        document.querySelector('[name="評論標題commentTitle"]').value = "終局之戰後的漫威電影"
-        document.querySelector('[name="評分rate"]').value = 4
-        document.querySelector('[name="評論內容comments"]').value = "復仇者聯盟：無限之戰+終局之戰這兩部電影應該算是漫威系列電影的高峰，哥那時候也跟風去看了，但是啊! 看過那兩部大場面的漫威電影之後，突然對後面的系列電影都興趣缺缺，尤其最近有一部上氣不接下氣的，大家還會繼續看這系列的電影嗎？ "
+        document.querySelector('[name="評論標題commentTitle"]').value = "不好看"
+        document.querySelector('[name="評分rate"]').value = 2
+        document.querySelector('[name="評論內容comments"]').value = "喜歡的角色都沒了，好傷心"
     })
 </script>
 }

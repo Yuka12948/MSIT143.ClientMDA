@@ -109,9 +109,12 @@
                             {
                                 <span> - @Html.DisplayFor(modelItem => Model.觀影日期viewingTime) 於<span style="color:white"> @Model.觀影方式source</span> 觀看</span>
                             }
-                            else
+                            else if (Model.觀影日期viewingTime != null)
                             {
                                 <span> - @Html.DisplayFor(modelItem => Model.觀影日期viewingTime) 觀看</span>
+                            }
+                            else
+                            {
                             }
                         </span>
                         <!-- 會員評分 -->
@@ -338,7 +341,7 @@
         //留言DEMO
         const demo = document.querySelector("#demo")
         demo.addEventListener('click', () => {
-            document.querySelector('[name="回覆內容floors"]').value = "巨石的片真的幾乎都是看的當下覺得還不錯，走出戲院會突然有種我剛剛到底看了什麼，但又不會覺得浪費錢的奇妙感覺。"
+            document.querySelector('[name="回覆內容floors"]').value = "真的，謝謝漫威~"
         })
     </script>
 

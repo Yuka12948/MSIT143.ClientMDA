@@ -135,6 +135,13 @@ namespace ClientMDA.Controllers
                 分級圖片ratingImage = m.電影分級編號rating.分級圖片ratingImage,
                 系列名稱seriesName = m.系列編號series.系列名稱seriesName,
                 mRateList = m.電影評論movieComments.Select(i => i.評分rate).ToList(),
+                mPoster = m.電影圖片movieIimagesLists.Select(
+                    p => new CMovieImagesListViewModel                  
+                    {
+                        ImagesList = p,
+                        movieImage = p.圖片編號image.圖片image,
+                    }
+                    ).ToList(),
                     //導演List
                     mDirectorList = _MDAcontext.電影導演movieDirectors.Where(i => i.電影編號movieId == m.電影編號movieId).Select
                 (c => new CMovieDirectorViewModel
