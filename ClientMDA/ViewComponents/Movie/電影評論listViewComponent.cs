@@ -32,7 +32,7 @@ namespace ClientMDA.ViewConponents
                         會員照片image = c.會員編號member.會員照片image,
                         cImgFrList = _MDAcontext.評論圖片明細commentImagesLists.Where(i => i.評論編號commentId == c.評論編號commentId)
                             .Select(c => c.評論圖庫編號commentImage.圖片image).ToList()
-                    }).Take(5).ToList();
+                    }).Take(10).ToList();
 
             return View(datas);
         }

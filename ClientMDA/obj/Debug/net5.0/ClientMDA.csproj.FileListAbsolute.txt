@@ -185,7 +185,6 @@ E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\Login2ForgetPwd.cshtml.g.cs
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\Login2ResetPwd.cshtml.g.cs
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\Logout.cshtml.g.cs
-E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\MemberBonusList.cshtml.g.cs
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\MemberDiscount.cshtml.g.cs
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\MemberEdit.cshtml.g.cs
 E:\C#\03_iSpan資策會\MSIT_143_智慧應用微軟C#工程師就業養成班\06.專題_GitHub\MSIT143.ClientMDA\ClientMDA\obj\Debug\net5.0\Razor\Views\Member\MemberMain.cshtml.g.cs

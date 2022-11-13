@@ -17,7 +17,8 @@
         var t = item.發佈時間commentTime;
         var BGsrc = "";
         var q = item.mPoster[0];
-        @if (item.mPoster.Count() <= 0) { //沒有海報
+        @if (item.mPoster.Count() <= 0)
+        { //沒有海報
             BGsrc = "~/images/Movie/poster_none1.png";
         }
         else if (item.mPoster.Count() > 1) //兩張以上 >> 選第二張
@@ -57,11 +58,9 @@
                         <p class="mComment-text">
                             @item.評論內容comments
                         </p>
-
-                        <a href="@Url.Action("電影評論", "Comment", new { id = item.評論編號commentId})" role="button" class="btn btn-comment">
-                            @*  href="#" *@
-                            <span>看評論</span>
-                        </a>
+                        @Html.ActionLink("繼續閱讀", "電影評論", "Comment", new { id = item.評論編號commentId }, new { @class = "btn btn-info btn-sm" })
+                        @*<a href="@Url.Action("電影評論", "Comment", new { id = item.評論編號commentId})" class="btn btn-info btn-sm">
+                        <span>繼續閱讀</span></a>*@
                     </div>
                 </div>
             </div>
