@@ -102,7 +102,7 @@
                             {
                                 string img = "~/images/Member/noPerson.jpg";
                                 string title = "簡易會員";
-                                if (!string.IsNullOrEmpty(mem.會員照片image)) { img = "https://localhost:44381/images/Member/" + @mem.會員照片image; }
+                                if (!string.IsNullOrEmpty(mem.會員照片image)) { img = "http://192.168.36.4:44383/images/Member/" + @mem.會員照片image; }
                                 if (!string.IsNullOrEmpty(mem.暱稱nickName)) { title = mem.暱稱nickName; }
                                 <div class="dropdown">
                                     <a href="~/Member/MemberMain" class="dropbtn">

@@ -52,7 +52,12 @@
     @{
         if (mem.暱稱nickName != null)
         {
-            <span class="member_id_name">@mem.暱稱nickName</span>
+            <span class="member_id_name"><a style="color: #E4B71C" href="../Comment/會員評論/@mem.會員編號memberId">@mem.暱稱nickName</a></span>
+        }
+        else
+        {
+            <span class="member_id_name"><a style="color: #E4B71C" href="../Comment/會員評論/@mem.會員編號memberId">簡易會員</a></span>
+
         }
     }
 </div>

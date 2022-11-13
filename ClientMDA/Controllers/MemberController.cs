@@ -245,8 +245,8 @@ namespace ClientMDA.Controllers
                               $"<hr/>" +
                               $"<p>當前時間:{DateTime.Now:yyyy-MM-dd HH:mm:ss}</p>";
 
-            message.From.Add(new MailboxAddress("MDA官網", "ilovemdaofficial@gmail.com"));
-            message.To.Add(new MailboxAddress("親愛的顧客", "ilovemdaofficial@gmail.com"));//email
+            message.From.Add(new MailboxAddress("MDA官網", "jo3wait@outlook.com"));
+            message.To.Add(new MailboxAddress("親愛的顧客", "ilovemdaofficialok@gmail.com"));//email
             message.Subject = "MDA重設密碼驗證信";
             message.Body = builder.ToMessageBody();
 
@@ -420,13 +420,7 @@ namespace ClientMDA.Controllers
             return isPsw;
         }
 
-        public IActionResult MemberBonusList()
-        {
-            var a = HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER);
-            if (HttpContext.Session.GetString(CDictionary.SK_LOGINED_USER) == null)
-                return RedirectToAction("Login");
-            return View();
-        }
+       
 
         #region coupon 
         public IActionResult MemberDiscount(string msg)
