@@ -22,7 +22,7 @@
 
     <link href="~/css/Member/WatchList.css" rel="stylesheet" />
     <link href="~/css/Member/MemberMain.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />*@
 
 
     <style>
@@ -94,7 +94,7 @@
                     我的所有片單
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-link add" data-toggle="modal" data-target="#AddModalCenter">
-                        <i class="fas fa-plus-square"></i>
+                        <i class="fa-solid fa-plus"></i>
                     </button>
                 </h2>
                 <!-- Modal -->
@@ -138,7 +138,7 @@
                                     <input type="text" class="form-control" id="inputListName" name="listName"
                                            placeholder="我的片單">
                                     <button type="button" id="btnAddList" class="site-btn btn-sm mt-3">
-                                        <i class="fa fa-plus">新增</i>
+                                        <i class="fa-solid fa-plus"></i> 新增
                                     </button>
                                     <small id="duplicate" style="color:darkgray"></small>
                                     <!--modal content end-->
@@ -163,7 +163,7 @@
                                             @list.listName
                                             <input type="hidden" name="listId" value="@list.listId" />
                                             <button class="btn btn-link btn-sm edit" data-toggle="modal" data-target="#@modalName">
-                                                <i class="fa fa-pencil-square-o"></i>
+                                                <i class="fa-solid fa-pen-to-square"></i>
                                             </button>
                                         </p>
                                     </div>
@@ -232,7 +232,7 @@
                                             <input type="text" list="typelist" class="form-control inputMovie" id="inputMovie" name="movieName" placeholder="電影名稱">
                                             <datalist id="typelist" class="typelist"></datalist>
                                             <button type="button" id="btnAddMovie" class="site-btn btn-sm mt-3 btnAddMovie">
-                                                <i class="fa fa-plus">新增</i>
+                                                <i class="fa-solid fa-plus"></i> 新增
                                             </button>
                                             <small id="duplicateMovie" class="duplicateMovie" style="color:darkgray"></small>
                                             <!--modal content end-->
@@ -257,7 +257,7 @@
     </div>
 </div>
 @section Scripts{
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    @*<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>*@
 
     <script>
         const inputName = document.querySelector("#inputListName")
