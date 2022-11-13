@@ -1,6 +1,6 @@
 ﻿@model List<ClientMDA.ViewModels.CMovieViewModel>
 @{
-    ViewData["Title"] = "排行首頁";
+    ViewData["Title"] = "排行榜";
 }
 
 @section Styles{
@@ -91,7 +91,8 @@
 <br />
 <span style="font-size:33px">@ViewData["Title"] </span><span style="font-size:25px"> TOP 50 Movies</span>
 <br />
-<span style="font-size:13px">排行榜計算說明：依據 MDA 全體會員有效評分總次數排序而成，並由系統自動定期更新。</span>
+<span style="font-size:13px">排行榜計算說明：依據 MDA 全體會員有效評分最高前50部電影排序而成，並由系統自動更新。</span>
+<!-- 排行榜計算說明：依據 MDA 全體會員有效評分總次數排序而成，並由系統自動定期更新。 -->
 <br />
 
 <body style="overflow: visible !important">
@@ -180,10 +181,10 @@
                             <!-- #region 年份 -->
                             <div class="btn-group">
                                 <span class="category-title"> 年　份</span>
-                                <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b1" autocomplete="off">
+                                <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b1" autocomplete="off" checked>
                                 <label class="btn btn-outline-rank" for="sbtn4b1">全部</label>
 
-                                <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b2" autocomplete="off" checked>
+                                <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b2" autocomplete="off">
                                 <label class="btn btn-outline-rank" for="sbtn4b2">新片</label>
 
                                 <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b3" autocomplete="off">
@@ -195,20 +196,20 @@
                                 <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b5" autocomplete="off">
                                 <label class="btn btn-outline-rank" for="sbtn4b5">2020年</label>
 
-                                <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b6" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="sbtn4b6">2019年</label>
+                                @*<input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b6" autocomplete="off">
+                                    <label class="btn btn-outline-rank" for="sbtn4b6">2019年</label>
 
-                                <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b7" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="sbtn4b7">2018年</label>
+                                    <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b7" autocomplete="off">
+                                    <label class="btn btn-outline-rank" for="sbtn4b7">2018年</label>
 
-                                <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b8" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="sbtn4b8">2017年</label>
+                                    <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b8" autocomplete="off">
+                                    <label class="btn btn-outline-rank" for="sbtn4b8">2017年</label>
 
-                                <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b9" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="sbtn4b9">2016年</label>
+                                    <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b9" autocomplete="off">
+                                    <label class="btn btn-outline-rank" for="sbtn4b9">2016年</label>
 
-                                <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b10" autocomplete="off">
-                                <label class="btn btn-outline-rank" for="sbtn4b10">2015年</label>
+                                    <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b10" autocomplete="off">
+                                    <label class="btn btn-outline-rank" for="sbtn4b10">2015年</label>*@
 
                                 <input type="radio" class="btn-check" name="sltBtn4" id="sbtn4b11" autocomplete="off">
                                 <label class="btn btn-outline-rank" for="sbtn4b11">更早</label>
@@ -267,10 +268,11 @@
                 <div class="u-datepicker-box">
                     @using (Html.BeginForm())
                     {
-                        @Html.TextBox("txtKeyword", "", new { @class = "datepicker"})
-                        <input class="btn btn-dark" type="submit"  value="搜尋電影" />
+                        @Html.TextBox("txtKeyword", "", new { @class = "datepicker" })
+                        <input class="btn btn-dark" type="submit" value="搜尋電影" />
                     }
-                    <button type="button" style="float:right;" class="btn btn-secondary btn-sm" id="demo">DEMO</button>
+                    <button type="button" style="float: right; margin-top: 10px;" class="btn btn-secondary btn-sm" id="demo">DEMO</button>
+                    <button type="button" style="float:right;margin-right:5px;margin-top:10px" class="btn btn-secondary btn-sm" id="demo2">DEMO2</button>
                 </div>
                 <!-- 排行榜 header -->
                 <ul class="charts-list">
@@ -303,9 +305,12 @@
                         <div class="ipc-promptable-base__auto-focus" data-autofocus-inside="true">
                             <div class="ipc-promptable-base__content">
                                 <div class="ipc-rating-prompt__star-display ipc-rating-display" style="transform: scale(1.5); transition: transform 200ms ease-out 0s;">
-                                    <svg class="ipc-rating-display__star" height="81" role="presentation" viewbox="0 0 85 81" width="85" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M29.4278383,26.4913549 L2.77970363,28.6432143 L2.63541119,28.6580541 C0.066865676,28.979767 -0.941953299,32.2222005 1.05754936,33.9345403 L21.3502824,51.3123553 L15.1650027,77.2797478 L15.1355051,77.4163845 C14.6437005,79.9569202 17.4230421,81.9201545 19.6736611,80.5499671 L42.5,66.6529451 L65.3263389,80.5499671 L65.447392,80.6201968 C67.7156822,81.8722123 70.4448402,79.8400226 69.8349973,77.2797478 L63.6489629,51.3123553 L83.9424506,33.9345403 L84.0504483,33.8378644 C85.9390285,32.0703808 84.8461128,28.855226 82.2202964,28.6432143 L55.571407,26.4913549 L45.2865041,1.85440279 C44.2543406,-0.618134262 40.7456594,-0.618134262 39.7134959,1.85440279 L29.4278383,26.4913549 Z"></path>
-                                    </svg>
+                                    @*<svg class="ipc-rating-display__star" height="81" role="presentation" viewbox="0 0 85 81" width="85" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M29.4278383,26.4913549 L2.77970363,28.6432143 L2.63541119,28.6580541 C0.066865676,28.979767 -0.941953299,32.2222005 1.05754936,33.9345403 L21.3502824,51.3123553 L15.1650027,77.2797478 L15.1355051,77.4163845 C14.6437005,79.9569202 17.4230421,81.9201545 19.6736611,80.5499671 L42.5,66.6529451 L65.3263389,80.5499671 L65.447392,80.6201968 C67.7156822,81.8722123 70.4448402,79.8400226 69.8349973,77.2797478 L63.6489629,51.3123553 L83.9424506,33.9345403 L84.0504483,33.8378644 C85.9390285,32.0703808 84.8461128,28.855226 82.2202964,28.6432143 L55.571407,26.4913549 L45.2865041,1.85440279 C44.2543406,-0.618134262 40.7456594,-0.618134262 39.7134959,1.85440279 L29.4278383,26.4913549 Z"></path>
+                                        </svg>*@
+                                    <span aria-label="RateResult" class="ipc-starbar__rating__button">
+                                        <i class="fas fa-star" style="color:#ffc107;background-color:transparent; font-size:25px;height:81px" aria-hidden="true"></i>
+                                    </span>
                                     <div class="ipc-rating-display__rating">
                                         ?@*評分結果*@
                                     </div>
@@ -419,8 +424,8 @@
                     }
                 })
             });
-        </script>
-        <script src="~/js/Movie/排行-Rate.js"></script>*@
+        </script>*@
+    @*<script src="~/js/Movie/排行-Rate.js"></script>*@
     <!-- #endregion 響應式元件 -->
     <!-- #region 響應式元件js/css/cdn -->
     @*<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -428,13 +433,13 @@
         <link rel="stylesheet" href="sweetalert2.min.css">*@
     <!-- #endregion 備註 -->
     <!-- #endregion 關掉的 -->
-<script>
+    <script>
         let save = $("#save");
         save.on("click", function () {
             let sbtn2b1 = document.getElementById("sbtn2b1");
             let sbtn2b2 = document.getElementById("sbtn2b2");
             let sbtn2 =0;
-            if (sbtn2b1.checked)//依票房 
+            if (sbtn2b1.checked)//依票房
             {
                 sbtn2 = 1;
             }
@@ -457,15 +462,23 @@
             let href = "@Url.Content("~/Movie/Rank")"+`?box=${sbtn2}&year=${sbtn4}`
             window.location.href = href
         })
-</script>
-<script>
-    //搜尋DEMO
+    </script>
+    <script>
+        //搜尋DEMO
 
-    const demo = document.querySelector("#demo")
-    demo.addEventListener('click', () => {
-        document.querySelector('[name="txtKeyword"]').value = "子彈"
-    })
-</script>
+        const demo = document.querySelector("#demo")
+        demo.addEventListener('click', () => {
+            document.querySelector('[name="txtKeyword"]').value = "子彈"
+        })
+    </script>
+    <script>
+        //搜尋DEMO
+
+        const demo2 = document.querySelector("#demo2")
+        demo2.addEventListener('click', () => {
+            document.querySelector('[name="txtKeyword"]').value = "一條龍"
+        })
+    </script>
 }
 
 

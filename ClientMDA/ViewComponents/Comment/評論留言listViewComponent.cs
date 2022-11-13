@@ -31,7 +31,7 @@ namespace ClientMDA.ViewConponents
                         fNickName = _MDAcontext.會員members.Where(m => m.會員編號memberId == f.會員編號memberId).Select(f => f.暱稱nickName).ToList(),
                         發佈時間floorTime = f.發佈時間floorTime,
                         回覆內容floors = f.回覆內容floors
-                    }).Take(10).ToList();
+                    }).ToList();
             return View(datas);
         }
 

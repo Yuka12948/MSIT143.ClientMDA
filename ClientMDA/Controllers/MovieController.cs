@@ -23,7 +23,7 @@ namespace ClientMDA.Controllers
 
         public ActionResult Rank(CKeywordViewModel model,int? box ,int? year)
         {
-            box ??= 2;year ??= 2;//??= >> if null
+            box ??= 2;year ??= 1;//??= >> if null
             電影movie K = new();
             List<CMovieViewModel> datas = null;
             var mPoster = _MDAcontext.電影圖片movieIimagesLists.Select(i => i);

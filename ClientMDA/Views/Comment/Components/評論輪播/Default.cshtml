@@ -57,11 +57,10 @@
                         <p class="mComment-text">
                             @item.評論內容comments
                         </p>
-
-                        <a href="@Url.Action("電影評論", "Comment", new { id = item.評論編號commentId})" role="button" class="btn btn-comment">
-                            @*  href="#" *@
-                            <span>看評論</span>
-                        </a>
+                        @Html.ActionLink("繼續閱讀", "電影評論", "Comment", new { id = item.評論編號commentId }, new { @class = "btn btn-info btn-sm"})
+                        <!--<a href="@Url.Action("電影評論", "Comment", new { id = item.評論編號commentId})" role="button" class="btn btn-comment">-->
+                            <!--<span>看評論</span>-->
+                        @*</a>*@
                     </div>
                 </div>
             </div>
