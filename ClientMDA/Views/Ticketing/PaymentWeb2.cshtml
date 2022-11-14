@@ -28,8 +28,9 @@
     foreach (var item in Model.Alltciket)
     {
         totalPrice += (item.TicketPrice) * (item.TicketCount);
-        totalPrice += ViewBag.fee;
     }
+
+    totalPrice += ViewBag.fee;
 
     for (int i = 0; i < productcount.Count(); i++)
     {
