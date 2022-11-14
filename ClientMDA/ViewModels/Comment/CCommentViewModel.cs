@@ -259,6 +259,7 @@ namespace ClientMDA.ViewModels
         public int floorCount { get; set; }
         public string followMemName { get; set; }
         public string followComTitle { get; set; }
-        
+        public string mPosterImg { get; set; }
+
     }
 }
