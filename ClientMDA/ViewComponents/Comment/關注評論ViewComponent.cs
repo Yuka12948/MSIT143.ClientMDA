@@ -48,40 +48,31 @@ namespace ClientMDA.ViewConponents
         //用這個 async Task<IViewComponentResult> InvokeAsync
         //public async Task<IViewComponentResult> InvokeAsync(int? id) //參考暐婷
         //{
-        //    id = 1;
-        //    var q = _MDAcontext.我的追蹤清單myFollowLists.Where(f => f.會員編號memberId == id && f.追讚倒編號actionTypeId == 0&&f.對象targetId!=0).Select
+        //    var q = _MDAcontext.我的追蹤清單myFollowLists.Where(f => f.會員編號memberId == id && f.追讚倒編號actionTypeId == 0 && f.對象targetId==1).Select //會員
         //        (f => new CCommentViewModel
         //        {
         //            會員編號memberId = f.會員編號memberId,
         //            暱稱nickName = f.對象target.對象名稱targetName,
         //            對象targetId = f.對象targetId,
         //            連接編號connectId = f.連接編號connectId,
-
+        //            會員照片image = _MDAcontext.會員members.Where(m => m.會員編號memberId == f.連接編號connectId).Select(m => m.會員照片image).FirstOrDefault(),//照片
         //            followMemName = _MDAcontext.會員members.Where(m => m.會員編號memberId == f.連接編號connectId).Select(m => m.暱稱nickName).FirstOrDefault(),//暱稱
-        //            //發佈時間commentTime = f.會員編號member.
-        //            comments = _MDAcontext.電影評論movieComments
-        //            .Where(m => m.會員編號memberId == f.連接編號connectId)
-        //            .OrderByDescending(c => c.發佈時間commentTime)
-        //            .Select(c => new CCommentViewModel
-        //            {
-        //                會員照片image=c.會員編號member.會員照片image,
+        //            comments = _MDAcontext.電影評論movieComments.Where(m => m.會員編號memberId == f.連接編號connectId).OrderByDescending(c => c.發佈時間commentTime).Select
+        //            (c => new CCommentViewModel
+        //            {                        
         //                發佈時間commentTime = c.發佈時間commentTime,
         //                評論編號commentId = c.評論編號commentId,
         //                評論標題commentTitle = c.評論標題commentTitle,
         //                評論內容comments = c.評論內容comments,
-        //                mPoster = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == c.電影編號movieId).Select
-        //                (i => new CMovieImagesListViewModel
-        //                {
-        //                    movieIMDB = i.圖片編號image.圖片雲端imageImdb,
-        //                    movieImage = i.圖片編號image.圖片image,
-        //                }
-        //                ).ToList(),
+        //                mPosterImg = _MDAcontext.電影圖片movieIimagesLists.Where(i => i.電影編號movieId == c.電影編號movieId).Select
+        //                (i => i.圖片編號image.圖片image).FirstOrDefault(),
         //            })
         //            .Take(3).ToList(),
         //        }).ToList();
 
         //    return View(q);
         //}
+
         public static string StripHTML(string input) //HTML格式顯示消除
         {
             if (input == null)

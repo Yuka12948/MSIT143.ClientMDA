@@ -17,6 +17,7 @@
 }
 
 @{
+    <!-- #region 原本版本 -->
     if (Accessor.HttpContext.Session.Keys.Contains(CDictionary.SK_LOGINED_USER))
     {
         for (var i = 0; i < Model.Count; i++)
@@ -78,6 +79,8 @@
         }
     }
 }
+
+<!-- #endregion 原本版本 -->
 
 <script>
 </script>
