@@ -17,13 +17,13 @@
 }
 
 @{
+    <!-- #region 原本版本 -->
     if (Accessor.HttpContext.Session.Keys.Contains(CDictionary.SK_LOGINED_USER))
     {
         for (var i = 0; i < Model.Count; i++)
         {
             string urlpic = "";
-
-            if (Model[i].comments[j].mPosterImg.Count > 0)
+            if (Model[i].mPoster.Count > 0)
             {
                 //urlpic = Model[i].cImgFrList[0];
                 urlpic = "http://192.168.36.4:44383/images/MovieImage/" + Model[i].mPoster[0];
@@ -79,6 +79,8 @@
         }
     }
 }
+
+<!-- #endregion 原本版本 -->
 
 <script>
 </script>
