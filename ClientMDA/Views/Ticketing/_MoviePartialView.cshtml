@@ -74,7 +74,7 @@
                 string _picurl = "";
                 for (int i = 0; i < 9; i++)
                 {
-                    _picurl = "https://localhost:44381/images/MovieImage/" + arr[i].Trim();
+                    _picurl = "http://192.168.36.4:44383/images/MovieImage/" + arr[i].Trim();
                     <a class="swiper-slide" asp-route-id="@Model[i].電影代碼編號movieCodeId" asp-controller="Ticketing" asp-action="MovieInfoIndex2" ><img src="@_picurl"/></a>
                 }
             }

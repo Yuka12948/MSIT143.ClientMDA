@@ -233,7 +233,7 @@ namespace ClientMDA.Controllers
                          累積票房BoxOffice_Gross = b.累積票房boxOfficeGross,
                          周次Weeks = b.周次weeks,
                          統計時間 = b.統計時間,
-                         期待度anticipation = a.電影編號movie.期待度anticipation,
+                         評分Rate = a.電影編號movie.評分rate,
 
                      }).ToList();
             return View(s);

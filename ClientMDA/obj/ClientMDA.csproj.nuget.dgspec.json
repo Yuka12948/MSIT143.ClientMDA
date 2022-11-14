@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\C#\\03_iSpan資策會\\MSIT_143_智慧應用微軟C#工程師就業養成班\\06.專題_GitHub\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj": {}
+    "C:\\Users\\Student\\Documents\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj": {}
   },
   "projects": {
-    "E:\\C#\\03_iSpan資策會\\MSIT_143_智慧應用微軟C#工程師就業養成班\\06.專題_GitHub\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj": {
+    "C:\\Users\\Student\\Documents\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\C#\\03_iSpan資策會\\MSIT_143_智慧應用微軟C#工程師就業養成班\\06.專題_GitHub\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
+        "projectUniqueName": "C:\\Users\\Student\\Documents\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
         "projectName": "ClientMDA",
-        "projectPath": "E:\\C#\\03_iSpan資策會\\MSIT_143_智慧應用微軟C#工程師就業養成班\\06.專題_GitHub\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
-        "packagesPath": "C:\\Users\\boboc\\.nuget\\packages\\",
-        "outputPath": "E:\\C#\\03_iSpan資策會\\MSIT_143_智慧應用微軟C#工程師就業養成班\\06.專題_GitHub\\MSIT143.ClientMDA\\ClientMDA\\obj\\",
+        "projectPath": "C:\\Users\\Student\\Documents\\MSIT143.ClientMDA\\ClientMDA\\ClientMDA.csproj",
+        "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Student\\Documents\\MSIT143.ClientMDA\\ClientMDA\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\boboc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -95,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.412\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.214\\RuntimeIdentifierGraph.json"
         }
       }
     }

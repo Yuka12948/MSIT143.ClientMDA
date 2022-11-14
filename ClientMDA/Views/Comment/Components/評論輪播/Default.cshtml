@@ -23,11 +23,11 @@
         }
         else if (item.mPoster.Count() > 1) //兩張以上 >> 選第二張
         {
-            BGsrc = "https://localhost:44381/images/MovieImage/" + @item.mPoster[1].movieImage;
+            BGsrc = "http://192.168.36.4:44383/images/MovieImage/" + @item.mPoster[1].movieImage;
         }
         else if (item.mPoster.Count() > 0) //一張以上 >> 選第一張
         {
-            BGsrc = "https://localhost:44381/images/MovieImage/" + @item.mPoster[1].movieImage;
+            BGsrc = "http://192.168.36.4:44383/images/MovieImage/" + @item.mPoster[1].movieImage;
         }
         else //萬不得已 >> 吃雲端圖片
         {
@@ -43,7 +43,7 @@
                                 <span style="color:white">
                                     @if (item.會員照片image != null)
                                     {
-                                        <img class="memImg" src="https://localhost:44381/images/Member/@item.會員照片image" alt="">
+                                        <img class="memImg" src="http://192.168.36.4:44383/images/Member/@item.會員照片image" alt="">
                                     }
                                     else
                                     {

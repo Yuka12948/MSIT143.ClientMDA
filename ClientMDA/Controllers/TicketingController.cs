@@ -245,7 +245,7 @@ namespace ClientMDA.Controllers
             fn_建立新訂單明細(NewOrderID, order.TicketInfo);
             fn_建立新出售座位明細(NewOrderID, order.ScreenID, order.SeatInfo);
             string MemberName = this._dbContext.會員members.Where(m => m.會員編號memberId == member.會員編號memberId).Select(n => (n.姓氏lName + n.名字fName)).FirstOrDefault();
-            fn_寄送郵件("annlan08@gmail.com", MemberName, order.fullPrice);
+            fn_寄送郵件("ilovemdaofficialok@gmail.com", MemberName, order.fullPrice);
             fn_會員購票送紅利(member.會員編號memberId, (int)order.fullPrice);
             fn_新增購買商品明細(NewOrderID);
             HttpContext.Session.SetString(CDictionary.SK_ORDER_INFO, "");

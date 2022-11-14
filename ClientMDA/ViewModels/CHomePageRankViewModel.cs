@@ -17,6 +17,7 @@ namespace ClientMDA.ViewModels
         public string 周次Weeks { get; set; }
         public string 統計時間 { get; set; }
         public decimal? 期待度anticipation { get; set; }
+        public decimal? 評分Rate { get; set; }
 
 
         public int 會員編號Member_IDbook { get; set; }
