@@ -26,7 +26,7 @@
             if (Model[i].mPoster.Count > 0)
             {
                 //urlpic = Model[i].cImgFrList[0];
-                urlpic = "http://192.168.36.4:44383/images/MovieImage/" + Model[i].mPoster[0];
+                urlpic = "http://192.168.24.5:44383/images/MovieImage/" + Model[i].mPoster[0];
             }
             <div class="card mb-3" style="max-width: 540px;">
                 @*overflow:hidden*@
@@ -39,7 +39,7 @@
                             }
                             else if (@Model[i].mPoster.Count() > 0)
                             {
-                                <div><img src="http://192.168.36.4:44383/images/MovieImage/@Model[i].mPoster[0].movieImage" class="img-fluid rounded-start" alt="..."></div>
+                                <div><img src="http://192.168.24.5:44383/images/MovieImage/@Model[i].mPoster[0].movieImage" class="img-fluid rounded-start" alt="..."></div>
                             }
                             else
                             {
@@ -55,7 +55,7 @@
                                 <span>
                                     @if (Model[i].會員照片image != null)
                                     {
-                                        <img class="memImg" src="http://192.168.36.4:44383/images/Member/@Model[i].會員照片image" alt="">
+                                        <img class="memImg" src="http://192.168.24.5:44383/images/Member/@Model[i].會員照片image" alt="">
                                     }
                                     else
                                     {

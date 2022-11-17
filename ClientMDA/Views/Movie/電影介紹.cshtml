@@ -140,7 +140,7 @@
 
                             //電影分級圖片
 
-                            urlpic = "http://192.168.36.4:44383/images/MovieImage/" + @Model.mPoster[0].movieImage; /*Model.mImgFrList[0] //IMDB路徑*/
+                            urlpic = "http://192.168.24.5:44383/images/MovieImage/" + @Model.mPoster[0].movieImage; /*Model.mImgFrList[0] //IMDB路徑*/
 
 
                         }
@@ -342,7 +342,7 @@
                                             @foreach (var item in Model.mDirectorList)
                                             {
                                                 <label title="@item.directorEngName">@item.directorChtName </label>
-                                                @*<img class="" height="20" src="http://192.168.36.4:44383/images/Director/@item.directorImg" alt="">*@
+                                                @*<img class="" height="20" src="http://192.168.24.5:44383/images/Director/@item.directorImg" alt="">*@
                                             }
                                         </li>
                                         <li>
@@ -350,13 +350,13 @@
                                             <!-- #region 控制演員顯示數量 -->
                                             @*@for (int i = 0; i < 10; i++)
                                                 {<label>@Model.mActorList[i].ActorChtName (@Model.mActorList[i].ActorEngName)</label>}
-                                                <img class="" height="20" src="http://192.168.36.4:44383/images/Actor/@item.ActorImg" alt="">*@
+                                                <img class="" height="20" src="http://192.168.24.5:44383/images/Actor/@item.ActorImg" alt="">*@
                                             <!-- #endregion 控制演員顯示數量 -->
                                             <!-- #region 演員全部列出 -->
                                             @foreach (var item in Model.mActorList)
                                             {
                                                 <label title="@item.ActorEngName">@item.ActorChtName (@item.ActorEngName)</label>
-                                                @*<img class="" height="20" src="http://192.168.36.4:44383/images/Actor/@item.ActorImg" alt="">*@
+                                                @*<img class="" height="20" src="http://192.168.24.5:44383/images/Actor/@item.ActorImg" alt="">*@
                                             }
                                         </li>
                                         <!-- #endregion 演員全部列出 -->
@@ -366,7 +366,7 @@
                                             @foreach (var item in Model.mCountryList)
                                             {
                                                 <label>@item.countryName</label>
-                                                <img class="" height="20" src="http://192.168.36.4:44383/images/Country/@item.countryImage" alt="">
+                                                <img class="" height="20" src="http://192.168.24.5:44383/images/Country/@item.countryImage" alt="">
                                                 <label> </label>
                                             }
                                         </li>
